@@ -5,10 +5,10 @@
 <section id="problemas" class="pain-section">
     <div class="container">
         <div class="section-header">
-            <span class="badge-subtle">Diagnóstico Digital</span>
+            <span class="section-badge">Diagnóstico Digital</span>
             <h2 class="section-title">
                 ¿Sientes que tu tecnología <br />
-                <span class="highlight-brand">limita tu enseñanza?</span>
+                <span class="text-span highlight-brand primary">limita tu enseñanza?</span>
             </h2>
             <p class="section-desc">
                 Identificamos los obstáculos técnicos comunes que impiden que las instituciones educativas alcancen su máximo potencial.
@@ -99,25 +99,7 @@
         .section-title { font-size: 3rem; }
     }
 
-    /* Highlight ahora usa el color primario (morado) en lugar de rojo */
-    .highlight-brand {
-        color: var(--primary);
-        position: relative;
-        white-space: nowrap;
-    }
-    
-    .highlight-brand::after {
-        content: "";
-        position: absolute;
-        bottom: 4px;
-        left: -2px;
-        width: 105%;
-        height: 10px;
-        background: rgba(98, 70, 234, 0.15); /* Morado muy suave */
-        z-index: -1;
-        transform: rotate(-1deg);
-        border-radius: 4px;
-    }
+
 
     .section-desc {
         font-size: 1.125rem;

@@ -1,16 +1,18 @@
 ---
-
 ---
 
-<section id="servicios" class="services-section">
-    <div class="bg-grid"></div>
-    <div class="bg-glow"></div>
+<section id="servicios" class="services-section bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
+    <div class="ambient-glow"></div>
 
     <div class="container">
         <div class="section-header">
-            <span class="badge-accent">Soluciones Integrales</span>
+            <span class="section-badge accent">Soluciones Integrales</span>
             <h2 class="section-title">
-                Nuestras <span class="text-gradient highlight-brand">Capacidades</span>
+                Nuestras <span class="text-span highlight-brand accent"
+                    >Capacidades</span
+                >
             </h2>
             <p class="section-desc">
                 Diseñamos ecosistemas digitales pensados para potenciar el
@@ -19,40 +21,44 @@
         </div>
 
         <div class="services-grid">
-            <div class="service-card">
+            <div id="lms" class="service-card">
                 <div class="icon-wrapper">
                     <i class="ph-duotone ph-chalkboard-teacher"></i>
                 </div>
                 <h3>Aulas Virtuales LMS</h3>
                 <p>
-                    Implementamos Moodle y Canvas personalizados, optimizados para alta concurrencia y una experiencia de usuario fluida.
+                    Implementamos Moodle y Canvas personalizados, optimizados
+                    para alta concurrencia y una experiencia de usuario fluida.
                 </p>
                 <a href="#" class="link-arrow">
                     Más detalles <i class="ph-bold ph-arrow-right"></i>
                 </a>
             </div>
 
-            <div class="service-card featured">
+            <div id="web" class="service-card featured">
                 <div class="featured-tag">Más Solicitado</div>
                 <div class="icon-wrapper">
                     <i class="ph-duotone ph-globe"></i>
                 </div>
                 <h3>Desarrollo Web EdTech</h3>
                 <p>
-                    Portales institucionales rápidos, seguros y adaptables, diseñados específicamente para captar y retener matrícula.
+                    Portales institucionales rápidos, seguros y adaptables,
+                    diseñados específicamente para captar y retener matrícula.
                 </p>
                 <a href="#" class="link-arrow">
                     Más detalles <i class="ph-bold ph-arrow-right"></i>
                 </a>
             </div>
 
-            <div class="service-card">
+            <div id="soporte" class="service-card">
                 <div class="icon-wrapper">
                     <i class="ph-duotone ph-headset"></i>
                 </div>
                 <h3>Soporte y Capacitación</h3>
                 <p>
-                    Acompañamiento técnico continuo (SLA garantizado) y formación docente para sacar el máximo provecho a las herramientas.
+                    Acompañamiento técnico continuo (SLA garantizado) y
+                    formación docente para sacar el máximo provecho a las
+                    herramientas.
                 </p>
                 <a href="#" class="link-arrow">
                     Más detalles <i class="ph-bold ph-arrow-right"></i>
@@ -63,42 +69,13 @@
 </section>
 
 <style>
-    /* Variables locales para el tema oscuro */
     .services-section {
-        --bg-dark: #0f172a;      /* Slate 900 */
         --bg-card: rgba(255, 255, 255, 0.03);
         --border-card: rgba(255, 255, 255, 0.08);
-        --text-heading: #f8fafc; /* Slate 50 */
-        --text-body: #cbd5e1;    /* Slate 300 */
-        
-        position: relative;
-        padding: 6rem 0;
-        background-color: var(--bg-dark);
-        overflow: hidden;
-    }
+        --text-heading: #f8fafc;
+        --text-body: #cbd5e1;
 
-    /* Fondo Decorativo */
-    /* .bg-grid {
-        position: absolute;
-        inset: 0;
-        background-image: 
-            linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-        background-size: 40px 40px;
-        mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
-        pointer-events: none;
-    } */
-
-    .bg-glow {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 800px;
-        height: 400px;
-        background: radial-gradient(circle, rgba(98, 70, 234, 0.15) 0%, transparent 70%);
-        pointer-events: none;
-        z-index: 0;
+        padding: 8rem 0;
     }
 
     /* Header */
@@ -110,44 +87,10 @@
         z-index: 1;
     }
 
-    .section-title .highlight-brand::after {
-        content: "";
-        position: absolute;
-        bottom: 4px;
-        left: -2px;
-        width: 105%;
-        height: 10px;
-        background: rgba(98, 70, 234, 0.15); /* Morado muy suave */
-        z-index: -1;
-        transform: rotate(-1deg);
-        border-radius: 4px;
-    }
-
-    .badge-accent {
-        display: inline-block;
-        font-size: 0.8rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: var(--accent);
-        background: rgba(0, 255, 140, 0.1);
-        border: 1px solid rgba(0, 255, 140, 0.2);
-        padding: 6px 14px;
-        border-radius: 100px;
-        margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        color: var(--text-heading);
-        margin-bottom: 1.5rem;
-        line-height: 1.1;
-        position: relative;
-    }
-
     @media (min-width: 768px) {
-        .section-title { font-size: 3.5rem; }
+        .section-title {
+            font-size: 3.5rem;
+        }
     }
 
     .text-gradient {
@@ -192,6 +135,20 @@
         flex-direction: column;
         align-items: flex-start;
         overflow: hidden;
+        
+        /* FIX UX: Ajuste de scroll para Móvil 
+           (Header ~80px + aire)
+        */
+        scroll-margin-top: 110px;
+    }
+
+    /* FIX UX: Ajuste de scroll para Desktop
+       Hacemos que el scroll se detenga mucho antes para mostrar el título
+    */
+    @media (min-width: 992px) {
+        .service-card {
+            scroll-margin-top: 420px;
+        }
     }
 
     /* Efecto Hover: Elevación y Borde */
@@ -206,21 +163,29 @@
     .service-card::before {
         content: "";
         position: absolute;
-        top: 0; left: 0; right: 0;
+        top: 0;
+        left: 0;
+        right: 0;
         height: 2px;
         background: linear-gradient(90deg, var(--primary), var(--accent));
         opacity: 0;
         transition: opacity 0.3s ease;
     }
 
-    .service-card:hover::before { opacity: 1; }
+    .service-card:hover::before {
+        opacity: 1;
+    }
 
     /* Estilos Específicos para la tarjeta Featured */
     .service-card.featured {
-        background: linear-gradient(180deg, rgba(98, 70, 234, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+        background: linear-gradient(
+            180deg,
+            rgba(98, 70, 234, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 100%
+        );
         border-color: rgba(98, 70, 234, 0.3);
     }
-    
+
     .service-card.featured:hover {
         border-color: var(--primary);
         box-shadow: 0 20px 50px -10px rgba(98, 70, 234, 0.25);
@@ -254,19 +219,21 @@
         color: var(--primary); /* Por defecto morado */
         margin-bottom: 1.5rem;
         transition: all 0.3s ease;
-        border: 1px solid rgba(255,255,255,0.05);
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
-    
+
     /* En featured o hover, el icono cambia */
-    .featured .icon-wrapper { color: var(--accent); }
-    
+    .featured .icon-wrapper {
+        color: var(--accent);
+    }
+
     .service-card:hover .icon-wrapper {
         background: var(--primary);
         color: white;
         transform: scale(1.1) rotate(-3deg);
         border-color: transparent;
     }
-    
+
     .featured:hover .icon-wrapper {
         background: var(--accent);
         color: var(--bg-dark);

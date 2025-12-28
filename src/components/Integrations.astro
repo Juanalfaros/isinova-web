@@ -1,0 +1,348 @@
+---
+---
+<link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+
+<section class="integrations-section">
+    
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge">Tecnología & Ecosistema</span>
+            <h2 class="section-title">
+                Soluciones <span class="text-span gradient highlight-brand accent">Compatibles & Robustas</span>
+            </h2>
+            <p class="section-desc">
+                Trabajamos con las tecnologías líderes de la industria para
+                asegurar que tu proyecto sea escalable, seguro y fácil de usar.
+            </p>
+        </div>
+    </div>
+
+    <div class="tech-marquee">
+        <div class="marquee-track">
+            {
+                [0, 1].map((index) => (
+                    <div class="marquee-group" aria-hidden={index === 1}>
+                        
+                        <div class="tech-item">
+                            <i class="devicon-moodle-plain"></i>
+                            <span>Moodle LMS</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 15.5c-3.03 0-5.5-2.47-5.5-5.5S8.97 6.5 12 6.5s5.5 2.47 5.5 5.5-2.47 5.5-5.5 5.5zm1.5-5.5c0 .83-.67 1.5-1.5 1.5s-1.5-.67-1.5-1.5.67-1.5 1.5-1.5 1.5.67 1.5 1.5z"/>
+                            </svg>
+                            <span>Canvas LMS</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-wordpress-plain"></i>
+                            <span>WordPress</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-php-plain"></i>
+                            <i class="devicon-nodejs-plain"></i>
+                            <span>PHP / Node.js</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-amazonwebservices-plain-wordmark"></i>
+                            <i class="devicon-googlecloud-plain"></i>
+                            <span>AWS / Google</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-mysql-plain"></i>
+                            <i class="devicon-postgresql-plain"></i>
+                            <span>SQL / Postgres</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="ph-fill ph-plugs-connected"></i>
+                            <span>LTI & API REST</span>
+                        </div>
+
+                        <div class="tech-item">
+                            <i class="devicon-react-original"></i>
+                            <i class="devicon-vuejs-plain"></i>
+                            <span>React / Vue.js</span>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="integrations-grid">
+            <div class="integration-card">
+                <div class="card-icon">
+                    <i class="ph-bold ph-graduation-cap"></i>
+                </div>
+                <h3>LMS Ecosystem</h3>
+                <p>
+                    Configuración experta de Moodle y Canvas, incluyendo
+                    migración de datos y personalización de temas.
+                </p>
+                <ul class="card-list">
+                    <li><i class="ph-bold ph-check"></i> Hosting de alta disponibilidad</li>
+                    <li><i class="ph-bold ph-check"></i> Seguridad proactiva</li>
+                    <li><i class="ph-bold ph-check"></i> Soporte experto</li>
+                </ul>
+            </div>
+
+            <div class="integration-card">
+                <div class="card-icon">
+                    <i class="ph-bold ph-arrows-merge"></i>
+                </div>
+                <h3>Integraciones</h3>
+                <p>
+                    Conectamos tu ecosistema educativo para centralizar la
+                    información y automatizar procesos.
+                </p>
+                <ul class="card-list">
+                    <li><i class="ph-bold ph-check"></i> Pasarelas de Pago (Webpay)</li>
+                    <li><i class="ph-bold ph-check"></i> CRM & ERP</li>
+                    <li><i class="ph-bold ph-check"></i> SSO (Google/Microsoft)</li>
+                </ul>
+            </div>
+
+            <div class="integration-card">
+                <div class="card-icon">
+                    <i class="ph-bold ph-device-mobile"></i>
+                </div>
+                <h3>Desarrollo Web</h3>
+                <p>
+                    Sitios web modernos y aplicaciones a medida enfocadas en la
+                    experiencia de usuario y conversión.
+                </p>
+                <ul class="card-list">
+                    <li><i class="ph-bold ph-check"></i> Diseño Mobile-First</li>
+                    <li><i class="ph-bold ph-check"></i> Optimización SEO</li>
+                    <li><i class="ph-bold ph-check"></i> Velocidad de carga extrema</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* 1. CONFIGURACIÓN GENERAL */
+    .integrations-section {
+        --primary: #6246ea;      
+        --accent: #00ff8c;       
+        --dark: #0f172a;         
+        --slate: #64748b;        
+        --bg-light: #fafafa;
+        --text-heading: #0f172a;
+        
+        padding: 6rem 0;
+        background-color: var(--bg-light);
+        overflow-x: hidden; 
+        width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    /* 2. HEADER */
+    .section-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+
+    .section-desc {
+        color: var(--slate);
+        font-size: 1.125rem;
+        line-height: 1.6;
+    }
+
+    /* 3. MARQUEE */
+    .tech-marquee {
+        position: relative;
+        width: 100%;
+        margin-bottom: 5rem;
+        padding: 2rem 0;
+        background: white; 
+        border-top: 1px solid #f0f0f0;
+        border-bottom: 1px solid #f0f0f0;
+        overflow: hidden;
+    }
+
+    .tech-marquee::before,
+    .tech-marquee::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 150px;
+        z-index: 10;
+        pointer-events: none;
+    }
+
+    .tech-marquee::before {
+        left: 0;
+        background: linear-gradient(to right, white 15%, transparent 100%);
+    }
+
+    .tech-marquee::after {
+        right: 0;
+        background: linear-gradient(to left, white 15%, transparent 100%);
+    }
+
+    .marquee-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 40s linear infinite;
+        position: relative;
+        z-index: 1;
+    }
+
+    .marquee-track:hover {
+        animation-play-state: paused;
+    }
+
+    .marquee-group {
+        display: flex;
+        gap: 4rem;
+        padding-right: 4rem;
+        align-items: center;
+    }
+
+    /* ITEMS DEL MARQUEE */
+    .tech-item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--slate);
+        font-weight: 600;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        transition: color 0.3s ease;
+    }
+
+    /* Estilo para los Iconos (Devicon + SVG + Phosphor del marquee) */
+    .tech-item i, 
+    .tech-item svg {
+        font-size: 1.85rem; /* Un poco más grandes para que se luzcan las marcas */
+        width: 1.85rem;     /* Fijo para SVGs */
+        height: 1.85rem;
+        color: #cbd5e1;     /* Color base gris */
+        fill: #cbd5e1;      /* Para el SVG */
+        transition: all 0.3s ease;
+    }
+
+    /* Efecto Hover: Colorear icono y texto */
+    .tech-item:hover {
+        color: var(--primary);
+    }
+
+    .tech-item:hover i,
+    .tech-item:hover svg {
+        color: var(--primary);
+        fill: var(--primary);
+        transform: scale(1.1); /* Efecto pop sutil */
+    }
+
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+    }
+
+    /* 4. GRID TARJETAS */
+    .integrations-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .integration-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .integration-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary);
+    }
+
+    .card-icon {
+        width: 60px;
+        height: 60px;
+        background: #f1f5f9;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+
+    .integration-card:hover .card-icon {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.1) rotate(-3deg);
+    }
+
+    .integration-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1rem;
+    }
+
+    .integration-card p {
+        color: var(--slate);
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+    }
+
+    .card-list {
+        list-style: none;
+        padding: 0;
+        margin-top: auto;
+    }
+
+    .card-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 0.95rem;
+        color: var(--dark);
+        font-weight: 500;
+        margin-bottom: 0.75rem;
+    }
+
+    .card-list li i {
+        color: #10b981;
+        font-size: 1rem;
+    }
+
+    /* 5. RESPONSIVE */
+    @media (max-width: 768px) {
+        .section-title { font-size: 2rem; }
+        
+        .tech-marquee::before,
+        .tech-marquee::after { width: 40px; }
+        
+        .marquee-group {
+            gap: 2rem;
+            padding-right: 2rem;
+        }
+    }
+</style>

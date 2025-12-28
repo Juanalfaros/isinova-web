@@ -1,0 +1,653 @@
+---
+---
+<section class="quiz-section" id="quiz">
+    <div class="glow-bg"></div>
+
+    <div class="container">
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <span class="section-badge">Diagnóstico Interactivo</span>
+                <h2 class="section-title">
+                    Descubre tu <span class="text-span gradient highlight-brand accent">Solución  Ideal</span>
+                </h2>
+                <p class="section-desc">
+                    Responde 3 preguntas estratégicas y recibe una recomendación técnica personalizada al instante.
+                </p>
+            </div>
+
+            <div class="quiz-card" id="quiz-card">
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+
+                <div class="quiz-step active" data-step="1">
+                    <div class="step-meta">
+                        <span class="step-count">01/03</span>
+                        <span class="step-category">Estado Actual</span>
+                    </div>
+                    <h3>¿En qué punto se encuentra tu institución?</h3>
+                    <div class="options-grid">
+                        <button class="option-btn" data-value="new">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-rocket-launch"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Lanzamiento desde Cero</strong>
+                                <span>No tenemos plataforma, buscamos implementar.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+                        
+                        <button class="option-btn" data-value="migration">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-arrows-left-right"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Migración / Mejora</strong>
+                                <span>Tenemos LMS pero es inestable o lento.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+                        
+                        <button class="option-btn" data-value="custom">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-puzzle-piece"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Ecosistema Personalizado</strong>
+                                <span>Buscamos integraciones complejas y UX única.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="quiz-step" data-step="2">
+                    <div class="step-meta">
+                        <span class="step-count">02/03</span>
+                        <span class="step-category">Prioridad Estratégica</span>
+                    </div>
+                    <h3>¿Qué es lo más crítico para ustedes hoy?</h3>
+                    <div class="options-grid">
+                        <button class="option-btn" data-value="speed">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-lightning"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Velocidad (Time-to-Market)</strong>
+                                <span>Necesitamos estar operativos "ayer".</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+
+                        <button class="option-btn" data-value="stability">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-shield-check"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Estabilidad Robusta</strong>
+                                <span>Cero caídas durante exámenes masivos.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+
+                        <button class="option-btn" data-value="ux">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-paint-brush-broad"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Experiencia de Usuario (UX)</strong>
+                                <span>Que enamore visualmente a los alumnos.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+                    </div>
+                    <div class="step-footer">
+                        <button class="back-btn"><i class="ph-bold ph-arrow-left"></i> Atrás</button>
+                    </div>
+                </div>
+
+                <div class="quiz-step" data-step="3">
+                    <div class="step-meta">
+                        <span class="step-count">03/03</span>
+                        <span class="step-category">Volumen de Usuarios</span>
+                    </div>
+                    <h3>¿Cuántos usuarios concurrentes estiman?</h3>
+                    <div class="options-grid">
+                        <button class="option-btn" data-value="small">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-users"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Menos de 500</strong>
+                                <span>Inicio controlado o nicho específico.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+
+                        <button class="option-btn" data-value="medium">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-buildings"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>500 - 5,000</strong>
+                                <span>Institución mediana en crecimiento.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+
+                        <button class="option-btn" data-value="large">
+                            <div class="icon-box">
+                                <i class="ph-duotone ph-globe-hemisphere-west"></i>
+                            </div>
+                            <div class="option-text">
+                                <strong>Más de 5,000</strong>
+                                <span>Alta escala / Universidad completa.</span>
+                            </div>
+                            <div class="check-circle"></div>
+                        </button>
+                    </div>
+                    <div class="step-footer">
+                        <button class="back-btn"><i class="ph-bold ph-arrow-left"></i> Atrás</button>
+                    </div>
+                </div>
+
+                <div class="quiz-step loading-step" id="loading-step">
+                    <div class="loader"></div>
+                    <h3>Analizando tus respuestas...</h3>
+                    <p>Diseñando tu arquitectura ideal</p>
+                </div>
+
+                <div class="quiz-step result-step" id="result-step">
+                    <div class="result-badge">Recomendación Generada</div>
+                    
+                    <h3 id="result-title" class="result-title">...</h3>
+                    
+                    <div class="result-card-highlight">
+                        <p id="result-desc">...</p>
+                    </div>
+
+                    <div class="result-actions">
+                        <a href="#contacto" class="cta-btn primary-glow">
+                            Agendar Consultoría Gratuita
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </a>
+                        <button class="restart-link" id="restart-quiz">
+                            <i class="ph-bold ph-arrow-counter-clockwise"></i> Reiniciar Diagnóstico
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Casting explícito a NodeListOf<HTMLElement> para poder usar .style
+        const steps = document.querySelectorAll(".quiz-step") as NodeListOf<HTMLElement>;
+        const progressBar = document.getElementById("progress-bar");
+        const optionBtns = document.querySelectorAll(".option-btn");
+        const backBtns = document.querySelectorAll(".back-btn");
+        const restartBtn = document.getElementById("restart-quiz");
+        
+        const loadingStep = document.getElementById("loading-step");
+        const resultStep = document.getElementById("result-step");
+        const resultTitle = document.getElementById("result-title");
+        const resultDesc = document.getElementById("result-desc");
+
+        let currentStep = 1;
+        const totalSteps = 3;
+        
+        // Definimos answers como un objeto de strings para evitar el error de índice
+        let answers: Record<string, string> = { step1: "", step2: "", step3: "" };
+
+        // Agregamos el tipo ': number' al parámetro
+        function goToStep(stepNumber: number) {
+            steps.forEach(el => {
+                el.classList.remove("active");
+                el.style.display = 'none';
+            });
+
+            if(progressBar) {
+                const percentage = ((stepNumber - 1) / totalSteps) * 100;
+                progressBar.style.width = `${percentage}%`;
+            }
+
+            if (stepNumber <= totalSteps) {
+                // Casting a HTMLElement para acceder a .style
+                const currentEl = document.querySelector(`.quiz-step[data-step="${stepNumber}"]`) as HTMLElement;
+                if(currentEl) {
+                    currentEl.style.display = 'block';
+                    setTimeout(() => currentEl.classList.add("active"), 10);
+                }
+            } else {
+                showLoadingAndResult();
+            }
+        }
+
+        function showLoadingAndResult() {
+            if(progressBar) progressBar.style.width = '100%';
+            if(loadingStep) {
+                loadingStep.style.display = 'flex';
+                loadingStep.classList.add("active");
+            }
+
+            calculateResult();
+
+            setTimeout(() => {
+                if(loadingStep) {
+                    loadingStep.classList.remove("active");
+                    loadingStep.style.display = 'none';
+                }
+                if(resultStep) {
+                    resultStep.style.display = 'block';
+                    setTimeout(() => resultStep.classList.add("active"), 10);
+                }
+            }, 1500);
+        }
+
+        optionBtns.forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                // Forzamos a TypeScript a saber que el target es un elemento HTML
+                const target = e.currentTarget as HTMLElement; 
+                const stepParent = target.closest(".quiz-step") as HTMLElement;
+                
+                if (!stepParent) return;
+
+                // Ahora es seguro acceder a dataset
+                const stepNum = parseInt(stepParent.dataset.step || "0");
+                const value = target.dataset.value || "";
+
+                answers[`step${stepNum}`] = value;
+                currentStep = stepNum + 1;
+                goToStep(currentStep);
+            });
+        });
+
+        backBtns.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                if(currentStep > 1) {
+                    currentStep--;
+                    goToStep(currentStep);
+                }
+            });
+        });
+
+        restartBtn?.addEventListener("click", () => {
+            currentStep = 1;
+            answers = { step1: "", step2: "", step3: "" };
+            if(resultStep) {
+                resultStep.classList.remove("active");
+                resultStep.style.display = 'none';
+            }
+            goToStep(1);
+        });
+
+        function calculateResult() {
+            let title = "";
+            let desc = "";
+
+            if (answers.step1 === "new") {
+                if (answers.step3 === "large") {
+                    title = "Arquitectura Cloud Escalable";
+                    desc = "Para un lanzamiento masivo desde cero, necesitas una infraestructura AWS auto-escalable con Moodle/Canvas optimizado para soportar miles de usuarios concurrentes sin fallos.";
+                } else {
+                    title = "LMS Fast-Track Launch";
+                    desc = "La solución ideal para empezar rápido. Implementación ágil de Moodle con plantillas UX pre-configuradas para estar operativo en tiempo récord y escalar después.";
+                }
+            } else if (answers.step1 === "migration" || answers.step2 === "stability") {
+                title = "Migración de Alta Disponibilidad";
+                desc = "Tu prioridad es la robustez. Recomendamos una auditoría de base de datos, optimización de consultas y migración a servidores dedicados con balanceo de carga.";
+            } else {
+                title = "Ecosistema EdTech a Medida";
+                desc = "Tu visión requiere más que un LMS estándar. Recomendamos un desarrollo personalizado (Headless LMS) integrando APIs externas, CRM y una interfaz de usuario totalmente exclusiva.";
+            }
+
+            if(resultTitle) resultTitle.textContent = title;
+            if(resultDesc) resultDesc.textContent = desc;
+        }
+        
+        goToStep(1);
+    });
+</script>
+
+<style>
+    /* VARIABLES LOCALES (TEMA CLARO / LIGHT MODE) */
+    .quiz-section {
+        --bg-light: #f8fafc;     /* Slate 50 */
+        --card-bg: #ffffff;      /* Blanco Puro */
+        --card-border: #e2e8f0;  /* Slate 200 */
+        --text-heading: #0f172a; /* Slate 900 */
+        --text-body: #64748b;    /* Slate 500 */
+        
+        --primary: #6246ea;      /* Morado */
+        --accent: #10b981;       /* Verde */
+        --hover-bg: #f8fafc;     /* Fondo hover muy suave */
+        
+        position: relative;
+        padding: 6rem 0;
+        background-color: var(--bg-light);
+        overflow: hidden;
+        color: var(--text-body);
+    }
+
+    /* Fondo decorativo Light */
+    .glow-bg {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        /* Gradiente sutil para dar profundidad al blanco */
+        background: radial-gradient(circle at 80% 20%, rgba(98, 70, 234, 0.05), transparent 40%),
+                    radial-gradient(circle at 20% 80%, rgba(16, 185, 129, 0.05), transparent 40%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+
+    /* HEADER */
+    .quiz-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+        font-size: 1.125rem;
+        line-height: 1.6;
+        color: var(--text-body);
+    }
+
+    /* QUIZ CARD CONTAINER */
+    .quiz-card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 24px;
+        padding: 3rem;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        max-width: 800px;
+        margin: 0 auto;
+        /* Sombra elegante para light mode */
+        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.06); 
+    }
+
+    /* BARRA DE PROGRESO */
+    .progress-container {
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 6px;
+        background: #f1f5f9; /* Fondo gris claro */
+    }
+
+    .progress-bar {
+        height: 100%;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        width: 0%;
+        transition: width 0.5s ease;
+    }
+
+    /* STEPS */
+    .quiz-step {
+        display: none; 
+        opacity: 0;
+        transform: translateY(10px);
+        transition: all 0.4s ease-out;
+    }
+
+    .quiz-step.active {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .step-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #94a3b8; /* Slate 400 */
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .step-count { color: var(--primary); }
+
+    .quiz-step h3 {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--text-heading);
+        margin-bottom: 2.5rem;
+        line-height: 1.2;
+    }
+
+    /* OPCIONES GRID */
+    .options-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .option-btn {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 1.25rem;
+        background: #ffffff;
+        border: 2px solid #f1f5f9; /* Borde muy sutil inicial */
+        border-radius: 16px;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+        text-align: left;
+        width: 100%;
+        position: relative;
+    }
+
+    .option-btn:hover {
+        background: #fafafa;
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Icono Izquierdo */
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        background: #f1f5f9; /* Fondo gris muy claro */
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: #64748b; /* Gris medio */
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+    }
+
+    .option-btn:hover .icon-box {
+        background: var(--primary);
+        color: white;
+    }
+
+    .option-text { flex: 1; }
+
+    .option-text strong {
+        display: block;
+        font-size: 1.1rem;
+        color: var(--text-heading);
+        margin-bottom: 0.25rem;
+    }
+
+    .option-text span {
+        font-size: 0.9rem;
+        color: var(--text-body);
+    }
+
+    /* Círculo de selección (Check) */
+    .check-circle {
+        width: 24px;
+        height: 24px;
+        border: 2px solid #cbd5e1; /* Gris borde */
+        border-radius: 50%;
+        transition: all 0.2s ease;
+    }
+
+    .option-btn:hover .check-circle {
+        border-color: var(--accent);
+        background: var(--accent);
+        box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    /* BOTONES NAVEGACIÓN */
+    .step-footer {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .back-btn {
+        background: transparent;
+        border: none;
+        color: #94a3b8;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: color 0.2s;
+        padding: 0;
+    }
+
+    .back-btn:hover { color: var(--text-heading); }
+
+    /* LOADING STEP */
+    .loading-step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        height: 100%;
+        min-height: 400px;
+    }
+
+    .loader {
+        width: 50px;
+        height: 50px;
+        border: 3px solid #e2e8f0;
+        border-radius: 50%;
+        border-top-color: var(--primary);
+        animation: spin 1s linear infinite;
+        margin-bottom: 2rem;
+    }
+
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* RESULT STEP */
+    .result-step { text-align: center; }
+
+    .result-badge {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: rgba(16, 185, 129, 0.1);
+        padding: 4px 12px;
+        border-radius: 4px;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.1em;
+    }
+
+    .result-title {
+        font-size: 2.5rem;
+        color: var(--text-heading);
+        margin-bottom: 2rem;
+        line-height: 1.1;
+    }
+
+    .result-card-highlight {
+        background: #f8fafc; /* Fondo gris claro */
+        border: 1px dashed #cbd5e1;
+        border-radius: 16px;
+        padding: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .result-card-highlight p {
+        font-size: 1.1rem;
+        color: var(--text-heading);
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .result-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--text-heading); /* Negro/Azul oscuro */
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 100px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px -5px rgba(0,0,0,0.15);
+    }
+
+    .primary-glow:hover {
+        background: var(--primary); /* Cambia a Morado en hover */
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px -5px rgba(98, 70, 234, 0.4);
+    }
+
+    .restart-link {
+        background: none;
+        border: none;
+        color: var(--text-body);
+        font-size: 0.9rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.2s;
+    }
+
+    .restart-link:hover { color: var(--text-heading); }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+        .quiz-card { padding: 2rem 1.5rem; }
+        .section-title, .result-title { font-size: 2rem; }
+        .option-btn { padding: 1rem; }
+        .icon-box { width: 40px; height: 40px; font-size: 1.2rem; }
+    }
+</style>
