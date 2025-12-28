@@ -1,0 +1,131 @@
+/* CSS Vanilla - Design System for Isinova */
+
+:root {
+    --primary: #6246ea;
+    --accent: #00ff8c;
+    --dark: #2b2d42;
+    --slate: #64748b;
+    --background: #f8fafc;
+    --surface: #ffffff;
+    --primary-light: #f0ecfe;
+    --white: #ffffff;
+
+    --font-main: "Exo 2", sans-serif;
+
+    --shadow-soft: 0 4px 20px -2px rgba(98, 70, 234, 0.1);
+    --shadow-glow: 0 0 15px rgba(0, 255, 140, 0.4);
+
+    --container-max: 1200px;
+    --header-height: 80px;
+}
+
+/* Base Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background);
+    background-image: radial-gradient(var(--slate) 0.5px, transparent 0.5px);
+    background-size: 24px 24px;
+    background-attachment: fixed;
+    color: var(--dark);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    opacity: 0.99;
+    /* Fix for some browsers rendering fixed backgrounds */
+}
+
+/* Base adjustment for sections to ensure they have their own backgrounds if needed */
+section {
+    position: relative;
+    z-index: 1;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container-max);
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+/* Utilities */
+.gradient-text {
+    background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+button,
+.btn {
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 0.75rem;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--white);
+    padding: 1rem 2rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btn-accent {
+    background-color: var(--accent);
+    color: var(--dark);
+    padding: 1rem 2rem;
+    font-weight: 700;
+    box-shadow: var(--shadow-glow);
+}
+
+.btn-accent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 255, 140, 0.6);
+}
+
+/* Sections */
+main {
+    padding-top: var(--header-height);
+}

@@ -1,0 +1,175 @@
+---
+// WhatsAppButton.astro - Botón flotante de WhatsApp
+const phoneNumber = "56942009050"; // Reemplazar con el número real de Isinova
+const message =
+    "Hola Isinova, me gustaría obtener más información sobre sus servicios de plataformas LMS.";
+const whatsappLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+---
+
+<div class="whatsapp-float">
+    <a
+        href={whatsappLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="whatsapp-button"
+        aria-label="Contactar por WhatsApp"
+    >
+        <i class="ph-fill ph-whatsapp-logo"></i>
+        <span class="whatsapp-tooltip">¿Necesitas ayuda? Escríbenos</span>
+    </a>
+</div>
+
+<style>
+    .whatsapp-float {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 999;
+        animation: fadeInUp 0.6s ease-out 1s both;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .whatsapp-button {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        background: #25d366; /* Color oficial de WhatsApp */
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        cursor: pointer;
+    }
+
+    .whatsapp-button i {
+        font-size: 2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .whatsapp-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    .whatsapp-button:hover i {
+        transform: rotate(15deg);
+    }
+
+    .whatsapp-button:active {
+        transform: scale(0.95);
+    }
+
+    /* Tooltip */
+    .whatsapp-tooltip {
+        position: absolute;
+        right: 70px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        color: var(--dark);
+        padding: 0.75rem 1.25rem;
+        border-radius: 0.75rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+
+    .whatsapp-tooltip::after {
+        content: "";
+        position: absolute;
+        right: -8px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid white;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+    }
+
+    .whatsapp-button:hover .whatsapp-tooltip {
+        opacity: 1;
+        visibility: visible;
+        right: 75px;
+    }
+
+    /* Pulse Animation */
+    .whatsapp-button::before {
+        content: "";
+        position: absolute;
+        inset: -5px;
+        border-radius: 50%;
+        background: #25d366;
+        opacity: 0.3;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0%,
+        100% {
+            transform: scale(1);
+            opacity: 0.3;
+        }
+        50% {
+            transform: scale(1.2);
+            opacity: 0;
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .whatsapp-float {
+            bottom: 1.5rem;
+            right: 1.5rem;
+        }
+
+        .whatsapp-button {
+            width: 56px;
+            height: 56px;
+        }
+
+        .whatsapp-button i {
+            font-size: 1.75rem;
+        }
+
+        .whatsapp-tooltip {
+            display: none; /* Ocultar tooltip en móvil */
+        }
+    }
+
+    /* Hide on very small screens to avoid overlap */
+    @media (max-width: 360px) {
+        .whatsapp-float {
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        .whatsapp-button {
+            width: 50px;
+            height: 50px;
+        }
+
+        .whatsapp-button i {
+            font-size: 1.5rem;
+        }
+    }
+</style>

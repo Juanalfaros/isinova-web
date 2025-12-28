@@ -1,0 +1,653 @@
+---
+
+---
+
+<section id="inicio" class="hero-wrapper-dark">
+    <div class="hero-glow glow-1"></div>
+    <div class="hero-glow glow-2"></div>
+    <div class="bg-pattern"></div>
+
+    <div class="container relative-z">
+        <div class="hero-grid">
+            <div class="hero-text-content">
+                <div class="hero-badge">
+                    <span class="pulse-dot"></span>
+                    <span>Líderes EdTech en Chile</span>
+                </div>
+
+                <h1 class="hero-title">
+                    Diseñamos <span class="text-gradient"
+                        >Ecosistemas de Aprendizaje</span
+                    > a tu medida
+                </h1>
+
+                <p class="hero-description">
+                    Desarrollo experto de plataformas LMS (Moodle/Canvas),
+                    interfaces personalizadas y consultoría estratégica.
+                    Transformamos tu visión educativa en una realidad digital
+                    sólida.
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#contacto" class="btn btn-primary">
+                        Solicitar Consultoría
+                        <i class="ph-bold ph-chats-circle"></i>
+                    </a>
+                    <a href="#servicios" class="btn-text-light">
+                        Explorar Soluciones
+                        <i class="ph-bold ph-arrow-down"></i>
+                    </a>
+                </div>
+
+                <div class="hero-trust">
+                    <div class="avatar-group">
+                        <div class="avatar">Is</div>
+                        <div class="avatar">Uc</div>
+                        <div class="avatar">Du</div>
+                    </div>
+                    <p>Confianza de <strong>+50 instituciones</strong></p>
+                </div>
+            </div>
+
+            <div class="hero-visual-content">
+                <div class="visual-playground">
+                    <div class="data-core-pulse"></div>
+                    <div class="data-core-gradient"></div>
+
+                    <svg
+                        class="connection-lines"
+                        viewBox="0 0 500 420"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <path
+                            d="M250 210 C 300 210, 350 100, 420 60"
+                            stroke="url(#line-gradient)"
+                            stroke-width="1.5"
+                            stroke-dasharray="4 4"
+                            class="animated-path"></path>
+                        <path
+                            d="M250 210 C 200 250, 100 350, 40 380"
+                            stroke="url(#line-gradient)"
+                            stroke-width="1.5"
+                            stroke-dasharray="4 4"
+                            class="animated-path delay"></path>
+
+                        <defs>
+                            <linearGradient
+                                id="line-gradient"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="0%"
+                            >
+                                <stop
+                                    offset="0%"
+                                    stop-color="rgba(98, 70, 234, 0)"></stop>
+                                <stop
+                                    offset="50%"
+                                    stop-color="rgba(98, 70, 234, 0.6)"></stop>
+                                <stop
+                                    offset="100%"
+                                    stop-color="rgba(0, 255, 140, 0.6)"></stop>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <div
+                        class="glass-card-dark premium card-main animate-float-center"
+                    >
+                        <div class="shine-effect"></div>
+
+                        <div class="card-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="card-body">
+                            <div class="bars">
+                                <div class="bar" style="height: 40%"></div>
+                                <div class="bar" style="height: 70%"></div>
+                                <div
+                                    class="bar active super-glow"
+                                    style="height: 100%"
+                                >
+                                    <div class="bar-particles"></div>
+                                </div>
+                                <div class="bar" style="height: 60%"></div>
+                            </div>
+                            <div class="data">
+                                <strong>Retención</strong>
+                                <span class="trend">+24% Semestre</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        class="glass-card-dark premium card-status animate-float-delay"
+                    >
+                        <div class="icon-square success">
+                            <i class="ph-bold ph-check"></i>
+                        </div>
+                        <div class="card-mini-text">
+                            <strong>Estable</strong>
+                            <span>99.9% Uptime</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="glass-card-dark premium card-users animate-float"
+                    >
+                        <div class="icon-square primary">
+                            <i class="ph-bold ph-users"></i>
+                        </div>
+                        <div class="card-mini-text">
+                            <strong>Soporte</strong>
+                            <span>Expertos 24/7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- ESTRUCTURA PRINCIPAL --- */
+    .hero-wrapper-dark {
+        position: relative;
+        padding: 6rem 0 8rem 0;
+        overflow: hidden;
+        width: 100%;
+        background-color: #0b0f19; /* Fondo oscuro profundo */
+        color: #e2e8f0;
+        margin-top: 40px;
+    }
+
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+
+    .hero-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    @media (min-width: 992px) {
+        .hero-grid {
+            grid-template-columns: 1.1fr 0.9fr;
+        }
+    }
+
+    /* Glows ambientales */
+    .hero-glow {
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        border-radius: 50%;
+        filter: blur(100px);
+        opacity: 0.15;
+        z-index: 0;
+        pointer-events: none;
+    }
+    .glow-1 {
+        background: var(--primary);
+        top: -20%;
+        left: -10%;
+    }
+    .glow-2 {
+        background: var(--accent);
+        bottom: -10%;
+        right: -10%;
+    }
+
+    .bg-pattern {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        );
+        background-size: 30px 30px;
+        opacity: 0.5;
+        pointer-events: none;
+    }
+
+    /* --- TEXTO (IZQUIERDA) --- */
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.5rem 1rem;
+        background: rgba(98, 70, 234, 0.15);
+        color: #e0d4fc; /* Un tono lila claro */
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(98, 70, 234, 0.3);
+    }
+
+    .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(0, 255, 140, 0.3);
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+        line-height: 1.15;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+    }
+
+    @media (min-width: 768px) {
+        .hero-title {
+            font-size: 3.75rem;
+        }
+    }
+
+    .text-gradient {
+        background: linear-gradient(
+            135deg,
+            var(--accent) 0%,
+            var(--primary) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+        font-size: 1.125rem;
+        color: #94a3b8; /* Slate 400 */
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        max-width: 580px;
+    }
+
+    /* Botones */
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    @media (min-width: 640px) {
+        .hero-buttons {
+            flex-direction: row;
+            align-items: center;
+        }
+    }
+
+    .btn-text-light {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #e2e8f0;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 0.75rem 1.5rem;
+        transition: all 0.2s;
+        border-radius: 0.75rem;
+    }
+    .btn-text-light:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: white;
+    }
+
+    /* Trust / Avatares */
+    .hero-trust {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .avatar-group {
+        display: flex;
+    }
+
+    .avatar {
+        width: 40px;
+        height: 40px;
+        background: #1e293b;
+        border: 2px solid #0b0f19;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: white;
+        margin-left: -12px;
+    }
+    .avatar:first-child {
+        margin-left: 0;
+        background: var(--primary);
+    }
+
+    .hero-trust p {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin: 0;
+    }
+    .hero-trust strong {
+        color: white;
+    }
+
+    /* --- VISUAL (DERECHA) --- */
+    .hero-visual-content {
+        display: flex;
+        justify-content: center;
+        position: relative;
+        perspective: 1000px;
+    }
+
+    .visual-playground {
+        position: relative;
+        width: 100%;
+        max-width: 500px;
+        height: 420px;
+    }
+
+    /* 1. Fondo "Núcleo de Datos" */
+    .data-core-pulse {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: radial-gradient(
+            circle,
+            rgba(98, 70, 234, 0.4) 0%,
+            rgba(0, 0, 0, 0) 70%
+        );
+        animation: core-pulse 4s ease-in-out infinite;
+        z-index: 0;
+    }
+
+    .data-core-gradient {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 380px;
+        height: 380px;
+        border-radius: 50%;
+        background: conic-gradient(
+            from 180deg at 50% 50%,
+            rgba(98, 70, 234, 0.1) 0deg,
+            rgba(0, 255, 140, 0.1) 180deg,
+            rgba(98, 70, 234, 0.1) 360deg
+        );
+        filter: blur(40px);
+        opacity: 0.6;
+        animation: core-rotate 20s linear infinite;
+        z-index: 0;
+    }
+
+    @keyframes core-pulse {
+        0%,
+        100% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.5;
+        }
+        50% {
+            transform: translate(-50%, -50%) scale(1.2);
+            opacity: 0.8;
+        }
+    }
+    @keyframes core-rotate {
+        from {
+            transform: translate(-50%, -50%) rotate(0deg);
+        }
+        to {
+            transform: translate(-50%, -50%) rotate(360deg);
+        }
+    }
+
+    /* 2. Conexiones SVG */
+    .connection-lines {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .animated-path {
+        stroke-dasharray: 10, 10;
+        animation: dash-flow 20s linear infinite;
+    }
+    .animated-path.delay {
+        animation-delay: -10s;
+    }
+
+    @keyframes dash-flow {
+        to {
+            stroke-dashoffset: -200;
+        }
+    }
+
+    /* 3. Tarjetas de Vidrio "Premium" */
+    .glass-card-dark.premium {
+        /* Bordes más brillantes y definidos para resaltar en oscuro */
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        border-top: 1px solid rgba(255, 255, 255, 0.3); /* Luz superior */
+        border-left: 1px solid rgba(255, 255, 255, 0.3); /* Luz izquierda */
+        box-shadow:
+            0 20px 40px -10px rgba(0, 0, 0, 0.6),
+            inset 0 0 20px rgba(255, 255, 255, 0.02); /* Luz interna sutil */
+        overflow: hidden; /* Para el efecto shine */
+        position: absolute;
+        background: rgba(30, 41, 59, 0.7); /* Slate 800 con transparencia */
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-radius: 1.5rem;
+        z-index: 3;
+    }
+
+    /* Efecto de reflejo pasando */
+    .shine-effect {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+        transform: skewX(-25deg);
+        animation: shine-pass 8s ease-in-out infinite;
+    }
+    @keyframes shine-pass {
+        0%,
+        80% {
+            left: -100%;
+        }
+        100% {
+            left: 200%;
+        }
+    }
+
+    /* Posicionamiento */
+    .card-main {
+        top: 50%;
+        left: 50%;
+        width: 280px;
+        padding: 1.5rem;
+        transform: translate(-50%, -50%);
+    }
+    .card-status {
+        top: 30px;
+        right: 0;
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 2;
+    }
+    .card-users {
+        bottom: 50px;
+        left: -10px;
+        padding: 0.75rem 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        z-index: 2;
+    }
+
+    /* Contenido de Tarjetas */
+    .card-header {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 1.5rem;
+    }
+    .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    .red {
+        background: #ef4444;
+        box-shadow: 0 0 6px #ef4444;
+    }
+    .yellow {
+        background: #f59e0b;
+        box-shadow: 0 0 6px #f59e0b;
+    }
+    .green {
+        background: #10b981;
+        box-shadow: 0 0 6px #10b981;
+    }
+
+    .card-body {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+    }
+    .bars {
+        display: flex;
+        gap: 6px;
+        align-items: flex-end;
+        height: 60px;
+    }
+    .bar {
+        width: 12px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+
+    /* 4. Barra Activa Super Glow */
+    .bar.active.super-glow {
+        background: var(--accent);
+        box-shadow:
+            0 0 20px rgba(0, 255, 140, 0.5),
+            0 0 40px rgba(0, 255, 140, 0.2);
+        position: relative;
+        animation: bar-pulse 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes bar-pulse {
+        from {
+            box-shadow: 0 0 20px rgba(0, 255, 140, 0.5);
+        }
+        to {
+            box-shadow:
+                0 0 30px rgba(0, 255, 140, 0.8),
+                0 0 50px rgba(0, 255, 140, 0.3);
+        }
+    }
+
+    .data {
+        display: flex;
+        flex-direction: column;
+        text-align: right;
+    }
+    .data strong {
+        font-size: 1rem;
+        color: white;
+        letter-spacing: 0.5px;
+    }
+    .trend {
+        font-size: 0.85rem;
+        color: #10b981;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Icon Squares & Text */
+    .icon-square {
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.35rem;
+    }
+    .icon-square.success {
+        background: rgba(16, 185, 129, 0.2);
+        color: #10b981;
+        border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+    .icon-square.primary {
+        background: rgba(98, 70, 234, 0.2);
+        color: #e0d4fc;
+        border: 1px solid rgba(98, 70, 234, 0.3);
+    }
+    .card-mini-text strong {
+        display: block;
+        font-size: 0.9rem;
+        line-height: 1;
+        color: white;
+    }
+    .card-mini-text span {
+        font-size: 0.8rem;
+        color: #94a3b8;
+    }
+
+    /* Animaciones de Flote */
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
+    .animate-float-delay {
+        animation: float 6s ease-in-out 3s infinite;
+    }
+    .animate-float-center {
+        animation: float-center 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%,
+        100% {
+            transform: translate(0, 0);
+        }
+        50% {
+            transform: translate(0, -15px);
+        }
+    }
+    @keyframes float-center {
+        0%,
+        100% {
+            transform: translate(-50%, -50%);
+        }
+        50% {
+            transform: translate(-50%, -65%);
+        }
+    }
+</style>

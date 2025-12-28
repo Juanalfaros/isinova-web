@@ -1,0 +1,15 @@
+---
+interface Props {
+    className?: string;
+}
+
+const { className = "" } = Astro.props;
+import logoWhite from "../assets/logo-white.svg";
+---
+
+<img
+    src={logoWhite.src}
+    alt="Isinova White Logo"
+    class={className}
+    style="height: 100%; width: auto;"
+/>

@@ -1,0 +1,89 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    image?: string;
+    canonical?: string;
+    noindex?: boolean;
+}
+
+const {
+    title,
+    description,
+    image = "/og-image.jpg", // Default image (you should create this)
+    canonical,
+    noindex = false,
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString() : "https://isinova.cl";
+const canonicalURL = canonical || new URL(Astro.url.pathname, siteUrl);
+const socialImageURL = new URL(image, siteUrl);
+
+// Schema.org Organization (Global)
+const organizationSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Isinova",
+    url: siteUrl,
+    logo: `${siteUrl}logo.svg`,
+    sameAs: [
+        "https://www.linkedin.com/company/isinova",
+        "https://www.instagram.com/isinova",
+    ],
+    contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+56-9-1234-5678", // Update with real number
+        contactType: "customer service",
+        areaServed: "CL",
+        availableLanguage: "Spanish",
+    },
+    description:
+        "PyME chilena especializada en tecnología educativa, aulas virtuales (LMS) y desarrollo web.",
+});
+
+// Schema.org WebSite (Global)
+const websiteSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Isinova",
+    url: siteUrl,
+    potentialAction: {
+        "@type": "SearchAction",
+        target: `${siteUrl}search?q={search_term_string}`,
+        "query-input": "required name=search_term_string",
+    },
+});
+---
+
+<!-- Global SEO -->
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:site_name" content="Isinova" />
+<meta property="og:locale" content="es_CL" />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={canonicalURL} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={socialImageURL} />
+
+<!-- Favicon & Manifest -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+<!-- JSON-LD Schema -->
+<script type="application/ld+json" set:html={organizationSchema} />
+<script type="application/ld+json" set:html={websiteSchema} />

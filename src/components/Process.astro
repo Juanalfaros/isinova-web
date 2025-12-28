@@ -1,0 +1,389 @@
+---
+
+---
+
+<section id="metodologia" class="process-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="badge-process">Nuestra Metodología</span>
+            <h2 class="section-title">
+                Tu camino al éxito en <span class="text-gradient">4 Etapas</span
+                >
+            </h2>
+            <p class="section-desc">
+                Un proceso estructurado y transparente para eliminar la
+                incertidumbre técnica y garantizar resultados desde el primer
+                día.
+            </p>
+        </div>
+
+        <div class="timeline-container">
+            <div class="timeline-line"></div>
+
+            <div class="timeline-row">
+                <div class="timeline-content left">
+                    <div class="process-card">
+                        <span class="step-number">01</span>
+                        <h3>Auditoría & Estrategia</h3>
+                        <p>
+                            Analizamos tu infraestructura actual. No solo
+                            instalamos software; definimos objetivos pedagógicos
+                            y técnicos precisos para tu institución.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-icon">
+                    <i class="ph-duotone ph-magnifying-glass"></i>
+                </div>
+                <div class="timeline-spacer"></div>
+            </div>
+
+            <div class="timeline-row reverse">
+                <div class="timeline-spacer"></div>
+                <div class="timeline-icon">
+                    <i class="ph-duotone ph-code"></i>
+                </div>
+                <div class="timeline-content right">
+                    <div class="process-card">
+                        <span class="step-number">02</span>
+                        <h3>Desarrollo & Personalización</h3>
+                        <p>
+                            Levantamos tu entorno LMS (Moodle/Canvas) integrando
+                            tu identidad visual corporativa. Configuramos las
+                            herramientas clave que tus docentes necesitan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="timeline-row">
+                <div class="timeline-content left">
+                    <div class="process-card">
+                        <span class="step-number">03</span>
+                        <h3>Migración & Capacitación</h3>
+                        <p>
+                            Traspasamos usuarios y cursos con protocolos de
+                            seguridad estrictos. Capacitamos a tu equipo para
+                            asegurar una adopción sin fricciones.
+                        </p>
+                    </div>
+                </div>
+                <div class="timeline-icon">
+                    <i class="ph-duotone ph-database"></i>
+                </div>
+                <div class="timeline-spacer"></div>
+            </div>
+
+            <div class="timeline-row reverse">
+                <div class="timeline-spacer"></div>
+                <div class="timeline-icon highlight">
+                    <i class="ph-duotone ph-rocket-launch"></i>
+                </div>
+                <div class="timeline-content right">
+                    <div class="process-card highlight-card">
+                        <span class="step-number">04</span>
+                        <h3>Lanzamiento & Soporte 24/7</h3>
+                        <p>
+                            Tu plataforma cobra vida. Activamos el monitoreo
+                            continuo, respaldos automáticos y nuestro soporte
+                            técnico para resolver dudas al instante.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="process-cta">
+            <a href="#contacto" class="btn-primary">
+                Iniciar mi proyecto ahora
+                <i class="ph-bold ph-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .process-section {
+        padding: 6rem 0;
+        background-color: #f8fafc;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Encabezado */
+    .section-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    .badge-process {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--primary);
+        background: rgba(98, 70, 234, 0.1);
+        padding: 6px 14px;
+        border-radius: 50px;
+        margin-bottom: 1rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 1rem;
+        line-height: 1.2;
+    }
+
+    @media (min-width: 768px) {
+        .section-title {
+            font-size: 3rem;
+        }
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .section-desc {
+        font-size: 1.1rem;
+        color: var(--slate);
+        line-height: 1.6;
+    }
+
+    /* --- TIMELINE CONTAINER --- */
+    .timeline-container {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem 0;
+    }
+
+    /* Línea Vertical (Mobile) / Central (Desktop) */
+    .timeline-line {
+        position: absolute;
+        left: 24px;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: linear-gradient(
+            to bottom,
+            #e2e8f0 0%,
+            var(--primary) 50%,
+            var(--accent) 100%
+        );
+        z-index: 0;
+    }
+
+    @media (min-width: 768px) {
+        .timeline-line {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    /* --- FILAS DEL TIMELINE --- */
+    .timeline-row {
+        display: flex;
+        align-items: flex-start;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 3rem;
+    }
+
+    .timeline-row:last-child {
+        margin-bottom: 0;
+    }
+
+    /* MOBILE LAYOUT (Vertical, todo a la derecha del icono) */
+    .timeline-content {
+        flex: 1;
+        padding-left: 2rem;
+    }
+
+    .timeline-spacer {
+        display: none;
+    }
+
+    .timeline-icon {
+        width: 50px;
+        height: 50px;
+        background: white;
+        border: 3px solid #e2e8f0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--slate);
+        flex-shrink: 0;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        z-index: 2;
+    }
+
+    .timeline-row:hover .timeline-icon {
+        border-color: var(--primary);
+        color: var(--primary);
+        transform: scale(1.15);
+        box-shadow: 0 0 0 8px rgba(98, 70, 234, 0.1);
+    }
+
+    .timeline-icon.highlight {
+        background: var(--accent);
+        color: white;
+        border-color: var(--accent);
+    }
+
+    .timeline-icon.highlight:hover {
+        box-shadow: 0 0 0 8px rgba(0, 255, 140, 0.15);
+    }
+
+    /* DESKTOP LAYOUT (Zigzag) */
+    @media (min-width: 768px) {
+        .timeline-row {
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .timeline-content {
+            flex: 1;
+            padding: 0;
+        }
+
+        .timeline-spacer {
+            display: block;
+            flex: 1;
+        }
+
+        /* Alineación de texto según posición */
+        .timeline-content.left {
+            text-align: right;
+        }
+
+        .timeline-content.right {
+            text-align: left;
+        }
+
+        /* Orden visual para filas "reverse" */
+        .timeline-row.reverse {
+            flex-direction: row;
+        }
+    }
+
+    /* --- TARJETAS DEL PROCESO --- */
+    .process-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 1.5rem;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        text-align: left; /* Reset para mobile */
+       
+
+    }
+
+    @media (min-width: 768px) {
+        .timeline-content.left .process-card {
+            text-align: right;
+        }
+
+        .timeline-content.right .process-card {
+            text-align: left;
+        }
+    }
+
+    .process-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        border-color: rgba(98, 70, 234, 0.3);
+    }
+
+    .step-number {
+        display: inline-block;
+        font-size: 4rem;
+        font-weight: 900;
+        color: #f8fafc;
+        position: absolute;
+        top: 10px;
+        right: 1rem;
+        line-height: 1;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @media (min-width: 768px) {
+        .timeline-content.left .step-number {
+            right: auto;
+            left: 1rem;
+        }
+    }
+
+    .process-card h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 0.75rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .process-card p {
+        font-size: 0.95rem;
+        color: var(--slate);
+        line-height: 1.6;
+        position: relative;
+        margin: 0;
+        z-index: 1;
+    }
+
+    /* Tarjeta Destacada (Último paso) */
+    .highlight-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%);
+        border-color: #bbf7d0;
+    }
+
+    .highlight-card .step-number {
+        color: rgba(16, 185, 129, 0.12);
+    }
+
+    .highlight-card:hover {
+        border-color: var(--accent);
+    }
+
+    /* CTA Final */
+    .process-cta {
+        text-align: center;
+        margin-top: 4rem;
+    }
+
+    .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background-color: var(--dark);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary:hover {
+        background-color: black;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+</style>

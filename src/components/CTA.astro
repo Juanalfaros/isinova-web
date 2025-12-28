@@ -1,0 +1,544 @@
+---
+
+---
+
+<section id="contacto" class="cta-section">
+    <div class="container">
+        <div class="cta-card">
+            <div class="glow glow-top"></div>
+            <div class="glow glow-bottom"></div>
+            <div class="bg-pattern"></div>
+
+            <div class="cta-grid">
+                <div class="cta-content">
+                    <span class="badge-cta">Oferta Limitada</span>
+
+                    <h2 class="cta-title">
+                        ¿Listo para modernizar tu <span class="text-gradient"
+                            >gestión académica?</span
+                        >
+                    </h2>
+
+                    <p class="cta-desc">
+                        Optimiza tus procesos, mejora la experiencia de tus
+                        alumnos y asegura la continuidad de tu plataforma con
+                        tecnología estable.
+                    </p>
+
+                    <ul class="benefit-list">
+                        <li>
+                            <div class="icon-circle">
+                                <i class="ph-fill ph-shield-check"></i>
+                            </div>
+                            <div class="text-group">
+                                <strong>Infraestructura Segura</strong>
+                                <span
+                                    >Backups diarios y 99.9% Uptime garantizado.</span
+                                >
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon-circle">
+                                <i class="ph-fill ph-users-three"></i>
+                            </div>
+                            <div class="text-group">
+                                <strong>Soporte Especializado</strong>
+                                <span
+                                    >Expertos en Moodle, Canvas y desarrollo
+                                    EdTech.</span
+                                >
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="form-wrapper">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-header">
+                            <h3>Solicitar Auditoría</h3>
+                            <p>Respuesta en menos de 24 horas.</p>
+                        </div>
+
+                        <div class="input-group">
+                            <label for="name">Nombre completo</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Ej. Juan Pérez"
+                                required
+                            />
+                        </div>
+
+                        <div class="input-group">
+                            <label for="email">Correo Institucional</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="juan@institucion.cl"
+                                required
+                            />
+                        </div>
+
+                        <div class="input-group">
+                            <label for="project">Tipo de Proyecto</label>
+                            <div class="select-wrapper">
+                                <select id="project" name="project" required>
+                                    <option value="" disabled selected
+                                        >Selecciona una opción</option
+                                    >
+                                    <option value="lms"
+                                        >Implementación LMS</option
+                                    >
+                                    <option value="web">Desarrollo Web</option>
+                                    <option value="support"
+                                        >Soporte Técnico</option
+                                    >
+                                    <option value="other">Otro</option>
+                                </select>
+                                <i class="ph-bold ph-caret-down select-icon"
+                                ></i>
+                            </div>
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn-submit"
+                            id="submit-btn"
+                        >
+                            <span class="btn-text">Solicitar Información</span>
+                            <span class="btn-loading" style="display: none;">
+                                <i class="ph-bold ph-circle-notch spin"></i>
+                                Enviando...
+                            </span>
+                            <i class="ph-bold ph-paper-plane-right btn-icon"
+                            ></i>
+                        </button>
+
+                        <div
+                            id="form-message"
+                            class="form-message"
+                            style="display: none;"
+                        >
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const form = document.getElementById("contact-form") as HTMLFormElement;
+        const submitBtn = document.getElementById(
+            "submit-btn",
+        ) as HTMLButtonElement;
+        const btnText = submitBtn?.querySelector(".btn-text") as HTMLElement;
+        const btnLoading = submitBtn?.querySelector(
+            ".btn-loading",
+        ) as HTMLElement;
+        const btnIcon = submitBtn?.querySelector(".btn-icon") as HTMLElement;
+        const formMessage = document.getElementById(
+            "form-message",
+        ) as HTMLElement;
+
+        if (!form) return;
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            // Get form data
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get("name") as string,
+                email: formData.get("email") as string,
+                project: formData.get("project") as string,
+            };
+
+            // Validate
+            if (!data.name || !data.email || !data.project) {
+                showMessage("Por favor, completa todos los campos.", "error");
+                return;
+            }
+
+            // Set loading state
+            setLoading(true);
+
+            try {
+                const response = await fetch(
+                    "/.netlify/functions/contact-form",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(data),
+                    },
+                );
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    showMessage(
+                        "¡Gracias! Tu solicitud ha sido enviada. Te contactaremos pronto.",
+                        "success",
+                    );
+                    form.reset();
+                } else {
+                    showMessage(
+                        result.error ||
+                            "Hubo un error al enviar. Intenta nuevamente.",
+                        "error",
+                    );
+                }
+            } catch (error) {
+                console.error("Error:", error);
+                showMessage(
+                    "Error de conexión. Verifica tu internet e intenta nuevamente.",
+                    "error",
+                );
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(isLoading: boolean) {
+            if (isLoading) {
+                submitBtn.disabled = true;
+                btnText.style.display = "none";
+                btnIcon.style.display = "none";
+                btnLoading.style.display = "flex";
+            } else {
+                submitBtn.disabled = false;
+                btnText.style.display = "inline";
+                btnIcon.style.display = "inline";
+                btnLoading.style.display = "none";
+            }
+        }
+
+        function showMessage(message: string, type: "success" | "error") {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = "block";
+
+            // Auto-hide after 5 seconds for success
+            if (type === "success") {
+                setTimeout(() => {
+                    formMessage.style.display = "none";
+                }, 5000);
+            }
+        }
+    });
+</script>
+
+<style>
+    .cta-section {
+        padding: 5rem 0;
+        background-color: var(--background);
+    }
+
+    /* --- Tarjeta Principal --- */
+    .cta-card {
+        background-color: #0f172a; /* Slate 900 */
+        border-radius: 2.5rem;
+        padding: 2.5rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (min-width: 992px) {
+        .cta-card {
+            padding: 5rem;
+        }
+    }
+
+    /* Decoración */
+    .glow {
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .glow-top {
+        top: -100px;
+        right: -100px;
+        background: var(--primary);
+    }
+    .glow-bottom {
+        bottom: -100px;
+        left: -100px;
+        background: var(--accent);
+    }
+
+    .bg-pattern {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+        );
+        background-size: 30px 30px;
+        opacity: 0.1;
+        z-index: 0;
+    }
+
+    .cta-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        position: relative;
+        z-index: 2;
+        align-items: center;
+    }
+
+    @media (min-width: 992px) {
+        .cta-grid {
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 5rem;
+        }
+    }
+
+    /* --- Contenido Texto --- */
+    .cta-content {
+        color: white;
+    }
+
+    .badge-cta {
+        display: inline-block;
+        padding: 6px 14px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 100px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 1.5rem;
+        letter-spacing: 0.05em;
+    }
+
+    .cta-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .cta-title {
+            font-size: 3.5rem;
+        }
+    }
+
+    .text-gradient {
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .cta-desc {
+        font-size: 1.125rem;
+        color: #94a3b8; /* Slate 400 */
+        margin-bottom: 3rem;
+        line-height: 1.6;
+    }
+
+    /* Lista de Beneficios */
+    .benefit-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .benefit-list li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .icon-circle {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--accent);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .text-group strong {
+        display: block;
+        font-size: 1.1rem;
+        color: white;
+        margin-bottom: 2px;
+    }
+    .text-group span {
+        font-size: 0.9rem;
+        color: #94a3b8;
+    }
+
+    /* --- Formulario --- */
+    .form-wrapper {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-header {
+        margin-bottom: 2rem;
+    }
+    .form-header h3 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 0.25rem;
+    }
+    .form-header p {
+        color: var(--slate);
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .input-group label {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--dark);
+    }
+
+    .input-group input,
+    .input-group select {
+        padding: 0.875rem 1rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 0.75rem;
+        font-size: 1rem;
+        background: #f8fafc;
+        transition: all 0.2s ease;
+        width: 100%;
+        color: var(--dark);
+        font-family: inherit;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: white;
+        box-shadow: 0 0 0 4px rgba(98, 70, 234, 0.1);
+    }
+
+    /* Custom Select */
+    .select-wrapper {
+        position: relative;
+    }
+    .select-wrapper select {
+        appearance: none;
+        cursor: pointer;
+    }
+    .select-icon {
+        position: absolute;
+        right: 1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--slate);
+    }
+
+    /* Submit Button */
+    .btn-submit {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+    }
+
+    .btn-submit:hover:not(:disabled) {
+        background: #4f38ca; /* Darker primary */
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(98, 70, 234, 0.25);
+    }
+
+    .btn-submit:active:not(:disabled) {
+        transform: translateY(0);
+    }
+
+    .btn-submit:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    .btn-loading {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    /* Spinner animation */
+    .spin {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Form Messages */
+    .form-message {
+        padding: 1rem;
+        border-radius: 0.75rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    .form-message.success {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #86efac;
+    }
+
+    .form-message.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+    }
+</style>

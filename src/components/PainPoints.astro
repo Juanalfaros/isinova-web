@@ -1,0 +1,222 @@
+---
+
+---
+
+<section id="problemas" class="pain-section">
+    <div class="container">
+        <div class="section-header">
+            <span class="badge-subtle">Diagnóstico Digital</span>
+            <h2 class="section-title">
+                ¿Sientes que tu tecnología <br />
+                <span class="highlight-brand">limita tu enseñanza?</span>
+            </h2>
+            <p class="section-desc">
+                Identificamos los obstáculos técnicos comunes que impiden que las instituciones educativas alcancen su máximo potencial.
+            </p>
+        </div>
+
+        <div class="pain-grid">
+            <div class="pain-card">
+                <div class="icon-box">
+                    <i class="ph-duotone ph-cloud-warning"></i> </div>
+                <div class="card-content">
+                    <h3>Caídas del Sistema</h3>
+                    <p>
+                        Plataformas que se vuelven lentas o inaccesibles justo cuando más se necesitan, durante exámenes o matrículas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pain-card">
+                <div class="icon-box">
+                    <i class="ph-duotone ph-hand-pointing"></i> </div>
+                <div class="card-content">
+                    <h3>Experiencia Confusa</h3>
+                    <p>
+                        Interfaces anticuadas que frustran a estudiantes y docentes, dificultando la navegación y el aprendizaje.
+                    </p>
+                </div>
+            </div>
+
+            <div class="pain-card">
+                <div class="icon-box">
+                    <i class="ph-duotone ph-chats-teardrop"></i> </div>
+                <div class="card-content">
+                    <h3>Soporte Ausente</h3>
+                    <p>
+                        Falta de respuesta rápida ante incidencias técnicas, dejando a tu equipo académico sin respaldo.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bridge-container">
+            <p>Transformamos estos obstáculos en ventajas competitivas</p>
+            <i class="ph-bold ph-arrow-down animate-bounce"></i>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Variables locales ajustadas a la marca */
+    .pain-section {
+        padding: 6rem 0;
+        background-color: var(--background); /* Usa el fondo global */
+        position: relative;
+    }
+
+    /* Encabezado */
+    .section-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem auto;
+    }
+
+    .badge-subtle {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--slate);
+        background: rgba(100, 116, 139, 0.1); /* Gris muy suave */
+        border: 1px solid rgba(100, 116, 139, 0.2);
+        padding: 6px 14px;
+        border-radius: 100px;
+        margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 2.25rem;
+        font-weight: 800;
+        line-height: 1.15;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+    }
+
+    @media (min-width: 768px) {
+        .section-title { font-size: 3rem; }
+    }
+
+    /* Highlight ahora usa el color primario (morado) en lugar de rojo */
+    .highlight-brand {
+        color: var(--primary);
+        position: relative;
+        white-space: nowrap;
+    }
+    
+    .highlight-brand::after {
+        content: "";
+        position: absolute;
+        bottom: 4px;
+        left: -2px;
+        width: 105%;
+        height: 10px;
+        background: rgba(98, 70, 234, 0.15); /* Morado muy suave */
+        z-index: -1;
+        transform: rotate(-1deg);
+        border-radius: 4px;
+    }
+
+    .section-desc {
+        font-size: 1.125rem;
+        color: var(--slate);
+        line-height: 1.6;
+    }
+
+    /* Grid */
+    .pain-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    @media (min-width: 992px) {
+        .pain-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+        }
+    }
+
+    /* Tarjetas - Diseño Unificado */
+    .pain-card {
+        background: white;
+        border-radius: 1.5rem;
+        padding: 2.5rem 2rem;
+        border: 1px solid rgba(0,0,0,0.05); /* Borde casi invisible */
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: 100%;
+        position: relative;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+    }
+
+    .pain-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px -5px rgba(98, 70, 234, 0.15); /* Sombra morada suave */
+        border-color: rgba(98, 70, 234, 0.3);
+    }
+
+    /* Iconos - Ahora usan el color de marca */
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        margin-bottom: 1.5rem;
+        transition: transform 0.3s ease;
+        
+        /* Estilo base unificado: Fondo gris muy claro, icono oscuro */
+        background: #f1f5f9; 
+        color: var(--dark);
+    }
+
+    /* Al hacer hover, el icono se enciende con el color de la marca */
+    .pain-card:hover .icon-box {
+        transform: scale(1.1) rotate(-5deg);
+        background: var(--primary);
+        color: white;
+    }
+
+    .card-content h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--dark);
+        margin-bottom: 1rem;
+    }
+
+    .card-content p {
+        font-size: 1rem;
+        color: var(--slate);
+        line-height: 1.6;
+    }
+
+    /* Puente final */
+    .bridge-container {
+        text-align: center;
+        margin-top: 4rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        font-weight: 600;
+        opacity: 0.9;
+    }
+
+    .animate-bounce {
+        animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-6px); }
+        60% { transform: translateY(-3px); }
+    }
+</style>

@@ -1,0 +1,45 @@
+---
+import "../styles/global.css";
+import "@fontsource/exo-2/400.css";
+import "@fontsource/exo-2/500.css";
+import "@fontsource/exo-2/700.css";
+import "@fontsource/exo-2/800.css";
+import "@phosphor-icons/web/regular";
+import "@phosphor-icons/web/duotone";
+import "@phosphor-icons/web/bold";
+import "@phosphor-icons/web/fill";
+import Seo from "../components/Seo.astro";
+
+interface Props {
+    title: string;
+    description?: string;
+}
+
+const {
+    title,
+    description = "Isinova - Transformación Digital Educativa. Sistemas de aulas virtuales (LMS) y desarrollo web para instituciones educativas en Chile.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es-CL" class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <Seo title={title} description={description} />
+    </head>
+    <body
+        class="bg-background text-dark font-sans antialiased selection:bg-accent/30 selection:text-dark"
+    >
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    :root {
+        --font-exo: "Exo 2", sans-serif;
+    }
+
+    body {
+        font-family: var(--font-exo);
+    }
+</style>
