@@ -2,54 +2,62 @@
 
 ---
 
-<section id="inicio" class="hero-wrapper-dark">
-    <div class="hero-glow glow-1"></div>
-    <div class="hero-glow glow-2"></div>
-    <div class="bg-pattern"></div>
+<header id="inicio" class="hero-wrapper-dark">
+    <!-- Fondos decorativos (Ocultos para tecnologías de asistencia) -->
+    <div class="hero-glow glow-1" aria-hidden="true"></div>
+    <div class="hero-glow glow-2" aria-hidden="true"></div>
+    <div class="bg-pattern" aria-hidden="true"></div>
 
     <div class="container relative-z">
         <div class="hero-grid">
             <div class="hero-text-content">
                 <div class="hero-badge">
-                    <span class="pulse-dot"></span>
-                    <span>Líderes EdTech en Chile</span>
+                    <span class="pulse-dot" aria-hidden="true"></span>
+                    <span>Ingeniería EdTech & Consultoría</span>
                 </div>
 
                 <h1 class="hero-title">
-                    Diseñamos <span class="text-span gradient highlight-brand accent"
-                        >Ecosistemas de Aprendizaje</span
-                    > a tu medida
+                    Desarrollo de <span
+                        class="text-span gradient highlight-brand accent"
+                        >Plataformas LMS</span
+                    > y Software Educativo
                 </h1>
 
                 <p class="hero-description">
-                    Desarrollo experto de plataformas LMS (Moodle/Canvas),
-                    interfaces personalizadas y consultoría estratégica.
-                    Transformamos tu visión educativa en una realidad digital
-                    sólida.
+                    Especialistas en arquitectura de aprendizaje digital.
+                    Implementamos <strong>Moodle y Canvas</strong> de alto rendimiento,
+                    o desarrollamos ecosistemas a medida con <strong
+                        >Astro y Headless CMS</strong
+                    >. Infraestructura escalable para instituciones que no
+                    pueden fallar.
                 </p>
 
                 <div class="hero-buttons">
                     <a href="#contacto" class="btn btn-primary">
-                        Solicitar Consultoría
-                        <i class="ph-bold ph-chats-circle"></i>
+                        Agendar Evaluación Técnica
+                        <i class="ph-bold ph-chats-circle" aria-hidden="true"
+                        ></i>
                     </a>
                     <a href="#servicios" class="btn-text-light">
-                        Explorar Soluciones
-                        <i class="ph-bold ph-arrow-down"></i>
+                        Ver Stack Tecnológico
+                        <i class="ph-bold ph-arrow-down" aria-hidden="true"></i>
                     </a>
                 </div>
 
-                <div class="hero-trust">
-                    <div class="avatar-group">
+                <aside class="hero-trust" aria-label="Nuestra trayectoria">
+                    <div class="avatar-group" aria-hidden="true">
                         <div class="avatar">Is</div>
                         <div class="avatar">Uc</div>
                         <div class="avatar">Du</div>
                     </div>
-                    <p>Confianza de <strong>+50 instituciones</strong></p>
-                </div>
+                    <p>
+                        Soporte crítico para <strong>+50.000 alumnos</strong> activos
+                    </p>
+                </aside>
             </div>
 
-            <div class="hero-visual-content">
+            <!-- Contenido Visual (Decorativo/Informativo) -->
+            <div class="hero-visual-content" aria-hidden="true">
                 <div class="visual-playground">
                     <div class="data-core-pulse"></div>
                     <div class="data-core-gradient"></div>
@@ -72,7 +80,6 @@
                             stroke-width="1.5"
                             stroke-dasharray="4 4"
                             class="animated-path delay"></path>
-
                         <defs>
                             <linearGradient
                                 id="line-gradient"
@@ -94,11 +101,11 @@
                         </defs>
                     </svg>
 
+                    <!-- Stats Cards (Marcadas como decorativas al estar dentro del contenedor visual aria-hidden) -->
                     <div
                         class="glass-card-dark premium card-main animate-float-center"
                     >
                         <div class="shine-effect"></div>
-
                         <div class="card-header">
                             <span class="dot red"></span>
                             <span class="dot yellow"></span>
@@ -107,18 +114,20 @@
                         <div class="card-body">
                             <div class="bars">
                                 <div class="bar" style="height: 40%"></div>
-                                <div class="bar" style="height: 70%"></div>
+                                <div class="bar" style="height: 60%"></div>
+                                <div class="bar" style="height: 45%"></div>
                                 <div
                                     class="bar active super-glow"
                                     style="height: 100%"
                                 >
                                     <div class="bar-particles"></div>
                                 </div>
-                                <div class="bar" style="height: 60%"></div>
                             </div>
                             <div class="data">
-                                <strong>Retención</strong>
-                                <span class="trend">+24% Semestre</span>
+                                <strong>Performance</strong>
+                                <span class="trend" style="color: #00ff8c;"
+                                    >99/100 Google</span
+                                >
                             </div>
                         </div>
                     </div>
@@ -127,11 +136,11 @@
                         class="glass-card-dark premium card-status animate-float-delay"
                     >
                         <div class="icon-square success">
-                            <i class="ph-bold ph-check"></i>
+                            <i class="ph-bold ph-hard-drives"></i>
                         </div>
                         <div class="card-mini-text">
-                            <strong>Estable</strong>
-                            <span>99.9% Uptime</span>
+                            <strong>Uptime SLA</strong>
+                            <span>99.99% Garantizado</span>
                         </div>
                     </div>
 
@@ -139,29 +148,29 @@
                         class="glass-card-dark premium card-users animate-float"
                     >
                         <div class="icon-square primary">
-                            <i class="ph-bold ph-users"></i>
+                            <i class="ph-bold ph-users-three"></i>
                         </div>
                         <div class="card-mini-text">
-                            <strong>Soporte</strong>
-                            <span>Expertos 24/7</span>
+                            <strong>Concurrencia</strong>
+                            <span>+5k Usuarios/seg</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</section>
+</header>
 
 <style>
     /* --- ESTRUCTURA PRINCIPAL --- */
     .hero-wrapper-dark {
         position: relative;
-        padding: 6rem 0 8rem 0;
+        padding: 10rem 0 10rem 0; /* Un poco más de aire arriba/abajo */
         overflow: hidden;
         width: 100%;
-        background-color: #0b0f19; /* Fondo oscuro profundo */
+        background-color: #0b0f19;
         color: #e2e8f0;
-        margin-top: 40px;
+        margin-top: 7rem;
     }
 
     .relative-z {
@@ -188,19 +197,19 @@
         width: 600px;
         height: 600px;
         border-radius: 50%;
-        filter: blur(100px);
-        opacity: 0.15;
+        filter: blur(120px); /* Más blur para suavidad */
+        opacity: 0.12;
         z-index: 0;
         pointer-events: none;
     }
     .glow-1 {
         background: var(--primary);
-        top: -20%;
+        top: -25%;
         left: -10%;
     }
     .glow-2 {
         background: var(--accent);
-        bottom: -10%;
+        bottom: -15%;
         right: -10%;
     }
 
@@ -208,27 +217,33 @@
         position: absolute;
         inset: 0;
         background-image: radial-gradient(
-            rgba(255, 255, 255, 0.05) 1px,
+            rgba(255, 255, 255, 0.03) 1px,
             transparent 1px
         );
-        background-size: 30px 30px;
-        opacity: 0.5;
+        background-size: 40px 40px;
+        opacity: 0.6;
         pointer-events: none;
+        mask-image: radial-gradient(
+            circle at center,
+            black 40%,
+            transparent 100%
+        ); /* Vignette para el patrón */
     }
 
     /* --- TEXTO (IZQUIERDA) --- */
     .hero-badge {
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        background: rgba(98, 70, 234, 0.15);
-        color: #e0d4fc; /* Un tono lila claro */
-        border-radius: 50px;
+        gap: 0.6rem;
+        padding: 0.6rem 1.2rem;
+        background: rgba(98, 70, 234, 0.1);
+        color: #e0d4fc;
+        border-radius: 100px;
         font-size: 0.85rem;
         font-weight: 600;
-        margin-bottom: 1.5rem;
-        border: 1px solid rgba(98, 70, 234, 0.3);
+        margin-bottom: 2rem;
+        border: 1px solid rgba(98, 70, 234, 0.25);
+        backdrop-filter: blur(5px);
     }
 
     .pulse-dot {
@@ -236,40 +251,54 @@
         height: 8px;
         background: var(--accent);
         border-radius: 50%;
-        box-shadow: 0 0 0 2px rgba(0, 255, 140, 0.3);
+        box-shadow: 0 0 0 2px rgba(0, 255, 140, 0.2);
+        animation: pulse-badge 2s infinite;
+    }
+    @keyframes pulse-badge {
+        0% {
+            box-shadow: 0 0 0 0 rgba(0, 255, 140, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 6px rgba(0, 255, 140, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(0, 255, 140, 0);
+        }
     }
 
     .hero-title {
-        font-size: 2.5rem;
-        line-height: 1.15;
+        font-size: 2.75rem;
+        line-height: 1.1;
         font-weight: 800;
         color: #ffffff;
         margin-bottom: 1.5rem;
-        letter-spacing: -0.02em;
+        letter-spacing: -0.03em;
+    }
+
+    .hero-title .accent {
+        background: linear-gradient(90deg, #00ff8c 0%, #6246ea 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        white-space: nowrap;
     }
 
     @media (min-width: 768px) {
         .hero-title {
-            font-size: 3.75rem;
+            font-size: 4rem;
         }
-    }
-
-    .text-gradient {
-        background: linear-gradient(
-            135deg,
-            var(--accent) 0%,
-            var(--primary) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
     }
 
     .hero-description {
         font-size: 1.125rem;
-        color: #94a3b8; /* Slate 400 */
-        line-height: 1.6;
-        margin-bottom: 2.5rem;
-        max-width: 580px;
+        color: #94a3b8;
+        line-height: 1.7;
+        margin-bottom: 3rem;
+        max-width: 600px;
+    }
+    .hero-description strong {
+        color: #e2e8f0;
+        font-weight: 600;
     }
 
     /* Botones */
@@ -277,7 +306,7 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
-        margin-bottom: 3rem;
+        margin-bottom: 3.5rem;
     }
 
     @media (min-width: 640px) {
@@ -287,12 +316,32 @@
         }
     }
 
+    .btn-primary {
+        /* Asumiendo que tienes estilos globales, pero reforzamos aquí */
+        background: var(--primary);
+        color: white;
+        padding: 0.9rem 1.8rem;
+        border-radius: 0.75rem;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition:
+            transform 0.2s,
+            box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px -5px rgba(98, 70, 234, 0.4);
+    }
+
     .btn-text-light {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
-        color: #e2e8f0;
-        font-weight: 600;
+        color: #cbd5e1;
+        font-weight: 500;
         text-decoration: none;
         padding: 0.75rem 1.5rem;
         transition: all 0.2s;
@@ -303,44 +352,41 @@
         color: white;
     }
 
-    /* Trust / Avatares */
+    /* Trust */
     .hero-trust {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        gap: 1.2rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
-
     .avatar-group {
         display: flex;
     }
-
     .avatar {
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         background: #1e293b;
         border: 2px solid #0b0f19;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         font-weight: 700;
+        color: #94a3b8;
+        margin-left: -10px;
+        transition: transform 0.2s;
+    }
+    .avatar:hover {
+        transform: translateY(-3px);
+        z-index: 2;
+        border-color: var(--primary);
         color: white;
-        margin-left: -12px;
     }
     .avatar:first-child {
         margin-left: 0;
         background: var(--primary);
-    }
-
-    .hero-trust p {
-        font-size: 0.9rem;
-        color: #94a3b8;
-        margin: 0;
-    }
-    .hero-trust strong {
         color: white;
     }
 
@@ -351,61 +397,55 @@
         position: relative;
         perspective: 1000px;
     }
-
     .visual-playground {
         position: relative;
         width: 100%;
-        max-width: 500px;
-        height: 420px;
+        max-width: 520px;
+        height: 440px;
     }
 
-    /* 1. Fondo "Núcleo de Datos" */
+    /* Animations & Cards (Mismo CSS base, ajustado para look Premium) */
     .data-core-pulse {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 300px;
-        height: 300px;
+        width: 350px;
+        height: 350px;
         border-radius: 50%;
         background: radial-gradient(
             circle,
-            rgba(98, 70, 234, 0.4) 0%,
+            rgba(98, 70, 234, 0.25) 0%,
             rgba(0, 0, 0, 0) 70%
         );
         animation: core-pulse 4s ease-in-out infinite;
-        z-index: 0;
     }
-
     .data-core-gradient {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 380px;
-        height: 380px;
+        width: 420px;
+        height: 420px;
         border-radius: 50%;
         background: conic-gradient(
             from 180deg at 50% 50%,
-            rgba(98, 70, 234, 0.1) 0deg,
-            rgba(0, 255, 140, 0.1) 180deg,
-            rgba(98, 70, 234, 0.1) 360deg
+            rgba(98, 70, 234, 0.05) 0deg,
+            rgba(0, 255, 140, 0.05) 180deg,
+            rgba(98, 70, 234, 0.05) 360deg
         );
-        filter: blur(40px);
-        opacity: 0.6;
-        animation: core-rotate 20s linear infinite;
-        z-index: 0;
+        filter: blur(50px);
+        animation: core-rotate 25s linear infinite;
     }
-
     @keyframes core-pulse {
         0%,
         100% {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 0.5;
+            transform: translate(-50%, -50%) scale(0.9);
+            opacity: 0.4;
         }
         50% {
-            transform: translate(-50%, -50%) scale(1.2);
-            opacity: 0.8;
+            transform: translate(-50%, -50%) scale(1.1);
+            opacity: 0.7;
         }
     }
     @keyframes core-rotate {
@@ -417,7 +457,6 @@
         }
     }
 
-    /* 2. Conexiones SVG */
     .connection-lines {
         position: absolute;
         inset: 0;
@@ -427,38 +466,33 @@
         pointer-events: none;
     }
     .animated-path {
-        stroke-dasharray: 10, 10;
-        animation: dash-flow 20s linear infinite;
+        stroke-dasharray: 8, 8;
+        animation: dash-flow 30s linear infinite;
+        opacity: 0.6;
     }
-    .animated-path.delay {
-        animation-delay: -10s;
-    }
-
     @keyframes dash-flow {
         to {
-            stroke-dashoffset: -200;
+            stroke-dashoffset: -500;
         }
     }
 
-    /* 3. Tarjetas de Vidrio "Premium" */
+    /* Glass Cards Styles */
     .glass-card-dark.premium {
-        /* Bordes más brillantes y definidos para resaltar en oscuro */
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        border-top: 1px solid rgba(255, 255, 255, 0.3); /* Luz superior */
-        border-left: 1px solid rgba(255, 255, 255, 0.3); /* Luz izquierda */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+        border-left: 1px solid rgba(255, 255, 255, 0.25);
         box-shadow:
-            0 20px 40px -10px rgba(0, 0, 0, 0.6),
-            inset 0 0 20px rgba(255, 255, 255, 0.02); /* Luz interna sutil */
-        overflow: hidden; /* Para el efecto shine */
+            0 25px 50px -12px rgba(0, 0, 0, 0.7),
+            inset 0 0 20px rgba(255, 255, 255, 0.03);
+        background: rgba(15, 23, 42, 0.65); /* Slate 900 con transparencia */
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border-radius: 1.25rem;
         position: absolute;
-        background: rgba(30, 41, 59, 0.7); /* Slate 800 con transparencia */
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border-radius: 1.5rem;
         z-index: 3;
+        overflow: hidden;
     }
 
-    /* Efecto de reflejo pasando */
     .shine-effect {
         position: absolute;
         top: 0;
@@ -468,71 +502,66 @@
         background: linear-gradient(
             to right,
             transparent,
-            rgba(255, 255, 255, 0.1),
+            rgba(255, 255, 255, 0.08),
             transparent
         );
         transform: skewX(-25deg);
-        animation: shine-pass 8s ease-in-out infinite;
+        animation: shine-pass 6s ease-in-out infinite;
     }
     @keyframes shine-pass {
         0%,
-        80% {
-            left: -100%;
+        85% {
+            left: -120%;
         }
         100% {
             left: 200%;
         }
     }
 
-    /* Posicionamiento */
     .card-main {
         top: 50%;
         left: 50%;
-        width: 280px;
+        width: 260px;
         padding: 1.5rem;
         transform: translate(-50%, -50%);
     }
     .card-status {
-        top: 30px;
-        right: 0;
-        padding: 0.75rem 1rem;
+        top: 15%;
+        right: 5%;
+        padding: 0.8rem 1.2rem;
         display: flex;
         align-items: center;
-        gap: 10px;
-        z-index: 2;
+        gap: 12px;
     }
     .card-users {
-        bottom: 50px;
-        left: -10px;
-        padding: 0.75rem 1rem;
+        bottom: 15%;
+        left: 0%;
+        padding: 0.8rem 1.2rem;
         display: flex;
         align-items: center;
-        gap: 10px;
-        z-index: 2;
+        gap: 12px;
     }
 
-    /* Contenido de Tarjetas */
+    /* Contenido Cards */
     .card-header {
         display: flex;
         gap: 6px;
         margin-bottom: 1.5rem;
     }
     .dot {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
+        opacity: 0.8;
     }
     .red {
         background: #ef4444;
-        box-shadow: 0 0 6px #ef4444;
     }
     .yellow {
         background: #f59e0b;
-        box-shadow: 0 0 6px #f59e0b;
     }
     .green {
         background: #10b981;
-        box-shadow: 0 0 6px #10b981;
     }
 
     .card-body {
@@ -544,101 +573,81 @@
         display: flex;
         gap: 6px;
         align-items: flex-end;
-        height: 60px;
+        height: 50px;
     }
     .bar {
-        width: 12px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
+        width: 10px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 3px;
     }
-
-    /* 4. Barra Activa Super Glow */
     .bar.active.super-glow {
         background: var(--accent);
-        box-shadow:
-            0 0 20px rgba(0, 255, 140, 0.5),
-            0 0 40px rgba(0, 255, 140, 0.2);
-        position: relative;
-        animation: bar-pulse 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes bar-pulse {
-        from {
-            box-shadow: 0 0 20px rgba(0, 255, 140, 0.5);
-        }
-        to {
-            box-shadow:
-                0 0 30px rgba(0, 255, 140, 0.8),
-                0 0 50px rgba(0, 255, 140, 0.3);
-        }
+        box-shadow: 0 0 15px var(--accent);
     }
 
     .data {
-        display: flex;
-        flex-direction: column;
         text-align: right;
     }
     .data strong {
-        font-size: 1rem;
-        color: white;
-        letter-spacing: 0.5px;
+        font-size: 0.9rem;
+        color: #cbd5e1;
+        display: block;
+        margin-bottom: 2px;
     }
     .trend {
-        font-size: 0.85rem;
-        color: #10b981;
+        font-size: 0.95rem;
         font-weight: 700;
-        text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+        text-shadow: 0 0 10px rgba(0, 255, 140, 0.4);
     }
 
-    /* Icon Squares & Text */
     .icon-square {
-        width: 40px;
-        height: 40px;
-        border-radius: 12px;
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.35rem;
+        font-size: 1.4rem;
     }
     .icon-square.success {
-        background: rgba(16, 185, 129, 0.2);
+        background: rgba(16, 185, 129, 0.15);
         color: #10b981;
-        border: 1px solid rgba(16, 185, 129, 0.3);
+        border: 1px solid rgba(16, 185, 129, 0.2);
     }
     .icon-square.primary {
-        background: rgba(98, 70, 234, 0.2);
-        color: #e0d4fc;
-        border: 1px solid rgba(98, 70, 234, 0.3);
+        background: rgba(98, 70, 234, 0.15);
+        color: #a78bfa;
+        border: 1px solid rgba(98, 70, 234, 0.2);
     }
+
     .card-mini-text strong {
         display: block;
         font-size: 0.9rem;
-        line-height: 1;
-        color: white;
+        color: #e2e8f0;
     }
     .card-mini-text span {
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         color: #94a3b8;
     }
 
-    /* Animaciones de Flote */
+    /* Animaciones Flote */
     .animate-float {
-        animation: float 6s ease-in-out infinite;
+        animation: float 7s ease-in-out infinite;
     }
     .animate-float-delay {
-        animation: float 6s ease-in-out 3s infinite;
+        animation: float 8s ease-in-out 2s infinite;
     }
     .animate-float-center {
-        animation: float-center 6s ease-in-out infinite;
+        animation: float-center 9s ease-in-out infinite;
     }
 
     @keyframes float {
         0%,
         100% {
-            transform: translate(0, 0);
+            transform: translateY(0);
         }
         50% {
-            transform: translate(0, -15px);
+            transform: translateY(-12px);
         }
     }
     @keyframes float-center {
@@ -647,13 +656,7 @@
             transform: translate(-50%, -50%);
         }
         50% {
-            transform: translate(-50%, -65%);
-        }
-    }
-
-    @media (max-width: 768px) {
-        .hero-wrapper-dark {
-            margin-top: -10px;
+            transform: translate(-50%, -58%);
         }
     }
 </style>

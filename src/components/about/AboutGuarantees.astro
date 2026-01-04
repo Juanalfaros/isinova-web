@@ -1,0 +1,148 @@
+---
+// src/components/sections/AboutGuarantees.astro
+---
+
+<section
+    class="section-guarantees-light bg-white"
+    aria-labelledby="guarantees-title"
+>
+    <div class="container relative-z">
+        <div class="section-header-center">
+            <span class="section-badge primary">Compromiso Isinova</span>
+            <h2 id="guarantees-title">
+                Tranquilidad Institucional Garantizada
+            </h2>
+        </div>
+        <ul class="guarantees-grid unstyled-list">
+            <li class="guarantee-wrapper">
+                <article class="guarantee-card-light" tabindex="0">
+                    <div class="icon-box accent-box">
+                        <i class="ph-fill ph-seal-check"></i>
+                    </div>
+                    <h3>Garantía Técnica de 30 Días</h3>
+                    <p>
+                        Corrección inmediata de cualquier detalle tras el
+                        lanzamiento.
+                    </p>
+                </article>
+            </li>
+            <li class="guarantee-wrapper">
+                <article class="guarantee-card-light" tabindex="0">
+                    <div class="icon-box primary-box">
+                        <i class="ph-fill ph-clock-countdown"></i>
+                    </div>
+                    <h3>Soporte en &lt; 24 Horas</h3>
+                    <p>
+                        Tiempo de respuesta garantizado para mantener tu
+                        operación.
+                    </p>
+                </article>
+            </li>
+            <li class="guarantee-wrapper">
+                <article class="guarantee-card-light" tabindex="0">
+                    <div class="icon-box secure-box">
+                        <i class="ph-fill ph-shield-checkered"></i>
+                    </div>
+                    <h3>Seguridad Nivel Bancario</h3>
+                    <p>
+                        Backups diarios y protección contra ataques DDoS
+                        incluidos.
+                    </p>
+                </article>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<style>
+    .section-guarantees-light {
+        padding: 8rem 0;
+    }
+    .section-header-center {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+
+    .guarantees-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
+    }
+
+    .guarantee-card-light {
+        background: #f8fafc;
+        padding: 3rem;
+        border-radius: 1.5rem;
+        text-align: center;
+        border: 1px solid #e2e8f0;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+
+    .guarantee-card-light:hover {
+        transform: translateY(-10px);
+        background: white;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        border-color: var(--primary);
+    }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    .accent-box {
+        background: rgba(79, 70, 229, 0.1);
+        color: var(--primary);
+    }
+    .primary-box {
+        background: rgba(16, 185, 129, 0.1);
+        color: #10b981;
+    }
+    .secure-box {
+        background: rgba(245, 158, 11, 0.1);
+        color: #f59e0b;
+    }
+
+    .guarantee-card-light h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: #0f172a;
+    }
+    .guarantee-card-light p {
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .unstyled-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+    .bg-white {
+        background-color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+        .section-guarantees-light {
+            padding: 4rem 0;
+        }
+        .guarantees-grid {
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+    }
+</style>

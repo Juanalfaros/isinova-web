@@ -8,14 +8,14 @@
 
     <div class="container">
         <div class="section-header">
-            <span class="section-badge accent">System Workflow</span>
+            <span class="section-badge accent">Process Architecture</span>
             <h2 class="section-title">
-                Metodología <span class="text-span gradient highlight-brand primary">End-to-End</span>
+                Ingeniería de <span class="text-span gradient highlight-brand primary">Ciclo Completo</span>
             </h2>
             <p class="section-desc">
-                Arquitectura de soluciones educativa desplegada en 4 fases
-                críticas. Sin cajas negras, solo código limpio y resultados
-                medibles.
+                No improvisamos. Ejecutamos una metodología de ingeniería de software 
+                estricta, diseñada para mitigar riesgos y garantizar entregables 
+                de calidad empresarial.
             </p>
         </div>
 
@@ -28,19 +28,18 @@
                         <div class="card-glow"></div>
                         <div class="card-body">
                             <div class="step-badge">01</div>
-                            <h3>Auditoría & Blueprint</h3>
+                            <h3>Discovery & Arquitectura</h3>
                             <p>
-                                Descomponemos tus requerimientos técnicos.
-                                Diseñamos la arquitectura de servidores,
-                                definimos el stack tecnológico y trazamos la
-                                ruta crítica del proyecto.
+                                Levantamiento de requerimientos técnicos y pedagógicos. 
+                                Diseñamos el diagrama de arquitectura (AWS/Cloud), 
+                                definimos el stack y entregamos la Carta Gantt del proyecto.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-node">
                     <div class="node-core">
-                        <i class="ph-bold ph-strategy"></i>
+                        <i class="ph-bold ph-compass-tool"></i>
                     </div>
                 </div>
                 <div class="timeline-spacer"></div>
@@ -50,7 +49,7 @@
                 <div class="timeline-spacer"></div>
                 <div class="timeline-node">
                     <div class="node-core">
-                        <i class="ph-bold ph-code-block"></i>
+                        <i class="ph-bold ph-brackets-curly"></i>
                     </div>
                 </div>
                 <div class="timeline-content right">
@@ -58,12 +57,11 @@
                         <div class="card-glow"></div>
                         <div class="card-body">
                             <div class="step-badge">02</div>
-                            <h3>Desarrollo Core</h3>
+                            <h3>Desarrollo & Integración</h3>
                             <p>
-                                Implementación de Moodle/Canvas con código
-                                optimizado. Desarrollo de plugins a medida,
-                                integración de APIs y personalización profunda
-                                de la interfaz (UX/UI).
+                                Ejecución en sprints. Configuramos el núcleo del LMS, 
+                                desarrollamos conectores API (SENCE/CRM) y aplicamos 
+                                tu identidad visual con estándares UX/UI modernos.
                             </p>
                         </div>
                     </div>
@@ -76,19 +74,18 @@
                         <div class="card-glow"></div>
                         <div class="card-body">
                             <div class="step-badge">03</div>
-                            <h3>Data Migration & QA</h3>
+                            <h3>QA & Hardening</h3>
                             <p>
-                                Migración segura de bases de datos. Pruebas de
-                                estrés (Load Testing) para garantizar
-                                concurrencia y sesiones de capacitación técnica
-                                para administradores.
+                                Nadie entra a producción sin pruebas. Realizamos 
+                                Tests de Carga (Stress Testing), auditoría de seguridad 
+                                y validación de integridad de datos migrados.
                             </p>
                         </div>
                     </div>
                 </div>
                 <div class="timeline-node">
                     <div class="node-core">
-                        <i class="ph-bold ph-database"></i>
+                        <i class="ph-bold ph-shield-check"></i>
                     </div>
                 </div>
                 <div class="timeline-spacer"></div>
@@ -106,12 +103,11 @@
                         <div class="card-glow"></div>
                         <div class="card-body">
                             <div class="step-badge">04</div>
-                            <h3>Deploy & Scaling</h3>
+                            <h3>Despliegue & Onboarding</h3>
                             <p>
-                                Puesta en producción en entornos cloud
-                                (AWS/Google). Activación de monitoreo 24/7,
-                                auto-scaling y entrega de documentación técnica
-                                final.
+                                Puesta en marcha "Zero-Downtime". Configuramos el 
+                                monitoreo de servidores, entregamos la documentación 
+                                técnica y capacitamos a tu equipo administrador.
                             </p>
                         </div>
                     </div>
@@ -121,13 +117,15 @@
 
         <div class="cta-wrapper">
             <a href="#contacto" class="btn-glow">
-                Inicializar Proyecto <i class="ph-bold ph-terminal-window"></i>
+                Iniciar mi Proyecto <i class="ph-bold ph-arrow-right"></i>
             </a>
         </div>
     </div>
 </section>
 
 <style>
+/* --- PEGA AQUÍ TU CSS ORIGINAL (ES PERFECTO) --- */
+/* Solo asegúrate de mantener las variables CSS que definiste arriba */
     /* --- 1. CONFIGURACIÓN BASE --- */
     .process-section {
         --bg-deep: #050b14;
@@ -168,7 +166,7 @@
         black 40%,
         transparent 80%
     );
-    filter: blur(40px); /* Clave para que parezca luz y no un gráfico de torta */
+    filter: blur(40px);
     pointer-events: none;
 }
 
@@ -203,20 +201,27 @@
         margin: 0 auto 5rem;
     }
 
-    .badge-tech {
+    .section-badge {
         display: inline-block;
-        font-family: monospace;
-        font-size: 0.75rem;
+        font-family: monospace; /* Fuente técnica */
+        font-size: 0.85rem;
         color: var(--accent);
         background: rgba(16, 185, 129, 0.1);
-        padding: 6px 12px;
-        border-radius: 4px;
+        padding: 6px 14px;
+        border-radius: 50px;
         border: 1px solid rgba(16, 185, 129, 0.3);
         margin-bottom: 1.5rem;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.05em;
     }
 
-    .text-gradient {
+    .section-title {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+    }
+
+    .text-span.gradient {
         background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -266,12 +271,8 @@
     }
 
     @keyframes dataFlow {
-        0% {
-            transform: translateY(-100%);
-        }
-        100% {
-            transform: translateY(100%);
-        }
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(100%); }
     }
 
     .timeline-row {
@@ -315,9 +316,7 @@
         border-color: var(--primary);
         color: white;
         background: var(--primary);
-        box-shadow:
-            0 0 20px rgba(99, 102, 241, 0.4),
-            0 0 0 5px var(--bg-deep);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 0 5px var(--bg-deep);
         transform: scale(1.1);
     }
 
@@ -329,9 +328,7 @@
         min-width: 0;
     }
 
-    .timeline-spacer {
-        display: none;
-    }
+    .timeline-spacer { display: none; }
 
     .tech-card {
         position: relative;
@@ -394,55 +391,37 @@
     /* --- 6. CTA BUTTON --- */
     .cta-wrapper {
         text-align: center;
-        margin-top: 4rem;
+        margin-top: 5rem;
+        position: relative;
+        z-index: 5;
     }
 
-    .cyber-btn {
-        position: relative;
+    .btn-glow {
         display: inline-flex;
-        padding: 1rem 2.5rem;
-        background: white;
-        color: black;
-        font-weight: 800;
-        text-decoration: none;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        font-size: 0.85rem;
-        clip-path: polygon(
-            8px 0,
-            100% 0,
-            100% calc(100% - 8px),
-            calc(100% - 8px) 100%,
-            0 100%,
-            0 8px
-        );
-        transition: all 0.3s ease;
-    }
-
-    .btn-content {
-        position: relative;
-        z-index: 2;
-        display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
+        background: var(--primary);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .cyber-btn::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: var(--accent);
-        transform: translateX(-101%);
-        transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-        z-index: 1;
+    .btn-glow:hover {
+        transform: translateY(-3px);
+        background: #4f46e5;
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+        border-color: rgba(255, 255, 255, 0.3);
     }
+    
+    .btn-glow i { transition: transform 0.2s; }
+    .btn-glow:hover i { transform: translateX(3px); }
 
-    .cyber-btn:hover::before {
-        transform: translateX(0);
-    }
-    .cyber-btn:hover .btn-content {
-        color: var(--bg-deep);
-    }
 
     /* --- 7. DESKTOP MEDIA QUERIES --- */
     @media (min-width: 992px) {
@@ -457,36 +436,16 @@
         }
 
         /* Zigzag logic */
-        .timeline-row.reverse {
-            flex-direction: row;
-        }
-        .timeline-row:not(.reverse) {
-            flex-direction: row-reverse;
-        }
+        .timeline-row.reverse { flex-direction: row; }
+        .timeline-row:not(.reverse) { flex-direction: row-reverse; }
 
-        .timeline-node {
-            margin: 0 4rem;
-            order: 2;
-        }
+        .timeline-node { margin: 0 4rem; order: 2; }
+        .timeline-content { padding: 0; flex: 1; order: 1; }
 
-        .timeline-content {
-            padding: 0;
-            flex: 1;
-            order: 1;
-        }
+        .timeline-row:not(.reverse) .timeline-content { text-align: right; }
+        .timeline-row.reverse .timeline-content { text-align: left; }
 
-        .timeline-row:not(.reverse) .timeline-content {
-            text-align: right;
-        }
-        .timeline-row.reverse .timeline-content {
-            text-align: left;
-        }
-
-        .timeline-spacer {
-            display: block;
-            flex: 1;
-            order: 3;
-        }
+        .timeline-spacer { display: block; flex: 1; order: 3; }
 
         /* Conector Card Logic */
         .tech-card::before {
@@ -500,12 +459,8 @@
             z-index: -1;
         }
 
-        .timeline-row:not(.reverse) .tech-card::before {
-            left: 100%;
-        }
-        .timeline-row.reverse .tech-card::before {
-            right: 100%;
-        }
+        .timeline-row:not(.reverse) .tech-card::before { left: 100%; }
+        .timeline-row.reverse .tech-card::before { right: 100%; }
 
         .timeline-row:hover .tech-card::before {
             background: var(--primary);
@@ -517,45 +472,5 @@
             right: auto;
             left: 1.25rem;
         }
-    }
-
-    /* --- 6. CTA BUTTON (CORREGIDO: Estilo Glow Coherente) --- */
-    .cta-wrapper {
-        text-align: center;
-        margin-top: 5rem;
-        position: relative;
-        z-index: 5;
-    }
-
-    .btn-glow {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: var(--primary); /* Morado base */
-        color: white;
-        padding: 1rem 2.5rem;
-        border-radius: 100px; /* Redondo y suave */
-        font-weight: 700;
-        font-size: 1rem;
-        text-decoration: none;
-        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4); /* Glow inicial sutil */
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .btn-glow:hover {
-        transform: translateY(-3px);
-        background: #4f46e5; /* Un poco más oscuro al hover */
-        box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); /* Glow intenso */
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .btn-glow i {
-        font-size: 1.2rem;
-        transition: transform 0.3s ease;
-    }
-
-    .btn-glow:hover i {
-        transform: translateX(4px);
     }
 </style>

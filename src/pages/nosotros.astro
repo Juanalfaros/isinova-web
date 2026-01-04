@@ -1,0 +1,45 @@
+---
+// src/pages/nosotros.astro
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+
+// COMPONENTES DE SECCIÓN
+import AboutHero from "../components/about/AboutHero.astro";
+import AboutIdentity from "../components/about/AboutIdentity.astro";
+import AboutLeader from "../components/about/AboutLeader.astro";
+import AboutMethodology from "../components/about/AboutMethodology.astro";
+import AboutTeam from "../components/about/AboutTeam.astro";
+import AboutGuarantees from "../components/about/AboutGuarantees.astro";
+import AboutCTA from "../components/about/AboutCTA.astro";
+
+// FETCH DATA DESDE CONTENT COLLECTIONS
+const allMembers = await getCollection("equipo");
+const teamMembers = allMembers
+    .sort((a, b) => (a.data.order || 99) - (b.data.order || 99))
+    .map((member) => member.data);
+
+const leader = teamMembers.find((m) => m.isLeader);
+
+const title = "Sobre Isinova | Ingeniería EdTech de Alto Rendimiento";
+const description =
+    "Conoce al equipo que está redefiniendo la infraestructura educativa en Chile.";
+---
+
+<Layout title={title} description={description}>
+    <main class="nosotros-page">
+        <AboutHero />
+        <AboutIdentity />
+        {leader && <AboutLeader image={leader.image} />}
+        <AboutMethodology />
+        <AboutTeam members={teamMembers} />
+        <AboutGuarantees />
+        <AboutCTA />
+    </main>
+</Layout>
+
+<style>
+    /* Estilos estructurales mínimos para la página */
+    .nosotros-page {
+        overflow-x: hidden;
+    }
+</style>

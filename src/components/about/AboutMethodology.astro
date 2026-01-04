@@ -1,0 +1,120 @@
+---
+// src/components/sections/AboutMethodology.astro
+---
+
+<section
+    class="section-methodology bg-light-grey"
+    aria-labelledby="method-title"
+>
+    <div class="container">
+        <div class="section-header-center">
+            <span class="section-badge primary">Nuestro Proceso</span>
+            <h2 id="method-title">Cómo logramos la perfección técnica</h2>
+        </div>
+        <ol class="method-grid unstyled-list">
+            <li class="method-step" tabindex="0">
+                <span class="step-num">01</span>
+                <h3>Diagnóstico Digital</h3>
+                <p>
+                    Identificamos obstáculos técnicos que impiden el potencial
+                    académico.
+                </p>
+            </li>
+            <li class="method-step" tabindex="0">
+                <span class="step-num">02</span>
+                <h3>Arquitectura Cloud</h3>
+                <p>
+                    Diseñamos sistemas elásticos que no se caen durante exámenes
+                    masivos.
+                </p>
+            </li>
+            <li class="method-step" tabindex="0">
+                <span class="step-num">03</span>
+                <h3>Despliegue Headless</h3>
+                <p>
+                    Implementamos interfaces rápidas y modernas separadas del
+                    LMS.
+                </p>
+            </li>
+            <li class="method-step" tabindex="0">
+                <span class="step-num">04</span>
+                <h3>Soporte Estratégico</h3>
+                <p>Monitoreo 24/7 y planes de soporte SLA garantizados.</p>
+            </li>
+        </ol>
+    </div>
+</section>
+
+<style>
+    .section-methodology {
+        padding: 8rem 0;
+    }
+    .section-header-center {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+
+    .method-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
+    }
+
+    .method-step {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        border: 1px solid #e2e8f0;
+        position: relative;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: default;
+    }
+
+    .method-step:hover {
+        transform: translateY(-8px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .step-num {
+        font-size: 3rem;
+        font-weight: 800;
+        color: #f1f5f9;
+        position: absolute;
+        top: 1rem;
+        right: 2rem;
+        transition: color 0.3s ease;
+    }
+
+    .method-step:hover .step-num {
+        color: #e2e8f0;
+    }
+    .method-step h3 {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+    }
+    .method-step p {
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .unstyled-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .bg-light-grey {
+        background-color: #f8fafc;
+    }
+
+    @media (max-width: 768px) {
+        .section-methodology {
+            padding: 4rem 0;
+        }
+    }
+</style>

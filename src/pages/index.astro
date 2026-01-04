@@ -1,79 +1,47 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Hero from "../components/Hero.astro";
-import PainPoints from "../components/PainPoints.astro";
-import Services from "../components/Services.astro";
-import Integrations from "../components/Integrations.astro";
-import Process from "../components/Process.astro";
-import SolutionQuiz from "../components/SolutionQuiz.astro";
-import Testimonials from "../components/Testimonials.astro";
-import Pricing from "../components/Pricing.astro";
-// import About from "../components/About.astro";
-import AboutGar from "../components/AboutGar.astro";
-// import Guarantees from "../components/Guarantees.astro";
-import FAQ from "../components/FAQ.astro";
-import CTA from "../components/CTA.astro";
-import Footer from "../components/Footer.astro";
-import WhatsAppButton from "../components/WhatsAppButton.astro";
+import Hero from "../components/sections/Hero.astro";
+import PainPoints from "../components/sections/PainPoints.astro";
+import Services from "../components/sections/Services.astro";
+import Integrations from "../components/sections/Integrations.astro";
+import Process from "../components/sections/Process.astro";
+import SolutionQuiz from "../components/sections/SolutionQuiz.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import Pricing from "../components/sections/Pricing.astro";
+import AboutGar from "../components/sections/AboutGar.astro";
+import FAQ from "../components/sections/FAQ.astro";
+import CTA from "../components/sections/CTA.astro";
 ---
 
-<Layout title="Isinova | Transformación Digital Educativa y Aulas Virtuales">
-    <Header />
-    
-    <main>
-        <section id="inicio">
-            <Hero />
-        </section>
+<Layout
+    title="Isinova | Transformación Digital Educativa y Aulas Virtuales Moodle"
+    description="Especialistas en implementación de LMS, desarrollo web y consultoría tecnológica para instituciones educativas en Chile. Potenciamos tu academia online."
+>
+    <Hero />
 
-        <PainPoints />
+    <PainPoints />
 
-        <section id="servicios">
-            <Services />
-        </section>
+    <section id="servicios">
+        <Services />
+    </section>
 
-        <Integrations />
+    <Integrations />
 
-        <section id="metodologia">
-            <Process />
-        </section>
+    <section id="metodologia">
+        <Process />
+    </section>
 
-        <SolutionQuiz />
+    <SolutionQuiz />
+    <Pricing />
+    <Testimonials />
 
-        <Pricing />
+    <section id="nosotros">
+        <AboutGar />
+    </section>
 
-        <Testimonials />
+    <FAQ />
 
-        <section id="nosotros">
-            <AboutGar />
-        </section>
-
-        <FAQ />
-
-        <section id="contacto">
-            <CTA />
-        </section>
-    </main>
-
-    <Footer />
-    <WhatsAppButton />
+    <section id="contacto">
+        <CTA />
+    </section>
 </Layout>
-
-<style is:global>
-    /* TRUCO DE UX CRÍTICO:
-       Esto evita que el header fijo tape el título de la sección 
-       cuando haces clic en el menú.
-       
-       80px es la altura promedio de tu header + un poco de aire.
-    */
-    html {
-        scroll-padding-top: 100px;
-        scroll-behavior: smooth;
-    }
-
-    @media (max-width: 991px) {
-        html {
-            scroll-padding-top: 80px; /* Ajuste para móvil */
-        }
-    }
-</style>

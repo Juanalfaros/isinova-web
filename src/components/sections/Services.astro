@@ -1,0 +1,97 @@
+---
+// src/components/Services.astro
+import { getCollection, type CollectionEntry } from "astro:content";
+import ServiceCard from "../services/ServiceCard.astro";
+
+// Fetch services from content collection
+const servicesCollection = await getCollection("servicios");
+const servicesData = servicesCollection.map(
+    (service: CollectionEntry<"servicios">) => ({
+        slug: service.slug,
+        ...service.data,
+    }),
+);
+
+interface Service {
+    slug: string;
+    title: string;
+    description: string;
+    icon: string;
+    featured?: boolean;
+}
+---
+
+<section id="servicios" class="services-section bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="container">
+        <div class="section-header">
+            <span class="section-badge accent">Soluciones Integrales</span>
+            <h2 class="section-title">
+                Nuestras <span class="text-span highlight-brand accent"
+                    >Capacidades</span
+                >
+            </h2>
+            <p class="section-desc">
+                Diseñamos ecosistemas digitales pensados para potenciar el
+                aprendizaje y facilitar la gestión educativa moderna.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            {
+                servicesData.map((service: Service) => (
+                    <ServiceCard {...service} />
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .services-section {
+        --text-heading: #f8fafc;
+        --text-body: #cbd5e1;
+
+        padding: 8rem 0;
+    }
+
+    /* Header */
+    .section-header {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 5rem auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: 768px) {
+        .section-title {
+            font-size: 3.5rem;
+        }
+    }
+
+    .section-desc {
+        font-size: 1.125rem;
+        color: var(--text-body);
+        line-height: 1.6;
+    }
+
+    /* Grid */
+    .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    @media (min-width: 992px) {
+        .services-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+    }
+</style>

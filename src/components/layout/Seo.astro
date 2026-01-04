@@ -1,0 +1,215 @@
+---
+import type {
+    WithContext,
+    Organization,
+    BreadcrumbList,
+    BlogPosting,
+    Service,
+    ListItem,
+} from "schema-dts";
+
+// Definimos interfaces para que el blog sea potente
+interface PostData {
+    publishDate?: Date;
+    author?: string;
+    section?: string; // Ej: "Tecnología", "Educación"
+}
+
+interface ServiceData {
+    name: string;
+    description: string;
+    image: string;
+    priceRange?: string;
+    category?: string;
+}
+
+interface Props {
+    title: string;
+    description: string;
+    image?: string;
+    canonical?: string;
+    noindex?: boolean;
+    type?: "website" | "article" | "service";
+    postData?: PostData;
+    serviceData?: ServiceData;
+}
+
+const {
+    title,
+    description,
+    image = "/og-image.jpg",
+    canonical,
+    noindex = false,
+    type = "website",
+    postData,
+    serviceData,
+} = Astro.props;
+
+const siteUrl = Astro.site ? Astro.site.toString() : "https://isinova.cl";
+const canonicalURL = new URL(
+    canonical || Astro.url.pathname,
+    siteUrl,
+).toString();
+const socialImageURL = new URL(image, siteUrl).toString();
+const isHome = Astro.url.pathname === "/";
+
+// --- LÓGICA DE SCHEMAS (JSON-LD) ---
+
+// 1. Esquema de Organización (Solo Home)
+const organizationSchema: WithContext<Organization> = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": `${siteUrl}#organization`,
+    name: "Isinova",
+    url: siteUrl,
+    logo: new URL("/logo.svg", siteUrl).toString(),
+    sameAs: [
+        "https://www.linkedin.com/company/isinova",
+        "https://www.instagram.com/isinova",
+    ],
+    description: "Tecnología educativa y desarrollo web en Chile.",
+    contactPoint: {
+        "@type": "ContactPoint",
+        email: "hola@isinova.cl",
+        contactType: "customer service",
+        areaServed: "CL",
+    },
+};
+
+// 2. Esquema de Breadcrumbs (Todas las páginas excepto Home)
+const pathSegments = Astro.url.pathname.split("/").filter(Boolean);
+const breadcrumbItems: ListItem[] = [
+    {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: siteUrl,
+    },
+    ...pathSegments.map((segment, index) => {
+        const item: ListItem = {
+            "@type": "ListItem",
+            position: index + 2,
+            name:
+                segment.charAt(0).toUpperCase() +
+                segment.slice(1).replace(/-/g, " "),
+            item: new URL(
+                pathSegments.slice(0, index + 1).join("/"),
+                siteUrl,
+            ).toString(),
+        };
+        return item;
+    }),
+];
+
+const breadcrumbSchema: WithContext<BreadcrumbList> = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: breadcrumbItems,
+};
+
+// 3. Esquema de Artículo (Solo para el Blog)
+let articleSchema: WithContext<BlogPosting> | null = null;
+if (type === "article" && postData) {
+    articleSchema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        headline: title,
+        description: description,
+        image: socialImageURL,
+        author: {
+            "@type": "Person",
+            name: postData.author || "Equipo Isinova",
+        },
+        datePublished: postData.publishDate?.toISOString(),
+        url: canonicalURL,
+        publisher: {
+            "@id": `${siteUrl}#organization`,
+        },
+    };
+}
+
+// 4. Esquema de Servicio (Nuevo)
+let serviceSchema: WithContext<Service> | null = null;
+if (type === "service" && serviceData) {
+    serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        name: serviceData.name,
+        description: serviceData.description,
+        image: new URL(serviceData.image, siteUrl).toString(),
+        provider: {
+            "@id": `${siteUrl}#organization`,
+        },
+        offers: {
+            "@type": "Offer",
+            priceCurrency: "CLP",
+            availability: "https://schema.org/InStock",
+            price: serviceData.priceRange || "A consultar", // Schema allows text/number mix sometimes or use PriceSpecification
+        },
+        url: canonicalURL,
+    };
+}
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="generator" content={Astro.generator} />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
+<meta name="theme-color" content="#6246ea" />
+
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={socialImageURL} />
+<meta property="og:site_name" content="Isinova" />
+<meta property="og:locale" content="es_CL" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialImageURL} />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+
+{
+    isHome && (
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(organizationSchema)}
+        />
+    )
+}
+
+{
+    !isHome && (
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(breadcrumbSchema)}
+        />
+    )
+}
+
+{
+    type === "article" && articleSchema && (
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(articleSchema)}
+        />
+    )
+}
+
+{
+    type === "service" && serviceSchema && (
+        <script
+            type="application/ld+json"
+            set:html={JSON.stringify(serviceSchema)}
+        />
+    )
+}

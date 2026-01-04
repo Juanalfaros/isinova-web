@@ -1,0 +1,338 @@
+---
+// src/components/sections/AboutTeam.astro
+import { Image } from "astro:assets";
+
+interface Member {
+    name: string;
+    role: string;
+    bio: string;
+    specialties: string[];
+    isLeader: boolean;
+    initials: string;
+    image: ImageMetadata;
+    mail?: string;
+    linkedin?: string;
+}
+
+interface Props {
+    members: Member[];
+}
+
+const { members } = Astro.props;
+---
+
+<section
+    class="section-team-immersive bg-tech-dark"
+    aria-labelledby="team-title"
+>
+    <div class="bg-base"></div>
+    <div class="container relative-z">
+        <div class="section-header-center light-mode">
+            <span class="section-badge accent">Squad Isinova</span>
+            <h2 id="team-title">Ingeniería & Diseño en Sincronía</h2>
+            <p>Talento de clase mundial, operando desde Chile.</p>
+        </div>
+
+        <ul class="immersive-team-grid unstyled-list">
+            {
+                members.map((member) => (
+                    <li class="immersive-card-wrapper">
+                        <article
+                            class="immersive-card"
+                            tabindex="0"
+                            data-analytics-id={`team-${member.initials}`}
+                            data-analytics-name={member.name}
+                            data-analytics-role={member.role}
+                        >
+                            <div class="img-wrapper">
+                                <Image
+                                    src={member.image}
+                                    alt={`Foto de ${member.name}`}
+                                    width={600}
+                                    height={750}
+                                    quality={90}
+                                    format="webp"
+                                    class="team-img-optimized"
+                                />
+                                <div class="img-overlay" />
+                            </div>
+                            <div class="content-layer">
+                                <header class="static-info">
+                                    {member.isLeader && (
+                                        <span class="leader-tag">
+                                            <i class="ph-fill ph-crown" /> LEAD
+                                        </span>
+                                    )}
+                                    <h3>{member.name}</h3>
+                                    <p class="role-highlight">{member.role}</p>
+                                </header>
+                                <div class="reveal-info">
+                                    <div class="separator-line" />
+                                    <p>{member.bio}</p>
+                                    <div class="skills-row">
+                                        {member.specialties.map((s) => (
+                                            <span class="skill-micro">{s}</span>
+                                        ))}
+                                    </div>
+
+                                    <address class="social-mini-bar">
+                                        {member.linkedin &&
+                                            member.linkedin !== "#" && (
+                                                <a
+                                                    href={member.linkedin}
+                                                    aria-label={`LinkedIn de ${member.name}`}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    class="social-icon-anim"
+                                                >
+                                                    <i class="ph-bold ph-linkedin-logo" />
+                                                </a>
+                                            )}
+
+                                        {member.mail && member.mail !== "#" && (
+                                            <a
+                                                href={`mailto:${member.mail}`}
+                                                aria-label={`Email de ${member.name}`}
+                                                class="social-icon-anim"
+                                            >
+                                                <i class="ph-bold ph-envelope" />
+                                            </a>
+                                        )}
+                                    </address>
+                                </div>
+                            </div>
+                        </article>
+                    </li>
+                ))
+            }
+        </ul>
+    </div>
+</section>
+
+<style>
+    .section-team-immersive {
+        padding: 8rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+    .section-header-center {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+    .section-header-center.light-mode h2 {
+        color: white;
+    }
+    .section-header-center.light-mode p {
+        color: #94a3b8;
+    }
+
+    /* GRID LAYOUT ESTRICTO */
+    .immersive-team-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 Cols Desktop */
+        gap: 2rem;
+        margin-top: 5rem;
+    }
+
+    .immersive-card {
+        position: relative;
+        aspect-ratio: 3 / 4; /* Proporción constante */
+        border-radius: 1.5rem;
+        overflow: hidden;
+        cursor: default;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition:
+            transform 0.4s ease,
+            box-shadow 0.4s ease;
+        background: #0f172a;
+        display: block;
+    }
+
+    .immersive-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 60px -10px rgba(99, 102, 241, 0.3);
+    }
+    .img-wrapper {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+    }
+    .team-img-optimized {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: grayscale(100%) brightness(0.7);
+        transition:
+            transform 0.6s ease,
+            filter 0.6s ease;
+    }
+    .img-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+            to top,
+            rgba(15, 23, 42, 1) 10%,
+            rgba(15, 23, 42, 0.4) 50%,
+            transparent 100%
+        );
+        opacity: 0.9;
+        transition: opacity 0.5s ease;
+    }
+    .immersive-card:hover .team-img-optimized {
+        filter: grayscale(0%) brightness(1);
+        transform: scale(1.1);
+    }
+    .content-layer {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 2rem;
+        z-index: 2;
+        transform: translateY(0);
+        transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .static-info h3 {
+        color: white;
+        font-size: 1.8rem;
+        margin: 0;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+    .leader-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        background: var(--accent);
+        color: var(--dark);
+        font-size: 0.7rem;
+        font-weight: 800;
+        padding: 2px 8px;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    .role-highlight {
+        display: block;
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 0.3rem;
+        transition: color 0.3s ease;
+    }
+    .immersive-card:hover .role-highlight {
+        color: var(--accent);
+    }
+
+    .reveal-info {
+        max-height: 0;
+        opacity: 0;
+        overflow: hidden;
+        transition: all 0.5s ease;
+    }
+    .separator-line {
+        height: 1px;
+        width: 0;
+        background: rgba(255, 255, 255, 0.2);
+        margin: 1rem 0;
+        transition: width 0.6s ease;
+    }
+    .reveal-info p {
+        color: #cbd5e1;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+    }
+    .immersive-card:hover .reveal-info {
+        max-height: 300px;
+        opacity: 1;
+    }
+    .immersive-card:hover .separator-line {
+        width: 100%;
+    }
+
+    .skills-row {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+    .skill-micro {
+        font-size: 0.7rem;
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 2px 8px;
+        border-radius: 100px;
+        background: rgba(0, 0, 0, 0.3);
+    }
+
+    .social-mini-bar {
+        display: flex;
+        gap: 1rem;
+    }
+    .social-mini-bar .social-icon-anim {
+        color: #94a3b8;
+        font-size: 1.4rem;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .social-mini-bar .social-icon-anim:hover {
+        color: var(--accent);
+        transform: translateY(-3px) !important;
+    }
+    .immersive-card:hover .social-icon-anim {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .immersive-card:hover .social-icon-anim:nth-child(1) {
+        transition-delay: 0.1s;
+    }
+    .immersive-card:hover .social-icon-anim:nth-child(2) {
+        transition-delay: 0.2s;
+    }
+
+    .unstyled-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+    address {
+        font-style: normal;
+    }
+
+    @media (max-width: 1024px) {
+        .section-team-immersive {
+            padding: 4rem 0;
+        }
+        .immersive-team-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        /* TEAM 1 COLUMNA */
+        .immersive-team-grid {
+            grid-template-columns: 1fr;
+            margin-top: 3rem;
+        }
+
+        /* Ajuste táctil team cards */
+        .immersive-card:active .team-img-optimized {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+        .immersive-card:active .reveal-info {
+            max-height: 300px;
+            opacity: 1;
+        }
+    }
+</style>

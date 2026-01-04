@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
 
 const lastUpdated = "28 de diciembre de 2025";
 ---
@@ -27,74 +27,165 @@ const lastUpdated = "28 de diciembre de 2025";
                 <section class="legal-section">
                     <h2 class="section-title">1. Introducción</h2>
                     <p>
-                        En <strong>Isinova SpA</strong> (en adelante, "Isinova", "nosotros" o "la empresa"), la privacidad y la seguridad de los datos de nuestros usuarios son fundamentales. Esta Política de Privacidad explica de manera transparente cómo recopilamos, utilizamos, almacenamos y protegemos tu información personal al interactuar con nuestro sitio web <a href="https://isinova.cl" class="link-highlight">isinova.cl</a> y nuestros servicios.
+                        En <strong>Isinova SpA</strong> (en adelante, "Isinova", "nosotros"
+                        o "la empresa"), la privacidad y la seguridad de los datos
+                        de nuestros usuarios son fundamentales. Esta Política de Privacidad
+                        explica de manera transparente cómo recopilamos, utilizamos,
+                        almacenamos y protegemos tu información personal al interactuar
+                        con nuestro sitio web <a
+                            href="https://isinova.cl"
+                            class="link-highlight">isinova.cl</a
+                        > y nuestros servicios.
                     </p>
                     <p>
-                        Nos regimos por la <strong class="text-dark">Ley N° 19.628 sobre Protección de la Vida Privada</strong> de Chile y adoptamos estándares internacionales de protección de datos para garantizar tu tranquilidad.
+                        Nos regimos por la <strong class="text-dark"
+                            >Ley N° 19.628 sobre Protección de la Vida Privada</strong
+                        > de Chile y adoptamos estándares internacionales de protección
+                        de datos para garantizar tu tranquilidad.
                     </p>
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">2. Información que Recopilamos</h2>
-                    <p>Para brindarte un servicio de excelencia, podemos recopilar distintos tipos de datos:</p>
+                    <h2 class="section-title">
+                        2. Información que Recopilamos
+                    </h2>
+                    <p>
+                        Para brindarte un servicio de excelencia, podemos
+                        recopilar distintos tipos de datos:
+                    </p>
 
                     <div class="subsection">
-                        <h3>2.1 Información que nos proporcionas directamente</h3>
+                        <h3>
+                            2.1 Información que nos proporcionas directamente
+                        </h3>
                         <ul class="styled-list">
-                            <li><strong>Datos de contacto:</strong> Nombre completo, dirección de correo electrónico, número de teléfono y la institución educativa a la que representas.</li>
-                            <li><strong>Información profesional:</strong> Tu cargo, departamento o área de trabajo, y detalles sobre los requerimientos específicos de tu proyecto EdTech.</li>
-                            <li><strong>Comunicaciones:</strong> El contenido de los mensajes que nos envías a través de nuestros formularios de contacto, correos electrónicos o chat.</li>
+                            <li>
+                                <strong>Datos de contacto:</strong> Nombre completo,
+                                dirección de correo electrónico, número de teléfono
+                                y la institución educativa a la que representas.
+                            </li>
+                            <li>
+                                <strong>Información profesional:</strong> Tu cargo,
+                                departamento o área de trabajo, y detalles sobre los
+                                requerimientos específicos de tu proyecto EdTech.
+                            </li>
+                            <li>
+                                <strong>Comunicaciones:</strong> El contenido de los
+                                mensajes que nos envías a través de nuestros formularios
+                                de contacto, correos electrónicos o chat.
+                            </li>
                         </ul>
                     </div>
 
                     <div class="subsection">
                         <h3>2.2 Información recopilada automáticamente</h3>
                         <ul class="styled-list">
-                            <li><strong>Datos técnicos y de navegación:</strong> Dirección IP, tipo de navegador, sistema operativo, páginas visitadas, tiempo de permanencia y rutas de navegación.</li>
-                            <li><strong>Cookies y tecnologías similares:</strong> Utilizamos cookies para recordar tus preferencias, mejorar el rendimiento del sitio y analizar tendencias de uso (ver sección de Cookies).</li>
+                            <li>
+                                <strong>Datos técnicos y de navegación:</strong> Dirección
+                                IP, tipo de navegador, sistema operativo, páginas
+                                visitadas, tiempo de permanencia y rutas de navegación.
+                            </li>
+                            <li>
+                                <strong>Cookies y tecnologías similares:</strong
+                                > Utilizamos cookies para recordar tus preferencias,
+                                mejorar el rendimiento del sitio y analizar tendencias
+                                de uso (ver sección de Cookies).
+                            </li>
                         </ul>
                     </div>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">3. Finalidad del Uso de Datos</h2>
-                    <p>Utilizamos tu información personal exclusivamente para los siguientes propósitos:</p>
+                    <p>
+                        Utilizamos tu información personal exclusivamente para
+                        los siguientes propósitos:
+                    </p>
                     <ul class="styled-list check-list">
-                        <li>Responder a tus consultas, solicitudes de cotización y dudas técnicas de manera oportuna.</li>
-                        <li>Gestionar la relación comercial, incluyendo la provisión de propuestas, contratos y facturación.</li>
-                        <li>Implementar, configurar y mantener las plataformas LMS (Moodle, Canvas) y servicios web contratados.</li>
-                        <li>Enviarte comunicaciones importantes sobre el estado de tus servicios o actualizaciones de seguridad.</li>
-                        <li>Mejorar continuamente nuestro sitio web y servicios mediante el análisis de datos de uso anónimos.</li>
-                        <li>Cumplir con nuestras obligaciones legales, reglamentarias y contractuales.</li>
-                        <li>Enviarte novedades y contenido relevante sobre EdTech (solo si has dado tu consentimiento explícito).</li>
+                        <li>
+                            Responder a tus consultas, solicitudes de cotización
+                            y dudas técnicas de manera oportuna.
+                        </li>
+                        <li>
+                            Gestionar la relación comercial, incluyendo la
+                            provisión de propuestas, contratos y facturación.
+                        </li>
+                        <li>
+                            Implementar, configurar y mantener las plataformas
+                            LMS (Moodle, Canvas) y servicios web contratados.
+                        </li>
+                        <li>
+                            Enviarte comunicaciones importantes sobre el estado
+                            de tus servicios o actualizaciones de seguridad.
+                        </li>
+                        <li>
+                            Mejorar continuamente nuestro sitio web y servicios
+                            mediante el análisis de datos de uso anónimos.
+                        </li>
+                        <li>
+                            Cumplir con nuestras obligaciones legales,
+                            reglamentarias y contractuales.
+                        </li>
+                        <li>
+                            Enviarte novedades y contenido relevante sobre
+                            EdTech (solo si has dado tu consentimiento
+                            explícito).
+                        </li>
                     </ul>
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">4. Compartir Información con Terceros</h2>
+                    <h2 class="section-title">
+                        4. Compartir Información con Terceros
+                    </h2>
                     <p>
-                        En Isinova, <strong>no vendemos ni alquilamos tus datos personales</strong>. Solo compartimos información en circunstancias estrictamente necesarias:
+                        En Isinova, <strong
+                            >no vendemos ni alquilamos tus datos personales</strong
+                        >. Solo compartimos información en circunstancias
+                        estrictamente necesarias:
                     </p>
                     <ul class="styled-list">
-                        <li><strong>Proveedores de servicios de confianza:</strong> Colaboramos con empresas que nos ayudan a operar (hosting, procesamiento de datos, email marketing). Estos proveedores solo tienen acceso a la información necesaria para realizar sus funciones y están obligados a mantener la confidencialidad.</li>
-                        <li><strong>Requerimientos legales:</strong> Podemos divulgar información si así lo exige la ley, una orden judicial o una autoridad gubernamental competente.</li>
-                        <li><strong>Protección de derechos:</strong> Para proteger la seguridad, los derechos o la propiedad de Isinova, nuestros usuarios o el público en general.</li>
+                        <li>
+                            <strong
+                                >Proveedores de servicios de confianza:</strong
+                            > Colaboramos con empresas que nos ayudan a operar (hosting,
+                            procesamiento de datos, email marketing). Estos proveedores
+                            solo tienen acceso a la información necesaria para realizar
+                            sus funciones y están obligados a mantener la confidencialidad.
+                        </li>
+                        <li>
+                            <strong>Requerimientos legales:</strong> Podemos divulgar
+                            información si así lo exige la ley, una orden judicial
+                            o una autoridad gubernamental competente.
+                        </li>
+                        <li>
+                            <strong>Protección de derechos:</strong> Para proteger
+                            la seguridad, los derechos o la propiedad de Isinova,
+                            nuestros usuarios o el público en general.
+                        </li>
                     </ul>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">5. Seguridad de los Datos</h2>
                     <p>
-                        Tu seguridad es nuestra prioridad. Implementamos medidas técnicas y organizativas robustas para proteger tus datos contra acceso no autorizado, pérdida o alteración, incluyendo:
+                        Tu seguridad es nuestra prioridad. Implementamos medidas
+                        técnicas y organizativas robustas para proteger tus
+                        datos contra acceso no autorizado, pérdida o alteración,
+                        incluyendo:
                     </p>
                     <div class="security-grid">
                         <div class="security-item">
                             <i class="ph-bold ph-lock-key"></i>
-                            <span>Cifrado SSL/TLS para la transmisión de datos.</span>
+                            <span
+                                >Cifrado SSL/TLS para la transmisión de datos.</span
+                            >
                         </div>
                         <div class="security-item">
                             <i class="ph-bold ph-shield-check"></i>
-                            <span>Acceso restringido y autenticación segura.</span>
+                            <span
+                                >Acceso restringido y autenticación segura.</span
+                            >
                         </div>
                         <div class="security-item">
                             <i class="ph-bold ph-database"></i>
@@ -102,44 +193,80 @@ const lastUpdated = "28 de diciembre de 2025";
                         </div>
                         <div class="security-item">
                             <i class="ph-bold ph-eye"></i>
-                            <span>Monitoreo constante de vulnerabilidades.</span>
+                            <span>Monitoreo constante de vulnerabilidades.</span
+                            >
                         </div>
                     </div>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">6. Tus Derechos</h2>
-                    <p>Como titular de tus datos personales, la ley chilena te garantiza los derechos ARCO (Acceso, Rectificación, Cancelación y Oposición), además de otros:</p>
+                    <p>
+                        Como titular de tus datos personales, la ley chilena te
+                        garantiza los derechos ARCO (Acceso, Rectificación,
+                        Cancelación y Oposición), además de otros:
+                    </p>
                     <ul class="styled-list">
-                        <li><strong>Acceso:</strong> Solicitar copia de los datos que tenemos sobre ti.</li>
-                        <li><strong>Rectificación:</strong> Corregir datos inexactos o desactualizados.</li>
-                        <li><strong>Cancelación (Eliminación):</strong> Solicitar que eliminemos tus datos cuando ya no sean necesarios.</li>
-                        <li><strong>Oposición:</strong> Oponerte al tratamiento de tus datos para fines específicos.</li>
-                        <li><strong>Portabilidad:</strong> Solicitar tus datos en un formato estructurado.</li>
+                        <li>
+                            <strong>Acceso:</strong> Solicitar copia de los datos
+                            que tenemos sobre ti.
+                        </li>
+                        <li>
+                            <strong>Rectificación:</strong> Corregir datos inexactos
+                            o desactualizados.
+                        </li>
+                        <li>
+                            <strong>Cancelación (Eliminación):</strong> Solicitar
+                            que eliminemos tus datos cuando ya no sean necesarios.
+                        </li>
+                        <li>
+                            <strong>Oposición:</strong> Oponerte al tratamiento de
+                            tus datos para fines específicos.
+                        </li>
+                        <li>
+                            <strong>Portabilidad:</strong> Solicitar tus datos en
+                            un formato estructurado.
+                        </li>
                     </ul>
                     <p class="rights-note">
-                        Para ejercer cualquiera de estos derechos, contáctanos directamente en <a href="mailto:privacidad@isinova.cl" class="link-highlight">privacidad@isinova.cl</a>.
+                        Para ejercer cualquiera de estos derechos, contáctanos
+                        directamente en <a
+                            href="mailto:privacidad@isinova.cl"
+                            class="link-highlight">privacidad@isinova.cl</a
+                        >.
                     </p>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">7. Cookies</h2>
                     <p>
-                        Este sitio web utiliza cookies propias y de terceros para mejorar tu experiencia. Puedes configurar tu navegador para rechazar todas o algunas cookies, aunque esto podría afectar el funcionamiento correcto de ciertas secciones del sitio.
+                        Este sitio web utiliza cookies propias y de terceros
+                        para mejorar tu experiencia. Puedes configurar tu
+                        navegador para rechazar todas o algunas cookies, aunque
+                        esto podría afectar el funcionamiento correcto de
+                        ciertas secciones del sitio.
                     </p>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">8. Cambios a esta Política</h2>
                     <p>
-                        Podemos actualizar esta Política de Privacidad ocasionalmente para reflejar cambios en nuestras prácticas o en la normativa legal. Te notificaremos sobre cambios significativos a través de nuestro sitio web o por correo electrónico. Te recomendamos revisar esta página periódicamente.
+                        Podemos actualizar esta Política de Privacidad
+                        ocasionalmente para reflejar cambios en nuestras
+                        prácticas o en la normativa legal. Te notificaremos
+                        sobre cambios significativos a través de nuestro sitio
+                        web o por correo electrónico. Te recomendamos revisar
+                        esta página periódicamente.
                     </p>
                 </section>
 
                 <section class="legal-section contact-section">
                     <h2 class="section-title">9. Contacto</h2>
-                    <p>Si tienes dudas, comentarios o inquietudes sobre nuestra Política de Privacidad, estamos aquí para ayudarte:</p>
-                    
+                    <p>
+                        Si tienes dudas, comentarios o inquietudes sobre nuestra
+                        Política de Privacidad, estamos aquí para ayudarte:
+                    </p>
+
                     <div class="legal-contact-card">
                         <div class="contact-header">
                             <div class="icon-wrapper">
@@ -147,17 +274,23 @@ const lastUpdated = "28 de diciembre de 2025";
                             </div>
                             <div>
                                 <h3>Equipo de Privacidad Isinova</h3>
-                                <p>Estamos disponibles para resolver tus dudas.</p>
+                                <p>
+                                    Estamos disponibles para resolver tus dudas.
+                                </p>
                             </div>
                         </div>
                         <div class="contact-details">
                             <div class="detail-row">
                                 <span class="label">Email Privacidad:</span>
-                                <a href="mailto:privacidad@isinova.cl">privacidad@isinova.cl</a>
+                                <a href="mailto:privacidad@isinova.cl"
+                                    >privacidad@isinova.cl</a
+                                >
                             </div>
                             <div class="detail-row">
                                 <span class="label">Email General:</span>
-                                <a href="mailto:contacto@isinova.cl">contacto@isinova.cl</a>
+                                <a href="mailto:contacto@isinova.cl"
+                                    >contacto@isinova.cl</a
+                                >
                             </div>
                             <div class="detail-row">
                                 <span class="label">Ubicación:</span>
@@ -180,10 +313,10 @@ const lastUpdated = "28 de diciembre de 2025";
         --heading-color: #1e293b;
         --accent-color: var(--primary);
         --bg-light: #f8fafc;
-        
+
         min-height: 100vh;
         /* Asumiendo que --header-height está definido globalmente, si no, pon 80px */
-        padding-top: var(--header-height, 80px); 
+        padding-top: var(--header-height, 80px);
         background-color: #fff;
     }
 
@@ -199,8 +332,14 @@ const lastUpdated = "28 de diciembre de 2025";
 
     .hero-bg-pattern {
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        );
         background-size: 30px 30px;
         opacity: 0.6;
         pointer-events: none;
@@ -214,7 +353,9 @@ const lastUpdated = "28 de diciembre de 2025";
     .hero-badge {
         display: inline-block;
         background: rgba(255, 255, 255, 0.1);
-        color: var(--accent); /* Usando variable global accent si existe, o un color brillante */
+        color: var(
+            --accent
+        ); /* Usando variable global accent si existe, o un color brillante */
         font-size: 0.75rem;
         font-weight: 700;
         text-transform: uppercase;
@@ -240,7 +381,9 @@ const lastUpdated = "28 de diciembre de 2025";
     }
 
     @media (min-width: 768px) {
-        .legal-hero h1 { font-size: 3.5rem; }
+        .legal-hero h1 {
+            font-size: 3.5rem;
+        }
     }
 
     /* Contenido Principal */
@@ -265,7 +408,7 @@ const lastUpdated = "28 de diciembre de 2025";
     }
 
     .section-title::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -1px;
         left: 0;
@@ -290,9 +433,20 @@ const lastUpdated = "28 de diciembre de 2025";
         margin-bottom: 1.25rem;
     }
 
-    .text-dark { color: var(--heading-color); font-weight: 600; }
-    .link-highlight { color: var(--accent-color); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-    .link-highlight:hover { color: #0f172a; text-decoration: underline; }
+    .text-dark {
+        color: var(--heading-color);
+        font-weight: 600;
+    }
+    .link-highlight {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+    .link-highlight:hover {
+        color: #0f172a;
+        text-decoration: underline;
+    }
 
     /* Listas Estilizadas */
     .styled-list {
@@ -323,8 +477,10 @@ const lastUpdated = "28 de diciembre de 2025";
         content: "✓"; /* O usar un icono si prefieres */
         font-size: 1em;
     }
-    
-    .styled-list strong { color: var(--heading-color); }
+
+    .styled-list strong {
+        color: var(--heading-color);
+    }
 
     /* Grid de Seguridad */
     .security-grid {
@@ -335,7 +491,9 @@ const lastUpdated = "28 de diciembre de 2025";
     }
 
     @media (min-width: 640px) {
-        .security-grid { grid-template-columns: 1fr 1fr; }
+        .security-grid {
+            grid-template-columns: 1fr 1fr;
+        }
     }
 
     .security-item {
@@ -352,7 +510,7 @@ const lastUpdated = "28 de diciembre de 2025";
         color: var(--accent-color);
         font-size: 1.25rem;
     }
-    
+
     .security-item span {
         font-size: 0.95rem;
         font-weight: 500;
@@ -422,7 +580,9 @@ const lastUpdated = "28 de diciembre de 2025";
             border-bottom: 1px dashed #e2e8f0;
             padding-bottom: 0.5rem;
         }
-        .detail-row:last-child { border-bottom: none; }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
     }
 
     .detail-row .label {
@@ -435,9 +595,13 @@ const lastUpdated = "28 de diciembre de 2025";
         text-decoration: none;
         font-weight: 500;
     }
-    
-    .detail-row a:hover { text-decoration: underline; }
-    .detail-row span:last-child { color: var(--text-color); }
+
+    .detail-row a:hover {
+        text-decoration: underline;
+    }
+    .detail-row span:last-child {
+        color: var(--text-color);
+    }
 
     .rights-note {
         background-color: #f0f9ff;

@@ -1,0 +1,77 @@
+---
+// src/components/sections/AboutCTA.astro
+---
+
+<section class="cta-section-dark bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="container relative-z text-center">
+        <h2>¿Listo para elevar tu estándar tecnológico?</h2>
+        <p>Hablemos sobre cómo transformar tu gestión académica hoy mismo.</p>
+        <a href="/#contacto" class="btn-glow">Agendar Evaluación Técnica</a>
+    </div>
+</section>
+
+<style>
+    .cta-section-dark {
+        padding: 10rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-section-dark h2 {
+        font-size: 3rem;
+        color: white;
+        margin-bottom: 1.5rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .cta-section-dark p {
+        font-size: 1.25rem;
+        color: #94a3b8;
+        margin-bottom: 3rem;
+        position: relative;
+        z-index: 2;
+    }
+
+    .btn-glow {
+        display: inline-block;
+        padding: 1.2rem 2.5rem;
+        background: var(--primary);
+        color: white;
+        text-decoration: none;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        box-shadow: 0 0 20px rgba(79, 70, 229, 0.4);
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 2;
+    }
+
+    .btn-glow:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+        background: #4338ca;
+    }
+
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+    .text-center {
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        .cta-section-dark {
+            padding: 4rem 0;
+        }
+        .cta-section-dark h2 {
+            font-size: 2rem;
+        }
+    }
+</style>

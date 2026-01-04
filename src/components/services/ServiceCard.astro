@@ -1,0 +1,177 @@
+---
+interface Props {
+    slug: string;
+    title: string;
+    description: string;
+    icon: string;
+    featured?: boolean;
+}
+
+const { slug, title, description, icon, featured = false } = Astro.props;
+---
+
+<article id={slug} class={`service-card ${featured ? "featured" : ""}`}>
+    {featured && <div class="featured-tag">Más Solicitado</div>}
+
+    <div class="icon-wrapper" transition:name={`service-icon-${slug}`}>
+        <i class={`ph-duotone ${icon}`} aria-hidden="true"></i>
+    </div>
+
+    <h3 transition:name={`service-title-${slug}`}>
+        {title}
+    </h3>
+
+    <p>{description}</p>
+
+    <a
+        href={`/servicios/${slug}`}
+        class="link-arrow"
+        aria-label={`Saber más sobre ${title}`}
+    >
+        Más detalles <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
+    </a>
+</article>
+
+<style>
+    .service-card {
+        --bg-card: rgba(255, 255, 255, 0.03);
+        --border-card: rgba(255, 255, 255, 0.08);
+        --text-heading: #f8fafc;
+        --text-body: #cbd5e1;
+        --primary: #6246ea; /* Fallback si no hay variables globales */
+        --accent: #00ff8c;
+
+        background: var(--bg-card);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border-card);
+        border-radius: 1.5rem;
+        padding: 2.5rem 2rem;
+        transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        overflow: hidden;
+        scroll-margin-top: 110px;
+    }
+
+    @media (min-width: 992px) {
+        .service-card {
+            scroll-margin-top: 420px;
+        }
+    }
+
+    .service-card:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+    }
+
+    .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .service-card:hover::before {
+        opacity: 1;
+    }
+
+    .service-card.featured {
+        background: linear-gradient(
+            180deg,
+            rgba(98, 70, 234, 0.05) 0%,
+            rgba(255, 255, 255, 0.02) 100%
+        );
+        border-color: rgba(98, 70, 234, 0.3);
+    }
+
+    .service-card.featured:hover {
+        border-color: var(--primary);
+        box-shadow: 0 20px 50px -10px rgba(98, 70, 234, 0.25);
+    }
+
+    .featured-tag {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: var(--primary);
+        color: white;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        border-radius: 6px;
+        letter-spacing: 0.05em;
+        box-shadow: 0 4px 12px rgba(98, 70, 234, 0.4);
+    }
+
+    .icon-wrapper {
+        width: 60px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .featured .icon-wrapper {
+        color: var(--accent);
+    }
+
+    .service-card:hover .icon-wrapper {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.1) rotate(-3deg);
+        border-color: transparent;
+    }
+
+    .featured:hover .icon-wrapper {
+        background: var(--accent);
+        color: #050b14; /* var(--bg-dark) */
+    }
+
+    .service-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-heading);
+        margin-bottom: 1rem;
+    }
+
+    .service-card p {
+        font-size: 1rem;
+        color: var(--text-body);
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        flex-grow: 1;
+    }
+
+    .link-arrow {
+        color: var(--accent);
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: gap 0.3s ease;
+    }
+
+    .link-arrow:hover {
+        gap: 12px;
+        color: white;
+    }
+</style>

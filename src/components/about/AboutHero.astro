@@ -1,0 +1,153 @@
+---
+// src/components/sections/AboutHero.astro
+---
+
+<header class="about-hero bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="container relative-z animate-enter">
+        <span class="section-badge accent">Nuestra Esencia</span>
+        <h1 class="hero-title">
+            Orquestamos tecnología para <br />
+            <span class="text-span gradient highlight-brand accent"
+                >trascender en la enseñanza.</span
+            >
+        </h1>
+        <p class="hero-desc">
+            En Isinova, no solo desplegamos código; construimos la
+            infraestructura crítica que sostiene el futuro académico de Chile,
+            uniendo ingeniería de clase mundial con la realidad educativa local.
+        </p>
+
+        <dl class="hero-stats-quick">
+            <div class="q-stat" tabindex="0">
+                <dt>+12</dt>
+                <dd>Años de Experiencia</dd>
+            </div>
+            <div class="q-stat" tabindex="0">
+                <dt>99.9%</dt>
+                <dd>Uptime Garantizado</dd>
+            </div>
+            <div class="q-stat" tabindex="0">
+                <dt>+50k</dt>
+                <dd>Alumnos Activos</dd>
+            </div>
+        </dl>
+    </div>
+</header>
+
+<style>
+    .about-hero {
+        padding: 12rem 0 8rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 2rem;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+
+    .hero-desc {
+        font-size: 1.25rem;
+        color: #94a3b8;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        line-height: 1.6;
+    }
+
+    .hero-stats-quick {
+        display: flex;
+        justify-content: center;
+        gap: 3rem;
+        flex-wrap: wrap;
+        margin: 0;
+        padding: 0;
+    }
+
+    .q-stat {
+        text-align: center;
+        color: white;
+        font-size: 0.95rem;
+        cursor: default;
+        transition: transform 0.3s ease;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+    }
+
+    .q-stat:hover {
+        transform: translateY(-3px);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .q-stat dt {
+        color: var(--accent);
+        font-size: 1.25rem;
+        font-weight: 800;
+        display: block;
+    }
+
+    .q-stat dd {
+        margin: 0;
+        font-weight: 400;
+    }
+
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-enter {
+        animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @media (max-width: 1024px) {
+        .about-hero {
+            padding: 4rem 0;
+        }
+        .hero-title {
+            font-size: 3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .about-hero {
+            padding: 4rem 0;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+        .hero-stats-quick {
+            gap: 1.5rem;
+            flex-direction: column;
+            align-items: center;
+        }
+        .q-stat {
+            width: 100%;
+            max-width: 300px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+        }
+    }
+</style>

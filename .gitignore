@@ -25,3 +25,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Temporary logs
+build_output.log
+
+# Lock files for other managers
+pnpm-lock.yaml
+yarn.lock

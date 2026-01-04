@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
 
 const lastUpdated = "28 de diciembre de 2024";
 ---
@@ -24,61 +24,109 @@ const lastUpdated = "28 de diciembre de 2024";
 
         <div class="container">
             <div class="legal-wrapper">
-                
                 <section class="legal-section">
                     <h2 class="section-title">1. Aceptación de los Términos</h2>
                     <p>
-                        Bienvenido a <strong>Isinova SpA</strong>. Al acceder a nuestro sitio web <a href="https://isinova.cl" class="link-highlight">isinova.cl</a> o al contratar cualquiera de nuestros servicios de tecnología educativa, usted acepta quedar vinculado legalmente por estos Términos y Condiciones.
+                        Bienvenido a <strong>Isinova SpA</strong>. Al acceder a
+                        nuestro sitio web <a
+                            href="https://isinova.cl"
+                            class="link-highlight">isinova.cl</a
+                        > o al contratar cualquiera de nuestros servicios de tecnología
+                        educativa, usted acepta quedar vinculado legalmente por estos
+                        Términos y Condiciones.
                     </p>
                     <div class="alert-box">
                         <i class="ph-bold ph-info"></i>
-                        <p>Si no está de acuerdo con alguna de las cláusulas aquí descritas, le solicitamos respetuosamente que no utilice nuestros servicios.</p>
+                        <p>
+                            Si no está de acuerdo con alguna de las cláusulas
+                            aquí descritas, le solicitamos respetuosamente que
+                            no utilice nuestros servicios.
+                        </p>
                     </div>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">2. Definiciones Clave</h2>
-                    <p>Para facilitar la comprensión de este documento, definimos los siguientes conceptos:</p>
+                    <p>
+                        Para facilitar la comprensión de este documento,
+                        definimos los siguientes conceptos:
+                    </p>
                     <ul class="definitions-list">
                         <li>
                             <span class="term">Cliente</span>
-                            <span class="definition">Persona natural o jurídica (institución educativa, empresa) que contrata los servicios.</span>
+                            <span class="definition"
+                                >Persona natural o jurídica (institución
+                                educativa, empresa) que contrata los servicios.</span
+                            >
                         </li>
                         <li>
                             <span class="term">Servicios</span>
-                            <span class="definition">El conjunto de labores técnicas ofrecidas por Isinova, incluyendo implementación LMS, desarrollo web y soporte.</span>
+                            <span class="definition"
+                                >El conjunto de labores técnicas ofrecidas por
+                                Isinova, incluyendo implementación LMS,
+                                desarrollo web y soporte.</span
+                            >
                         </li>
                         <li>
                             <span class="term">Plataforma</span>
-                            <span class="definition">El Sistema de Gestión de Aprendizaje (LMS) o software web desplegado por Isinova para el Cliente.</span>
+                            <span class="definition"
+                                >El Sistema de Gestión de Aprendizaje (LMS) o
+                                software web desplegado por Isinova para el
+                                Cliente.</span
+                            >
                         </li>
                         <li>
-                            <span class="term">SLA (Service Level Agreement)</span>
-                            <span class="definition">Acuerdo de nivel de servicio que garantiza tiempos de respuesta y disponibilidad.</span>
+                            <span class="term"
+                                >SLA (Service Level Agreement)</span
+                            >
+                            <span class="definition"
+                                >Acuerdo de nivel de servicio que garantiza
+                                tiempos de respuesta y disponibilidad.</span
+                            >
                         </li>
                     </ul>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">3. Alcance de los Servicios</h2>
-                    <p>Isinova provee soluciones tecnológicas especializadas. A continuación, se detallan las categorías principales:</p>
+                    <p>
+                        Isinova provee soluciones tecnológicas especializadas. A
+                        continuación, se detallan las categorías principales:
+                    </p>
 
                     <div class="services-grid-legal">
                         <div class="service-item">
                             <h3>3.1 Implementación LMS</h3>
-                            <p>Instalación, configuración y personalización (branding) de plataformas como Moodle o Canvas. Incluye la configuración de plugins y herramientas pedagógicas.</p>
+                            <p>
+                                Instalación, configuración y personalización
+                                (branding) de plataformas como Moodle o Canvas.
+                                Incluye la configuración de plugins y
+                                herramientas pedagógicas.
+                            </p>
                         </div>
                         <div class="service-item">
                             <h3>3.2 Desarrollo Web EdTech</h3>
-                            <p>Creación de portales institucionales, integraciones con sistemas terceros (ERP, CRM) y desarrollo de funcionalidades a medida.</p>
+                            <p>
+                                Creación de portales institucionales,
+                                integraciones con sistemas terceros (ERP, CRM) y
+                                desarrollo de funcionalidades a medida.
+                            </p>
                         </div>
                         <div class="service-item">
                             <h3>3.3 Migración de Datos</h3>
-                            <p>Servicio de traspaso seguro de historial académico, usuarios y cursos desde plataformas legacy hacia la nueva infraestructura.</p>
+                            <p>
+                                Servicio de traspaso seguro de historial
+                                académico, usuarios y cursos desde plataformas
+                                legacy hacia la nueva infraestructura.
+                            </p>
                         </div>
                         <div class="service-item">
                             <h3>3.4 Soporte & Mantenimiento</h3>
-                            <p>Actualizaciones de seguridad, parches de software, monitoreo de servidores y resolución de incidencias según el plan contratado.</p>
+                            <p>
+                                Actualizaciones de seguridad, parches de
+                                software, monitoreo de servidores y resolución
+                                de incidencias según el plan contratado.
+                            </p>
                         </div>
                     </div>
                 </section>
@@ -87,13 +135,19 @@ const lastUpdated = "28 de diciembre de 2024";
                     <h2 class="section-title">4. Proceso de Contratación</h2>
                     <ul class="step-list">
                         <li>
-                            <strong>Cotización:</strong> Toda solicitud se formaliza mediante una propuesta comercial detallando alcance, plazos y costos.
+                            <strong>Cotización:</strong> Toda solicitud se formaliza
+                            mediante una propuesta comercial detallando alcance, plazos
+                            y costos.
                         </li>
                         <li>
-                            <strong>Aceptación:</strong> Se requiere la firma de un contrato de prestación de servicios o la emisión de una Orden de Compra formal.
+                            <strong>Aceptación:</strong> Se requiere la firma de un
+                            contrato de prestación de servicios o la emisión de una
+                            Orden de Compra formal.
                         </li>
                         <li>
-                            <strong>Inicio:</strong> El proyecto comienza oficialmente tras la recepción del anticipo acordado (usualmente 50%) y la entrega de accesos necesarios.
+                            <strong>Inicio:</strong> El proyecto comienza oficialmente
+                            tras la recepción del anticipo acordado (usualmente 50%)
+                            y la entrega de accesos necesarios.
                         </li>
                     </ul>
                 </section>
@@ -104,19 +158,41 @@ const lastUpdated = "28 de diciembre de 2024";
                         <div class="obligation-column client">
                             <h3>Del Cliente</h3>
                             <ul class="check-list">
-                                <li>Entregar información veraz y accesos a tiempo.</li>
-                                <li>Designar una contraparte técnica o administrativa.</li>
-                                <li>Cumplir con los hitos de pago acordados.</li>
-                                <li>Usar la plataforma para fines lícitos y educativos.</li>
+                                <li>
+                                    Entregar información veraz y accesos a
+                                    tiempo.
+                                </li>
+                                <li>
+                                    Designar una contraparte técnica o
+                                    administrativa.
+                                </li>
+                                <li>
+                                    Cumplir con los hitos de pago acordados.
+                                </li>
+                                <li>
+                                    Usar la plataforma para fines lícitos y
+                                    educativos.
+                                </li>
                             </ul>
                         </div>
                         <div class="obligation-column provider">
                             <h3>De Isinova</h3>
                             <ul class="check-list">
-                                <li>Ejecutar el servicio con estándares profesionales.</li>
-                                <li>Mantener estricta confidencialidad de los datos.</li>
-                                <li>Cumplir los plazos de entrega estipulados.</li>
-                                <li>Garantizar la seguridad técnica de la implementación.</li>
+                                <li>
+                                    Ejecutar el servicio con estándares
+                                    profesionales.
+                                </li>
+                                <li>
+                                    Mantener estricta confidencialidad de los
+                                    datos.
+                                </li>
+                                <li>
+                                    Cumplir los plazos de entrega estipulados.
+                                </li>
+                                <li>
+                                    Garantizar la seguridad técnica de la
+                                    implementación.
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -126,15 +202,32 @@ const lastUpdated = "28 de diciembre de 2024";
                     <h2 class="section-title">6. Condiciones Económicas</h2>
                     <div class="subsection">
                         <h3>6.1 Modalidades de Pago</h3>
-                        <p>Salvo que el contrato específico indique lo contrario:</p>
+                        <p>
+                            Salvo que el contrato específico indique lo
+                            contrario:
+                        </p>
                         <ul class="styled-list">
-                            <li><strong>Proyectos (Implementación/Desarrollo):</strong> 50% de anticipo y 50% contra entrega conforme.</li>
-                            <li><strong>Servicios Recurrentes (Soporte/Hosting):</strong> Facturación mensual anticipada.</li>
+                            <li>
+                                <strong
+                                    >Proyectos (Implementación/Desarrollo):</strong
+                                > 50% de anticipo y 50% contra entrega conforme.
+                            </li>
+                            <li>
+                                <strong
+                                    >Servicios Recurrentes (Soporte/Hosting):</strong
+                                > Facturación mensual anticipada.
+                            </li>
                         </ul>
                     </div>
                     <div class="subsection">
                         <h3>6.2 Mora</h3>
-                        <p>El retraso en el pago de facturas superior a <strong>15 días corridos</strong> faculta a Isinova para suspender temporalmente los servicios de soporte o acceso a servidores gestionados hasta la regularización de la deuda.</p>
+                        <p>
+                            El retraso en el pago de facturas superior a <strong
+                                >15 días corridos</strong
+                            > faculta a Isinova para suspender temporalmente los servicios
+                            de soporte o acceso a servidores gestionados hasta la
+                            regularización de la deuda.
+                        </p>
                     </div>
                 </section>
 
@@ -142,33 +235,71 @@ const lastUpdated = "28 de diciembre de 2024";
                     <h2 class="section-title">7. Propiedad Intelectual</h2>
                     <p>Es fundamental aclarar la titularidad de los activos:</p>
                     <ul class="styled-list">
-                        <li><strong>Software Base (Open Source):</strong> Moodle, Canvas u otros CMS mantienen sus licencias originales (GPL, AGPL). El cliente recibe una instancia de este software.</li>
-                        <li><strong>Desarrollos a Medida:</strong> El código desarrollado específicamente para el Cliente será de su propiedad una vez pagado el proyecto en su totalidad.</li>
-                        <li><strong>Contenido Educativo:</strong> Todo material (cursos, videos, textos) cargado en la plataforma es propiedad exclusiva del Cliente. Isinova no reclama derechos sobre ellos.</li>
+                        <li>
+                            <strong>Software Base (Open Source):</strong> Moodle,
+                            Canvas u otros CMS mantienen sus licencias originales
+                            (GPL, AGPL). El cliente recibe una instancia de este software.
+                        </li>
+                        <li>
+                            <strong>Desarrollos a Medida:</strong> El código desarrollado
+                            específicamente para el Cliente será de su propiedad una
+                            vez pagado el proyecto en su totalidad.
+                        </li>
+                        <li>
+                            <strong>Contenido Educativo:</strong> Todo material (cursos,
+                            videos, textos) cargado en la plataforma es propiedad
+                            exclusiva del Cliente. Isinova no reclama derechos sobre
+                            ellos.
+                        </li>
                     </ul>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">8. Confidencialidad y Datos</h2>
                     <p>
-                        Ambas partes acuerdan proteger la información confidencial (datos de alumnos, estrategias, claves) y no divulgarla a terceros, salvo requerimiento legal. Esta obligación perdura indefinidamente tras finalizar el contrato.
+                        Ambas partes acuerdan proteger la información
+                        confidencial (datos de alumnos, estrategias, claves) y
+                        no divulgarla a terceros, salvo requerimiento legal.
+                        Esta obligación perdura indefinidamente tras finalizar
+                        el contrato.
                     </p>
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">9. Limitación de Responsabilidad</h2>
-                    <p>Isinova se compromete a realizar sus mejores esfuerzos para garantizar la continuidad del servicio (99.9% Uptime en planes gestionados). Sin embargo:</p>
+                    <h2 class="section-title">
+                        9. Limitación de Responsabilidad
+                    </h2>
+                    <p>
+                        Isinova se compromete a realizar sus mejores esfuerzos
+                        para garantizar la continuidad del servicio (99.9%
+                        Uptime en planes gestionados). Sin embargo:
+                    </p>
                     <ul class="styled-list warning-list">
-                        <li>No somos responsables por fallas derivadas de proveedores externos (ISP, Datacenters de terceros) o fuerza mayor.</li>
-                        <li>El Cliente es responsable de mantener copias de seguridad de su contenido pedagógico (salvo que contrate nuestro servicio de Backup Gestionado).</li>
-                        <li>La responsabilidad económica máxima de Isinova se limita al monto pagado por el cliente en los últimos 12 meses.</li>
+                        <li>
+                            No somos responsables por fallas derivadas de
+                            proveedores externos (ISP, Datacenters de terceros)
+                            o fuerza mayor.
+                        </li>
+                        <li>
+                            El Cliente es responsable de mantener copias de
+                            seguridad de su contenido pedagógico (salvo que
+                            contrate nuestro servicio de Backup Gestionado).
+                        </li>
+                        <li>
+                            La responsabilidad económica máxima de Isinova se
+                            limita al monto pagado por el cliente en los últimos
+                            12 meses.
+                        </li>
                     </ul>
                 </section>
 
                 <section class="legal-section">
                     <h2 class="section-title">10. Garantía Post-Venta</h2>
                     <p>
-                        Todo proyecto de implementación cuenta con una <strong>garantía técnica de 30 días</strong> post-entrega para corregir cualquier error (bug) o defecto de configuración imputable a Isinova, sin costo adicional.
+                        Todo proyecto de implementación cuenta con una <strong
+                            >garantía técnica de 30 días</strong
+                        > post-entrega para corregir cualquier error (bug) o defecto
+                        de configuración imputable a Isinova, sin costo adicional.
                     </p>
                 </section>
 
@@ -176,16 +307,29 @@ const lastUpdated = "28 de diciembre de 2024";
                     <h2 class="section-title">11. Terminación del Servicio</h2>
                     <p>El contrato podrá finalizarse anticipadamente por:</p>
                     <ul class="styled-list">
-                        <li><strong>Voluntad del Cliente:</strong> Con aviso previo de 30 días.</li>
-                        <li><strong>Incumplimiento:</strong> Por falta de pago o violación de estos términos.</li>
+                        <li>
+                            <strong>Voluntad del Cliente:</strong> Con aviso previo
+                            de 30 días.
+                        </li>
+                        <li>
+                            <strong>Incumplimiento:</strong> Por falta de pago o violación
+                            de estos términos.
+                        </li>
                     </ul>
-                    <p class="note">Al finalizar, Isinova facilitará la exportación de datos del cliente en formatos estándar (SQL, CSV), siempre que no existan deudas pendientes.</p>
+                    <p class="note">
+                        Al finalizar, Isinova facilitará la exportación de datos
+                        del cliente en formatos estándar (SQL, CSV), siempre que
+                        no existan deudas pendientes.
+                    </p>
                 </section>
 
                 <section class="legal-section contact-section">
                     <h2 class="section-title">12. Dudas y Contacto Legal</h2>
-                    <p>Si tienes preguntas sobre la interpretación de estos términos:</p>
-                    
+                    <p>
+                        Si tienes preguntas sobre la interpretación de estos
+                        términos:
+                    </p>
+
                     <div class="legal-contact-card">
                         <div class="contact-header">
                             <div class="icon-wrapper">
@@ -193,17 +337,24 @@ const lastUpdated = "28 de diciembre de 2024";
                             </div>
                             <div>
                                 <h3>Departamento Legal Isinova</h3>
-                                <p>Estamos disponibles para aclarar tus dudas contractuales.</p>
+                                <p>
+                                    Estamos disponibles para aclarar tus dudas
+                                    contractuales.
+                                </p>
                             </div>
                         </div>
                         <div class="contact-details">
                             <div class="detail-row">
                                 <span class="label">Email Legal:</span>
-                                <a href="mailto:legal@isinova.cl">legal@isinova.cl</a>
+                                <a href="mailto:legal@isinova.cl"
+                                    >legal@isinova.cl</a
+                                >
                             </div>
                             <div class="detail-row">
                                 <span class="label">Email General:</span>
-                                <a href="mailto:contacto@isinova.cl">contacto@isinova.cl</a>
+                                <a href="mailto:contacto@isinova.cl"
+                                    >contacto@isinova.cl</a
+                                >
                             </div>
                             <div class="detail-row">
                                 <span class="label">Jurisdicción:</span>
@@ -226,9 +377,9 @@ const lastUpdated = "28 de diciembre de 2024";
         --heading-color: #1e293b;
         --accent-color: var(--primary);
         --bg-light: #f8fafc;
-        
+
         min-height: 100vh;
-        padding-top: var(--header-height, 80px); 
+        padding-top: var(--header-height, 80px);
         background-color: #fff;
     }
 
@@ -244,14 +395,23 @@ const lastUpdated = "28 de diciembre de 2024";
 
     .hero-bg-pattern {
         position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        );
         background-size: 30px 30px;
         opacity: 0.6;
         pointer-events: none;
     }
 
-    .hero-content { position: relative; z-index: 1; }
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
 
     .hero-badge {
         display: inline-block;
@@ -275,10 +435,16 @@ const lastUpdated = "28 de diciembre de 2024";
         line-height: 1.2;
     }
 
-    .last-update { color: #94a3b8; font-size: 0.9rem; font-weight: 500; }
+    .last-update {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
 
     @media (min-width: 768px) {
-        .legal-hero h1 { font-size: 3.5rem; }
+        .legal-hero h1 {
+            font-size: 3.5rem;
+        }
     }
 
     /* Layout Content */
@@ -288,7 +454,9 @@ const lastUpdated = "28 de diciembre de 2024";
         padding: 4rem 1.5rem;
     }
 
-    .legal-section { margin-bottom: 3.5rem; }
+    .legal-section {
+        margin-bottom: 3.5rem;
+    }
 
     .section-title {
         font-size: 1.75rem;
@@ -301,10 +469,12 @@ const lastUpdated = "28 de diciembre de 2024";
     }
 
     .section-title::after {
-        content: '';
+        content: "";
         position: absolute;
-        bottom: -1px; left: 0;
-        width: 60px; height: 3px;
+        bottom: -1px;
+        left: 0;
+        width: 60px;
+        height: 3px;
         background-color: var(--accent-color);
         border-radius: 2px;
     }
@@ -316,8 +486,14 @@ const lastUpdated = "28 de diciembre de 2024";
         margin-bottom: 1.25rem;
     }
 
-    .link-highlight { color: var(--accent-color); text-decoration: none; font-weight: 500; }
-    .link-highlight:hover { text-decoration: underline; }
+    .link-highlight {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .link-highlight:hover {
+        text-decoration: underline;
+    }
 
     /* Alert Box */
     .alert-box {
@@ -330,18 +506,38 @@ const lastUpdated = "28 de diciembre de 2024";
         align-items: flex-start;
         color: #881337;
     }
-    .alert-box i { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
-    .alert-box p { margin: 0; font-size: 0.95rem; line-height: 1.5; color: inherit; }
+    .alert-box i {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    .alert-box p {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: inherit;
+    }
 
     /* Definitions List */
-    .definitions-list { list-style: none; padding: 0; }
+    .definitions-list {
+        list-style: none;
+        padding: 0;
+    }
     .definitions-list li {
         margin-bottom: 1rem;
         padding-bottom: 1rem;
         border-bottom: 1px dashed #e2e8f0;
     }
-    .term { display: block; font-weight: 700; color: var(--heading-color); margin-bottom: 0.25rem; }
-    .definition { display: block; color: var(--text-color); }
+    .term {
+        display: block;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 0.25rem;
+    }
+    .definition {
+        display: block;
+        color: var(--text-color);
+    }
 
     /* Services Grid */
     .services-grid-legal {
@@ -350,7 +546,11 @@ const lastUpdated = "28 de diciembre de 2024";
         gap: 1.5rem;
         margin-top: 1.5rem;
     }
-    @media (min-width: 640px) { .services-grid-legal { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 640px) {
+        .services-grid-legal {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
 
     .service-item {
         background: var(--bg-light);
@@ -358,8 +558,17 @@ const lastUpdated = "28 de diciembre de 2024";
         border-radius: 0.75rem;
         border: 1px solid #e2e8f0;
     }
-    .service-item h3 { font-size: 1.1rem; font-weight: 700; color: var(--heading-color); margin-bottom: 0.5rem; }
-    .service-item p { font-size: 0.9rem; margin: 0; line-height: 1.5; }
+    .service-item h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin-bottom: 0.5rem;
+    }
+    .service-item p {
+        font-size: 0.9rem;
+        margin: 0;
+        line-height: 1.5;
+    }
 
     /* Step List (Numbered) */
     .step-list {
@@ -376,13 +585,17 @@ const lastUpdated = "28 de diciembre de 2024";
         counter-increment: legal-steps;
         content: counter(legal-steps);
         position: absolute;
-        left: 0; top: 0;
-        width: 28px; height: 28px;
+        left: 0;
+        top: 0;
+        width: 28px;
+        height: 28px;
         background: var(--bg-light);
         color: var(--accent-color);
         border: 1px solid #e2e8f0;
         border-radius: 50%;
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-weight: 700;
         font-size: 0.85rem;
     }
@@ -394,38 +607,81 @@ const lastUpdated = "28 de diciembre de 2024";
         gap: 2rem;
         margin-top: 1.5rem;
     }
-    @media (min-width: 640px) { .obligations-wrapper { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 640px) {
+        .obligations-wrapper {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
 
-    .obligation-column h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid; }
-    .client h3 { color: #0f172a; border-color: #cbd5e1; }
-    .provider h3 { color: var(--accent-color); border-color: var(--accent-color); }
+    .obligation-column h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid;
+    }
+    .client h3 {
+        color: #0f172a;
+        border-color: #cbd5e1;
+    }
+    .provider h3 {
+        color: var(--accent-color);
+        border-color: var(--accent-color);
+    }
 
     /* List Styles */
-    .styled-list, .check-list { list-style: none; padding: 0; }
-    .styled-list li, .check-list li {
+    .styled-list,
+    .check-list {
+        list-style: none;
+        padding: 0;
+    }
+    .styled-list li,
+    .check-list li {
         position: relative;
         padding-left: 1.5rem;
         margin-bottom: 0.75rem;
         color: var(--text-color);
     }
-    .styled-list li::before { content: "•"; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; }
-    
-    .check-list li::before { 
-        content: "✓"; 
-        color: #10b981; 
-        position: absolute; left: 0; top: 2px;
+    .styled-list li::before {
+        content: "•";
+        color: var(--accent-color);
+        position: absolute;
+        left: 0;
         font-weight: bold;
     }
-    
+
+    .check-list li::before {
+        content: "✓";
+        color: #10b981;
+        position: absolute;
+        left: 0;
+        top: 2px;
+        font-weight: bold;
+    }
+
     .warning-list li::before {
         content: "!";
         color: #f59e0b;
     }
 
-    .subsection { margin-top: 2rem; }
-    .subsection h3 { font-size: 1.15rem; font-weight: 600; color: var(--heading-color); margin-bottom: 0.75rem; }
+    .subsection {
+        margin-top: 2rem;
+    }
+    .subsection h3 {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: var(--heading-color);
+        margin-bottom: 0.75rem;
+    }
 
-    .note { font-size: 0.9rem; font-style: italic; color: #64748b; background: #f1f5f9; padding: 1rem; border-radius: 0.5rem; }
+    .note {
+        font-size: 0.9rem;
+        font-style: italic;
+        color: #64748b;
+        background: #f1f5f9;
+        padding: 1rem;
+        border-radius: 0.5rem;
+    }
 
     /* Contact Card (Igual a Privacidad) */
     .legal-contact-card {
@@ -447,29 +703,62 @@ const lastUpdated = "28 de diciembre de 2024";
     }
 
     .contact-header .icon-wrapper {
-        width: 48px; height: 48px;
+        width: 48px;
+        height: 48px;
         background: rgba(99, 102, 241, 0.1);
         color: var(--accent-color);
         border-radius: 12px;
-        display: flex; align-items: center; justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         font-size: 1.5rem;
     }
 
-    .contact-header h3 { font-size: 1.1rem; font-weight: 700; color: var(--heading-color); margin: 0; }
-    .contact-header p { font-size: 0.9rem; color: #64748b; margin: 0; }
+    .contact-header h3 {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--heading-color);
+        margin: 0;
+    }
+    .contact-header p {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin: 0;
+    }
 
-    .contact-details { display: flex; flex-direction: column; gap: 0.75rem; }
-    
-    .detail-row { display: flex; flex-direction: column; font-size: 0.95rem; }
+    .contact-details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .detail-row {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.95rem;
+    }
     @media (min-width: 480px) {
         .detail-row {
-            flex-direction: row; justify-content: space-between;
-            border-bottom: 1px dashed #e2e8f0; padding-bottom: 0.5rem;
+            flex-direction: row;
+            justify-content: space-between;
+            border-bottom: 1px dashed #e2e8f0;
+            padding-bottom: 0.5rem;
         }
-        .detail-row:last-child { border-bottom: none; }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
     }
-    
-    .detail-row .label { font-weight: 600; color: var(--heading-color); }
-    .detail-row a { color: var(--accent-color); text-decoration: none; font-weight: 500; }
-    .detail-row a:hover { text-decoration: underline; }
+
+    .detail-row .label {
+        font-weight: 600;
+        color: var(--heading-color);
+    }
+    .detail-row a {
+        color: var(--accent-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .detail-row a:hover {
+        text-decoration: underline;
+    }
 </style>

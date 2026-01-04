@@ -162,8 +162,8 @@ main {
         transparent 300deg,
         rgba(168, 85, 247, 0.05) 360deg
     );
-    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
     -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+    mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
     filter: blur(40px);
     pointer-events: none;
     z-index: 1;
@@ -211,8 +211,8 @@ main {
     background: rgba(99, 102, 241, 0.1);
     border: 1px solid rgba(99, 102, 241, 0.2);
     color: var(--primary);
-    backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
     transition: all 0.3s ease;
 }
 
@@ -276,12 +276,14 @@ main {
     .text-span.gradient {
         background: linear-gradient(135deg, var(--primary), var(--accent));
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 
     .text-span.gradient2 {
         background: linear-gradient(135deg, var(--primary), #3b82f6);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
         color: var(--primary);
     }
@@ -289,6 +291,7 @@ main {
     .text-span.gradient3 {
         background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
         -webkit-background-clip: text;
+        background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 

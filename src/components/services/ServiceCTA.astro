@@ -1,0 +1,238 @@
+---
+interface Props {
+    title: string;
+    buttonText: string;
+    serviceName: string;
+}
+
+const { title, buttonText, serviceName } = Astro.props;
+---
+
+<section class="service-cta bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
+    
+    <div class="cta-glow"></div>
+
+    <div class="container relative-z">
+        <div class="cta-card-glass">
+            <div class="highlight-border"></div>
+            
+            <div class="cta-layout">
+                <div class="cta-text-col">
+                    <span class="badge-pill">Siguiente Paso</span>
+                    <h2 class="cta-title">
+                        {title}
+                    </h2>
+                    <p class="cta-description">
+                        Estás a un paso de optimizar tu gestión con <strong class="text-white">{serviceName}</strong>. 
+                        Agenda una breve asesoría técnica gratuita y recibe una hoja de ruta clara.
+                    </p>
+                </div>
+
+                <div class="cta-action-col">
+                    <a href="#contacto" class="btn-glow full-width-mobile">
+                        {buttonText} <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                    
+                    <div class="trust-badge">
+                        <div class="pulse-dot"></div>
+                        <span>Respuesta garantizada &lt; 24h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* --- 1. LAYOUT SECCIÓN --- */
+    .service-cta {
+        padding: 6rem 0;
+        position: relative;
+        overflow: hidden;
+        /* Fallback si no carga global.css */
+        background-color: #050b14; 
+        margin: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+    }
+    
+    .relative-z { position: relative; z-index: 10; }
+
+    /* --- 2. FONDOS & EFECTOS --- */
+    /* Estos asumen que existen en global, pero los defino aquí por seguridad local */
+    .bg-base { position: absolute; inset: 0; background-color: #050b14; z-index: 0; }
+    .tech-grid-bg { position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 30px 30px; opacity: 0.3; pointer-events: none; z-index: 1; }
+
+    .cta-glow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        max-width: 800px;
+        height: 500px;
+        background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    /* --- 3. TARJETA GLASS --- */
+    .cta-card-glass {
+        background: rgba(30, 41, 59, 0.6); /* Slate profundo + transparencia */
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 2rem;
+        padding: 2.5rem 1.5rem; /* Padding mobile */
+        position: relative;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+        overflow: hidden;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 768px) {
+        .cta-card-glass { padding: 3.5rem; }
+    }
+
+    .highlight-border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    }
+
+    /* --- 4. GRID CONTENT --- */
+    .cta-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+        text-align: center; /* Centrado en mobile por defecto */
+    }
+
+    @media (min-width: 992px) {
+        .cta-layout {
+            grid-template-columns: 1.6fr 1fr;
+            text-align: left; /* Alineado izq en desktop */
+            gap: 4rem;
+        }
+    }
+
+    /* --- 5. TIPOGRAFÍA --- */
+    .cta-text-col { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+    @media (min-width: 992px) { .cta-text-col { align-items: flex-start; } }
+
+    .badge-pill {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--accent, #10b981);
+        background: rgba(16, 185, 129, 0.1);
+        padding: 6px 14px;
+        border-radius: 50px;
+        border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .cta-title {
+        font-size: 2rem;
+        font-weight: 800;
+        color: white;
+        line-height: 1.15;
+    }
+    
+    @media (min-width: 768px) { .cta-title { font-size: 2.75rem; } }
+
+    .cta-description {
+        font-size: 1.05rem;
+        color: #94a3b8; /* Slate 400 */
+        line-height: 1.6;
+        max-width: 600px;
+    }
+    
+    .text-white { color: white; }
+
+    /* --- 6. ACCIONES --- */
+    .cta-action-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    @media (min-width: 992px) {
+        .cta-action-col { align-items: flex-end; }
+    }
+
+    /* Botón Glow Responsive */
+    .btn-glow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: var(--primary, #6366f1);
+        color: white;
+        padding: 1rem 2.5rem;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        white-space: nowrap;
+    }
+
+    .btn-glow:hover {
+        transform: translateY(-3px);
+        background: #4f46e5;
+        box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
+        border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .full-width-mobile {
+        width: 100%;
+    }
+    @media (min-width: 500px) { .full-width-mobile { width: auto; } }
+
+    /* Trust Badge */
+    .trust-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: #64748b;
+        background: rgba(0, 0, 0, 0.2);
+        padding: 6px 14px;
+        border-radius: 50px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .pulse-dot {
+        width: 8px;
+        height: 8px;
+        background: var(--accent, #10b981);
+        border-radius: 50%;
+        box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+        70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+</style>

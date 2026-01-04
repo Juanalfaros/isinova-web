@@ -1,0 +1,214 @@
+---
+// src/pages/servicios/index.astro
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import ServiceCard from "../../components/services/ServiceCard.astro";
+
+const servicesCollection = await getCollection("servicios");
+const servicesData = servicesCollection.map(
+    (service: CollectionEntry<"servicios">) => ({
+        slug: service.slug,
+        ...service.data,
+    }),
+);
+
+const title = "Servicios de Ingeniería EdTech | Isinova Chile";
+const description =
+    "Explora nuestras soluciones de infraestructura educativa: Aulas Virtuales LMS, Integraciones ERP, Migración de Datos y Soporte Estratégico.";
+---
+
+<Layout title={title} description={description}>
+    <main class="bg-tech-dark">
+        <!-- Fondo Global -->
+        <div class="bg-base"></div>
+        <div class="tech-grid-bg"></div>
+        <div class="ambient-glow"></div>
+
+        <!-- HERO SECTION -->
+        <header class="services-hero">
+            <div class="container relative-z">
+                <div class="hero-content">
+                    <span class="section-badge accent"
+                        >Nuestras Capacidades</span
+                    >
+                    <h1 class="section-title">
+                        Soluciones <span
+                            class="gradient-text highlight-brand primary"
+                            >Integrales</span
+                        > para la Educación Moderna
+                    </h1>
+                    <p class="hero-desc">
+                        Diseñamos y ejecutamos la infraestructura crítica que
+                        potencia el aprendizaje, asegurando interoperabilidad
+                        absoluta y escalabilidad técnica.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <!-- SERVICES GRID -->
+        <section class="services-index-grid" aria-labelledby="services-title">
+            <div class="container">
+                <h2 id="services-title" class="sr-only">
+                    Listado de Servicios Especializados
+                </h2>
+                <div class="services-grid">
+                    {
+                        servicesData.map((service) => (
+                            <ServiceCard {...service} />
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- CUSTOM CTA -->
+        <section class="quick-contact-wrapper" aria-labelledby="cta-heading">
+            <div class="container relative-z">
+                <article class="cta-compact-glass">
+                    <header class="cta-text">
+                        <h2 id="cta-heading">
+                            ¿Tu proyecto requiere una arquitectura especial?
+                        </h2>
+                        <p>
+                            Si tu institución tiene desafíos técnicos únicos o
+                            requiere integraciones personalizadas, nuestro
+                            equipo está listo para diseñar una solución a
+                            medida.
+                        </p>
+                    </header>
+                    <div class="cta-btn">
+                        <a href="/#contacto" class="btn-glow">
+                            Consultar con Ingeniería
+                            <i
+                                class="ph-bold ph-chats-circle"
+                                aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<style>
+    /* --- UTILS --- */
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+    }
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+
+    /* --- HERO --- */
+    .services-hero {
+        padding: 12rem 0 8rem;
+        text-align: center;
+        position: relative;
+    }
+    .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 2rem;
+        line-height: 1.1;
+        letter-spacing: -1px;
+    }
+    .hero-desc {
+        font-size: 1.25rem;
+        color: #94a3b8;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .services-hero {
+            padding: 8rem 0 4rem;
+        }
+        .hero-content h1 {
+            font-size: 2.5rem;
+        }
+    }
+
+    /* --- GRID --- */
+    .services-index-grid {
+        padding: 6rem 0 10rem;
+    }
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+    }
+
+    /* --- CTA --- */
+    .quick-contact-wrapper {
+        padding: 6rem 0 10rem;
+        position: relative;
+    }
+    .cta-compact-glass {
+        background: rgba(30, 41, 59, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 2rem;
+        padding: 3.5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        backdrop-filter: blur(12px);
+        gap: 2.5rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 992px) {
+        .cta-compact-glass {
+            flex-direction: row;
+            text-align: left;
+            justify-content: space-between;
+        }
+        .cta-text {
+            max-width: 60%;
+        }
+    }
+
+    .cta-text h2 {
+        font-size: 2rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 1rem;
+    }
+    .cta-text p {
+        color: #94a3b8;
+        font-size: 1.15rem;
+        line-height: 1.6;
+    }
+
+    .btn-glow {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        background: var(--primary);
+        color: white;
+        padding: 1.2rem 2.5rem;
+        border-radius: 100px;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 0 20px rgba(98, 70, 234, 0.4);
+        transition: all 0.4s ease;
+    }
+    .btn-glow:hover {
+        background: #4f46e5;
+        transform: translateY(-3px);
+        box-shadow: 0 0 30px rgba(98, 70, 234, 0.6);
+    }
+</style>

@@ -1,0 +1,446 @@
+---
+// src/components/sections/AboutLeader.astro
+import { Image } from "astro:assets";
+
+interface Props {
+    image: ImageMetadata;
+}
+
+const { image } = Astro.props;
+---
+
+<section class="section-leader bg-tech-dark" aria-labelledby="leader-title">
+    <div class="bg-base"></div>
+    <div class="leader-glow-bg"></div>
+    <div class="container relative-z">
+        <div class="leader-header-mobile">
+            <span class="section-badge accent"
+                >Liderazgo Técnico & Académico</span
+            >
+            <h2 id="leader-title-mobile">El Arquitecto Detrás de Isinova</h2>
+        </div>
+
+        <article class="leader-grid-expanded">
+            <div class="leader-profile-col">
+                <figure class="leader-frame-premium">
+                    <div class="avatar-photo-giant">
+                        <Image
+                            src={image}
+                            alt="Fotografía de Adolfo Saballa"
+                            class="leader-img-premium shadow-avatar"
+                            width={800}
+                            height={1000}
+                            quality="max"
+                            format="webp"
+                            loading="eager"
+                        />
+                    </div>
+
+                    <div class="badges-wrapper-responsive">
+                        <div class="leader-float-badge left">
+                            <i class="ph-fill ph-chalkboard-teacher"></i> Docente
+                        </div>
+                        <div class="leader-float-badge right">
+                            <i class="ph-fill ph-certificate"></i> Magíster TI
+                        </div>
+                    </div>
+                </figure>
+
+                <aside class="leader-specs-box">
+                    <h4>Arsenal Técnico</h4>
+                    <ul class="tech-list-dense">
+                        <li>
+                            <i class="ph-bold ph-database"></i> SQL Server Experto
+                            / SSIS
+                        </li>
+                        <li>
+                            <i class="ph-bold ph-code"></i> .NET Core / C# / ASP.NET
+                        </li>
+                        <li><i class="ph-bold ph-cloud"></i> Azure & DevOps</li>
+                        <li>
+                            <i class="ph-bold ph-robot"></i> Web Scraping & RPA
+                        </li>
+                        <li>
+                            <i class="ph-bold ph-graduation-cap"></i> Banner ERP &
+                            LMS
+                        </li>
+                    </ul>
+                </aside>
+            </div>
+
+            <div class="leader-content-col">
+                <header class="leader-titles desktop-only">
+                    <span class="section-badge accent">Liderazgo Técnico</span>
+                    <h2 id="leader-title">El Arquitecto Detrás de Isinova</h2>
+                </header>
+
+                <div class="leader-name-block">
+                    <h3>Adolfo Saballa Villegas</h3>
+                    <p class="role-subtitle-main">
+                        CEO & Founder | Arquitecto de Software Senior
+                    </p>
+                </div>
+
+                <div class="bio-expanded">
+                    <p class="lead-bio">
+                        Con más de <strong>12 años de trayectoria</strong> en el ciclo
+                        de vida del software, Adolfo combina la rigurosidad de la
+                        ingeniería de sistemas críticos con la visión pedagógica de
+                        un <strong>Docente de Educación Superior</strong>.
+                    </p>
+                    <div class="bio-block">
+                        <h5>
+                            <i class="ph-fill ph-check-circle accent"></i> Autoridad
+                            en Ecosistemas Académicos
+                        </h5>
+                        <p>
+                            Su experiencia liderando la transformación digital
+                            en instituciones como <strong>AIEP</strong> lo ha posicionado
+                            como un referente en la implementación del <strong
+                                >ERP Banner</strong
+                            >.
+                        </p>
+                    </div>
+                    <div class="bio-block">
+                        <h5>
+                            <i class="ph-fill ph-check-circle accent"></i> Ingeniería
+                            de Automatización
+                        </h5>
+                        <p>
+                            Desde el desarrollo de robots web (scrapers) hasta
+                            la modernización de sistemas legados. Adolfo no solo
+                            gestiona; <strong
+                                >programa soluciones de alto nivel</strong
+                            >.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="leader-credentials">
+                    <div class="credential-group">
+                        <span class="cred-label">Certificaciones Avanzadas</span
+                        >
+                        <div class="badges-row">
+                            <span
+                                class="cert-badge ibm"
+                                title="Inteligencia Artificial y Ciencia de Datos"
+                            >
+                                <i class="ph-bold ph-brain"></i> IBM AI & Data Science
+                            </span>
+                            <span class="cert-badge scrum">
+                                <i class="ph-bold ph-arrows-clockwise"></i> Scrum
+                                Master
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<style>
+    .section-leader {
+        padding: 8rem 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Layout Desktop Base */
+    .leader-grid-expanded {
+        display: grid;
+        grid-template-columns: 380px 1fr;
+        gap: 5rem;
+        align-items: start;
+    }
+
+    /* Mobile Header Logic */
+    .leader-header-mobile {
+        display: none;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .leader-titles.desktop-only {
+        display: block;
+        margin-bottom: 2rem;
+        border-left: 4px solid var(--accent);
+        padding-left: 2rem;
+    }
+    .leader-titles h2 {
+        font-size: 3rem;
+        color: white;
+        line-height: 1.1;
+        margin-top: 1rem;
+    }
+
+    /* Columna Foto */
+    .leader-profile-col {
+        position: relative;
+    }
+    .leader-frame-premium {
+        position: relative;
+        margin: 0 0 2rem 0;
+    }
+
+    .avatar-photo-giant {
+        width: 100%;
+        height: 450px;
+        border-radius: 2rem;
+        overflow: hidden;
+        box-shadow: 0 25px 60px -12px rgba(79, 70, 229, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #1e1b4b;
+        position: relative;
+        z-index: 1;
+    }
+    .leader-img-premium {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s;
+    }
+    .leader-profile-col:hover .leader-img-premium {
+        transform: scale(1.05);
+    }
+
+    /* Badges */
+    .leader-float-badge {
+        background: #0f172a;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 100px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        z-index: 2;
+        white-space: nowrap;
+    }
+
+    /* Posición Desktop Absolute */
+    .leader-float-badge.left {
+        position: absolute;
+        bottom: 30px;
+        left: -30px;
+        transform: rotate(-3deg);
+    }
+    .leader-float-badge.right {
+        position: absolute;
+        top: 40px;
+        right: -30px;
+        background: var(--primary);
+        transform: rotate(3deg);
+    }
+
+    .leader-specs-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 1.5rem;
+        padding: 2rem;
+    }
+    .leader-specs-box h4 {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .tech-list-dense li {
+        color: white;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+    }
+    .tech-list-dense li i {
+        color: var(--primary);
+        font-size: 1.2rem;
+    }
+
+    /* Content Info */
+    .leader-name-block h3 {
+        font-size: 2.5rem;
+        color: white;
+        margin-bottom: 0.5rem;
+    }
+    .role-subtitle-main {
+        color: var(--primary);
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        display: block;
+    }
+    .lead-bio {
+        font-size: 1.2rem;
+        color: white;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+        line-height: 1.6;
+    }
+    .bio-block {
+        margin-bottom: 2rem;
+    }
+    .bio-block h5 {
+        color: white;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .bio-block p {
+        margin-left: 1.8rem;
+        color: #cbd5e1;
+        line-height: 1.7;
+    }
+    .leader-credentials {
+        margin-top: 3rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+    }
+    .cred-label {
+        color: #94a3b8;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .badges-row {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+    .cert-badge {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.6rem 1.2rem;
+        border-radius: 8px;
+        color: white;
+        font-size: 0.9rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .leader-glow-bg {
+        position: absolute;
+        width: 1000px;
+        height: 1000px;
+        background: radial-gradient(
+            circle at center,
+            rgba(99, 102, 241, 0.15) 0%,
+            transparent 70%
+        );
+        top: -200px;
+        right: -300px;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+
+    @media (max-width: 1024px) {
+        .section-leader {
+            padding: 4rem 0;
+        }
+        .leader-grid-expanded {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            align-items: center;
+        }
+        .leader-header-mobile {
+            display: block;
+            margin-bottom: 2rem;
+        }
+        .leader-header-mobile h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-top: 1rem;
+        }
+        .leader-titles.desktop-only {
+            display: none;
+        }
+        .leader-profile-col {
+            width: 100%;
+            max-width: 500px;
+        }
+        .avatar-photo-giant {
+            height: 400px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .leader-content-col {
+            text-align: center;
+        }
+        .leader-name-block h3 {
+            font-size: 2rem;
+        }
+        .badges-row {
+            justify-content: center;
+        }
+        .bio-block h5 {
+            justify-content: center;
+        }
+        .bio-block p {
+            margin-left: 0;
+        }
+
+        .leader-float-badge.left,
+        .leader-float-badge.right {
+            position: relative;
+            top: auto;
+            bottom: auto;
+            left: auto;
+            right: auto;
+            transform: none;
+            margin: 0;
+        }
+        .badges-wrapper-responsive {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: -1.5rem;
+            position: relative;
+            z-index: 3;
+            flex-wrap: wrap;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .leader-header-mobile h2 {
+            font-size: 2rem;
+        }
+        .avatar-photo-giant {
+            height: 350px;
+            width: 100%;
+        }
+        .badges-wrapper-responsive {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .leader-specs-box {
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .leader-name-block h3 {
+            font-size: 1.8rem;
+        }
+        .lead-bio {
+            font-size: 1rem;
+            text-align: left;
+        }
+        .bio-block p {
+            text-align: left;
+        }
+    }
+</style>

@@ -1,9 +1,30 @@
 ---
 import LogoWhite from "./LogoWhite.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+
 const currentYear = new Date().getFullYear();
+const MAX_FOOTER_SERVICES = 5;
+
+// Fetch services from content collection
+const servicesDataRaw = await getCollection("servicios");
+const servicesData = servicesDataRaw.map(
+    (service: CollectionEntry<"servicios">) => ({
+        slug: service.slug,
+        ...service.data,
+    }),
+);
+
+// 2. CORRECCIÓN DE TIPO: Definimos qué es un 'service' para el Footer
+interface ServiceItem {
+    slug: string;
+    title: string;
+    shortTitle?: string;
+}
 ---
 
-<footer class="site-footer">
+<footer class="site-footer bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
     <div class="footer-glow glow-1"></div>
     <div class="footer-glow glow-2"></div>
 
@@ -11,7 +32,10 @@ const currentYear = new Date().getFullYear();
         <div class="footer-top">
             <div class="footer-brand-col">
                 <a href="/" class="footer-logo-link" aria-label="Inicio">
-                    <LogoWhite className="footer-logo-svg" />
+                    <LogoWhite
+                        className="footer-logo-svg"
+                        transition:name="logo-footer"
+                    />
                 </a>
                 <p class="brand-desc">
                     Transformamos instituciones educativas con tecnología
@@ -49,19 +73,40 @@ const currentYear = new Date().getFullYear();
             <div class="footer-nav-col">
                 <h4 class="col-title">Soluciones</h4>
                 <ul class="footer-links">
-                    <li><a href="#servicios">Aulas Virtuales LMS</a></li>
-                    <li><a href="#servicios">Diseño Web EdTech</a></li>
-                    <li><a href="#servicios">Migración de Datos</a></li>
-                    <li><a href="#servicios">Soporte Técnico</a></li>
+                    {
+                        /* 3. APLICACIÓN DE TIPO: Le decimos a map que 'service' es de tipo ServiceItem */
+                    }
+                    {
+                        servicesData
+                            .slice(0, MAX_FOOTER_SERVICES)
+                            .map((service: ServiceItem) => (
+                                <li>
+                                    <a href={`/servicios/${service.slug}`}>
+                                        {service.shortTitle || service.title}
+                                    </a>
+                                </li>
+                            ))
+                    }
+
+                    {
+                        servicesData.length > MAX_FOOTER_SERVICES && (
+                            <li>
+                                <a href="/servicios" class="link-more">
+                                    Ver todos ({servicesData.length})...
+                                </a>
+                            </li>
+                        )
+                    }
                 </ul>
             </div>
 
             <div class="footer-nav-col">
                 <h4 class="col-title">Compañía</h4>
                 <ul class="footer-links">
-                    <li><a href="#nosotros">Sobre Nosotros</a></li>
-                    <li><a href="#metodologia">Metodología</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="/nosotros">Sobre Nosotros</a></li>
+                    <li><a href="/#metodologia">Metodología</a></li>
+                    <li><a href="/#contacto">Contacto</a></li>
+                    <li><a href="/servicios">Catálogo Completo</a></li>
                 </ul>
             </div>
 
@@ -112,105 +157,120 @@ const currentYear = new Date().getFullYear();
 </footer>
 
 <style>
+    /* ... (Tus estilos se mantienen intactos, no es necesario cambiarlos) ... */
+
+    .link-more {
+        font-size: 0.85rem !important;
+        font-style: italic;
+        opacity: 0.8;
+    }
+
+    /* Copia aquí el resto de estilos del bloque anterior si no los tienes ya */
     .site-footer {
-        background-color: #0f172a; /* Slate 900 - Muy oscuro */
-        color: #cbd5e1; /* Slate 300 - Texto claro pero no blanco puro */
+        background-color: #0f172a;
+        color: #cbd5e1;
         padding: 5rem 0 2rem 0;
         position: relative;
         overflow: hidden;
         border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
-
     .relative-z {
         position: relative;
         z-index: 10;
     }
-
-    /* Glows de fondo */
-    .footer-glow {
+    .bg-base {
         position: absolute;
-        width: 400px;
-        height: 400px;
-        border-radius: 50%;
-        filter: blur(100px);
-        opacity: 0.1;
-        pointer-events: none;
+        inset: 0;
+        background-color: #0f172a;
         z-index: 0;
     }
+    .tech-grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        );
+        background-size: 30px 30px;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 1;
+    }
+    .footer-glow {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.15;
+        pointer-events: none;
+        z-index: 1;
+    }
     .glow-1 {
-        top: -100px;
-        left: -100px;
-        background: var(--primary);
+        top: -150px;
+        left: -150px;
+        background: var(--primary, #6366f1);
     }
     .glow-2 {
-        bottom: -100px;
-        right: -100px;
-        background: var(--accent);
+        bottom: -150px;
+        right: -150px;
+        background: var(--accent, #10b981);
     }
-
-    /* Grid Layout */
     .footer-top {
         display: grid;
         grid-template-columns: 1fr;
         gap: 3rem;
         margin-bottom: 4rem;
+        position: relative;
+        z-index: 2;
     }
-
     @media (min-width: 768px) {
         .footer-top {
-            grid-template-columns: repeat(2, 1fr); /* Tablet: 2x2 */
+            grid-template-columns: repeat(2, 1fr);
         }
     }
-
     @media (min-width: 1024px) {
         .footer-top {
-            grid-template-columns: 2fr 1fr 1fr 1.5fr; /* Desktop: Layout asimétrico */
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 4rem;
         }
     }
-
-    /* Brand Column */
     .footer-logo-link {
         display: inline-block;
         margin-bottom: 1.5rem;
         width: 140px;
     }
-
     .brand-desc {
         font-size: 0.95rem;
         line-height: 1.6;
         margin-bottom: 1.5rem;
-        color: #94a3b8; /* Slate 400 */
+        color: #94a3b8;
         max-width: 300px;
     }
-
     .social-links {
         display: flex;
-        gap: 1rem;
+        gap: 0.75rem;
     }
-
     .social-links a {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 40px;
-        height: 40px;
+        width: 38px;
+        height: 38px;
         border-radius: 10px;
         background: rgba(255, 255, 255, 0.05);
         color: white;
         text-decoration: none;
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         transition: all 0.3s ease;
         border: 1px solid rgba(255, 255, 255, 0.05);
     }
-
     .social-links a:hover {
-        background: var(--primary);
-        border-color: var(--primary);
+        background: var(--primary, #6366f1);
+        border-color: var(--primary, #6366f1);
         transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
     }
-
-    /* Navigation Columns */
     .col-title {
         color: white;
         font-size: 1.1rem;
@@ -218,7 +278,6 @@ const currentYear = new Date().getFullYear();
         margin-bottom: 1.5rem;
         display: block;
     }
-
     .footer-links {
         list-style: none;
         padding: 0;
@@ -227,7 +286,6 @@ const currentYear = new Date().getFullYear();
         flex-direction: column;
         gap: 0.75rem;
     }
-
     .footer-links a {
         color: #94a3b8;
         text-decoration: none;
@@ -235,30 +293,24 @@ const currentYear = new Date().getFullYear();
         transition: all 0.2s ease;
         display: inline-block;
     }
-
     .footer-links a:hover {
-        color: var(--accent); /* Color acento al hover */
+        color: var(--accent, #10b981);
         transform: translateX(4px);
     }
-
-    /* Newsletter Column */
     .newsletter-desc {
         font-size: 0.9rem;
         color: #94a3b8;
         margin-bottom: 1rem;
     }
-
     .newsletter-form {
         display: flex;
         gap: 0.5rem;
         margin-bottom: 1.5rem;
     }
-
     .input-wrapper {
         position: relative;
         flex-grow: 1;
     }
-
     .input-icon {
         position: absolute;
         left: 12px;
@@ -267,26 +319,25 @@ const currentYear = new Date().getFullYear();
         color: #64748b;
         pointer-events: none;
     }
-
     .newsletter-form input {
         width: 100%;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 10px 12px 10px 36px; /* Espacio para icono */
+        padding: 10px 12px 10px 36px;
         border-radius: 8px;
         color: white;
         font-size: 0.9rem;
         outline: none;
-        transition: border-color 0.3s;
+        transition:
+            border-color 0.3s,
+            background 0.3s;
     }
-
     .newsletter-form input:focus {
-        border-color: var(--primary);
+        border-color: var(--primary, #6366f1);
         background: rgba(255, 255, 255, 0.1);
     }
-
     .newsletter-form button {
-        background: var(--primary);
+        background: var(--primary, #6366f1);
         color: white;
         border: none;
         width: 42px;
@@ -295,13 +346,12 @@ const currentYear = new Date().getFullYear();
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: background 0.3s;
+        transition: all 0.3s;
     }
-
     .newsletter-form button:hover {
-        background: #4f38ca; /* Darker primary */
+        background: #4f46e5;
+        transform: translateY(-2px);
     }
-
     .contact-mini {
         font-size: 0.85rem;
         color: #64748b;
@@ -309,7 +359,6 @@ const currentYear = new Date().getFullYear();
         gap: 0.5rem;
         flex-wrap: wrap;
     }
-
     .contact-mini a {
         color: #94a3b8;
         text-decoration: none;
@@ -318,16 +367,14 @@ const currentYear = new Date().getFullYear();
     .contact-mini a:hover {
         color: white;
     }
-
-    /* Divider */
     .footer-divider {
         border: 0;
         height: 1px;
         background: rgba(255, 255, 255, 0.1);
         margin-bottom: 2rem;
+        position: relative;
+        z-index: 2;
     }
-
-    /* Footer Bottom */
     .footer-bottom {
         display: flex;
         flex-direction: column;
@@ -336,8 +383,9 @@ const currentYear = new Date().getFullYear();
         text-align: center;
         font-size: 0.85rem;
         color: #64748b;
+        position: relative;
+        z-index: 2;
     }
-
     @media (min-width: 768px) {
         .footer-bottom {
             flex-direction: row;
@@ -345,18 +393,15 @@ const currentYear = new Date().getFullYear();
             text-align: left;
         }
     }
-
     .legal-links {
         display: flex;
         gap: 1.5rem;
     }
-
     .legal-links a {
         color: #64748b;
         text-decoration: none;
         transition: color 0.2s;
     }
-
     .legal-links a:hover {
         color: white;
     }

@@ -3,8 +3,8 @@ interface Props {
     className?: string;
 }
 
-const { className = "" } = Astro.props;
-import logoWhite from "../assets/logo-white.svg";
+const { className = "", ...props } = Astro.props;
+import logoWhite from "../../assets/logo-white.svg";
 ---
 
 <img
@@ -12,4 +12,5 @@ import logoWhite from "../assets/logo-white.svg";
     alt="Isinova White Logo"
     class={className}
     style="height: 100%; width: auto;"
+    {...props}
 />

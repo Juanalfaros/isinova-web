@@ -8,7 +8,11 @@ import "@phosphor-icons/web/regular";
 import "@phosphor-icons/web/duotone";
 import "@phosphor-icons/web/bold";
 import "@phosphor-icons/web/fill";
-import Seo from "../components/Seo.astro";
+import Seo from "../components/layout/Seo.astro";
+import Header from "../components/layout/Header.astro";
+import Footer from "../components/layout/Footer.astro";
+import WhatsAppButton from "../components/layout/WhatsAppButton.astro";
+import { ClientRouter } from "astro:transitions";
 
 interface Props {
     title: string;
@@ -26,11 +30,15 @@ const {
     <head>
         <meta charset="UTF-8" />
         <Seo title={title} description={description} />
+        <ClientRouter />
     </head>
     <body
         class="bg-background text-dark font-sans antialiased selection:bg-accent/30 selection:text-dark"
     >
+        <Header />
         <slot />
+        <Footer />
+        <WhatsAppButton />
     </body>
 </html>
 
