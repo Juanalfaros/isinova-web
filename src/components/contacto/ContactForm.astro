@@ -1,0 +1,428 @@
+---
+// src/components/contacto/ContactForm.astro
+---
+
+<section class="contact-form-section">
+    <div class="container">
+        <div class="form-container">
+            <div class="form-header-center">
+                <h2>Envíanos un Mensaje</h2>
+                <p>
+                    Completa el formulario y un especialista se pondrá en
+                    contacto contigo en menos de 24 horas.
+                </p>
+            </div>
+
+            <form id="contact-page-form" class="contact-page-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="name">Nombre Completo</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Ej. Juan Pérez"
+                            required
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="institution">Institución / Empresa</label>
+                        <input
+                            type="text"
+                            id="institution"
+                            name="institution"
+                            placeholder="Universidad de Chile, Colegio San Pedro..."
+                            required
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Correo Institucional</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="juan@institucion.cl"
+                            required
+                        />
+                    </div>
+
+                    <div class="input-group">
+                        <label for="phone">Teléfono de Contacto</label>
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="+56 9 1234 5678"
+                        />
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="project">¿En qué podemos ayudarte?</label>
+                        <div class="select-wrapper">
+                            <select id="project" name="project" required>
+                                <option value="" disabled selected
+                                    >Selecciona una categoría</option
+                                >
+                                <option value="lms"
+                                    >Implementación/Soporte LMS (Moodle/Canvas)</option
+                                >
+                                <option value="web"
+                                    >Desarrollo Web EdTech</option
+                                >
+                                <option value="data">Migración de Datos</option>
+                                <option value="support"
+                                    >Soporte Estratégico</option
+                                >
+                                <option value="other">Otro Requerimiento</option
+                                >
+                            </select>
+                            <i class="ph-bold ph-caret-down select-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="input-group full-width">
+                        <label for="message"
+                            >Mensaje / Detalles del Proyecto</label
+                        >
+                        <textarea
+                            id="message"
+                            name="message"
+                            rows="5"
+                            placeholder="Cuéntanos brevemente sobre tus necesidades técnicas o desafíos actuales..."
+                            required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button
+                        type="submit"
+                        class="btn-submit-large"
+                        id="submit-page-btn"
+                    >
+                        <span class="btn-text">Enviar Solicitud</span>
+                        <span class="btn-loading" style="display: none;">
+                            <i class="ph-bold ph-circle-notch spin"></i>
+                            Enviando...
+                        </span>
+                        <i class="ph-bold ph-paper-plane-right btn-icon"></i>
+                    </button>
+                    <p class="form-privacy">
+                        Al enviar este formulario, aceptas nuestra <a
+                            href="/privacidad">Política de Privacidad</a
+                        >.
+                    </p>
+                </div>
+
+                <div
+                    id="form-page-message"
+                    class="form-message"
+                    style="display: none;"
+                >
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const form = document.getElementById(
+            "contact-page-form",
+        ) as HTMLFormElement;
+        const submitBtn = document.getElementById(
+            "submit-page-btn",
+        ) as HTMLButtonElement;
+        const btnText = submitBtn?.querySelector(".btn-text") as HTMLElement;
+        const btnLoading = submitBtn?.querySelector(
+            ".btn-loading",
+        ) as HTMLElement;
+        const btnIcon = submitBtn?.querySelector(".btn-icon") as HTMLElement;
+        const formMessage = document.getElementById(
+            "form-page-message",
+        ) as HTMLElement;
+
+        if (!form) return;
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get("name") as string,
+                email: formData.get("email") as string,
+                institution: formData.get("institution") as string,
+                phone: formData.get("phone") as string,
+                project: formData.get("project") as string,
+                message: formData.get("message") as string,
+                listId: 4, // ID de la lista en Brevo
+                source: "Página Contacto",
+            };
+
+            setLoading(true);
+
+            try {
+                // He mantenido la misma función de Netlify que usas en el CTA
+                const response = await fetch(
+                    "/.netlify/functions/contact-form",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data),
+                    },
+                );
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    showMessage(
+                        "¡Solicitud enviada! Nos pondremos en contacto contigo a la brevedad.",
+                        "success",
+                    );
+                    form.reset();
+                } else {
+                    showMessage(
+                        result.error ||
+                            "Hubo un error al enviar. Intenta nuevamente.",
+                        "error",
+                    );
+                }
+            } catch (error) {
+                showMessage(
+                    "Error de conexión. Verifica tu internet e intenta nuevamente.",
+                    "error",
+                );
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(isLoading: boolean) {
+            submitBtn.disabled = isLoading;
+            if (btnText) btnText.style.display = isLoading ? "none" : "inline";
+            if (btnIcon) btnIcon.style.display = isLoading ? "none" : "inline";
+            if (btnLoading)
+                btnLoading.style.display = isLoading ? "flex" : "none";
+        }
+
+        function showMessage(message: string, type: "success" | "error") {
+            formMessage.textContent = message;
+            formMessage.className = `form-message ${type}`;
+            formMessage.style.display = "block";
+            if (type === "success") {
+                setTimeout(() => {
+                    formMessage.style.display = "none";
+                }, 6000);
+            }
+        }
+    });
+</script>
+
+<style>
+    .contact-form-section {
+        padding: 5rem 0 8rem;
+        background-color: var(--background);
+        margin: 6rem 0 0;
+    }
+
+    .form-container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: white;
+        padding: 4rem;
+        border-radius: 2rem;
+        box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.1);
+        border: 1px solid #f1f5f9;
+        position: relative;
+        margin-top: -5rem; /* Efecto overlap con el hero */
+        z-index: 20;
+    }
+
+    .form-header-center {
+        text-align: center;
+        margin-bottom: 3.5rem;
+    }
+
+    .form-header-center h2 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--dark);
+        margin-bottom: 1rem;
+    }
+
+    .form-header-center p {
+        color: var(--slate);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .input-group.full-width {
+        grid-column: span 2;
+    }
+
+    .input-group label {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--dark);
+    }
+
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+        padding: 1rem 1.25rem;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        font-size: 1rem;
+        background: #f8fafc;
+        transition: all 0.2s ease;
+        color: var(--dark);
+        font-family: inherit;
+        width: 100%;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus,
+    .input-group textarea:focus {
+        outline: none;
+        border-color: var(--primary);
+        background: white;
+        box-shadow: 0 0 0 4px rgba(98, 70, 234, 0.1);
+    }
+
+    .select-wrapper {
+        position: relative;
+    }
+    .select-wrapper select {
+        appearance: none;
+        cursor: pointer;
+    }
+    .select-icon {
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: var(--slate);
+    }
+
+    .form-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .btn-submit-large {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 1.25rem 3rem;
+        border-radius: 100px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-shadow: 0 10px 25px rgba(98, 70, 234, 0.3);
+    }
+
+    .btn-submit-large:hover:not(:disabled) {
+        background: #4f38ca;
+        transform: translateY(-3px);
+        box-shadow: 0 20px 40px rgba(98, 70, 234, 0.4);
+    }
+
+    .btn-submit-large:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+    }
+
+    .form-privacy {
+        font-size: 0.85rem;
+        color: var(--slate);
+    }
+    .form-privacy a {
+        color: var(--primary);
+        text-decoration: underline;
+    }
+
+    .btn-loading {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    .spin {
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        from {
+            transform: rotate(0);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .form-message {
+        padding: 1.25rem;
+        border-radius: 1rem;
+        font-size: 1rem;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 2rem;
+    }
+    .form-message.success {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #86efac;
+    }
+    .form-message.error {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+    }
+
+    @media (max-width: 991px) {
+        .form-container {
+            padding: 3rem 2rem;
+            margin-top: -3rem;
+            border-radius: 1.5rem;
+        }
+        .form-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .input-group.full-width {
+            grid-column: span 1;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-form-section {
+            padding: 4rem 0 6rem;
+            margin-top: 1rem;
+        }
+        .form-header-center h2 {
+            font-size: 2rem;
+        }
+    }
+</style>

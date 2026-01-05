@@ -10,12 +10,15 @@
         <div class="section-header">
             <span class="section-badge accent">Process Architecture</span>
             <h2 class="section-title">
-                Ingeniería de <span class="text-span gradient highlight-brand primary">Ciclo Completo</span>
+                Ingeniería de <span
+                    class="text-span gradient highlight-brand primary"
+                    >Ciclo Completo</span
+                >
             </h2>
             <p class="section-desc">
-                No improvisamos. Ejecutamos una metodología de ingeniería de software 
-                estricta, diseñada para mitigar riesgos y garantizar entregables 
-                de calidad empresarial.
+                No improvisamos. Ejecutamos una metodología de ingeniería de
+                software estricta, diseñada para mitigar riesgos y garantizar
+                entregables de calidad empresarial.
             </p>
         </div>
 
@@ -30,9 +33,10 @@
                             <div class="step-badge">01</div>
                             <h3>Discovery & Arquitectura</h3>
                             <p>
-                                Levantamiento de requerimientos técnicos y pedagógicos. 
-                                Diseñamos el diagrama de arquitectura (AWS/Cloud), 
-                                definimos el stack y entregamos la Carta Gantt del proyecto.
+                                Levantamiento de requerimientos técnicos y
+                                pedagógicos. Diseñamos el diagrama de
+                                arquitectura (AWS/Cloud), definimos el stack y
+                                entregamos la Carta Gantt del proyecto.
                             </p>
                         </div>
                     </div>
@@ -59,9 +63,10 @@
                             <div class="step-badge">02</div>
                             <h3>Desarrollo & Integración</h3>
                             <p>
-                                Ejecución en sprints. Configuramos el núcleo del LMS, 
-                                desarrollamos conectores API (SENCE/CRM) y aplicamos 
-                                tu identidad visual con estándares UX/UI modernos.
+                                Ejecución en sprints. Configuramos el núcleo del
+                                LMS, desarrollamos conectores API (SENCE/CRM) y
+                                aplicamos tu identidad visual con estándares
+                                UX/UI modernos.
                             </p>
                         </div>
                     </div>
@@ -76,9 +81,10 @@
                             <div class="step-badge">03</div>
                             <h3>QA & Hardening</h3>
                             <p>
-                                Nadie entra a producción sin pruebas. Realizamos 
-                                Tests de Carga (Stress Testing), auditoría de seguridad 
-                                y validación de integridad de datos migrados.
+                                Nadie entra a producción sin pruebas. Realizamos
+                                Tests de Carga (Stress Testing), auditoría de
+                                seguridad y validación de integridad de datos
+                                migrados.
                             </p>
                         </div>
                     </div>
@@ -105,9 +111,10 @@
                             <div class="step-badge">04</div>
                             <h3>Despliegue & Onboarding</h3>
                             <p>
-                                Puesta en marcha "Zero-Downtime". Configuramos el 
-                                monitoreo de servidores, entregamos la documentación 
-                                técnica y capacitamos a tu equipo administrador.
+                                Puesta en marcha "Zero-Downtime". Configuramos
+                                el monitoreo de servidores, entregamos la
+                                documentación técnica y capacitamos a tu equipo
+                                administrador.
                             </p>
                         </div>
                     </div>
@@ -116,7 +123,7 @@
         </div>
 
         <div class="cta-wrapper">
-            <a href="#contacto" class="btn-glow">
+            <a href="/contacto" class="btn-glow">
                 Iniciar mi Proyecto <i class="ph-bold ph-arrow-right"></i>
             </a>
         </div>
@@ -124,8 +131,8 @@
 </section>
 
 <style>
-/* --- PEGA AQUÍ TU CSS ORIGINAL (ES PERFECTO) --- */
-/* Solo asegúrate de mantener las variables CSS que definiste arriba */
+    /* --- PEGA AQUÍ TU CSS ORIGINAL (ES PERFECTO) --- */
+    /* Solo asegúrate de mantener las variables CSS que definiste arriba */
     /* --- 1. CONFIGURACIÓN BASE --- */
     .process-section {
         --bg-deep: #050b14;
@@ -148,27 +155,27 @@
     }
 
     .tech-grid-bg {
-    position: absolute;
-    inset: 0;
-    background-image: conic-gradient(
-        from 0deg at 50% 50%,
-        rgba(99, 102, 241, 0.05) 0deg,
-        transparent 60deg,
-        rgba(168, 85, 247, 0.05) 120deg,
-        transparent 180deg,
-        rgba(99, 102, 241, 0.05) 240deg,
-        transparent 300deg,
-        rgba(168, 85, 247, 0.05) 360deg
-    );
-    
-    mask-image: radial-gradient(
-        circle at center,
-        black 40%,
-        transparent 80%
-    );
-    filter: blur(40px);
-    pointer-events: none;
-}
+        position: absolute;
+        inset: 0;
+        background-image: conic-gradient(
+            from 0deg at 50% 50%,
+            rgba(99, 102, 241, 0.05) 0deg,
+            transparent 60deg,
+            rgba(168, 85, 247, 0.05) 120deg,
+            transparent 180deg,
+            rgba(99, 102, 241, 0.05) 240deg,
+            transparent 300deg,
+            rgba(168, 85, 247, 0.05) 360deg
+        );
+
+        mask-image: radial-gradient(
+            circle at center,
+            black 40%,
+            transparent 80%
+        );
+        filter: blur(40px);
+        pointer-events: none;
+    }
 
     .ambient-glow {
         position: absolute;
@@ -271,8 +278,12 @@
     }
 
     @keyframes dataFlow {
-        0% { transform: translateY(-100%); }
-        100% { transform: translateY(100%); }
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(100%);
+        }
     }
 
     .timeline-row {
@@ -316,7 +327,9 @@
         border-color: var(--primary);
         color: white;
         background: var(--primary);
-        box-shadow: 0 0 20px rgba(99, 102, 241, 0.4), 0 0 0 5px var(--bg-deep);
+        box-shadow:
+            0 0 20px rgba(99, 102, 241, 0.4),
+            0 0 0 5px var(--bg-deep);
         transform: scale(1.1);
     }
 
@@ -328,7 +341,9 @@
         min-width: 0;
     }
 
-    .timeline-spacer { display: none; }
+    .timeline-spacer {
+        display: none;
+    }
 
     .tech-card {
         position: relative;
@@ -418,10 +433,13 @@
         box-shadow: 0 0 40px rgba(99, 102, 241, 0.6);
         border-color: rgba(255, 255, 255, 0.3);
     }
-    
-    .btn-glow i { transition: transform 0.2s; }
-    .btn-glow:hover i { transform: translateX(3px); }
 
+    .btn-glow i {
+        transition: transform 0.2s;
+    }
+    .btn-glow:hover i {
+        transform: translateX(3px);
+    }
 
     /* --- 7. DESKTOP MEDIA QUERIES --- */
     @media (min-width: 992px) {
@@ -436,16 +454,35 @@
         }
 
         /* Zigzag logic */
-        .timeline-row.reverse { flex-direction: row; }
-        .timeline-row:not(.reverse) { flex-direction: row-reverse; }
+        .timeline-row.reverse {
+            flex-direction: row;
+        }
+        .timeline-row:not(.reverse) {
+            flex-direction: row-reverse;
+        }
 
-        .timeline-node { margin: 0 4rem; order: 2; }
-        .timeline-content { padding: 0; flex: 1; order: 1; }
+        .timeline-node {
+            margin: 0 4rem;
+            order: 2;
+        }
+        .timeline-content {
+            padding: 0;
+            flex: 1;
+            order: 1;
+        }
 
-        .timeline-row:not(.reverse) .timeline-content { text-align: right; }
-        .timeline-row.reverse .timeline-content { text-align: left; }
+        .timeline-row:not(.reverse) .timeline-content {
+            text-align: right;
+        }
+        .timeline-row.reverse .timeline-content {
+            text-align: left;
+        }
 
-        .timeline-spacer { display: block; flex: 1; order: 3; }
+        .timeline-spacer {
+            display: block;
+            flex: 1;
+            order: 3;
+        }
 
         /* Conector Card Logic */
         .tech-card::before {
@@ -459,8 +496,12 @@
             z-index: -1;
         }
 
-        .timeline-row:not(.reverse) .tech-card::before { left: 100%; }
-        .timeline-row.reverse .tech-card::before { right: 100%; }
+        .timeline-row:not(.reverse) .tech-card::before {
+            left: 100%;
+        }
+        .timeline-row.reverse .tech-card::before {
+            right: 100%;
+        }
 
         .timeline-row:hover .tech-card::before {
             background: var(--primary);

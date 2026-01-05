@@ -11,13 +11,13 @@ const { title, buttonText, serviceName } = Astro.props;
 <section class="service-cta bg-tech-dark">
     <div class="bg-base"></div>
     <div class="tech-grid-bg"></div>
-    
+
     <div class="cta-glow"></div>
 
     <div class="container relative-z">
         <div class="cta-card-glass">
             <div class="highlight-border"></div>
-            
+
             <div class="cta-layout">
                 <div class="cta-text-col">
                     <span class="badge-pill">Siguiente Paso</span>
@@ -25,16 +25,19 @@ const { title, buttonText, serviceName } = Astro.props;
                         {title}
                     </h2>
                     <p class="cta-description">
-                        Estás a un paso de optimizar tu gestión con <strong class="text-white">{serviceName}</strong>. 
-                        Agenda una breve asesoría técnica gratuita y recibe una hoja de ruta clara.
+                        Estás a un paso de optimizar tu gestión con <strong
+                            class="text-white">{serviceName}</strong
+                        >. Agenda una breve asesoría técnica gratuita y recibe
+                        una hoja de ruta clara.
                     </p>
                 </div>
 
                 <div class="cta-action-col">
-                    <a href="#contacto" class="btn-glow full-width-mobile">
-                        {buttonText} <i class="ph-bold ph-arrow-right"></i>
+                    <a href="/contacto" class="btn-glow full-width-mobile">
+                        {buttonText}
+                        <i class="ph-bold ph-arrow-right"></i>
                     </a>
-                    
+
                     <div class="trust-badge">
                         <div class="pulse-dot"></div>
                         <span>Respuesta garantizada &lt; 24h</span>
@@ -52,7 +55,7 @@ const { title, buttonText, serviceName } = Astro.props;
         position: relative;
         overflow: hidden;
         /* Fallback si no carga global.css */
-        background-color: #050b14; 
+        background-color: #050b14;
         margin: 0;
     }
 
@@ -61,13 +64,32 @@ const { title, buttonText, serviceName } = Astro.props;
         margin: 0 auto;
         padding: 0 1.5rem;
     }
-    
-    .relative-z { position: relative; z-index: 10; }
+
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
 
     /* --- 2. FONDOS & EFECTOS --- */
     /* Estos asumen que existen en global, pero los defino aquí por seguridad local */
-    .bg-base { position: absolute; inset: 0; background-color: #050b14; z-index: 0; }
-    .tech-grid-bg { position: absolute; inset: 0; background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px); background-size: 30px 30px; opacity: 0.3; pointer-events: none; z-index: 1; }
+    .bg-base {
+        position: absolute;
+        inset: 0;
+        background-color: #050b14;
+        z-index: 0;
+    }
+    .tech-grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+            rgba(255, 255, 255, 0.05) 1px,
+            transparent 1px
+        );
+        background-size: 30px 30px;
+        opacity: 0.3;
+        pointer-events: none;
+        z-index: 1;
+    }
 
     .cta-glow {
         position: absolute;
@@ -77,7 +99,11 @@ const { title, buttonText, serviceName } = Astro.props;
         width: 100%;
         max-width: 800px;
         height: 500px;
-        background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+        background: radial-gradient(
+            circle,
+            rgba(99, 102, 241, 0.12) 0%,
+            transparent 70%
+        );
         pointer-events: none;
         z-index: 1;
     }
@@ -97,7 +123,9 @@ const { title, buttonText, serviceName } = Astro.props;
     }
 
     @media (min-width: 768px) {
-        .cta-card-glass { padding: 3.5rem; }
+        .cta-card-glass {
+            padding: 3.5rem;
+        }
     }
 
     .highlight-border {
@@ -106,7 +134,12 @@ const { title, buttonText, serviceName } = Astro.props;
         left: 0;
         right: 0;
         height: 1px;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.4),
+            transparent
+        );
     }
 
     /* --- 4. GRID CONTENT --- */
@@ -129,8 +162,17 @@ const { title, buttonText, serviceName } = Astro.props;
     }
 
     /* --- 5. TIPOGRAFÍA --- */
-    .cta-text-col { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
-    @media (min-width: 992px) { .cta-text-col { align-items: flex-start; } }
+    .cta-text-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+    @media (min-width: 992px) {
+        .cta-text-col {
+            align-items: flex-start;
+        }
+    }
 
     .badge-pill {
         display: inline-block;
@@ -151,8 +193,12 @@ const { title, buttonText, serviceName } = Astro.props;
         color: white;
         line-height: 1.15;
     }
-    
-    @media (min-width: 768px) { .cta-title { font-size: 2.75rem; } }
+
+    @media (min-width: 768px) {
+        .cta-title {
+            font-size: 2.75rem;
+        }
+    }
 
     .cta-description {
         font-size: 1.05rem;
@@ -160,8 +206,10 @@ const { title, buttonText, serviceName } = Astro.props;
         line-height: 1.6;
         max-width: 600px;
     }
-    
-    .text-white { color: white; }
+
+    .text-white {
+        color: white;
+    }
 
     /* --- 6. ACCIONES --- */
     .cta-action-col {
@@ -174,7 +222,9 @@ const { title, buttonText, serviceName } = Astro.props;
     }
 
     @media (min-width: 992px) {
-        .cta-action-col { align-items: flex-end; }
+        .cta-action-col {
+            align-items: flex-end;
+        }
     }
 
     /* Botón Glow Responsive */
@@ -206,7 +256,11 @@ const { title, buttonText, serviceName } = Astro.props;
     .full-width-mobile {
         width: 100%;
     }
-    @media (min-width: 500px) { .full-width-mobile { width: auto; } }
+    @media (min-width: 500px) {
+        .full-width-mobile {
+            width: auto;
+        }
+    }
 
     /* Trust Badge */
     .trust-badge {
@@ -231,8 +285,14 @@ const { title, buttonText, serviceName } = Astro.props;
     }
 
     @keyframes pulse {
-        0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-        70% { box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); }
-        100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        0% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+        }
+        70% {
+            box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+        }
+        100% {
+            box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+        }
     }
 </style>

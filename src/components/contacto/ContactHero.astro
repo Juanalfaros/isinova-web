@@ -1,0 +1,85 @@
+---
+// src/components/contacto/ContactHero.astro
+---
+
+<header class="contact-hero bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="container relative-z animate-enter">
+        <span class="section-badge accent">Contacto Directo</span>
+        <h1 class="section-title">
+            Hablemos sobre el futuro tecnológico de
+            <span class="text-span gradient highlight-brand accent"
+                >tu institución educativa.</span
+            >
+        </h1>
+        <p class="hero-desc">
+            ¿Tienes un desafío técnico o buscas modernizar tu infraestructura?
+            Nuestro equipo de ingeniería está listo para asesorarte.
+        </p>
+    </div>
+</header>
+
+<style>
+    .contact-hero {
+        padding: 5rem 0 3rem;
+        text-align: center;
+        position: relative;
+        margin-top: 40px;
+    }
+
+    @media (max-width: 991px) {
+        .contact-hero {
+            padding: 3rem 0 2rem;
+            margin-top: 0;
+        }
+    }
+
+    .hero-desc {
+        font-size: 1.25rem;
+        color: #94a3b8;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        line-height: 1.6;
+    }
+
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+
+    /* ANIMACIONES */
+    @keyframes fadeUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .animate-enter {
+        animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @media (max-width: 1024px) {
+        .section-title {
+            font-size: 3rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .section-title {
+            font-size: 2.25rem;
+            padding: 0 1rem;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            padding: 0 1.5rem;
+        }
+    }
+</style>

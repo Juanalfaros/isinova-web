@@ -105,7 +105,7 @@ interface ServiceItem {
                 <ul class="footer-links">
                     <li><a href="/nosotros">Sobre Nosotros</a></li>
                     <li><a href="/#metodologia">Metodología</a></li>
-                    <li><a href="/#contacto">Contacto</a></li>
+                    <li><a href="/contacto">Contacto</a></li>
                     <li><a href="/servicios">Catálogo Completo</a></li>
                 </ul>
             </div>
@@ -117,21 +117,34 @@ interface ServiceItem {
                     actualizaciones de la plataforma.
                 </p>
 
-                <form
-                    class="newsletter-form"
-                    onsubmit="event.preventDefault();"
-                >
+                <form class="newsletter-form" id="footer-newsletter">
                     <div class="input-wrapper">
                         <i class="ph ph-envelope-simple input-icon"></i>
                         <input
                             type="email"
+                            id="newsletter-email"
                             placeholder="Tu correo electrónico"
                             required
                         />
                     </div>
-                    <button type="submit" aria-label="Suscribirse">
-                        <i class="ph-bold ph-arrow-right"></i>
+                    <button
+                        type="submit"
+                        id="newsletter-btn"
+                        aria-label="Suscribirse"
+                    >
+                        <span class="btn-icon"
+                            ><i class="ph-bold ph-arrow-right"></i></span
+                        >
+                        <span class="btn-loading" style="display: none;"
+                            ><i class="ph-bold ph-circle-notch spin"></i></span
+                        >
                     </button>
+                    <div
+                        id="newsletter-message"
+                        class="newsletter-message"
+                        style="display: none;"
+                    >
+                    </div>
                 </form>
 
                 <div class="contact-mini">
@@ -155,6 +168,82 @@ interface ServiceItem {
         </div>
     </div>
 </footer>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const form = document.getElementById(
+            "footer-newsletter",
+        ) as HTMLFormElement;
+        const input = document.getElementById(
+            "newsletter-email",
+        ) as HTMLInputElement;
+        const btn = document.getElementById(
+            "newsletter-btn",
+        ) as HTMLButtonElement;
+        const btnIcon = btn?.querySelector(".btn-icon") as HTMLElement;
+        const btnLoading = btn?.querySelector(".btn-loading") as HTMLElement;
+        const messageBox = document.getElementById(
+            "newsletter-message",
+        ) as HTMLElement;
+
+        if (!form) return;
+
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const email = input.value;
+            setLoading(true);
+
+            try {
+                const response = await fetch(
+                    "/.netlify/functions/contact-form",
+                    {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                            email,
+                            name: "Suscriptor Newsletter",
+                            project: "newsletter",
+                            listId: 5,
+                            source: "Footer Newsletter",
+                        }),
+                    },
+                );
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    showMessage("¡Gracias por suscribirte!", "success");
+                    form.reset();
+                } else {
+                    showMessage("Error al suscribir. Reintenta.", "error");
+                }
+            } catch (error) {
+                showMessage("Sin conexión. Reintenta.", "error");
+            } finally {
+                setLoading(false);
+            }
+        });
+
+        function setLoading(isLoading: boolean) {
+            if (btn) btn.disabled = isLoading;
+            if (btnIcon) btnIcon.style.display = isLoading ? "none" : "block";
+            if (btnLoading)
+                btnLoading.style.display = isLoading ? "block" : "none";
+        }
+
+        function showMessage(msg: string, type: "success" | "error") {
+            if (!messageBox) return;
+            messageBox.textContent = msg;
+            messageBox.className = `newsletter-message ${type}`;
+            messageBox.style.display = "block";
+
+            setTimeout(() => {
+                messageBox.style.display = "none";
+            }, 5000);
+        }
+    });
+</script>
 
 <style>
     /* ... (Tus estilos se mantienen intactos, no es necesario cambiarlos) ... */
@@ -404,5 +493,35 @@ interface ServiceItem {
     }
     .legal-links a:hover {
         color: white;
+    }
+
+    /* Newsletter feedback */
+    .newsletter-message {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    .newsletter-message.success {
+        color: var(--accent, #10b981);
+    }
+    .newsletter-message.error {
+        color: #f87171;
+    }
+
+    .spin {
+        animation: spin 1s linear infinite;
+        display: inline-block;
+    }
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
     }
 </style>

@@ -1,0 +1,26 @@
+---
+// src/pages/contacto.astro
+import Layout from "../layouts/Layout.astro";
+import ContactHero from "../components/contacto/ContactHero.astro";
+import ContactForm from "../components/contacto/ContactForm.astro";
+import ContactInfo from "../components/contacto/ContactInfo.astro";
+
+const title = "Contacto | Isinova Chile - Especialistas en EdTech";
+const description =
+    "Ponte en contacto con nuestro equipo de ingeniería EdTech. Resolvemos tus dudas sobre Moodle, Canvas, desarrollo web y transformación digital educativa.";
+---
+
+<Layout title={title} description={description}>
+    <main>
+        <ContactHero />
+        <ContactForm />
+        <ContactInfo />
+    </main>
+</Layout>
+
+<style>
+    main {
+        background-color: var(--background);
+        overflow: hidden;
+    }
+</style>
