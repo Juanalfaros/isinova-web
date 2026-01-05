@@ -12,6 +12,10 @@
 
     --white: #ffffff;
 
+    /* Nuevas variables para el sistema de títulos */
+    --text-heading: var(--dark);
+    --text-heading-inverse: var(--white);
+
     --font-main: "Exo 2", sans-serif;
 
     --shadow-soft: 0 4px 20px -2px rgba(98, 70, 234, 0.1);
@@ -47,10 +51,8 @@ body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
     opacity: 0.99;
-    /* Fix for some browsers rendering fixed backgrounds */
 }
 
-/* Base adjustment for sections to ensure they have their own backgrounds if needed */
 section {
     position: relative;
     z-index: 1;
@@ -78,19 +80,12 @@ section {
 }
 
 @keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-10px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
 }
 
+/* Buttons */
 button,
 .btn {
     cursor: pointer;
@@ -110,6 +105,7 @@ button,
     padding: 1rem 2rem;
     font-weight: 700;
     box-shadow: var(--shadow-soft);
+
 }
 
 .btn-primary:hover {
@@ -130,7 +126,7 @@ button,
     box-shadow: 0 0 20px rgba(0, 255, 140, 0.6);
 }
 
-/* Sections */
+/* Main Layout */
 main {
     padding-top: var(--header-height);
 }
@@ -149,7 +145,6 @@ main {
     color: #cbd5e1;
 }
 
-/* 1. Base Layer */
 .bg-tech-dark .bg-base {
     position: absolute;
     inset: 0;
@@ -157,7 +152,6 @@ main {
     z-index: 0;
 }
 
-/* 2. Conic Malla (The 'Scanning' Light) */
 .bg-tech-dark .tech-grid-bg {
     position: absolute;
     inset: 0;
@@ -177,7 +171,6 @@ main {
     animation: rotateBg 60s linear infinite;
 }
 
-/* 3. Volumetric Brillo */
 .bg-tech-dark .ambient-glow {
     position: absolute;
     top: 50%;
@@ -193,22 +186,16 @@ main {
 }
 
 @keyframes rotateBg {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* Ensure container visibility on dark backgrounds */
 .bg-tech-dark .container {
     position: relative;
     z-index: 10;
 }
 
-/* --- Unified Section Badges --- */
+/* --- Section Badges --- */
 .section-badge {
     display: inline-block;
     padding: 6px 16px;
@@ -233,7 +220,6 @@ main {
     transform: translateY(-1px);
 }
 
-/* Variant: Accent (Green/Emerald) */
 .section-badge.accent {
     color: var(--accent);
     background: rgba(0, 255, 140, 0.1);
@@ -245,46 +231,111 @@ main {
     border-color: rgba(0, 255, 140, 0.4);
 }
 
-/* Agrega esto para definir el contexto de la posición */
+/* --- Section Titles System (MODULAR) --- */
+
+/* 1. Base Definition */
+.section-title {
+    /* Variables Default (Size: LG) */
+    --fs-title: 2.5rem;
+    --fs-title-lg: 3.5rem;
+    
+    font-size: var(--fs-title);
+    font-weight: 800;
+    
+    /* Auto Color Switch */
+    color: var(--text-heading);
+    
+    margin-bottom: 1.5rem;
+    line-height: 1.15;
+    text-wrap: balance; /* Default wrap */
+    transition: color 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .section-title {
+        font-size: var(--fs-title-lg);
+    }
+}
+
+/* 2. Context Awareness (Auto Dark Mode) */
+/* Si el título está dentro de un fondo oscuro, cambia a blanco */
+.bg-tech-dark .section-title {
+    color: var(--text-heading-inverse);
+}
+
+/* 3. Size Modifiers */
+.section-title.sm { --fs-title: 1.5rem; --fs-title-lg: 2rem; }
+.section-title.md { --fs-title: 2rem; --fs-title-lg: 2.75rem; }
+.section-title.lg { --fs-title: 2.5rem; --fs-title-lg: 3.5rem; } /* Default */
+.section-title.xl { --fs-title: 3rem; --fs-title-lg: 4.5rem; letter-spacing: -0.02em; }
+
+
+/* 4. Wrap Modifiers */
+.section-title.wrap-pretty { text-wrap: pretty; }
+.section-title.wrap-normal { text-wrap: wrap; }
+.section-title.no-wrap     { white-space: nowrap; }
+
+/* 5. Color Force Utilities (Manual Overrides) */
+.section-title.on-dark  { color: var(--text-heading-inverse) !important; }
+.section-title.on-light { color: var(--text-heading) !important; }
+
+
+/* --- Title Highlights & Spans --- */
+
 .section-title .highlight-brand {
     position: relative;
     display: inline-block;
-    /* Opcional: Ayuda a que el box-model sea más preciso */
+    z-index: 1;
 }
 
 .section-title .highlight-brand::after {
     content: "";
     position: absolute;
-    bottom: 4px;
-    left: -2px;
-    width: 105%;
-    height: 10px;
     z-index: -1;
-    transform: rotate(-1deg);
-    border-radius: 4px;
-    /* Puedes poner un color por defecto aquí si quieres */
+    
+    /* SCALABLE SIZING (EM) */
+    width: 104%;
+    height: 0.2em;        /* Relative to font size */
+    bottom: 0.05em;
+    left: -0.05em;
+    
+    transform: rotate(-2deg);
+    border-radius: 0.1em;
+    
+    /* Default Color (Light Mode) */
     background: rgba(200, 200, 200, 0.2);
+    transition: all 0.3s ease;
 }
 
-/* SIN ESPACIO entre .highlight-brand y .accent */
-.section-title .highlight-brand.accent::after,
-.hero-title .highlight-brand.accent::after {
-    background: rgba(0, 255, 140, 0.25);
+/* Adjustment for Giant Titles (Make it slightly thinner) */
+.section-title.xl .highlight-brand::after {
+    height: 0.25em;
+    bottom: 0.12em;
 }
 
-/* SIN ESPACIO entre .highlight-brand y .primary */
-.section-title .highlight-brand.primary::after {
-    background: rgba(99, 102, 241, 0.25);
+/* Colors for Spans inside titles */
+.section-title .text-span.accent { color: var(--accent); }
+.section-title .text-span.primary { color: var(--primary); }
+
+/* Colors for Highlights */
+.section-title .highlight-brand.accent::after { background: rgba(0, 255, 140, 0.25); }
+.section-title .highlight-brand.primary::after { background: rgba(99, 102, 241, 0.25); }
+
+/* --- DARK MODE ADJUSTMENTS FOR HIGHLIGHTS --- */
+/* Default Gray Highlight -> Make visible on dark */
+.bg-tech-dark .section-title .highlight-brand::after {
+    background: rgba(255, 255, 255, 0.15);
 }
 
-.section-title .text-span.accent {
-    color: var(--accent);
+/* Colored Highlights on Dark */
+.bg-tech-dark .section-title .highlight-brand.accent::after {
+    background: rgba(0, 255, 140, 0.3);
+}
+.bg-tech-dark .section-title .highlight-brand.primary::after {
+    background: rgba(99, 102, 241, 0.3);
 }
 
-.section-title .text-span.primary {
-    color: var(--primary);
-}
-
+/* Text Gradients */
 .text-span.gradient {
     background: linear-gradient(135deg, var(--primary), var(--accent));
     -webkit-background-clip: text;
@@ -307,17 +358,56 @@ main {
     -webkit-text-fill-color: transparent;
 }
 
-.section-title {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--text-heading);
-    margin-bottom: 1.5rem;
-    line-height: 1.2;
-    text-wrap: balance;
+/* UI Components: Icons */
+.icon-box {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    flex-shrink: 0;
+    background: rgba(98, 70, 234, 0.08);
+    color: var(--primary);
 }
 
-@media (min-width: 768px) {
-    .section-title {
-        font-size: 3.5rem;
-    }
+/* Icon Colors */
+.icon-box.purple { background: rgba(98, 70, 234, 0.1); color: var(--primary); }
+.icon-box.blue   { background: rgba(59, 130, 246, 0.1); color: #3b82f6; }
+.icon-box.green  { background: rgba(16, 185, 129, 0.1); color: #10b981; }
+.icon-box.yellow { background: rgba(251, 191, 36, 0.1); color: #fbbf24; }
+.icon-box.orange { background: rgba(234, 88, 12, 0.1); color: #ea580c; }
+.icon-box.slate  { background: #f1f5f9; color: #64748b; }
+.icon-box.pain   { background: #f1f5f9; color: rgb(15, 23, 42); }
+
+/* Icon Sizes */
+.icon-box.sm { width: 40px; height: 40px; font-size: 1.2rem; border-radius: 10px; }
+.icon-box.md { width: 54px; height: 54px; font-size: 1.7rem; border-radius: 14px; }
+.icon-box.lg { width: 64px; height: 64px; font-size: 2rem; border-radius: 18px; }
+
+/* Icon Hover Animations */
+.parent-hover:hover .icon-box,
+.icon-box:hover {
+    transform: scale(1.1) rotate(-5deg);
 }
+
+/* Icon Hover Transitions */
+.parent-hover:hover .icon-box.purple, .icon-box.purple:hover { background: var(--primary); color: white; }
+.parent-hover:hover .icon-box.blue, .icon-box.blue:hover { background: #3b82f6; color: white; }
+.parent-hover:hover .icon-box.green, .icon-box.green:hover { background: #10b981; color: white; }
+.parent-hover:hover .icon-box.yellow, .icon-box.yellow:hover { background: #fbbf24; color: white; }
+.parent-hover:hover .icon-box.orange, .icon-box.orange:hover { background: #ea580c; color: white; }
+.parent-hover:hover .icon-box.slate, .icon-box.slate:hover { background: var(--primary); color: white; }
+.parent-hover:hover .icon-box.pain, .icon-box.pain:hover { background: var(--primary); color: white; }
+
+.prose-content .prose-p {
+        font-size: 1.1rem;
+        color: #94a3b8;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+    .prose-content .prose-p strong {
+        color: white;
+    } 

@@ -48,10 +48,21 @@ tips:
     title: "Privacidad"
     text: "Firmamos acuerdos de confidencialidad (NDA) estrictos. Tus datos académicos nunca salen de entornos seguros."
 faqs:
-  - question: "¿Pueden migrar contenido interactivo (SCORM)??"
+  - question: "¿Pueden migrar contenido interactivo (SCORM)?"
     answer: "Sí, extraemos y reinstalamos paquetes SCORM, asegurando que sigan reportando calificaciones correctamente en la nueva plataforma."
   - question: "¿Qué pasa si tengo datos en papel o PDF?"
     answer: "Ofrecemos servicios de digitalización y estructuración de datos para convertir archivos físicos o planos en bases de datos relacionales consultables."
+  # --- NUEVAS AGREGADAS ---
+  - question: "¿Se pierden las contraseñas de los usuarios?"
+    answer: "Depende de la tecnología de origen. Si los 'hashes' de encriptación son compatibles, las migramos. Si no, implementamos estrategias de blanqueo masivo o configuramos un primer inicio de sesión seguro para los usuarios."
+  - question: "¿La plataforma estará caída durante el proceso?"
+    answer: "No durante el desarrollo. Trabajamos en un entorno de pruebas (Staging). Solo requerimos una ventana de mantenimiento breve (generalmente de noche o fin de semana) para la sincronización final de datos."
+  - question: "¿Migran también los certificados emitidos?"
+    answer: "Sí. Entendemos que son documentos legales. Migramos el registro histórico de quién obtuvo qué certificado y cuándo, para que tus alumnos no pierdan sus acreditaciones previas."
+  - question: "Mi base de datos actual tiene muchos errores, ¿sirve igual?"
+    answer: "Es el escenario ideal para nosotros. Antes de mover la data, ejecutamos scripts de limpieza para eliminar duplicados, corregir correos mal formados y estandarizar nombres, entregándote una base de datos nueva y saneada."
+  - question: "¿Pueden extraer datos de un sistema cerrado o propietario?"
+    answer: "Sí. Si tienes acceso a la base de datos (SQL), no necesitamos que el software tenga una API o documentación. Leemos directamente la estructura de las tablas para extraer la información 'en crudo'."
 bookingCard:
   title: "Auditoría de Datos Gratuita"
   paragraph: "Analicemos la estructura de tu base de datos actual para estimar la complejidad de la migración."
@@ -65,8 +76,8 @@ bookingCard:
   buttonText: "Evaluar mi Migración"
 ---
 
-## Más que una copia, una reestructuración
+<h3 class="section-title md">Más que una copia, una reestructuración</h3>
 
-Las migraciones no son solo mover archivos. Son proyectos de **Ingeniería de Datos**. Normalizamos RUTs, corregimos correos mal escritos y unificamos cuentas de usuarios duplicadas.
+<p class="prose-p">Las migraciones no son solo mover archivos. Son proyectos de <strong>Ingeniería de Datos</strong>. Normalizamos RUTs, corregimos correos mal escritos y unificamos cuentas de usuarios duplicadas.</p>
 
-Garantizamos la continuidad operativa: planificamos el corte (switch-over) para fines de semana o noches, minimizando el impacto en tus alumnos.
+<p class="prose-p">Garantizamos la continuidad operativa: planificamos el corte (switch-over) para fines de semana o noches, minimizando el impacto en tus alumnos.</p>

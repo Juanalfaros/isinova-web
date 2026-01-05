@@ -5,8 +5,8 @@
 <section class="contact-info-section">
     <div class="container">
         <div class="info-grid">
-            <address class="info-card" tabindex="0">
-                <div class="icon-box purple">
+            <address class="info-card parent-hover" tabindex="0">
+                <div class="icon-box lg purple">
                     <i class="ph-duotone ph-envelope-simple"></i>
                 </div>
                 <div class="info-text">
@@ -18,8 +18,8 @@
                 </div>
             </address>
 
-            <div class="info-card" tabindex="0">
-                <div class="icon-box blue">
+            <div class="info-card parent-hover" tabindex="0">
+                <div class="icon-box lg blue">
                     <i class="ph-duotone ph-clock"></i>
                 </div>
                 <div class="info-text">
@@ -29,8 +29,8 @@
                 </div>
             </div>
 
-            <address class="info-card" tabindex="0">
-                <div class="icon-box green">
+            <address class="info-card parent-hover" tabindex="0">
+                <div class="icon-box lg green">
                     <i class="ph-duotone ph-linkedin-logo"></i>
                 </div>
                 <div class="info-text">
@@ -71,56 +71,13 @@
         align-items: center;
         text-align: center;
         font-style: normal;
+        gap: 1rem;
     }
 
     .info-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 20px 40px -5px rgba(99, 102, 241, 0.1);
         border-color: var(--primary);
-    }
-
-    .info-card:hover .icon-box {
-        transform: scale(1.1) rotate(-5deg);
-        background: var(--primary);
-        color: white;
-    }
-
-    .icon-box {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        margin-bottom: 1.5rem;
-        transition: 0.3s;
-    }
-
-    .purple {
-        background: rgba(98, 70, 234, 0.1);
-        color: var(--primary);
-    }
-    .blue {
-        background: rgba(59, 130, 246, 0.1);
-        color: #3b82f6;
-    }
-    .green {
-        background: rgba(0, 255, 140, 0.1);
-        color: #059669;
-    }
-
-    .info-card:hover .icon-box.purple {
-        background: var(--primary);
-        color: white;
-    }
-    .info-card:hover .icon-box.blue {
-        background: #3b82f6;
-        color: white;
-    }
-    .info-card:hover .icon-box.green {
-        background: #059669;
-        color: white;
     }
 
     .info-text h3 {

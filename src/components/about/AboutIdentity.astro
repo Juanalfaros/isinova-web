@@ -1,165 +1,379 @@
 ---
-// src/components/sections/AboutIdentity.astro
+// src/components/about/AboutEcosystem.astro
 ---
 
-<section class="section-identity bg-white" aria-labelledby="philosophy-title">
+<section class="section-ecosystem" aria-labelledby="philosophy-title">
+    <div class="bg-decoration"></div>
+
     <div class="container">
-        <div class="identity-grid">
-            <div class="identity-content">
-                <span class="section-badge primary">Nuestra Filosofía</span>
-                <h2 id="philosophy-title">
-                    No construimos islas, creamos ecosistemas
-                </h2>
-                <p class="lead">
-                    Entendemos que la educación no necesita más software
-                    complejo; necesita soluciones integradas que funcionen.
-                </p>
-                <p>
-                    Nuestra misión es transformar instituciones mediante la <strong
-                        >interoperabilidad absoluta</strong
-                    >. Mientras otros ofrecen plataformas genéricas, nosotros
-                    diseñamos arquitecturas que conectan tu ERP académico con el
-                    aula virtual.
-                </p>
-            </div>
-            <figure class="identity-visual" aria-hidden="true">
-                <div class="abstract-tech-frame animate-float">
-                    <div class="tech-card-glass">
-                        <div class="card-head">
-                            <span class="dot"></span><span class="dot"></span>
-                        </div>
-                        <div class="card-body-content">
-                            <strong>Conectividad Total</strong>
-                            <p>ERP + LMS + CRM</p>
-                        </div>
-                    </div>
-                    <div class="visual-glow"></div>
+        <div class="ecosystem-grid">
+            <div class="content-wrapper">
+                <div class="badge-wrapper">
+                    <span class="section-badge primary">Nuestra Filosofía</span>
                 </div>
-            </figure>
+                
+                <h2 id="philosophy-title" class="section-title sm">
+                    No construimos islas, <br />
+                    <span class="highlight-brand primary text-span">orquestamos ecosistemas.</span>
+                </h2>
+                
+                <p class="lead">
+                    La educación no necesita más software complejo; necesita 
+                    que tus herramientas hablen el mismo idioma.
+                </p>
+                
+                <div class="description">
+                    <p>
+                        Rompemos los silos de información. Nuestra arquitectura de 
+                        <strong>Interoperabilidad Nativa</strong> convierte tu institución 
+                        en un organismo vivo, donde el flujo de datos entre lo académico, 
+                        lo administrativo y lo financiero es invisible y automático.
+                    </p>
+                </div>
+
+                <ul class="features-list">
+                    <li>
+                        <i class="ph-fill ph-check-circle"></i>
+                        <span>Sincronización en tiempo real</span>
+                    </li>
+                    <li>
+                        <i class="ph-fill ph-check-circle"></i>
+                        <span>Experiencia de usuario unificada</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="visual-wrapper" aria-hidden="true">
+                <div class="orbit-system">
+                    
+                    <svg class="connections-svg" viewBox="0 0 400 400">
+                        <defs>
+                            <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="var(--primary-light)" stop-opacity="0" />
+                                <stop offset="50%" stop-color="var(--primary)" stop-opacity="1" />
+                                <stop offset="100%" stop-color="var(--accent)" stop-opacity="1" />
+                            </linearGradient>
+                        </defs>
+
+                        <path id="path-1" d="M200,60 Q200,150 200,200" class="connection-path" />
+                        <path id="path-2" d="M80,320 Q150,280 200,200" class="connection-path" />
+                        <path id="path-3" d="M320,320 Q250,280 200,200" class="connection-path" />
+
+                        <circle r="3" class="data-particle">
+                            <animateMotion dur="3s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1">
+                                <mpath href="#path-1"/>
+                            </animateMotion>
+                        </circle>
+                        <circle r="3" class="data-particle" style="animation-delay: 1s">
+                            <animateMotion dur="4s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1">
+                                <mpath href="#path-2"/>
+                            </animateMotion>
+                        </circle>
+                        <circle r="3" class="data-particle" style="animation-delay: 0.5s">
+                            <animateMotion dur="3.5s" repeatCount="indefinite" keyPoints="0;1" keyTimes="0;1">
+                                <mpath href="#path-3"/>
+                            </animateMotion>
+                        </circle>
+                    </svg>
+
+                    <div class="node hub">
+                        <div class="hub-core">
+                            <i class="ph-fill ph-arrows-merge"></i>
+                        </div>
+                        <div class="hub-rings"></div>
+                    </div>
+
+                    <div class="node satellite sat-1">
+                        <div class="icon-box"><i class="ph-duotone ph-graduation-cap"></i></div>
+                        <span class="label">LMS</span>
+                        <div class="status-dot"></div>
+                    </div>
+
+                    <div class="node satellite sat-2">
+                        <div class="icon-box"><i class="ph-duotone ph-chart-pie-slice"></i></div>
+                        <span class="label">ERP</span>
+                        <div class="status-dot"></div>
+                    </div>
+
+                    <div class="node satellite sat-3">
+                        <div class="icon-box"><i class="ph-duotone ph-users-three"></i></div>
+                        <span class="label">CRM</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
 
 <style>
-    .section-identity {
-        padding: 8rem 0;
+
+    .section-ecosystem {
+        padding: 6rem 0;
+        position: relative;
         overflow: hidden;
+        background-color: #f8fafc; /* Slate 50 */
     }
-    .identity-grid {
+
+    .bg-decoration {
+        position: absolute;
+        top: -10%;
+        right: -5%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, rgba(255,255,255,0) 70%);
+        border-radius: 50%;
+        z-index: 0;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        position: relative;
+        z-index: 1;
+    }
+
+    .ecosystem-grid {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 5rem;
+        gap: 4rem;
         align-items: center;
     }
 
+
+
+    .title {
+        font-size: 2.5rem;
+        line-height: 1.1;
+        font-weight: 800;
+        color: var(--text-main);
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+    }
+
+    .text-gradient {
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
     .lead {
-        font-size: 1.2rem;
-        line-height: 1.2 !important;
-        color: #0f172a;
+        font-size: 1.25rem;
+        color: var(--text-main);
         font-weight: 500;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .description p {
+        color: var(--text-muted);
+        line-height: 1.7;
         margin-bottom: 2rem;
     }
 
-    .identity-content p {
-        color: #64748b;
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
+    .features-list {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
     }
-    .identity-visual {
-        position: relative;
+
+    .features-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--text-main);
+        font-weight: 500;
+    }
+
+    .features-list i {
+        color: var(--accent);
+        font-size: 1.25rem;
+    }
+
+    /* --- VISUAL (Diagrama) --- */
+    .visual-wrapper {
         display: flex;
         justify-content: center;
-        margin: 0;
+        align-items: center;
+        perspective: 1000px;
     }
 
-    .abstract-tech-frame {
-        width: 300px;
-        height: 350px;
-        background: #f1f5f9;
-        border-radius: 2rem;
+    .orbit-system {
         position: relative;
-        border: 1px solid #e2e8f0;
-        transition: transform 0.5s ease;
+        width: 400px;
+        height: 400px;
     }
 
-    .identity-visual:hover .abstract-tech-frame {
-        transform: rotate(2deg) scale(1.02);
-    }
-
-    .tech-card-glass {
+    /* SVG Connections */
+    .connections-svg {
         position: absolute;
-        top: 20%;
-        right: -20%;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        padding: 1.5rem;
-        border-radius: 1rem;
-        border: 1px solid white;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s ease;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
     }
 
-    .identity-visual:hover .tech-card-glass {
-        transform: translateY(-10px) translateX(-5px);
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+    .connection-path {
+        fill: none;
+        stroke: #cbd5e1; /* Slate 300 */
+        stroke-width: 1.5;
+        stroke-dasharray: 6 4;
+        opacity: 0.6;
     }
 
-    .card-head {
+    .data-particle {
+        fill: var(--primary);
+        filter: drop-shadow(0 0 4px var(--primary));
+    }
+
+    /* NODOS */
+    .node {
+        position: absolute;
         display: flex;
-        gap: 5px;
-        margin-bottom: 1rem;
-    }
-    .card-head .dot {
-        width: 8px;
-        height: 8px;
-        background: #cbd5e1;
-        border-radius: 50%;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: default;
     }
 
-    .visual-glow {
+    /* HUB CENTRAL */
+    .hub {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+
+    .hub-core {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 2rem;
+        box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+        position: relative;
+        z-index: 2;
+    }
+
+    .hub-rings {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 140px;
+        height: 140px;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        border-radius: 50%;
+        z-index: 1;
+        animation: pulse-ring 3s infinite ease-out;
+    }
+
+    .hub-rings::before {
+        content: '';
         position: absolute;
         inset: -20px;
-        background: radial-gradient(
-            circle at center,
-            rgba(99, 102, 241, 0.15) 0%,
-            transparent 70%
-        );
-        z-index: -1;
+        border: 1px solid rgba(99, 102, 241, 0.1);
+        border-radius: 50%;
+        animation: pulse-ring 3s infinite ease-out 0.5s;
     }
 
-    .bg-white {
-        background-color: #ffffff;
+    /* SATÉLITES */
+    .satellite {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        padding: 0.75rem 1.25rem;
+        border-radius: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: row; /* Layout horizontal para las tarjetas */
+        align-items: center;
+        width: auto;
     }
 
-    @media (min-width: 1025px) {
-        .identity-grid {
-            grid-template-columns: 1.1fr 0.9fr;
+    .satellite:hover {
+        transform: scale(1.05) translateY(-5px);
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        border-color: var(--primary-light);
+    }
+
+    .icon-box {
+        color: var(--primary);
+        font-size: 1.25rem;
+        margin-right: 0.5rem;
+    }
+
+    .satellite .label {
+        font-weight: 700;
+        font-size: 0.875rem;
+        color: var(--text-main);
+    }
+
+    .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #22c55e; /* Green 500 */
+        border-radius: 50%;
+        margin-left: 0.75rem;
+        box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.2);
+    }
+
+    /* Posiciones */
+    .sat-1 {
+        top: 15%; /* Mismo que el path SVG M200,60 pero en CSS */
+        left: 50%;
+        transform: translate(-50%, -50%);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .sat-2 {
+        bottom: 20%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+        animation: float 6s ease-in-out infinite 2s;
+    }
+
+    .sat-3 {
+        bottom: 20%;
+        right: 20%;
+        transform: translate(50%, -50%);
+        animation: float 6s ease-in-out infinite 4s;
+    }
+
+    /* Animations */
+    @keyframes pulse-ring {
+        0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+        100% { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+    }
+
+    @keyframes float {
+        0%, 100% { margin-top: 0; }
+        50% { margin-top: -10px; }
+    }
+
+    /* Responsive */
+    @media (min-width: 992px) {
+        .ecosystem-grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
         }
-    }
-
-    @media (max-width: 1024px) {
-        .identity-grid {
-            grid-template-columns: 1fr;
-            gap: 4rem;
-        }
+        .title { font-size: 3rem; }
     }
 
     @media (max-width: 768px) {
-        .section-identity {
-            padding: 4rem 0;
+        .orbit-system {
+            transform: scale(0.8);
         }
-        .abstract-tech-frame {
-            width: 100%;
-            height: 300px;
-        }
-        .tech-card-glass {
-            right: 0;
-            left: 0;
-            bottom: -20px;
-            top: auto;
-            margin: 0 auto;
-            width: 90%;
-            text-align: center;
+        .visual-wrapper {
+            margin-top: 2rem;
         }
     }
 </style>

@@ -1,0 +1,49 @@
+---
+// src/components/services/ServiceHighlightBox.astro
+
+interface Props {
+    title: string;
+    text: string;
+    icon?: string;
+}
+
+const { title, text, icon = "ph-lightbulb" } = Astro.props;
+---
+
+<div class="highlight-glass-box parent-hover">
+    <div class="icon-box yellow lg">
+        <i class={`ph-duotone ${icon}`}></i>
+    </div>
+    <div class="box-text">
+        <h4>{title}</h4>
+        <p>{text}</p>
+    </div>
+</div>
+
+<style>
+    .highlight-glass-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        display: flex;
+        gap: 1.5rem;
+        align-items: flex-start;
+        margin-top: 4rem;
+        backdrop-filter: blur(5px);
+    }
+
+    .box-text h4 {
+        font-size: 1.1rem;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .box-text p {
+        font-size: 0.95rem;
+        color: #94a3b8;
+        line-height: 1.5;
+        margin: 0;
+    }
+</style>

@@ -9,7 +9,7 @@
         <div class="quiz-container">
             <div class="quiz-header">
                 <span class="section-badge">Diagnóstico Estratégico</span>
-                <h2 class="section-title">
+                <h2 class="section-title md">
                     Descubre la <span
                         class="text-span gradient highlight-brand accent"
                         >Solución Educativa Ideal</span
@@ -34,8 +34,11 @@
                     </div>
                     <h3>¿En qué etapa se encuentra tu institución?</h3>
                     <div class="options-grid">
-                        <button class="option-btn" data-value="new">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="new"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-rocket-launch"></i>
                             </div>
                             <div class="option-text">
@@ -48,8 +51,11 @@
                             <div class="check-circle"></div>
                         </button>
 
-                        <button class="option-btn" data-value="migration">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="migration"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-arrows-left-right"></i>
                             </div>
                             <div class="option-text">
@@ -62,8 +68,11 @@
                             <div class="check-circle"></div>
                         </button>
 
-                        <button class="option-btn" data-value="custom">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="custom"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-puzzle-piece"></i>
                             </div>
                             <div class="option-text">
@@ -85,8 +94,11 @@
                     </div>
                     <h3>¿Qué es lo más importante para la dirección hoy?</h3>
                     <div class="options-grid">
-                        <button class="option-btn" data-value="speed">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="speed"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-lightning"></i>
                             </div>
                             <div class="option-text">
@@ -99,8 +111,11 @@
                             <div class="check-circle"></div>
                         </button>
 
-                        <button class="option-btn" data-value="stability">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="stability"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-shield-check"></i>
                             </div>
                             <div class="option-text">
@@ -113,8 +128,8 @@
                             <div class="check-circle"></div>
                         </button>
 
-                        <button class="option-btn" data-value="ux">
-                            <div class="icon-box">
+                        <button class="option-btn parent-hover" data-value="ux">
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-student"></i>
                             </div>
                             <div class="option-text">
@@ -141,8 +156,11 @@
                     </div>
                     <h3>¿Cuál es el volumen proyectado de estudiantes?</h3>
                     <div class="options-grid">
-                        <button class="option-btn" data-value="small">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="small"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-users"></i>
                             </div>
                             <div class="option-text">
@@ -155,8 +173,11 @@
                             <div class="check-circle"></div>
                         </button>
 
-                        <button class="option-btn" data-value="medium">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="medium"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-buildings"></i>
                             </div>
                             <div class="option-text">
@@ -169,8 +190,11 @@
                             <div class="check-circle"></div>
                         </button>
 
-                        <button class="option-btn" data-value="large">
-                            <div class="icon-box">
+                        <button
+                            class="option-btn parent-hover"
+                            data-value="large"
+                        >
+                            <div class="icon-box slate md">
                                 <i class="ph-duotone ph-globe-hemisphere-west"
                                 ></i>
                             </div>
@@ -651,6 +675,7 @@
     .option-btn {
         display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 1.5rem;
         padding: 1.25rem;
         background: #ffffff;
@@ -670,29 +695,6 @@
         box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.05);
     }
 
-    .icon-box {
-        width: 50px;
-        height: 50px;
-        background: #f1f5f9;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        color: #64748b;
-        transition: all 0.4s ease;
-        flex-shrink: 0;
-    }
-    .option-btn:hover .icon-box,
-    .report-icon:hover {
-        transform: scale(1.1) rotate(-5deg);
-        background: var(--primary);
-        color: white;
-    }
-
-    .option-text {
-        flex: 1;
-    }
     .option-text strong {
         display: block;
         font-size: 1.1rem;

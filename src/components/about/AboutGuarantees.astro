@@ -15,39 +15,45 @@
         </div>
         <ul class="guarantees-grid unstyled-list">
             <li class="guarantee-wrapper">
-                <article class="guarantee-card-light" tabindex="0">
-                    <div class="icon-box accent-box">
+                <article class="guarantee-card-light parent-hover" tabindex="0">
+                    <div class="icon-box lg purple">
                         <i class="ph-fill ph-seal-check"></i>
                     </div>
-                    <h3>Garantía Técnica de 30 Días</h3>
-                    <p>
-                        Corrección inmediata de cualquier detalle tras el
-                        lanzamiento.
-                    </p>
+                    <div class="guarantee-info">
+                        <h3>Garantía Técnica de 30 Días</h3>
+                        <p>
+                            Corrección inmediata de cualquier detalle tras el
+                            lanzamiento.
+                        </p>
+                    </div>
                 </article>
             </li>
             <li class="guarantee-wrapper">
-                <article class="guarantee-card-light" tabindex="0">
-                    <div class="icon-box primary-box">
+                <article class="guarantee-card-light parent-hover" tabindex="0">
+                    <div class="icon-box lg green">
                         <i class="ph-fill ph-clock-countdown"></i>
                     </div>
-                    <h3>Soporte en &lt; 24 Horas</h3>
-                    <p>
-                        Tiempo de respuesta garantizado para mantener tu
-                        operación.
-                    </p>
+                    <div class="guarantee-info">
+                        <h3>Soporte en &lt; 24 Horas</h3>
+                        <p>
+                            Tiempo de respuesta garantizado para mantener tu
+                            operación.
+                        </p>
+                    </div>
                 </article>
             </li>
             <li class="guarantee-wrapper">
-                <article class="guarantee-card-light" tabindex="0">
-                    <div class="icon-box secure-box">
+                <article class="guarantee-card-light parent-hover" tabindex="0">
+                    <div class="icon-box lg yellow">
                         <i class="ph-fill ph-shield-checkered"></i>
                     </div>
-                    <h3>Seguridad Nivel Bancario</h3>
-                    <p>
-                        Backups diarios y protección contra ataques DDoS
-                        incluidos.
-                    </p>
+                    <div class="guarantee-info">
+                        <h3>Seguridad Nivel Bancario</h3>
+                        <p>
+                            Backups diarios y protección contra ataques DDoS
+                            incluidos.
+                        </p>
+                    </div>
                 </article>
             </li>
         </ul>
@@ -79,6 +85,15 @@
         border: 1px solid #e2e8f0;
         transition: all 0.3s ease;
         height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .guarantee-info {
+        text-align: center;
     }
 
     .guarantee-card-light:hover {
@@ -86,30 +101,6 @@
         background: white;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
         border-color: var(--primary);
-    }
-
-    .icon-box {
-        width: 60px;
-        height: 60px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 1.5rem;
-        font-size: 1.8rem;
-    }
-
-    .accent-box {
-        background: rgba(79, 70, 229, 0.1);
-        color: var(--primary);
-    }
-    .primary-box {
-        background: rgba(16, 185, 129, 0.1);
-        color: #10b981;
-    }
-    .secure-box {
-        background: rgba(245, 158, 11, 0.1);
-        color: #f59e0b;
     }
 
     .guarantee-card-light h3 {

@@ -1,0 +1,159 @@
+---
+// src/components/services/ServiceFAQ.astro
+
+interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    badgeText?: string;
+    title: string;
+    subtitle?: string;
+    faqs: FAQItem[];
+}
+
+const { badgeText = "Dudas Comunes", title, subtitle, faqs } = Astro.props;
+---
+
+<section class="section-faq">
+    <div class="container narrow">
+        <div class="section-header-center">
+            <span class="section-badge primary">{badgeText}</span>
+            <h2 class="section-title md">{title}</h2>
+            {subtitle && <p class="section-desc">{subtitle}</p>}
+        </div>
+
+        <div class="faq-list">
+            {
+                faqs.map((faq, index) => (
+                    <details
+                        class="faq-item"
+                        name="faq-group"
+                        open={index === 0}
+                    >
+                        <summary class="faq-trigger">
+                            <span class="faq-title">{faq.question}</span>
+                            <span class="icon-wrapper">
+                                <i class="ph-bold ph-caret-down" />
+                            </span>
+                        </summary>
+                        <div class="faq-content">
+                            <p>{faq.answer}</p>
+                        </div>
+                    </details>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .section-faq {
+        background-color: #f8fafc;
+        padding: 6rem 0;
+    }
+
+    .container.narrow {
+        max-width: 800px;
+    }
+
+    .section-header-center {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto 4rem;
+    }
+
+    .section-desc {
+        color: #64748b;
+        font-size: 1.1rem;
+        margin-top: 1rem;
+    }
+
+    .faq-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .faq-item {
+        background: white;
+        border: 1px solid #e2e8f0;
+        border-radius: 1rem;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item:hover {
+        border-color: #cbd5e1;
+    }
+
+    .faq-item[open] {
+        border-color: var(--primary);
+        box-shadow: 0 4px 20px -2px rgba(98, 70, 234, 0.15);
+    }
+
+    .faq-trigger {
+        list-style: none;
+        padding: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        background: white;
+        transition: background 0.2s;
+    }
+
+    .faq-trigger::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #0f172a;
+        padding-right: 1rem;
+    }
+
+    .icon-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #f1f5f9;
+        color: #64748b;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+    }
+
+    .faq-item[open] .icon-wrapper {
+        background: var(--primary);
+        color: white;
+        transform: rotate(180deg);
+    }
+
+    .faq-content {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        color: #64748b;
+        line-height: 1.7;
+        font-size: 1rem;
+        animation: slideDown 0.3s ease-out;
+    }
+
+    .faq-content p {
+        margin: 0;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>

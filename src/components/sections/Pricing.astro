@@ -1,176 +1,180 @@
 ---
-
+/* No se requiere lógica JS en el frontmatter para este ejemplo estático */
 ---
 
-<section id="planes" class="pricing-section-dark bg-tech-dark">
+<section id="planes" class="pricing-section-dark bg-tech-dark" aria-labelledby="pricing-heading">
     <div class="bg-base"></div>
     <div class="tech-grid-bg"></div>
     <div class="ambient-glow"></div>
 
     <div class="container">
-        <div class="section-header">
+        <header class="section-header">
             <span class="section-badge accent">Suscripción DevOps</span>
-            <h2 class="section-title">
-                Operaciones y Soporte <span
-                    class="text-span gradient highlight-brand accent"
-                    >Continuo</span
-                >
+            <h2 id="pricing-heading" class="section-title lg">
+                Operaciones y Soporte <span class="text-span gradient highlight-brand accent">Continuo</span>
             </h2>
             <p class="section-desc">
                 Más que un hosting, contratamos tu tranquilidad. Planes
                 mensuales que incluyen infraestructura, mantenimiento de
                 seguridad y soporte técnico especializado.
             </p>
-        </div>
+        </header>
 
         <div class="pricing-grid">
-            <div class="pricing-card">
-                <div class="plan-header">
+            <article class="pricing-card">
+                <header class="plan-header">
                     <h3 class="plan-name">Starter Ops</h3>
                     <p class="plan-subtitle">
                         Gestión profesional para academias en crecimiento.
                     </p>
-                </div>
+                </header>
+                
                 <div class="plan-price">
                     <span class="currency">Desde</span>
                     <span class="amount">$450k</span>
                     <span class="period">/mes + IVA</span>
                 </div>
-                <div class="divider"></div>
+
+                <hr class="divider" />
+
                 <ul class="plan-features">
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
-                        <span
-                            ><strong>Instancia Cloud Gestionada</strong> (VPS)</span
-                        >
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+                        <span><strong>Instancia Cloud Gestionada</strong> (VPS)</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Hasta <strong>500 alumnos activos</strong></span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Backups Automatizados (Diarios)</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Monitorización de Uptime 24/7</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Mesa de Ayuda (SLA 48h)</span>
                     </li>
                     <li class="feature-item disabled">
-                        <i class="ph ph-x-circle"></i>
+                        <i class="ph ph-x-circle" aria-hidden="true"></i>
                         <span>Ingeniero Dedicado</span>
                     </li>
                 </ul>
                 <a href="/contacto" class="btn-plan"> Solicitar Evaluación </a>
-            </div>
+            </article>
 
-            <div class="pricing-card popular">
+            <article class="pricing-card popular">
                 <div class="popular-badge">
-                    <i class="ph-fill ph-star"></i> Best Seller
+                    <i class="ph-fill ph-star" aria-hidden="true"></i> Best Seller
                 </div>
-                <div class="plan-header">
+                
+                <header class="plan-header">
                     <h3 class="plan-name">Scale Up</h3>
                     <p class="plan-subtitle">
                         Alta disponibilidad para instituciones consolidadas.
                     </p>
-                </div>
+                </header>
+
                 <div class="plan-price">
                     <span class="currency">Desde</span>
                     <span class="amount">$890k</span>
                     <span class="period">/mes + IVA</span>
                 </div>
-                <div class="divider"></div>
+
+                <hr class="divider" />
+
                 <ul class="plan-features">
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
-                        <span><strong>Cluster de Alto Rendimiento</strong></span
-                        >
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+                        <span><strong>Cluster de Alto Rendimiento</strong></span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
-                        <span>Hasta <strong>2,000 alumnos activos</strong></span
-                        >
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
+                        <span>Hasta <strong>2,000 alumnos activos</strong></span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Optimización de Base de Datos SQL</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Soporte Prioritario (SLA 12h)</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>WAF (Firewall de Aplicación)</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Integración Zoom/Teams/Webpay</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>1 Sesión Mensual de Asesoría</span>
                     </li>
                 </ul>
                 <a href="/contacto" class="btn-plan primary">
                     Elegir Plan Scale
-                    <i class="ph-bold ph-arrow-right"></i>
+                    <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
                 </a>
-            </div>
+            </article>
 
-            <div class="pricing-card">
-                <div class="plan-header">
+            <article class="pricing-card">
+                <header class="plan-header">
                     <h3 class="plan-name">Enterprise</h3>
                     <p class="plan-subtitle">
                         Arquitectura crítica para Universidades.
                     </p>
-                </div>
+                </header>
+
                 <div class="plan-price">
                     <span class="currency">Contrato Anual</span>
                     <span class="amount">A Medida</span>
                     <span class="period">Cotización directa</span>
                 </div>
-                <div class="divider"></div>
+
+                <hr class="divider" />
+
                 <ul class="plan-features">
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span><strong>Arquitectura Multi-Tenant</strong></span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Usuarios Ilimitados (Auto-Scaling)</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>DevOps Dedicado & Account Manager</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Disaster Recovery Plan (DRP)</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Auditoría de Seguridad Trimestral</span>
                     </li>
                     <li class="feature-item">
-                        <i class="ph-fill ph-check-circle"></i>
+                        <i class="ph-fill ph-check-circle" aria-hidden="true"></i>
                         <span>Integración SIGE / ERP / SAP</span>
                     </li>
                 </ul>
                 <a href="/contacto" class="btn-plan"> Hablar con Ingeniería </a>
-            </div>
+            </article>
         </div>
 
-        <div class="addons-section">
-            <h3 class="addons-title">Servicios On-Demand</h3>
+        <section class="addons-section" aria-labelledby="addons-title">
+            <h3 id="addons-title" class="addons-title">Servicios On-Demand</h3>
+            
             <div class="addons-grid">
-                <div class="addon-card">
-                    <div class="addon-icon">
-                        <i class="ph-duotone ph-database"></i>
+                <article class="addon-card">
+                    <div class="icon-box purple md">
+                        <i class="ph-duotone ph-database" aria-hidden="true"></i>
                     </div>
                     <div class="addon-info">
                         <h4>Migración de Datos</h4>
@@ -178,13 +182,13 @@
                             Rescate y normalización de historial académico desde
                             plataformas Legacy.
                         </p>
+                        <div class="addon-price">Desde $350k</div>
                     </div>
-                    <div class="addon-price">Desde $350k</div>
-                </div>
+                </article>
 
-                <div class="addon-card">
-                    <div class="addon-icon">
-                        <i class="ph-duotone ph-chalkboard-teacher"></i>
+                <article class="addon-card">
+                    <div class="icon-box purple md">
+                        <i class="ph-duotone ph-chalkboard-teacher" aria-hidden="true"></i>
                     </div>
                     <div class="addon-info">
                         <h4>Academia Docente</h4>
@@ -192,13 +196,13 @@
                             Pack de capacitación para nivelar competencias
                             digitales de profesores.
                         </p>
+                        <div class="addon-price">$120k / sesión</div>
                     </div>
-                    <div class="addon-price">$120k / sesión</div>
-                </div>
+                </article>
 
-                <div class="addon-card">
-                    <div class="addon-icon">
-                        <i class="ph-duotone ph-code"></i>
+                <article class="addon-card">
+                    <div class="icon-box purple md">
+                        <i class="ph-duotone ph-code" aria-hidden="true"></i>
                     </div>
                     <div class="addon-info">
                         <h4>Desarrollo Plugins</h4>
@@ -206,18 +210,18 @@
                             Creación de módulos a medida para Moodle o
                             integraciones API específicas.
                         </p>
+                        <div class="addon-price">Cotizar por Hora</div>
                     </div>
-                    <div class="addon-price">Cotizar por Hora</div>
-                </div>
+                </article>
             </div>
-        </div>
+        </section>
     </div>
 </section>
 
 <style>
     /* VARIABLES LOCALES (Dark Mode Pricing) */
     .pricing-section-dark {
-        --bg-main: #050b14; /* Fondo profundo */
+        --bg-main: #050b14;
         --bg-card: rgba(255, 255, 255, 0.03);
         --bg-card-popular: linear-gradient(
             180deg,
@@ -226,8 +230,8 @@
         );
         --text-heading: #f8fafc;
         --text-body: #cbd5e1;
-        --primary: #6366f1; /* Morado */
-        --accent: #10b981; /* Verde */
+        --primary: #6366f1;
+        --accent: #10b981;
         --border-subtle: rgba(255, 255, 255, 0.1);
 
         padding: 9rem 0;
@@ -237,7 +241,6 @@
         color: var(--text-body);
     }
 
-    /* Elementos de fondo extraídos (si los usas aquí también) */
     .bg-base {
         position: absolute;
         inset: 0;
@@ -269,6 +272,7 @@
     }
 
     /* HEADER */
+    /* .section-header ahora es un tag <header>, funciona igual con la clase */
     .section-header {
         text-align: center;
         max-width: 700px;
@@ -295,6 +299,7 @@
     }
 
     /* CARDS */
+    /* .pricing-card ahora es un tag <article> */
     .pricing-card {
         background: var(--bg-card);
         border: 1px solid var(--border-subtle);
@@ -386,10 +391,15 @@
         font-size: 0.9rem;
     }
 
+    /* Ajuste para HR */
     .divider {
         height: 1px;
         background: var(--border-subtle);
         margin-bottom: 2rem;
+        /* Reset para tag <hr> */
+        border: 0;
+        margin-top: 0;
+        width: 100%;
     }
 
     .plan-features {
@@ -421,14 +431,14 @@
         color: var(--text-heading);
     }
 
-    /* BOTONES (Aquí está el ajuste principal) */
+    /* BOTONES */
     .btn-plan {
         display: flex;
         align-items: center;
         justify-content: center;
         gap: 0.5rem;
         padding: 1rem;
-        border-radius: 100px; /* Redondeado completo estilo píldora */
+        border-radius: 100px;
         font-weight: 700;
         text-decoration: none;
         border: 1px solid var(--border-subtle);
@@ -443,7 +453,6 @@
         transform: translateY(-2px);
     }
 
-    /* Botón Primary (Glow Style) */
     .btn-plan.primary {
         background: var(--primary);
         color: white;
@@ -480,6 +489,7 @@
         }
     }
 
+    /* .addon-card ahora es <article> */
     .addon-card {
         background: var(--bg-card);
         border: 1px solid var(--border-subtle);
@@ -487,6 +497,11 @@
         padding: 2rem;
         text-align: center;
         transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
     }
 
     .addon-card:hover {
@@ -495,11 +510,6 @@
         background: rgba(255, 255, 255, 0.05);
     }
 
-    .addon-icon {
-        font-size: 2rem;
-        color: var(--primary);
-        margin-bottom: 1rem;
-    }
     .addon-info h4 {
         font-size: 1.1rem;
         color: var(--text-heading);
@@ -515,10 +525,4 @@
         color: var(--accent);
         font-size: 0.9rem;
     }
-
-    /* @media (max-width: 768px) {
-        .pricing-section-dark { padding: 6rem 0; }
-        .section-title { font-size: 3.5rem; }
-        .pricing-card { padding: 2.5rem 1.5rem; }
-    } */
 </style>

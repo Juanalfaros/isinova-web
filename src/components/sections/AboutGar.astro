@@ -12,9 +12,9 @@
             <div class="identity-col">
                 <span class="section-badge accent">Sobre Isinova</span>
 
-                <h2 class="section-title">
+                <h2 class="section-title md">
                     Expertos en EdTech <br />
-                    <span class="text-gradient">Made in Chile</span>
+                    <span class="text-span gradient3 highlight-brand primary">Made in Chile</span>
                 </h2>
 
                 <p class="about-text">
@@ -58,8 +58,8 @@
                 </div>
 
                 <div class="cards-stack">
-                    <div class="feature-card">
-                        <div class="icon-box accent">
+                    <div class="feature-card parent-hover">
+                        <div class="icon-box md green">
                             <i class="ph-fill ph-seal-check"></i>
                         </div>
                         <div class="text-box">
@@ -71,8 +71,8 @@
                         </div>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="icon-box primary">
+                    <div class="feature-card parent-hover">
+                        <div class="icon-box md purple">
                             <i class="ph-fill ph-clock-countdown"></i>
                         </div>
                         <div class="text-box">
@@ -84,8 +84,8 @@
                         </div>
                     </div>
 
-                    <div class="feature-card">
-                        <div class="icon-box secure">
+                    <div class="feature-card parent-hover">
+                        <div class="icon-box md yellow">
                             <i class="ph-fill ph-shield-checkered"></i>
                         </div>
                         <div class="text-box">
@@ -139,19 +139,6 @@
         max-width: 600px;
     }
 
-    .section-title {
-        font-size: 2.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        color: var(--text-heading);
-        margin-bottom: 1.5rem;
-    }
-
-    .text-gradient {
-        background: linear-gradient(135deg, var(--primary), #a855f7);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
 
     .about-text {
         font-size: 1.125rem;
@@ -262,30 +249,6 @@
     .feature-card:hover {
         background: rgba(255, 255, 255, 0.03);
     }
-
-    .icon-box {
-        width: 44px;
-        height: 44px;
-        border-radius: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        flex-shrink: 0;
-    }
-
-    .accent {
-        background: rgba(0, 255, 140, 0.1);
-        color: var(--accent);
-    }
-    .primary {
-        background: rgba(99, 102, 241, 0.1);
-        color: var(--primary);
-    }
-    .secure {
-        background: rgba(251, 191, 36, 0.1);
-        color: #fbbf24;
-    } /* Amarillo seguridad */
 
     .text-box strong {
         display: block;

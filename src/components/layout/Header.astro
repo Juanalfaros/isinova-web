@@ -67,10 +67,10 @@ const iconColors = ["purple", "green", "blue", "orange"];
                                         return (
                                             <a
                                                 href={`/servicios/${service.slug}`}
-                                                class="dropdown-item"
+                                                class="dropdown-item parent-hover"
                                             >
                                                 <div
-                                                    class={`icon-box ${colorClass}`}
+                                                    class={`icon-box sm ${colorClass}`}
                                                 >
                                                     <i
                                                         class={`ph-duotone ${service.icon}`}
@@ -268,9 +268,6 @@ const iconColors = ["purple", "green", "blue", "orange"];
         --h-bg: #ffffff;
         --h-text: #0f172a;
         --h-muted: #64748b;
-        --primary: #6246ea;
-        --primary-dark: #4f38b8;
-        --accent: #00ff8c;
         --top-bg: #0f172a;
         --top-text: rgba(255, 255, 255, 0.9);
         --shadow-md: 0 4px 20px -5px rgba(0, 0, 0, 0.1);
@@ -280,10 +277,6 @@ const iconColors = ["purple", "green", "blue", "orange"];
         left: 0;
         width: 100%;
         z-index: 999;
-        font-family:
-            system-ui,
-            -apple-system,
-            sans-serif;
         transition: transform 0.3s ease;
     }
 
@@ -458,34 +451,6 @@ const iconColors = ["purple", "green", "blue", "orange"];
     }
     .dropdown-item:hover {
         background: #f8fafc;
-    }
-
-    .icon-box {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.2rem;
-        flex-shrink: 0;
-    }
-    .purple {
-        background: #f3f0ff;
-        color: var(--primary);
-    }
-    .green {
-        background: #ecfdf5;
-        color: #059669;
-    }
-    .blue {
-        background: #eff6ff;
-        color: #2563eb;
-    }
-    /* Estilo naranja extra */
-    .orange {
-        background: #fff7ed;
-        color: #ea580c;
     }
 
     .text-box {

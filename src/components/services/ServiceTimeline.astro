@@ -1,0 +1,91 @@
+---
+// src/components/services/ServiceTimeline.astro
+
+interface TimelineStep {
+    titulo: string;
+    texto: string;
+}
+
+interface Props {
+    title: string;
+    steps: TimelineStep[];
+}
+
+const { title, steps } = Astro.props;
+---
+
+<div class="timeline-wrapper">
+    <h3 class="section-title md">{title}</h3>
+    <div class="timeline-steps">
+        {
+            steps.map((step, idx) => (
+                <div class="timeline-step">
+                    <div class="step-number">{`0${idx + 1}`}</div>
+                    <div class="step-content">
+                        <h4>{step.titulo}</h4>
+                        <p>{step.texto}</p>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</div>
+
+<style>
+    .timeline-wrapper {
+        margin-top: 5rem;
+    }
+
+    .timeline-steps {
+        position: relative;
+        border-left: 2px solid rgba(255, 255, 255, 0.1);
+        padding-left: 2.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+        margin-left: 1rem;
+    }
+
+    .timeline-step {
+        position: relative;
+    }
+
+    .step-number {
+        position: absolute;
+        left: calc(-2.5rem - 16px);
+        top: 0;
+        width: 40px;
+        height: 40px;
+        background: #050b14;
+        border: 2px solid #334155;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #94a3b8;
+        font-family: monospace;
+        font-weight: 700;
+        font-size: 1rem;
+        transition: 0.3s;
+    }
+
+    .timeline-step:hover .step-number {
+        border-color: var(--accent);
+        color: var(--accent);
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+    }
+
+    .step-content h4 {
+        font-size: 1.25rem;
+        color: white;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .step-content p {
+        font-size: 1rem;
+        color: #94a3b8;
+        line-height: 1.6;
+        margin: 0;
+    }
+</style>

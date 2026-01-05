@@ -6,45 +6,54 @@
     <div class="container">
         <div class="section-header">
             <span class="section-badge">Diagnóstico Digital</span>
-            <h2 class="section-title">
+            <h2 class="section-title lg">
                 ¿Sientes que tu tecnología <br />
-                <span class="text-span highlight-brand primary">limita tu enseñanza?</span>
+                <span class="text-span highlight-brand primary"
+                    >limita tu enseñanza?</span
+                >
             </h2>
             <p class="section-desc">
-                Identificamos los obstáculos técnicos comunes que impiden que las instituciones educativas alcancen su máximo potencial.
+                Identificamos los obstáculos técnicos comunes que impiden que
+                las instituciones educativas alcancen su máximo potencial.
             </p>
         </div>
 
         <div class="pain-grid">
-            <div class="pain-card">
-                <div class="icon-box">
-                    <i class="ph-duotone ph-cloud-warning"></i> </div>
+            <div class="pain-card parent-hover">
+                <div class="icon-box pain lg">
+                    <i class="ph-duotone ph-cloud-warning"></i>
+                </div>
                 <div class="card-content">
                     <h3>Caídas del Sistema</h3>
                     <p>
-                        Plataformas que se vuelven lentas o inaccesibles justo cuando más se necesitan, durante exámenes o matrículas.
+                        Plataformas que se vuelven lentas o inaccesibles justo
+                        cuando más se necesitan, durante exámenes o matrículas.
                     </p>
                 </div>
             </div>
 
-            <div class="pain-card">
-                <div class="icon-box">
-                    <i class="ph-duotone ph-hand-pointing"></i> </div>
+            <div class="pain-card parent-hover">
+                <div class="icon-box pain lg">
+                    <i class="ph-duotone ph-hand-pointing"></i>
+                </div>
                 <div class="card-content">
                     <h3>Experiencia Confusa</h3>
                     <p>
-                        Interfaces anticuadas que frustran a estudiantes y docentes, dificultando la navegación y el aprendizaje.
+                        Interfaces anticuadas que frustran a estudiantes y
+                        docentes, dificultando la navegación y el aprendizaje.
                     </p>
                 </div>
             </div>
 
-            <div class="pain-card">
-                <div class="icon-box">
-                    <i class="ph-duotone ph-chats-teardrop"></i> </div>
+            <div class="pain-card parent-hover">
+                <div class="icon-box pain lg">
+                    <i class="ph-duotone ph-chats-teardrop"></i>
+                </div>
                 <div class="card-content">
                     <h3>Soporte Ausente</h3>
                     <p>
-                        Falta de respuesta rápida ante incidencias técnicas, dejando a tu equipo académico sin respaldo.
+                        Falta de respuesta rápida ante incidencias técnicas,
+                        dejando a tu equipo académico sin respaldo.
                     </p>
                 </div>
             </div>
@@ -96,10 +105,10 @@
     }
 
     @media (min-width: 768px) {
-        .section-title { font-size: 3rem; }
+        .section-title {
+            font-size: 3rem;
+        }
     }
-
-
 
     .section-desc {
         font-size: 1.125rem;
@@ -126,7 +135,7 @@
         background: white;
         border-radius: 1.5rem;
         padding: 2.5rem 2rem;
-        border: 1px solid rgba(0,0,0,0.05); /* Borde casi invisible */
+        border: 1px solid rgba(0, 0, 0, 0.05); /* Borde casi invisible */
         transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         display: flex;
         flex-direction: column;
@@ -134,36 +143,13 @@
         height: 100%;
         position: relative;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+        gap: 1rem;
     }
 
     .pain-card:hover {
         transform: translateY(-8px);
         box-shadow: 0 20px 40px -5px rgba(98, 70, 234, 0.15); /* Sombra morada suave */
         border-color: rgba(98, 70, 234, 0.3);
-    }
-
-    /* Iconos - Ahora usan el color de marca */
-    .icon-box {
-        width: 60px;
-        height: 60px;
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        margin-bottom: 1.5rem;
-        transition: transform 0.3s ease;
-        
-        /* Estilo base unificado: Fondo gris muy claro, icono oscuro */
-        background: #f1f5f9; 
-        color: var(--dark);
-    }
-
-    /* Al hacer hover, el icono se enciende con el color de la marca */
-    .pain-card:hover .icon-box {
-        transform: scale(1.1) rotate(-5deg);
-        background: var(--primary);
-        color: white;
     }
 
     .card-content h3 {
@@ -197,8 +183,18 @@
     }
 
     @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-        40% { transform: translateY(-6px); }
-        60% { transform: translateY(-3px); }
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-6px);
+        }
+        60% {
+            transform: translateY(-3px);
+        }
     }
 </style>

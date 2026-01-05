@@ -1,0 +1,243 @@
+---
+// src/components/services/ServiceHero.astro
+import { Image } from "astro:assets";
+
+interface Props {
+    title: string;
+    shortTitle: string;
+    heroTitle: string;
+    tags: string[];
+    icon: string;
+    serviceImage: ImageMetadata;
+    slug: string;
+}
+
+const { title, shortTitle, heroTitle, tags, icon, serviceImage, slug } =
+    Astro.props;
+
+// Separar título para el highlight
+const titleWords = title.split(" ");
+const lastWord = titleWords.pop();
+const titleStart = titleWords.join(" ");
+---
+
+<header class="service-hero bg-tech-dark">
+    <div class="bg-base"></div>
+    <div class="tech-grid-bg"></div>
+    <div class="ambient-glow"></div>
+
+    <div class="container relative-z">
+        <div class="hero-layout">
+            <div class="hero-content">
+                <nav class="breadcrumb-badge">
+                    <a href="/servicios">Servicios</a>
+                    <i class="ph-bold ph-caret-right"></i>
+                    <span class="current">{shortTitle}</span>
+                </nav>
+
+                <h1
+                    class="section-title lg"
+                    transition:name={`service-title-${slug}`}
+                >
+                    {titleStart}
+                    <span class="text-span gradient highlight-brand accent"
+                        >{lastWord}</span
+                    >
+                </h1>
+
+                <p class="hero-desc">{heroTitle}</p>
+
+                <div class="tags-container">
+                    {
+                        tags.map((tag: string) => (
+                            <span class="tech-tag">
+                                <i class="ph-bold ph-hash" /> {tag}
+                            </span>
+                        ))
+                    }
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="glass-frame animate-float">
+                    <Image
+                        src={serviceImage}
+                        alt={title}
+                        class="hero-img"
+                        loading="eager"
+                        fetchpriority="high"
+                        width={600}
+                        height={400}
+                    />
+                    <div
+                        class="floating-icon"
+                        transition:name={`service-icon-${slug}`}
+                    >
+                        <i class={`ph-duotone ${icon}`}></i>
+                    </div>
+                    <div class="shine-effect"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    .relative-z {
+        position: relative;
+        z-index: 10;
+    }
+
+    .service-hero {
+        padding: 6rem 0;
+        position: relative;
+        margin-top: 120px;
+    }
+
+    @media (max-width: 991px) {
+        .service-hero {
+            padding: 4rem 0;
+            margin-top: 60px;
+        }
+    }
+
+    .hero-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    @media (min-width: 992px) {
+        .hero-layout {
+            grid-template-columns: 1.1fr 0.9fr;
+        }
+    }
+
+    /* Breadcrumb */
+    .breadcrumb-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 6px 16px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        margin-bottom: 2rem;
+        font-size: 0.85rem;
+        color: #94a3b8;
+        transition: all 0.3s;
+    }
+
+    .breadcrumb-badge a {
+        color: #94a3b8;
+        text-decoration: none;
+    }
+
+    .breadcrumb-badge a:hover {
+        color: white;
+    }
+
+    .breadcrumb-badge .current {
+        color: var(--accent);
+        font-weight: 600;
+    }
+
+    .hero-desc {
+        font-size: 1.2rem;
+        color: #94a3b8;
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+    }
+
+    /* Tags */
+    .tags-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .tech-tag {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 6px 12px;
+        background: rgba(99, 102, 241, 0.1);
+        color: #a5b4fc;
+        border-radius: 6px;
+        font-size: 0.85rem;
+        font-family: monospace;
+        border: 1px solid rgba(99, 102, 241, 0.2);
+    }
+
+    /* Glass Frame */
+    .glass-frame {
+        position: relative;
+        border-radius: 2rem;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        transform: perspective(1000px) rotateY(-5deg);
+        transition: transform 0.5s ease;
+    }
+
+    .glass-frame:hover {
+        transform: perspective(1000px) rotateY(0deg);
+    }
+
+    .hero-img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: brightness(0.9);
+    }
+
+    .floating-icon {
+        position: absolute;
+        bottom: 2rem;
+        right: 2rem;
+        width: 70px;
+        height: 70px;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: var(--accent);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        animation: float 6s ease-in-out infinite;
+    }
+
+    .shine-effect {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+            to right,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+        transform: skewX(-25deg);
+        animation: shine 8s infinite;
+        pointer-events: none;
+    }
+
+    @keyframes shine {
+        0% {
+            left: -100%;
+        }
+        20% {
+            left: 150%;
+        }
+        100% {
+            left: 150%;
+        }
+    }
+</style>
