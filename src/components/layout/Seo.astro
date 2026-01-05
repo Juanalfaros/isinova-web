@@ -144,7 +144,7 @@ if (type === "service" && serviceData) {
             "@type": "Offer",
             priceCurrency: "CLP",
             availability: "https://schema.org/InStock",
-            price: serviceData.priceRange || "A consultar", // Schema allows text/number mix sometimes or use PriceSpecification
+            price: serviceData.priceRange || "A consultar",
         },
         url: canonicalURL,
     };
@@ -178,8 +178,14 @@ if (type === "service" && serviceData) {
 <link rel="manifest" href="/site.webmanifest" />
 <link rel="sitemap" href="/sitemap-index.xml" />
 
+{/* OPTIMIZACIÓN SEO:
+    Agregamos la condición `&& !noindex` en todos los bloques JSON-LD.
+    Si la página es 404 o no queremos indexarla, no enviamos datos estructurados
+    confusos a Google.
+*/}
+
 {
-    isHome && (
+    isHome && !noindex && (
         <script
             type="application/ld+json"
             set:html={JSON.stringify(organizationSchema)}
@@ -188,7 +194,7 @@ if (type === "service" && serviceData) {
 }
 
 {
-    !isHome && (
+    !isHome && !noindex && (
         <script
             type="application/ld+json"
             set:html={JSON.stringify(breadcrumbSchema)}
@@ -197,7 +203,7 @@ if (type === "service" && serviceData) {
 }
 
 {
-    type === "article" && articleSchema && (
+    type === "article" && articleSchema && !noindex && (
         <script
             type="application/ld+json"
             set:html={JSON.stringify(articleSchema)}
@@ -206,7 +212,7 @@ if (type === "service" && serviceData) {
 }
 
 {
-    type === "service" && serviceSchema && (
+    type === "service" && serviceSchema && !noindex && (
         <script
             type="application/ld+json"
             set:html={JSON.stringify(serviceSchema)}

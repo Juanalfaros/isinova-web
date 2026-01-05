@@ -1,0 +1,240 @@
+---
+// src/pages/404.astro
+import Layout from '../layouts/Layout.astro';
+
+const title = "404 Error del Sistema | Isinova";
+const description = "La ruta solicitada no existe en la infraestructura de Isinova.";
+---
+
+<Layout title={title} description={description} noindex={true}>
+    <main class="error-page bg-tech-dark overflow-hidden">
+        <div class="bg-base"></div>
+        <div class="tech-grid-bg"></div>
+        
+        <div class="giant-organic-404" aria-hidden="true">
+            404
+        </div>
+
+        <div class="container relative-z">
+            <div class="error-grid">
+                
+                <div class="error-content">
+                    <span class="section-badge accent">Error del Sistema</span>
+                    <h1 class="section-title lg">
+                        Página no <br>
+                        <span class="text-span gradient highlight-brand accent">Encontrada</span>
+                    </h1>
+                    
+                    <p class="error-desc">
+                        Lo sentimos, la sección que buscas no está disponible. 
+                        Puede haber sido movida o la dirección es incorrecta.
+                        Nuestra infraestructura crítica sigue operativa y segura.
+                    </p>
+
+                    <div class="action-buttons">
+                        <a href="/" class="btn btn-primary">
+                            <i class="ph-bold ph-arrow-u-up-left"></i>
+                            Volver al Inicio
+                        </a>
+                        <a href="/contacto" class="btn btn-ghost">
+                            <i class="ph-bold ph-envelope-simple"></i>
+                            Contáctanos
+                        </a>
+                    </div>
+                </div>
+
+                <div class="error-visual">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title">bash — root@isinova-server</span>
+                        </div>
+                        <div class="terminal-body">
+                            <div class="line">
+                                <span class="prompt">sysadmin@core:~$</span> 
+                                <span class="cmd type-writer">locate asset -v {Astro.url.pathname}</span>
+                            </div>
+                            
+                            <div class="line output fade-in-1">
+                                > Escaneando sector /public/pages...
+                            </div>
+                            <div class="line output fade-in-2">
+                                > Consultando índice de base de datos... 0 resultados
+                            </div>
+                            <div class="line output warning fade-in-3">
+                                > Advertencia: Excepción de puntero nulo detectada.
+                            </div>
+                            <div class="line output error fade-in-4">
+                                > FATAL: La línea de tiempo solicitada no existe.
+                            </div>
+                            <div class="line output success fade-in-5">
+                                > Estabilidad del sistema: 100% (Solo es un enlace roto).
+                            </div>
+
+                            <div class="line fade-in-6">
+                                <span class="prompt">sysadmin@core:~$</span> 
+                                <span class="cursor">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    /* Utility para evitar scrollbars por el texto gigante */
+    .overflow-hidden { overflow: hidden; position: relative; }
+
+    /* Layout General */
+    .error-page {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        padding: 4rem 0;
+        position: relative;
+    }
+
+    /* --- 404 GIGANTE --- */
+    .giant-organic-404 {
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 45vw; font-weight: 900; line-height: 1;
+        white-space: nowrap;
+        
+        /* Capa inferior pero visible */
+        z-index: 1; 
+        pointer-events: none; 
+        user-select: none;
+        
+        /* Gradiente brillante + Blur */
+        background: linear-gradient(180deg, rgba(98, 70, 234, 0.4) 0%, rgba(0, 255, 140, 0.2) 100%);
+        -webkit-background-clip: text; 
+        -webkit-text-fill-color: transparent;
+        
+        filter: blur(20px); 
+        opacity: 0.4;
+    }
+    
+    .relative-z { z-index: 10; position: relative; }
+
+    /* --- ESTILOS GRID --- */
+    .error-grid {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+
+    /* Nota: Usamos .section-title lg del global.css, pero mantenemos .error-desc local */
+    .error-desc {
+        font-size: 1.1rem; color: #94a3b8; max-width: 480px; margin-bottom: 2.5rem; line-height: 1.6;
+    }
+
+    .action-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn-ghost {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cbd5e1; padding: 1rem 2rem; font-weight: 600;
+    }
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.1); border-color: var(--white); color: var(--white);
+    }
+    .btn i { margin-right: 0.5rem; font-size: 1.2rem; }
+
+    /* --- TERMINAL WINDOW --- */
+    .terminal-window {
+        background: rgba(15, 23, 42, 0.4);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+        font-family: 'Fira Code', 'Courier New', monospace;
+        backdrop-filter: blur(35px);
+        /* Quitamos transformaciones 3D raras, lo dejamos plano y limpio */
+    }
+
+    .terminal-header {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 0.8rem 1rem; display: flex; align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .dots { display: flex; gap: 6px; margin-right: 1rem; }
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot.red { background: #ef4444; }
+    .dot.yellow { background: #f59e0b; }
+    .dot.green { background: #10b981; }
+    
+    .terminal-title { color: #64748b; font-size: 0.8rem; margin-left: auto; margin-right: auto; }
+    .terminal-body { padding: 1.5rem; font-size: 0.8rem; line-height: 1.6; min-height: 280px; }
+    
+    .line { display: block; margin-bottom: 0.5rem; word-break: break-all;}
+    .prompt { color: var(--accent); margin-right: 0.5rem; }
+    .cmd { color: var(--white); }
+    
+    .output { color: #94a3b8; margin-left: 1rem; }
+    .output.error { color: #ef4444; }
+    .output.warning { color: #f59e0b; }
+    .output.success { color: #10b981; }
+    
+    .cursor { color: var(--accent); animation: blink 1s step-end infinite; }
+
+    /* --- ANIMACIONES DE TERMINAL --- */
+    
+    /* Efecto Máquina de Escribir */
+    .type-writer {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid var(--accent);
+        width: 0;
+        animation: typing 1.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+    }
+    /* Mantiene el estado final */
+    .type-writer { animation-fill-mode: forwards; }
+    
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; border-right-color: transparent; }
+    }
+    @keyframes blink-caret { 50% { border-color: transparent; } }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* Efecto Fade In Secuencial */
+    .fade-in-1, .fade-in-2, .fade-in-3, .fade-in-4, .fade-in-5, .fade-in-6 {
+        opacity: 0;
+        animation: fadeIn 0.3s forwards;
+    }
+
+    /* Delays */
+    .fade-in-1 { animation-delay: 1.6s; }
+    .fade-in-2 { animation-delay: 2.2s; }
+    .fade-in-3 { animation-delay: 3.0s; }
+    .fade-in-4 { animation-delay: 3.8s; }
+    .fade-in-5 { animation-delay: 4.5s; }
+    .fade-in-6 { animation-delay: 5.0s; }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+        .error-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+        .error-desc { margin: 0 auto 2.5rem auto; }
+        .action-buttons { justify-content: center; }
+        .terminal-window { max-width: 500px; margin: 0 auto; text-align: left; }
+        .giant-organic-404 { font-size: 55vw; }
+    }
+
+    @media (max-width: 640px) {
+        .action-buttons { flex-direction: column; }
+        .btn { width: 100%; }
+        /* Desactivar animación compleja en móviles para evitar saltos */
+        .type-writer { white-space: normal; border: none; width: auto; animation: none; }
+        .fade-in-1, .fade-in-2, .fade-in-3, .fade-in-4, .fade-in-5, .fade-in-6 { opacity: 1; animation: none; }
+    }
+</style>

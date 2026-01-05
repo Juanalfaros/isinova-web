@@ -102,7 +102,7 @@ export const handler = async (event, context) => {
             console.error("Error creando contacto:", errorData);
         }
 
-        // 2. Enviar email de notificación
+        // 2. Enviar email de notificación (DISEÑO OPTIMIZADO PARA EMAILS)
         const emailPayload = {
             sender: {
                 name: "Formulario Isinova",
@@ -112,48 +112,109 @@ export const handler = async (event, context) => {
             replyTo: { email: email, name: name },
             subject: `🚀 Nueva solicitud: ${projectLabel} - ${institution || name}`,
             htmlContent: `
-                <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #1e293b;">
-                    <div style="background: linear-gradient(135deg, #6246ea, #10b981); padding: 30px; border-radius: 10px 10px 0 0; text-align: center;">
-                        <h1 style="color: white; margin: 0; font-size: 24px;">Nueva Solicitud de Contacto</h1>
-                    </div>
-                    <div style="background: #ffffff; padding: 30px; border-radius: 0 0 10px 10px; border: 1px solid #e2e8f0; border-top: none;">
-                        <table style="width: 100%; border-collapse: collapse;">
-                            <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b; width: 30%;">Nombre:</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b;">${name}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">Institución:</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b;">${institution || 'No especificada'}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">Email:</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #6366f1;"><a href="mailto:${email}" style="color: #6366f1; text-decoration: none;">${email}</a></td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">Teléfono:</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b;">${phone || 'No proporcionado'}</td>
-                            </tr>
-                            <tr>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">Categoría:</td>
-                                <td style="padding: 12px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b;">${projectLabel}</td>
-                            </tr>
-                        </table>
-                        
-                        <div style="margin-top: 25px;">
-                            <p style="font-weight: bold; color: #64748b; margin-bottom: 10px;">Mensaje:</p>
-                            <div style="background: #f8fafc; padding: 20px; border-radius: 8px; color: #334155; line-height: 1.6; border: 1px solid #e2e8f0;">
-                                ${message ? message.replace(/\n/g, '<br>') : 'Sin mensaje adicional.'}
-                            </div>
-                        </div>
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <meta charset="utf-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Nueva Solicitud</title>
+                </head>
+                <body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                    
+                    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f1f5f9;">
+                        <tr>
+                            <td align="center" style="padding: 20px 0;">
+                                
+                                <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: 1px solid #e2e8f0; width: 600px; max-width: 100%;">
+                                    
+                                    <tr>
+                                        <td style="background-color: #6246ea; background: linear-gradient(135deg, #6246ea, #10b981); padding: 30px; text-align: center;">
+                                            <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: bold; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">
+                                                Nueva Solicitud de Contacto
+                                            </h1>
+                                        </td>
+                                    </tr>
 
-                        <div style="margin-top: 30px; padding: 15px; background: #eff6ff; border-radius: 8px; text-align: center;">
-                            <p style="margin: 0; color: #1d4ed8; font-size: 14px; font-weight: 500;">
-                                Este contacto ha sido registrado en Brevo (Lista ID: ${targetListId || 'Default'}).
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                                    <tr>
+                                        <td style="padding: 30px;">
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                
+                                                <tr>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b; width: 35%;">
+                                                        Nombre:
+                                                    </td>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b;">
+                                                        ${name}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">
+                                                        Institución:
+                                                    </td>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b;">
+                                                        ${institution || 'No especificada'}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">
+                                                        Email:
+                                                    </td>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9;">
+                                                        <a href="mailto:${email}" style="color: #6246ea; text-decoration: none; font-weight: 500;">${email}</a>
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">
+                                                        Teléfono:
+                                                    </td>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b;">
+                                                        ${phone || 'No proporcionado'}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; font-weight: bold; color: #64748b;">
+                                                        Categoría:
+                                                    </td>
+                                                    <td style="padding: 10px 0; border-bottom: 1px solid #f1f5f9; color: #1e293b; font-weight: 500;">
+                                                        ${projectLabel}
+                                                    </td>
+                                                </tr>
+                                            </table>
+
+                                            <div style="margin-top: 25px;">
+                                                <p style="font-weight: bold; color: #64748b; margin-bottom: 10px; margin-top: 0;">Mensaje:</p>
+                                                <div style="background-color: #f8fafc; padding: 20px; border-radius: 6px; color: #334155; line-height: 1.6; border: 1px solid #e2e8f0; font-size: 15px;">
+                                                    ${message ? message.replace(/\n/g, '<br>') : 'Sin mensaje adicional.'}
+                                                </div>
+                                            </div>
+
+                                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-top: 30px;">
+                                                <tr>
+                                                    <td style="background-color: #eff6ff; padding: 15px; border-radius: 6px; text-align: center; border: 1px solid #dbeafe;">
+                                                        <p style="margin: 0; color: #1e40af; font-size: 13px;">
+                                                            ✓ Contacto registrado en Brevo (Lista ID: ${targetListId || 'Default'}).
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        
+                                        </td>
+                                    </tr>
+                                </table>
+                                <p style="text-align: center; color: #94a3b8; font-size: 12px; margin-top: 20px;">
+                                    Este correo fue generado automáticamente por el sistema de Isinova.
+                                </p>
+                            
+                            </td>
+                        </tr>
+                    </table>
+
+                </body>
+                </html>
             `,
         };
 
