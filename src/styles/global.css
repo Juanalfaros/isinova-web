@@ -8,6 +8,8 @@
     --background: #f8fafc;
     --surface: #ffffff;
     --primary-light: #f0ecfe;
+    --primary-dark: #3b2bb5;
+
     --white: #ffffff;
 
     --font-main: "Exo 2", sans-serif;
@@ -222,6 +224,7 @@ main {
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
     transition: all 0.3s ease;
+    font-family: var(--font-main);
 }
 
 .section-badge:hover {

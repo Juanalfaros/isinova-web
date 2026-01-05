@@ -59,6 +59,7 @@ export const handler = async (event, context) => {
             data: "Migración de Datos",
             support: "Soporte Estratégico",
             newsletter: "Suscripción Newsletter",
+            quiz_report: "Reporte de Diagnóstico PDF",
             other: "Otro Requerimiento",
         };
 
