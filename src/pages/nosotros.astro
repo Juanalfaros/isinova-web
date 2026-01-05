@@ -29,7 +29,9 @@ const description =
     <main class="nosotros-page">
         <AboutHero />
         <AboutIdentity />
-        {leader && <AboutLeader image={leader.image} />}
+        {leader && leader.imagesf && (
+    <AboutLeader image={leader.imagesf} />
+)}
         <AboutMethodology />
         <AboutTeam members={teamMembers} />
         <AboutGuarantees />

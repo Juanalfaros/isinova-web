@@ -8,6 +8,7 @@ specialties:
 isLeader: true
 initials: "AS"
 image: "../../assets/images/team/adolfo.webp"
+imagesf: "../../assets/images/team/adolfosf.webp"
 mail: "adolfo@isinova.cl"
 linkedin: "https://www.linkedin.com/in/adolfo-saballa-villegas/"
 order: 1

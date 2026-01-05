@@ -1,23 +1,22 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro";
 
-const lastUpdated = "28 de diciembre de 2024";
+const lastUpdated = "05 de enero de 2026";
 ---
 
 <Layout
     title="Términos y Condiciones | Isinova"
     description="Términos y condiciones de uso de los servicios de Isinova SpA. Conoce tus derechos y obligaciones al contratar nuestros servicios EdTech."
 >
-    <Header />
-
     <main class="legal-page">
-        <div class="legal-hero">
-            <div class="hero-bg-pattern"></div>
+        <div class="legal-hero bg-tech-dark">
+            <div class="bg-base"></div>
+            <div class="tech-grid-bg"></div>
+            <div class="ambient-glow"></div>
+
             <div class="container hero-content">
-                <span class="hero-badge">Legal</span>
-                <h1>Términos y Condiciones</h1>
+                <span class="section-badge accent">Legal</span>
+                <h1 class="section-title md on-dark">Términos y Condiciones</h1>
                 <p class="last-update">Vigente desde: {lastUpdated}</p>
             </div>
         </div>
@@ -25,7 +24,7 @@ const lastUpdated = "28 de diciembre de 2024";
         <div class="container">
             <div class="legal-wrapper">
                 <section class="legal-section">
-                    <h2 class="section-title">1. Aceptación de los Términos</h2>
+                    <h2 class="section-legal-title">1. Aceptación de los Términos</h2>
                     <p>
                         Bienvenido a <strong>Isinova SpA</strong>. Al acceder a
                         nuestro sitio web <a
@@ -46,7 +45,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">2. Definiciones Clave</h2>
+                    <h2 class="section-legal-title">2. Definiciones Clave</h2>
                     <p>
                         Para facilitar la comprensión de este documento,
                         definimos los siguientes conceptos:
@@ -88,7 +87,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">3. Alcance de los Servicios</h2>
+                    <h2 class="section-legal-title">3. Alcance de los Servicios</h2>
                     <p>
                         Isinova provee soluciones tecnológicas especializadas. A
                         continuación, se detallan las categorías principales:
@@ -132,7 +131,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">4. Proceso de Contratación</h2>
+                    <h2 class="section-legal-title">4. Proceso de Contratación</h2>
                     <ul class="step-list">
                         <li>
                             <strong>Cotización:</strong> Toda solicitud se formaliza
@@ -153,9 +152,9 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">5. Obligaciones de las Partes</h2>
+                    <h2 class="section-legal-title">5. Obligaciones de las Partes</h2>
                     <div class="obligations-wrapper">
-                        <div class="obligation-column client">
+                        <div class="obligation-column client service-item">
                             <h3>Del Cliente</h3>
                             <ul class="check-list">
                                 <li>
@@ -175,7 +174,7 @@ const lastUpdated = "28 de diciembre de 2024";
                                 </li>
                             </ul>
                         </div>
-                        <div class="obligation-column provider">
+                        <div class="obligation-column provider service-item">
                             <h3>De Isinova</h3>
                             <ul class="check-list">
                                 <li>
@@ -199,7 +198,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">6. Condiciones Económicas</h2>
+                    <h2 class="section-legal-title">6. Condiciones Económicas</h2>
                     <div class="subsection">
                         <h3>6.1 Modalidades de Pago</h3>
                         <p>
@@ -232,7 +231,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">7. Propiedad Intelectual</h2>
+                    <h2 class="section-legal-title">7. Propiedad Intelectual</h2>
                     <p>Es fundamental aclarar la titularidad de los activos:</p>
                     <ul class="styled-list">
                         <li>
@@ -255,7 +254,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">8. Confidencialidad y Datos</h2>
+                    <h2 class="section-legal-title">8. Confidencialidad y Datos</h2>
                     <p>
                         Ambas partes acuerdan proteger la información
                         confidencial (datos de alumnos, estrategias, claves) y
@@ -266,7 +265,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">
+                    <h2 class="section-legal-title">
                         9. Limitación de Responsabilidad
                     </h2>
                     <p>
@@ -294,7 +293,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">10. Garantía Post-Venta</h2>
+                    <h2 class="section-legal-title">10. Garantía Post-Venta</h2>
                     <p>
                         Todo proyecto de implementación cuenta con una <strong
                             >garantía técnica de 30 días</strong
@@ -304,7 +303,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">11. Terminación del Servicio</h2>
+                    <h2 class="section-legal-title">11. Terminación del Servicio</h2>
                     <p>El contrato podrá finalizarse anticipadamente por:</p>
                     <ul class="styled-list">
                         <li>
@@ -324,7 +323,7 @@ const lastUpdated = "28 de diciembre de 2024";
                 </section>
 
                 <section class="legal-section contact-section">
-                    <h2 class="section-title">12. Dudas y Contacto Legal</h2>
+                    <h2 class="section-legal-title">12. Dudas y Contacto Legal</h2>
                     <p>
                         Si tienes preguntas sobre la interpretación de estos
                         términos:
@@ -366,8 +365,6 @@ const lastUpdated = "28 de diciembre de 2024";
             </div>
         </div>
     </main>
-
-    <Footer />
 </Layout>
 
 <style>
@@ -375,12 +372,11 @@ const lastUpdated = "28 de diciembre de 2024";
     .legal-page {
         --text-color: #475569;
         --heading-color: #1e293b;
-        --accent-color: var(--primary);
         --bg-light: #f8fafc;
 
         min-height: 100vh;
         padding-top: var(--header-height, 80px);
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.4);
     }
 
     /* Hero Section */
@@ -458,7 +454,7 @@ const lastUpdated = "28 de diciembre de 2024";
         margin-bottom: 3.5rem;
     }
 
-    .section-title {
+    .section-legal-title {
         font-size: 1.75rem;
         font-weight: 700;
         color: var(--heading-color);
@@ -468,14 +464,14 @@ const lastUpdated = "28 de diciembre de 2024";
         position: relative;
     }
 
-    .section-title::after {
+    .section-legal-title::after {
         content: "";
         position: absolute;
         bottom: -1px;
         left: 0;
         width: 60px;
         height: 3px;
-        background-color: var(--accent-color);
+        background-color: var(--primary);
         border-radius: 2px;
     }
 
@@ -487,7 +483,7 @@ const lastUpdated = "28 de diciembre de 2024";
     }
 
     .link-highlight {
-        color: var(--accent-color);
+        color: var(--primary);
         text-decoration: none;
         font-weight: 500;
     }
@@ -590,7 +586,7 @@ const lastUpdated = "28 de diciembre de 2024";
         width: 28px;
         height: 28px;
         background: var(--bg-light);
-        color: var(--accent-color);
+        color: var(--primary);
         border: 1px solid #e2e8f0;
         border-radius: 50%;
         display: flex;
@@ -625,8 +621,8 @@ const lastUpdated = "28 de diciembre de 2024";
         border-color: #cbd5e1;
     }
     .provider h3 {
-        color: var(--accent-color);
-        border-color: var(--accent-color);
+        color: var(--primary);
+        border-color: var(--primary);
     }
 
     /* List Styles */
@@ -644,7 +640,7 @@ const lastUpdated = "28 de diciembre de 2024";
     }
     .styled-list li::before {
         content: "•";
-        color: var(--accent-color);
+        color: var(--primary);
         position: absolute;
         left: 0;
         font-weight: bold;
@@ -706,7 +702,7 @@ const lastUpdated = "28 de diciembre de 2024";
         width: 48px;
         height: 48px;
         background: rgba(99, 102, 241, 0.1);
-        color: var(--accent-color);
+        color: var(--primary);
         border-radius: 12px;
         display: flex;
         align-items: center;
@@ -754,7 +750,7 @@ const lastUpdated = "28 de diciembre de 2024";
         color: var(--heading-color);
     }
     .detail-row a {
-        color: var(--accent-color);
+        color: var(--primary);
         text-decoration: none;
         font-weight: 500;
     }

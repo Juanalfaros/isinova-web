@@ -1,23 +1,23 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/layout/Header.astro";
-import Footer from "../components/layout/Footer.astro";
 
-const lastUpdated = "28 de diciembre de 2025";
+const lastUpdated = "05 de enero de 2026";
 ---
 
 <Layout
     title="Política de Privacidad | Isinova"
     description="Política de privacidad de Isinova SpA. Conoce cómo protegemos y tratamos tus datos personales según la legislación chilena."
 >
-    <Header />
 
     <main class="legal-page">
-        <div class="legal-hero">
-            <div class="hero-bg-pattern"></div>
+        <div class="legal-hero bg-tech-dark">
+            <div class="bg-base"></div>
+            <div class="tech-grid-bg"></div>
+            <div class="ambient-glow"></div>
+
             <div class="container hero-content">
-                <span class="hero-badge">Legal</span>
-                <h1>Política de Privacidad</h1>
+                <span class="section-badge accent">Legal</span>
+                <h1 class="section-title md">Política de Privacidad</h1>
                 <p class="last-update">Última actualización: {lastUpdated}</p>
             </div>
         </div>
@@ -25,7 +25,7 @@ const lastUpdated = "28 de diciembre de 2025";
         <div class="container">
             <div class="legal-wrapper">
                 <section class="legal-section">
-                    <h2 class="section-title">1. Introducción</h2>
+                    <h2 class="section-legal-title">1. Introducción</h2>
                     <p>
                         En <strong>Isinova SpA</strong> (en adelante, "Isinova", "nosotros"
                         o "la empresa"), la privacidad y la seguridad de los datos
@@ -46,7 +46,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">
+                    <h2 class="section-legal-title">
                         2. Información que Recopilamos
                     </h2>
                     <p>
@@ -96,7 +96,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">3. Finalidad del Uso de Datos</h2>
+                    <h2 class="section-legal-title">3. Finalidad del Uso de Datos</h2>
                     <p>
                         Utilizamos tu información personal exclusivamente para
                         los siguientes propósitos:
@@ -135,7 +135,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">
+                    <h2 class="section-legal-title">
                         4. Compartir Información con Terceros
                     </h2>
                     <p>
@@ -167,7 +167,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">5. Seguridad de los Datos</h2>
+                    <h2 class="section-legal-title">5. Seguridad de los Datos</h2>
                     <p>
                         Tu seguridad es nuestra prioridad. Implementamos medidas
                         técnicas y organizativas robustas para proteger tus
@@ -200,7 +200,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">6. Tus Derechos</h2>
+                    <h2 class="section-legal-title">6. Tus Derechos</h2>
                     <p>
                         Como titular de tus datos personales, la ley chilena te
                         garantiza los derechos ARCO (Acceso, Rectificación,
@@ -238,7 +238,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">7. Cookies</h2>
+                    <h2 class="section-legal-title">7. Cookies</h2>
                     <p>
                         Este sitio web utiliza cookies propias y de terceros
                         para mejorar tu experiencia. Puedes configurar tu
@@ -249,7 +249,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section">
-                    <h2 class="section-title">8. Cambios a esta Política</h2>
+                    <h2 class="section-legal-title">8. Cambios a esta Política</h2>
                     <p>
                         Podemos actualizar esta Política de Privacidad
                         ocasionalmente para reflejar cambios en nuestras
@@ -261,7 +261,7 @@ const lastUpdated = "28 de diciembre de 2025";
                 </section>
 
                 <section class="legal-section contact-section">
-                    <h2 class="section-title">9. Contacto</h2>
+                    <h2 class="section-legal-title">9. Contacto</h2>
                     <p>
                         Si tienes dudas, comentarios o inquietudes sobre nuestra
                         Política de Privacidad, estamos aquí para ayudarte:
@@ -302,8 +302,6 @@ const lastUpdated = "28 de diciembre de 2025";
             </div>
         </div>
     </main>
-
-    <Footer />
 </Layout>
 
 <style>
@@ -317,32 +315,15 @@ const lastUpdated = "28 de diciembre de 2025";
         min-height: 100vh;
         /* Asumiendo que --header-height está definido globalmente, si no, pon 80px */
         padding-top: var(--header-height, 80px);
-        background-color: #fff;
+        background-color: rgba(255, 255, 255, 0.4);
     }
 
     /* Hero Section */
     .legal-hero {
         position: relative;
-        background-color: #0f172a; /* Slate 900 */
-        color: white;
         padding: 5rem 0 4rem 0;
         text-align: center;
         overflow: hidden;
-    }
-
-    .hero-bg-pattern {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: radial-gradient(
-            rgba(255, 255, 255, 0.05) 1px,
-            transparent 1px
-        );
-        background-size: 30px 30px;
-        opacity: 0.6;
-        pointer-events: none;
     }
 
     .hero-content {
@@ -366,24 +347,10 @@ const lastUpdated = "28 de diciembre de 2025";
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .legal-hero h1 {
-        font-size: 2.5rem;
-        font-weight: 800;
-        margin-bottom: 0.75rem;
-        letter-spacing: -0.02em;
-        line-height: 1.2;
-    }
-
     .last-update {
         color: #94a3b8; /* Slate 400 */
         font-size: 0.9rem;
         font-weight: 500;
-    }
-
-    @media (min-width: 768px) {
-        .legal-hero h1 {
-            font-size: 3.5rem;
-        }
     }
 
     /* Contenido Principal */
@@ -397,7 +364,7 @@ const lastUpdated = "28 de diciembre de 2025";
         margin-bottom: 3.5rem;
     }
 
-    .section-title {
+    .section-legal-title {
         font-size: 1.75rem;
         font-weight: 700;
         color: var(--heading-color);
@@ -407,17 +374,16 @@ const lastUpdated = "28 de diciembre de 2025";
         position: relative;
     }
 
-    .section-title::after {
+    .section-legal-title::after {
         content: "";
         position: absolute;
         bottom: -1px;
         left: 0;
         width: 60px;
         height: 3px;
-        background-color: var(--accent-color);
+        background-color: var(--primary);
         border-radius: 2px;
     }
-
     .subsection h3 {
         font-size: 1.25rem;
         font-weight: 600;

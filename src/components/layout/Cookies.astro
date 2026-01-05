@@ -1,0 +1,346 @@
+---
+// src/components/layout/Cookies.astro
+---
+
+<div id="cookie-banner" class="cookie-banner-tech hidden">
+    <div class="cookie-content">
+        <div class="icon-cookie">
+            <i class="ph-fill ph-cookie"></i>
+        </div>
+        <div class="text-group">
+            <h4>Control de Privacidad</h4>
+            <p>
+                Usamos cookies para mejorar la infraestructura y experiencia. 
+                Revisa nuestra <a href="/privacidad">Política de Privacidad</a>.
+            </p>
+        </div>
+    </div>
+    <div class="cookie-actions">
+        <button id="btn-open-config" class="btn-ghost">Configurar</button>
+        <button id="btn-accept-all" class="btn-accent">
+            Aceptar Todo
+            <i class="ph-bold ph-check"></i>
+        </button>
+    </div>
+</div>
+
+<div id="cookie-modal" class="cookie-modal-backdrop hidden">
+    <div class="cookie-modal-panel">
+        <div class="modal-header">
+            <h3>Preferencias de Privacidad</h3>
+            <button id="btn-close-modal" class="close-icon" aria-label="Cerrar">
+                <i class="ph-bold ph-x"></i>
+            </button>
+        </div>
+        
+        <div class="modal-body">
+            <p class="modal-desc">
+                Gestiona tus preferencias de consentimiento. Las cookies esenciales son necesarias para que el sitio funcione y no se pueden desactivar.
+            </p>
+
+            <div class="cookie-option">
+                <div class="option-info">
+                    <span class="option-title">Esenciales (Infraestructura)</span>
+                    <span class="option-desc">Seguridad, balanceo de carga y sesión.</span>
+                </div>
+                <div class="toggle-wrapper">
+                    <input type="checkbox" id="check-essential" checked disabled>
+                    <label for="check-essential" class="toggle-switch disabled"></label>
+                </div>
+            </div>
+
+            <div class="cookie-option">
+                <div class="option-info">
+                    <span class="option-title">Analítica y Rendimiento</span>
+                    <span class="option-desc">Nos ayuda a medir tráfico y mejorar la UX.</span>
+                </div>
+                <div class="toggle-wrapper">
+                    <input type="checkbox" id="check-analytics">
+                    <label for="check-analytics" class="toggle-switch"></label>
+                </div>
+            </div>
+
+            <div class="cookie-option">
+                <div class="option-info">
+                    <span class="option-title">Marketing</span>
+                    <span class="option-desc">Para mostrarte contenido relevante.</span>
+                </div>
+                <div class="toggle-wrapper">
+                    <input type="checkbox" id="check-marketing">
+                    <label for="check-marketing" class="toggle-switch"></label>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button id="btn-save-prefs" class="btn-accent full-width">
+                Guardar Mis Preferencias
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    /* --- LÓGICA JAVASCRIPT --- */
+    
+    // Elementos del DOM
+    const banner = document.getElementById('cookie-banner');
+    const modal = document.getElementById('cookie-modal');
+    
+    // Botones Banner
+    const btnOpenConfig = document.getElementById('btn-open-config');
+    const btnAcceptAll = document.getElementById('btn-accept-all');
+    
+    // Botones Modal
+    const btnCloseModal = document.getElementById('btn-close-modal');
+    const btnSavePrefs = document.getElementById('btn-save-prefs');
+    
+    // Checkboxes
+    const checkAnalytics = document.getElementById('check-analytics') as HTMLInputElement;
+    const checkMarketing = document.getElementById('check-marketing') as HTMLInputElement;
+
+    const STORAGE_KEY = 'isinova_consent_status'; // 'accepted' | 'custom'
+    const PREFS_KEY = 'isinova_consent_prefs';    // JSON details
+
+    // 1. INICIALIZACIÓN: Comprobar si ya existe consentimiento
+    const hasConsent = localStorage.getItem(STORAGE_KEY);
+
+    if (!hasConsent) {
+        setTimeout(() => {
+            banner?.classList.remove('hidden');
+            banner?.classList.add('visible');
+        }, 1500);
+    } else {
+        // Si ya aceptó, cargamos el estado en los switches por si vuelve a abrir
+        loadSwitchState();
+    }
+
+    // --- FUNCIONES AUXILIARES ---
+
+    function closeBanner() {
+        banner?.classList.remove('visible');
+        setTimeout(() => { banner?.classList.add('hidden'); }, 400);
+    }
+
+    function openModal() {
+        modal?.classList.remove('hidden');
+        // Pequeño delay para la animación de opacidad
+        requestAnimationFrame(() => {
+            modal?.classList.add('open');
+        });
+    }
+
+    function closeModal() {
+        modal?.classList.remove('open');
+        setTimeout(() => { modal?.classList.add('hidden'); }, 300);
+    }
+
+    function saveConsent(type: 'all' | 'custom') {
+        let prefs = {
+            essential: true,
+            analytics: false,
+            marketing: false
+        };
+
+        if (type === 'all') {
+            prefs.analytics = true;
+            prefs.marketing = true;
+            localStorage.setItem(STORAGE_KEY, 'accepted_all');
+        } else {
+            // Leemos los checkboxes
+            prefs.analytics = checkAnalytics?.checked || false;
+            prefs.marketing = checkMarketing?.checked || false;
+            localStorage.setItem(STORAGE_KEY, 'custom');
+        }
+
+        // Guardamos el objeto JSON
+        localStorage.setItem(PREFS_KEY, JSON.stringify(prefs));
+
+        // AQUÍ DISPARARÍAS LOS EVENTOS DE GTM EN EL FUTURO
+        console.log('Consentimiento guardado:', prefs);
+
+        closeModal();
+        closeBanner();
+    }
+
+    function loadSwitchState() {
+        const storedPrefs = localStorage.getItem(PREFS_KEY);
+        if (storedPrefs) {
+            const prefs = JSON.parse(storedPrefs);
+            if(checkAnalytics) checkAnalytics.checked = prefs.analytics;
+            if(checkMarketing) checkMarketing.checked = prefs.marketing;
+        }
+    }
+
+    // --- EVENT LISTENERS ---
+
+    // Banner: Aceptar Todo
+    btnAcceptAll?.addEventListener('click', () => saveConsent('all'));
+
+    // Banner: Abrir Configuración
+    btnOpenConfig?.addEventListener('click', openModal);
+
+    // Modal: Cerrar (X)
+    btnCloseModal?.addEventListener('click', closeModal);
+
+    // Modal: Guardar Preferencias
+    btnSavePrefs?.addEventListener('click', () => saveConsent('custom'));
+
+    // Clic fuera del modal para cerrar
+    modal?.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+</script>
+
+<style>
+    /* --- 1. ESTILOS BASE (Escritorio - Se mantiene igual de elegante) --- */
+    .cookie-banner-tech {
+        position: fixed;
+        bottom: 2rem;
+        left: 2rem;
+        right: auto;
+        width: 100%;
+        max-width: 400px;
+        background: rgba(15, 23, 42, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1.5rem;
+        padding: 1.5rem;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cookie-banner-tech.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .hidden { display: none !important; }
+
+    /* Contenido */
+    .cookie-content { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.2rem; }
+    
+    .icon-cookie {
+        font-size: 1.8rem; color: var(--primary);
+        background: rgba(99, 102, 241, 0.1);
+        width: 44px; height: 44px; border-radius: 12px;
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+
+    .text-group h4 { color: white; font-size: 0.95rem; font-weight: 600; margin: 0 0 0.25rem 0; }
+    .text-group p { color: #94a3b8; font-size: 0.85rem; line-height: 1.5; margin: 0; }
+    .text-group a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border 0.3s; }
+    .text-group a:hover { border-bottom-color: var(--accent); }
+
+    .cookie-actions { display: flex; gap: 0.8rem; justify-content: flex-end; }
+
+    /* Botones */
+    .btn-ghost {
+        background: transparent; border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cbd5e1; padding: 0.5rem 1rem; border-radius: 0.75rem;
+        font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255, 255, 255, 0.05); color: white; border-color: rgba(255, 255, 255, 0.2); }
+
+    .btn-accent {
+        background: var(--primary); color: white; border: none;
+        padding: 0.5rem 1.2rem; border-radius: 0.75rem;
+        font-size: 0.8rem; font-weight: 600; cursor: pointer;
+        display: flex; align-items: center; gap: 0.5rem;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3); transition: all 0.2s;
+    }
+    .btn-accent:hover { background: #4f46e5; transform: translateY(-2px); }
+    .btn-accent.full-width { width: 100%; justify-content: center; padding: 0.8rem; font-size: 0.9rem; }
+
+    /* --- ESTILOS DEL MODAL (Igual que antes) --- */
+    .cookie-modal-backdrop {
+        position: fixed; inset: 0;
+        background: rgba(5, 11, 20, 0.6); backdrop-filter: blur(4px);
+        z-index: 10000; display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity 0.3s ease;
+    }
+    .cookie-modal-backdrop.open { opacity: 1; }
+    .cookie-modal-panel {
+        background: #0f172a; width: 100%; max-width: 500px;
+        border-radius: 1.5rem; border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+        transform: scale(0.95); transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        overflow: hidden; margin: 1rem;
+    }
+    .cookie-modal-backdrop.open .cookie-modal-panel { transform: scale(1); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; padding: 1.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+    .modal-header h3 { color: white; font-size: 1.1rem; margin: 0; }
+    .close-icon { background: transparent; border: none; color: #94a3b8; font-size: 1.2rem; cursor: pointer; padding: 0.2rem; }
+    .modal-body { padding: 1.5rem; max-height: 60vh; overflow-y: auto; }
+    .modal-desc { color: #94a3b8; font-size: 0.9rem; line-height: 1.5; margin-bottom: 1.5rem; }
+    .cookie-option { display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.03); padding: 1rem; border-radius: 1rem; margin-bottom: 0.8rem; }
+    .option-info { display: flex; flex-direction: column; gap: 0.2rem; }
+    .option-title { color: white; font-size: 0.95rem; font-weight: 600; }
+    .option-desc { color: #64748b; font-size: 0.8rem; }
+    .modal-footer { padding: 1.5rem; border-top: 1px solid rgba(255, 255, 255, 0.05); background: rgba(0, 0, 0, 0.2); }
+    .toggle-wrapper { position: relative; width: 44px; height: 24px; }
+    .toggle-wrapper input { opacity: 0; width: 0; height: 0; }
+    .toggle-switch { position: absolute; cursor: pointer; inset: 0; background-color: #334155; border-radius: 34px; transition: .4s; }
+    .toggle-switch:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; border-radius: 50%; transition: .4s; }
+    input:checked + .toggle-switch { background-color: var(--accent); }
+    input:checked + .toggle-switch:before { transform: translateX(20px); }
+    .toggle-switch.disabled { cursor: not-allowed; opacity: 0.6; }
+    input:disabled + .toggle-switch { background-color: #334155; }
+    input:checked:disabled + .toggle-switch { background-color: #10b981; }
+
+    /* ==========================================================
+       OPTIMIZACIÓN MÓVIL (Aquí ocurre la magia "Slim")
+       ========================================================== */
+    @media (max-width: 640px) {
+        .cookie-banner-tech {
+            /* Pegado a los bordes y al fondo */
+            left: 0.75rem;
+            right: 0.75rem;
+            bottom: 1rem; /* Margen inferior pequeño */
+            width: auto;
+            max-width: none;
+            
+            /* Compactación extrema */
+            padding: 1rem;
+            border-radius: 1rem;
+            background: rgba(15, 23, 42, 0.98); /* Más opaco para leer mejor */
+        }
+
+        /* OCULTAR EL ÍCONO GRANDE: Ahorra mucho espacio vertical */
+        .icon-cookie {
+            display: none;
+        }
+
+        /* Reducir margen del texto */
+        .cookie-content {
+            margin-bottom: 0.8rem;
+        }
+
+        /* Texto más pequeño */
+        .text-group h4 { font-size: 0.9rem; }
+        .text-group p { font-size: 0.8rem; line-height: 1.4; }
+
+        /* Botones distribuidos en cuadrícula (side-by-side) */
+        .cookie-actions {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr; /* Configurar chico, Aceptar grande */
+            gap: 0.75rem;
+        }
+
+        /* Ajuste fino de botones móviles */
+        .btn-ghost, .btn-accent {
+            width: 100%;
+            justify-content: center;
+            padding: 0.6rem;
+            font-size: 0.8rem;
+        }
+        
+        /* Modal Responsive */
+        .cookie-modal-panel {
+            margin: 0.5rem;
+            width: 95%;
+            max-height: 80vh;
+        }
+    }
+</style>

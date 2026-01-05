@@ -1,9 +1,9 @@
 import { defineCollection, z } from 'astro:content';
 
 const serviciosCollection = defineCollection({
-    type: 'content', // Use 'content' for MDX files (body contains the full HTML content)
+    type: 'content',
     schema: z.object({
-        slug: z.string().optional(), // In content collections, slug is usually file name, but keeping it for compatibility if referenced explicitly
+        slug: z.string().optional(),
         featured: z.boolean().optional(),
         shortTitle: z.string().optional(),
         icon: z.string(),
@@ -15,7 +15,6 @@ const serviciosCollection = defineCollection({
         price: z.string(),
         duration: z.string(),
         calLinkPrefix: z.string(),
-        // Section specific titles/subtitles
         titleSituaciones: z.string(),
         subtitleSituaciones: z.string(),
         titleEnfoque: z.string(),
@@ -24,7 +23,6 @@ const serviciosCollection = defineCollection({
         subtitleTips: z.string(),
         titleFaqs: z.string(),
         subtitleFaqs: z.string(),
-        // Arrays of objects
         situaciones: z.array(z.object({
             icon: z.string(),
             text: z.string(),
@@ -61,6 +59,7 @@ const serviciosCollection = defineCollection({
 
 const equipoCollection = defineCollection({
     type: 'data',
+    // Aquí inyectamos el helper 'image'
     schema: ({ image }) => z.object({
         name: z.string(),
         role: z.string(),
@@ -68,7 +67,13 @@ const equipoCollection = defineCollection({
         specialties: z.array(z.string()),
         isLeader: z.boolean(),
         initials: z.string(),
+        
+        // Imagen normal
         image: image(),
+        
+        // NUEVA IMAGEN (Sin Fondo) - Opcional para seguridad
+        imagesf: image().optional(),
+
         mail: z.string().email().optional(),
         linkedin: z.string().url().optional(),
         order: z.number().optional(),
