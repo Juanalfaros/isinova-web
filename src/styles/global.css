@@ -411,3 +411,9 @@ main {
     .prose-content .prose-p strong {
         color: white;
     } 
+
+@media (max-width: 768px) {
+    .section-title .highlight-brand.not-mobile::after {
+        display: none;
+    }
+}

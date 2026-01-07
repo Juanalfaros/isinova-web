@@ -16,7 +16,7 @@ const { image } = Astro.props;
     <div class="container relative-z">
         <div class="leader-header-mobile">
             <span class="section-badge accent">Liderazgo & Visión</span>
-            <h2 id="leader-title-mobile">El Arquitecto Detrás de Isinova</h2>
+            <h2 id="leader-title-mobile" class="section-title lg">Visión, Código y <span class="highlight-brand primary gradient3 text-span">Estrategia</span></h2>
         </div>
 
         <article class="leader-grid-expanded">
@@ -71,7 +71,7 @@ const { image } = Astro.props;
             <div class="leader-content-col">
                 <header class="leader-titles desktop-only">
                     <span class="section-badge accent">Liderazgo Técnico</span>
-                    <h2 id="leader-title" class="section-title md">El Arquitecto Detrás de Isinova</h2>
+                    <h2 id="leader-title" class="section-title md">Visión, Código y <span class="highlight-brand primary gradient3 text-span">Estrategia</span></h2>
                 </header>
 
                 <div class="leader-name-block">
@@ -355,10 +355,10 @@ const { image } = Astro.props;
         /* Headers */
         .leader-header-mobile { display: block; }
         /* Usamos variable CSS para tamaño consistente si está disponible, sino fallback */
-        .leader-header-mobile h2 { 
+        /* .leader-header-mobile h2 { 
             font-size: clamp(2rem, 5vw, 2.5rem); 
             color: white; margin-top: 1rem; 
-        }
+        } */
         .leader-titles.desktop-only { display: none; }
         
         /* Columna de Perfil */
