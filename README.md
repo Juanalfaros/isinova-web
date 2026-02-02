@@ -2,69 +2,206 @@
 
 Sitio web corporativo de **Isinova**, expertos en tecnología educativa (EdTech) y soluciones para instituciones de aprendizaje. Construido con **Astro 5** y optimizado para **Cloudflare Pages**.
 
-## �️ Stack Tecnológico
+## 🎯 Sobre Isinova
+
+Isinova es una empresa chilena especializada en **Ingeniería EdTech & Consultoría** que ofrece:
+
+- **Implementación de Aulas Virtuales** (Moodle, Blackboard, Canvas)
+- **ERPs Académicos** (Banner o soluciones a medida)
+- **Integraciones Académicas** personalizadas
+- **Soporte crítico** para +50.000 alumnos activos
+- **Desarrollo de Software** educativo a medida
+
+## ⚡ Stack Tecnológico
+
+### Core
 
 - **Framework**: [Astro 5](https://astro.build/) (Modo SSR)
 - **Plataforma**: [Cloudflare Pages](https://pages.cloudflare.com/)
+- **Tipografía**: [Exo 2](https://fonts.google.com/specimen/Exo+2) (Google Fonts)
 - **Iconografía**: [Phosphor Icons](https://phosphoricons.com/)
-- **Gestión de Leads**: [Brevo](https://www.brevo.com/) (API Integration)
-- **Integraciones**:
-  - `@astrojs/cloudflare`: Adaptador para runtime de Cloudflare Workers.
-  - `@astrojs/mdx`: Soporte para contenido rico.
-  - `@astrojs/sitemap`: Generación automática de mapa del sitio.
-  - `astro-compress`: Optimización de activos en el build.
+
+### Integraciones
+
+- `@astrojs/cloudflare`: Adaptador para runtime de Cloudflare Workers
+- `@astrojs/mdx`: Soporte para contenido rico en MDX
+- `@astrojs/sitemap`: Generación automática de sitemap
+- `astro-compress`: Optimización de activos en el build
+
+### Gestión de Leads
+
+- **Brevo**: CRM y automatización de marketing
+- **API Endpoints**: Formularios de contacto y gestión de leads
+- **Notificaciones**: Email alerts con diseño optimizado
+
+### Seguridad & Analytics
+
+- **Google Tag Manager**: Integración de analytics y marketing
+- **reCAPTCHA v3**: Protección contra spam en formularios
 
 ## 📁 Estructura del Proyecto
 
 ```text
 /
 ├── src/
-│   ├── assets/       # Imágenes y recursos estáticos
-│   ├── components/   # Componentes Astro reutilizables
-│   ├── content/      # Colecciones de contenido (Servicios, etc.)
-│   ├── layouts/      # Plantillas de página
-│   ├── pages/        # Rutas y API Endpoints
-│   └── styles/       # Estilos CSS globales
-├── public/           # Archivos públicos (favicons, manifest)
-├── astro.config.mjs  # Configuración de Astro y Adaptador
-└── wrangler.toml     # Configuración de Cloudflare Pages
+│   ├── assets/           # Imágenes y recursos estáticos
+│   │   └── images/       # Fotos del equipo, servicios, etc.
+│   ├── components/       # Componentes Astro reutilizables
+│   │   ├── about/        # Componentes de sección "Nosotros"
+│   │   ├── contacto/     # Formularios y contacto
+│   │   ├── layout/       # Header, Footer, Navigation
+│   │   ├── sections/     # Componentes de secciones principales
+│   │   └── services/     # Componentes de servicios
+│   ├── content/          # Colecciones de contenido estructurado
+│   │   ├── config.ts     # Configuración de colecciones Astro
+│   │   ├── equipo/       # Perfiles del equipo (YAML)
+│   │   └── servicios/    # Descripciones de servicios (MDX)
+│   ├── layouts/          # Plantillas de página base
+│   ├── pages/            # Rutas y API Endpoints
+│   │   ├── api/          # Endpoints de servidor
+│   │   ├── servicios/    # Páginas de servicios
+│   │   └── *.astro       # Páginas estáticas
+│   ├── styles/           # Estilos CSS globales
+│   └── env.d.ts          # Tipos para variables de entorno
+├── public/               # Archivos públicos (favicons, manifest)
+├── email-signatures/     # Firmas de correo (local)
+├── astro.config.mjs      # Configuración de Astro y adaptador
+├── wrangler.toml         # Configuración de Cloudflare Pages
+├── package.json          # Dependencias y scripts
+└── .env.example          # Plantilla de variables de entorno
 ```
 
 ## 🚀 Desarrollo Local
 
-1. **Instalar dependencias**:
-   ```bash
-   pnpm install
-   ```
+### Prerrequisitos
 
-2. **Variables de Entorno**:
-   Crea un archivo `.env` basado en `.env.example` con las siguientes claves:
-   - `BREVO_API_KEY`: Tu clave de API de Brevo.
-   - `NOTIFICATION_EMAIL`: Correo donde llegarán las alertas.
-   - `BREVO_LIST_ID`: ID de la lista por defecto en Brevo.
+- Node.js 18+
+- pnpm (recomendado) o npm
 
-3. **Iniciar servidor de desarrollo**:
-   ```bash
-   pnpm dev
-   ```
+### 1. Instalar dependencias
 
-## 🌐 Despliegue en Cloudflare
+```bash
+pnpm install
+```
 
-Este proyecto está configurado para **Cloudflare Pages** utilizando Renderización en el Servidor (SSR).
+### 2. Variables de Entorno
 
-### Pasos Críticos:
-- **Compatibilidad de Node**: Asegúrate de tener activa la flag `nodejs_compat` en el panel de Cloudflare (configurado automáticamente en `wrangler.toml`).
-- **Variables de Entorno**: Debes configurar manualmente las variables del `.env` en el panel de Cloudflare (Settings > Environment variables > Production).
-- **Build Command**: `npm run build`
-- **Output Directory**: `dist`
+Crea un archivo `.env` basado en `.env.example`:
 
-## � Funcionalidades de Backend
+```bash
+cp .env.example .env
+```
 
-El proyecto cuenta con una ruta de API en `src/pages/api/contact-form.ts` que maneja:
-- Registro de contactos en listas de Brevo.
-- Envío de notificaciones vía e-mail con diseño optimizado.
-- Validación de datos y logs de auditoría.
+Configura las siguientes variables:
+
+- `BREVO_API_KEY`: Tu clave de API de Brevo
+- `BREVO_LIST_ID`: ID de lista por defecto en Brevo
+- `NOTIFICATION_EMAIL`: Correo para notificaciones
+- `PUBLIC_GTM_ID`: ID de Google Tag Manager
+- `PUBLIC_RECAPTCHA_SITE_KEY`: Clave pública de reCAPTCHA
+- `RECAPTCHA_SECRET_KEY`: Clave secreta de reCAPTCHA
+
+### 3. Iniciar servidor de desarrollo
+
+```bash
+pnpm dev
+```
+
+Visita `http://localhost:4321` para ver el sitio.
+
+## 🌐 Despliegue en Cloudflare Pages
+
+Este proyecto está configurado para **Cloudflare Pages** con Renderización en el Servidor (SSR).
+
+### Configuración Automática
+
+El archivo `wrangler.toml` incluye:
+
+- `compatibility_flags = ["nodejs_compat"]`
+- `pages_build_output_dir = "./dist"`
+
+### Pasos de Despliegue
+
+1. **Conectar repositorio** a Cloudflare Pages
+2. **Configurar variables de entorno** en el panel de Cloudflare
+3. **Build settings**:
+   - **Build Command**: `pnpm build`
+   - **Output Directory**: `dist`
+   - **Node.js version**: 18+
+
+### Variables de Entorno en Producción
+
+Configura manualmente en Cloudflare Dashboard:
+
+- Settings > Environment variables > Production
+- Añade todas las variables del archivo `.env`
+
+## 🔧 Funcionalidades del Backend
+
+### API Endpoints
+
+- **`/api/contact-form.ts`**: Gestión de formularios de contacto
+  - Validación de datos de entrada
+  - Registro en listas de Brevo
+  - Envío de notificaciones por email
+  - Logs de auditoría y manejo de errores
+
+### Colecciones de Contenido
+
+- **Servicios**: Contenido MDX con metadata estructurada
+- **Equipo**: Perfiles en formato YAML con fotos y roles
+- **Configuración**: Tipado estricto con Zod schemas
+
+### Optimizaciones
+
+- **Compresión de activos**: `astro-compress`
+- **Sitemap automático**: Generación de XML sitemap
+- **SEO optimizado**: Metadatos y structured data
+- **Performance**: 99/100 en Google PageSpeed
+
+## 🎨 Sistema de Diseño
+
+### Colores Institucionales
+
+- **Primary**: `#6246ea` (Púrpura Isinova)
+- **Accent**: `#00ff8c` (Verde brillante)
+- **Dark**: `#2b2d42` (Texto principal)
+- **Background**: `#f8fafc` (Fondo claro)
+
+### Tipografía
+
+- **Principal**: Exo 2 (Google Fonts)
+- **Peso**: 400-700 (Regular a Bold)
+- **Gradientes**: Aplicados en títulos y elementos destacados
+
+### Componentes Clave
+
+- **Hero**: Sección principal con animaciones
+- **Services Cards**: Tarjetas de servicios con pricing
+- **Team Profiles**: Perfiles del equipo con fotos
+- **Contact Forms**: Formularios con validación
+- **FAQ Sections**: Preguntas frecuentes interactivas
+
+## 📊 Métricas y Performance
+
+- **Uptime SLA**: 99.99% Garantizado
+- **Concurrencia**: +5k Usuarios/segundo
+- **Performance**: 99/100 Google PageSpeed
+- **Soporte**: Crítico para +50.000 alumnos activos
+
+## 🔐 Seguridad
+
+- **reCAPTCHA v3**: Protección contra spam
+- **Validación de datos**: Sanitización de inputs
+- **HTTPS**: Forzado en todas las conexiones
+- **Headers de seguridad**: Configurados en Cloudflare
+
+## 📝 Licencia
+
+Desarrollado con ❤️ por **Isinova Tech Team**.
 
 ---
 
-Desarrollado con ❤️ por **Isinova Tech Team**.
+**Isinova SpA** - Transformación Digital Educativa para Chile y América Latina
+
+📧 contacto@isinova.cl | 🌐 www.isinova.cl | 📱 +56 9 6468 2849

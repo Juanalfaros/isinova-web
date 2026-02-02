@@ -1,0 +1,428 @@
+---
+// src/pages/500.astro
+import Layout from "../layouts/Layout.astro";
+
+// Para páginas de error 500, capturamos el error si Astro lo pasa (aunque en estático es raro, en SSR sirve)
+interface Props {
+    error?: unknown;
+}
+
+const { error } = Astro.props;
+
+const title = "500 Error Interno | Isinova";
+const description =
+    "Ocurrió un error inesperado en la infraestructura de Isinova.";
+---
+
+<Layout title={title} description={description} noindex={true}>
+    <main class="error-page bg-tech-dark overflow-hidden">
+        <div class="bg-base"></div>
+        <div class="tech-grid-bg"></div>
+
+        <div class="giant-organic-error" aria-hidden="true">500</div>
+
+        <div class="container relative-z">
+            <div class="error-grid">
+                <div class="error-content">
+                    <span class="section-badge error">Falla Crítica</span>
+                    <h1 class="section-title lg">
+                        Error <br />
+                        <span class="text-span gradient highlight-error"
+                            >Interno</span
+                        >
+                    </h1>
+
+                    <p class="error-desc">
+                        Nuestros sistemas automáticos han detectado una
+                        anomalía. El equipo de ingeniería de Isinova ya ha sido
+                        notificado y está trabajando en la solución.
+                    </p>
+
+                    <div class="action-buttons">
+                        <a href="/" class="btn btn-primary">
+                            <i class="ph-bold ph-house"></i>
+                            Volver al Inicio
+                        </a>
+                        <a
+                            href="mailto:soporte@isinova.cl"
+                            class="btn btn-ghost"
+                        >
+                            <i class="ph-bold ph-life-buoy"></i>
+                            Reportar Incidente
+                        </a>
+                    </div>
+                </div>
+
+                <div class="error-visual">
+                    <div class="terminal-window">
+                        <div class="terminal-header">
+                            <div class="dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <span class="terminal-title"
+                                >stderr — root@isinova-core</span
+                            >
+                        </div>
+                        <div class="terminal-body">
+                            <div class="line">
+                                <span class="prompt">root@core:~#</span>
+                                <span class="cmd type-writer"
+                                    >systemctl status isinova-web</span
+                                >
+                            </div>
+
+                            <div class="line output fade-in-1">
+                                > Verificando integridad del sistema...
+                            </div>
+                            <div class="line output error fade-in-2">
+                                > ERROR: Excepción no controlada en el proceso
+                                principal.
+                            </div>
+                            <div class="line output fade-in-3">
+                                <span class="code-comment"
+                                    ># Stack trace dump:</span
+                                >
+                            </div>
+                            <div class="line output code fade-in-4">
+                                at RequestHandler.handle (core/server.js:500:23)<br
+                                />
+                                at limit (core/middleware.js:42:12)<br />
+                                at async renderPage (astro/render.js:101:5)
+                            </div>
+                            <div class="line output warning fade-in-5">
+                                > Iniciando protocolo de recuperación
+                                automática...
+                            </div>
+
+                            <div class="line fade-in-6">
+                                <span class="prompt">root@core:~#</span>
+                                <span class="cursor">_</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    /* Reutilizamos estilos del 404 pero con variaciones de color para 500 */
+
+    .overflow-hidden {
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Layout General */
+    .error-page {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        padding: 4rem 0;
+        position: relative;
+    }
+
+    /* --- 500 GIGANTE --- */
+    .giant-organic-error {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 45vw;
+        font-weight: 900;
+        line-height: 1;
+        white-space: nowrap;
+
+        z-index: 1;
+        pointer-events: none;
+        user-select: none;
+
+        /* Gradiente más cálido/rojo para error crítico */
+        background: linear-gradient(
+            180deg,
+            rgba(239, 68, 68, 0.3) 0%,
+            rgba(245, 158, 11, 0.1) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+        filter: blur(20px);
+        opacity: 0.4;
+    }
+
+    .relative-z {
+        z-index: 10;
+        position: relative;
+    }
+
+    /* --- ESTILOS GRID --- */
+    .error-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+    }
+
+    .section-badge.error {
+        background: rgba(239, 68, 68, 0.1);
+        color: #fca5a5;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .highlight-error {
+        background: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .error-desc {
+        font-size: 1.1rem;
+        color: #94a3b8;
+        max-width: 480px;
+        margin-bottom: 2.5rem;
+        line-height: 1.6;
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .btn-ghost {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: #cbd5e1;
+        padding: 1rem 2rem;
+        font-weight: 600;
+    }
+    .btn-ghost:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: var(--white);
+        color: var(--white);
+    }
+    .btn i {
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    /* --- TERMINAL WINDOW --- */
+    .terminal-window {
+        background: rgba(15, 23, 42, 0.5); /* Un poco más oscuro */
+        border: 1px solid rgba(239, 68, 68, 0.2); /* Borde rojizo sutil */
+        border-radius: 12px;
+        box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+        overflow: hidden;
+        font-family: "Fira Code", "Courier New", monospace;
+        backdrop-filter: blur(35px);
+    }
+
+    .terminal-header {
+        background: rgba(239, 68, 68, 0.05); /* Header rojizo */
+        padding: 0.8rem 1rem;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(239, 68, 68, 0.1);
+    }
+    .dots {
+        display: flex;
+        gap: 6px;
+        margin-right: 1rem;
+    }
+    .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+    }
+    .dot.red {
+        background: #ef4444;
+    }
+    .dot.yellow {
+        background: #f59e0b;
+    }
+    .dot.green {
+        background: #10b981;
+    }
+
+    .terminal-title {
+        color: #fca5a5;
+        font-size: 0.8rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .terminal-body {
+        padding: 1.5rem;
+        font-size: 0.8rem;
+        line-height: 1.6;
+        min-height: 280px;
+    }
+
+    .line {
+        display: block;
+        margin-bottom: 0.5rem;
+        word-break: break-all;
+    }
+    .prompt {
+        color: #ef4444;
+        margin-right: 0.5rem;
+        font-weight: bold;
+    } /* Prompt rojo para root */
+    .cmd {
+        color: var(--white);
+    }
+
+    .output {
+        color: #94a3b8;
+        margin-left: 1rem;
+    }
+    .output.error {
+        color: #ef4444;
+        font-weight: bold;
+    }
+    .output.warning {
+        color: #f59e0b;
+    }
+    .output.success {
+        color: #10b981;
+    }
+    .output.code {
+        color: #64748b;
+        font-family: monospace;
+        padding-left: 1rem;
+        border-left: 2px solid #334155;
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    .code-comment {
+        color: #475569;
+        font-style: italic;
+    }
+
+    .cursor {
+        color: #ef4444;
+        animation: blink 1s step-end infinite;
+    }
+
+    /* --- ANIMACIONES DE TERMINAL --- */
+
+    .type-writer {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid #ef4444;
+        width: 0;
+        animation:
+            typing 1s steps(30, end) forwards,
+            blink-caret 0.75s step-end infinite;
+    }
+    .type-writer {
+        animation-fill-mode: forwards;
+    }
+
+    @keyframes typing {
+        from {
+            width: 0;
+        }
+        to {
+            width: 100%;
+            border-right-color: transparent;
+        }
+    }
+    @keyframes blink-caret {
+        50% {
+            border-color: transparent;
+        }
+    }
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+
+    .fade-in-1,
+    .fade-in-2,
+    .fade-in-3,
+    .fade-in-4,
+    .fade-in-5,
+    .fade-in-6 {
+        opacity: 0;
+        animation: fadeIn 0.3s forwards;
+    }
+
+    /* Delays ajustados */
+    .fade-in-1 {
+        animation-delay: 1.1s;
+    }
+    .fade-in-2 {
+        animation-delay: 1.6s;
+    }
+    .fade-in-3 {
+        animation-delay: 2.1s;
+    }
+    .fade-in-4 {
+        animation-delay: 2.6s;
+    }
+    .fade-in-5 {
+        animation-delay: 3.1s;
+    }
+    .fade-in-6 {
+        animation-delay: 3.6s;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 991px) {
+        .error-grid {
+            grid-template-columns: 1fr;
+            text-align: center;
+            gap: 3rem;
+        }
+        .error-desc {
+            margin: 0 auto 2.5rem auto;
+        }
+        .action-buttons {
+            justify-content: center;
+        }
+        .terminal-window {
+            max-width: 500px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .giant-organic-error {
+            font-size: 55vw;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .action-buttons {
+            flex-direction: column;
+        }
+        .btn {
+            width: 100%;
+        }
+        /* Desactivar animación compleja en móviles */
+        .type-writer {
+            white-space: normal;
+            border: none;
+            width: auto;
+            animation: none;
+        }
+        .fade-in-1,
+        .fade-in-2,
+        .fade-in-3,
+        .fade-in-4,
+        .fade-in-5,
+        .fade-in-6 {
+            opacity: 1;
+            animation: none;
+        }
+    }
+</style>

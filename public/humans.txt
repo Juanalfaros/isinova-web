@@ -1,0 +1,14 @@
+/* TEAM */
+  Founder & Lead Engineer: Juan Alfaro
+  Contact: contacto@isinova.cl
+  Twitter: @isinova_cl
+  Location: Santiago, Chile
+
+/* SITE */
+  Last update: 2026/02/02
+  Standards: HTML5, CSS3, ES6+
+  Components: Astro, React, TailwindCSS
+  Software: VS Code, Git
+
+/* THANKS */
+  To the open source community and the Isinova engineering team.
