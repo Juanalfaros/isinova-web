@@ -1,83 +1,98 @@
 ---
+order: 3
 slug: "migracion-de-datos"
-shortTitle: "Ingeniería de Migración"
+shortTitle: "Ingeniería de Datos"
 icon: "ph-database"
 heroImage: "images/services/migracion-isinova.webp"
-heroTitle: "Rescate y Transformación de Datos Críticos"
-title: "Ingeniería de Datos y Migración de Plataformas"
-description: "Expertos en ETL (Extracción, Transformación y Carga). Movemos terabytes de información académica entre tecnologías dispares sin pérdida de datos."
-tags: ["Data Engineering", "ETL", "SQL/NoSQL", "Rescue"]
-price: "Desde $550.000"
-duration: "Proyectos de 1 a 3 semanas"
+heroTitle: "Continuidad Histórica y Datos"
+title: "Ingeniería de Datos y Migración de Plataformas Críticas"
+description: "No pierda su historia académica. Expertos en ETL (Extracción, Transformación y Carga). Movemos terabytes de información sensible entre tecnologías dispares asegurando integridad referencial."
+tags: ["Data Engineering", "ETL", "SQL/NoSQL", "Data Rescue", "Compliance"]
+price: "Análisis de Alcance"
+duration: "Según volumen de datos"
 calLinkPrefix: "isinova"
-titleSituaciones: "El riesgo de perder tu historia"
-subtitleSituaciones: "¿Cambias de plataforma pero temes perder las notas de hace 5 años?"
-titleEnfoque: "Protocolo Forense de Datos"
-subtitleEnfoque: "Tratamos tus datos con rigor científico. Nada se pierde, todo se transforma."
-titleTips: "Higiene de Datos"
-subtitleTips: "Una migración es la oportunidad perfecta para limpiar tu casa digital."
-titleFaqs: "Dudas Técnicas"
-subtitleFaqs: "Respuestas sobre compatibilidad, formatos y seguridad."
+
+# --- SECCIÓN 1: EL DOLOR (RIESGOS) ---
+titleSituaciones: "El activo más valioso es su información"
+subtitleSituaciones: "¿El miedo a perder el historial académico frena su innovación tecnológica?"
+
 situaciones:
   - icon: "ph-files"
-    text: "Bases de datos antiguas en formatos propietarios o ilegibles para sistemas modernos."
-  - icon: "ph-table"
-    text: "Información dispersa en miles de excels desordenados que deben centralizarse en un LMS."
-  - icon: "ph-arrows-left-right"
-    text: "Migraciones complejas entre ecosistemas distintos (ej: Blackboard a Canvas, o WordPress a Moodle)."
+    text: "Formatos Obsoletos: Su institución depende de sistemas 'Legacy' antiguos que ya no tienen soporte y cuyos datos son ilegibles para software moderno."
+  - icon: "ph-arrows-split"
+    text: "Fragmentación Extrema: La información de los alumnos vive dispersa entre Excels, Access antiguos y el ERP, generando inconsistencias graves."
   - icon: "ph-warning-octagon"
-    text: "Intentos fallidos previos que dejaron datos corruptos o usuarios duplicados."
+    text: "Migraciones Fallidas: Intentos previos de proveedores inexpertos dejaron datos corruptos, cursos rotos o historiales de notas incompletos."
+  - icon: "ph-users-four"
+    text: "Fusión de Instituciones: Necesita unificar bases de datos de dos sedes o entidades distintas sin duplicar usuarios ni perder trazabilidad."
+
+# --- SECCIÓN 2: LA SOLUCIÓN (ENFOQUE) ---
+titleEnfoque: "Protocolo Forense de Datos"
+subtitleEnfoque: "Tratamos sus bases de datos con rigor científico. Nada se pierde, todo se transforma."
+
 enfoque:
   - numero: "1"
-    titulo: "Ingeniería Inversa"
-    texto: "Si la plataforma antigua es cerrada, aplicamos ingeniería inversa para entender su estructura de datos y extraer la información."
+    titulo: "Mapeo y ETL a Medida"
+    texto: "No usamos herramientas genéricas de 'copiar y pegar'. Escribimos scripts de ingeniería (Python/Node) que entienden la lógica de su negocio para transformar los datos origen al formato destino."
   - numero: "2"
-    titulo: "Scripts ETL a Medida"
-    texto: "Desarrollamos scripts en Python/Node.js específicos para tu caso. No usamos herramientas genéricas que fallan con datos atípicos."
+    titulo: "Sanitización Masiva"
+    texto: "Aprovechamos la migración para limpiar la casa. Eliminamos caracteres extraños, normalizamos RUTs/DNI, corregimos correos mal formados y unificamos registros duplicados."
   - numero: "3"
-    titulo: "Validación de Integridad"
-    texto: "Comparamos hash y conteos de registros origen vs destino para garantizar matemáticamente que no falta nada."
+    titulo: "Validación Matemática"
+    texto: "Garantía de Cero Pérdida. Comparamos hashes y conteos de registros origen vs destino para certificar matemáticamente que cada nota y certificado llegó a su lugar."
+
+# --- BOX DESTACADO ---
 highlightBox:
-  h3: "Rescate de Datos"
-  p: "¿Tu proveedor anterior desapareció y solo tienes un backup SQL? Nosotros podemos reconstruir tu plataforma o extraer la información útil para migrarla a un sistema nuevo y moderno."
+  h3: "¿Rescate de Datos?"
+  p: "¿Su proveedor anterior desapareció y solo le dejó un archivo SQL sin documentación? Nosotros aplicamos ingeniería inversa para reconstruir la estructura, extraer la información valiosa y migrarla a un sistema moderno y seguro."
+
+# --- TIPS / VALOR AGREGADO ---
+titleTips: "Seguridad y Privacidad"
+subtitleTips: "Sus datos nunca corren riesgo."
+
 tips:
-  - icon: "ph-database"
-    title: "Sanitización"
-    text: "Detectamos y eliminamos caracteres extraños que suelen romper los sistemas nuevos."
   - icon: "ph-lock-key"
-    title: "Privacidad"
-    text: "Firmamos acuerdos de confidencialidad (NDA) estrictos. Tus datos académicos nunca salen de entornos seguros."
+    title: "Entornos Seguros"
+    text: "Firmamos NDAs estrictos. Las manipulaciones se hacen en entornos de 'Staging' aislados y cifrados, nunca en servidores públicos inseguros."
+
+# --- FAQS ---
+titleFaqs: "Preguntas Técnicas"
+subtitleFaqs: "Resolvemos dudas sobre compatibilidad y tiempos."
+
 faqs:
-  - question: "¿Pueden migrar contenido interactivo (SCORM)?"
-    answer: "Sí, extraemos y reinstalamos paquetes SCORM, asegurando que sigan reportando calificaciones correctamente en la nueva plataforma."
-  - question: "¿Qué pasa si tengo datos en papel o PDF?"
-    answer: "Ofrecemos servicios de digitalización y estructuración de datos para convertir archivos físicos o planos en bases de datos relacionales consultables."
-  # --- NUEVAS AGREGADAS ---
+  - question: "¿Qué pasa si tengo datos en papel o sistemas cerrados?"
+    answer: "Si es papel, ofrecemos servicios de digitalización y estructuración. Si es un sistema cerrado (software propietario), realizamos ingeniería inversa sobre la base de datos para extraer la data 'en crudo' directo de las tablas."
+  - question: "¿Migran contenido interactivo (SCORM)?"
+    answer: "Sí. Extraemos, reinstalamos y reconectamos paquetes SCORM, asegurando que sigan reportando calificaciones correctamente en la nueva plataforma (ej: de Blackboard a Moodle)."
   - question: "¿Se pierden las contraseñas de los usuarios?"
-    answer: "Depende de la tecnología de origen. Si los 'hashes' de encriptación son compatibles, las migramos. Si no, implementamos estrategias de blanqueo masivo o configuramos un primer inicio de sesión seguro para los usuarios."
+    answer: "Depende de la tecnología de origen. Si los algoritmos de encriptación son compatibles, las migramos. Si no, implementamos estrategias de seguridad para que el usuario genere una nueva clave en su primer acceso."
   - question: "¿La plataforma estará caída durante el proceso?"
-    answer: "No durante el desarrollo. Trabajamos en un entorno de pruebas (Staging). Solo requerimos una ventana de mantenimiento breve (generalmente de noche o fin de semana) para la sincronización final de datos."
-  - question: "¿Migran también los certificados emitidos?"
-    answer: "Sí. Entendemos que son documentos legales. Migramos el registro histórico de quién obtuvo qué certificado y cuándo, para que tus alumnos no pierdan sus acreditaciones previas."
-  - question: "Mi base de datos actual tiene muchos errores, ¿sirve igual?"
-    answer: "Es el escenario ideal para nosotros. Antes de mover la data, ejecutamos scripts de limpieza para eliminar duplicados, corregir correos mal formados y estandarizar nombres, entregándote una base de datos nueva y saneada."
-  - question: "¿Pueden extraer datos de un sistema cerrado o propietario?"
-    answer: "Sí. Si tienes acceso a la base de datos (SQL), no necesitamos que el software tenga una API o documentación. Leemos directamente la estructura de las tablas para extraer la información 'en crudo'."
+    answer: "No durante el desarrollo. Trabajamos en paralelo sin afectar su operación diaria. Solo requerimos una 'ventana de mantenimiento' breve (generalmente de noche o fin de semana) para la sincronización final."
+  - question: "¿Qué pasa con los certificados emitidos antiguamente?"
+    answer: "Se preservan. Entendemos que son documentos legales. Migramos el registro histórico de quién obtuvo qué certificado y cuándo, para que sus egresados mantengan sus acreditaciones válidas."
+  - question: "Mi base de datos actual es un desastre, ¿sirve igual?"
+    answer: "Es el mejor momento para hacerlo. Antes de migrar, ejecutamos scripts de limpieza profunda. Usted recibe en el nuevo sistema una base de datos saneada, estandarizada y libre de errores históricos."
+
+# --- CARD FINAL ---
 bookingCard:
-  title: "Auditoría de Datos Gratuita"
-  paragraph: "Analicemos la estructura de tu base de datos actual para estimar la complejidad de la migración."
+  title: "Diagnóstico de Datos"
+  paragraph: "Evaluemos la estructura de sus datos actuales para estimar la complejidad y estrategia de migración."
   benefits:
     - icon: "ph-file-sql"
-      text: "Soporte SQL, CSV, JSON, XML"
-    - icon: "ph-check-circle"
-      text: "Garantía de integridad 100%"
+      text: "Soporte SQL, Oracle, JSON"
+    - icon: "ph-shield-check"
+      text: "Integridad Referencial Garantizada"
     - icon: "ph-clock-countdown"
-      text: "Migraciones Express disponibles"
-  buttonText: "Evaluar mi Migración"
+      text: "Minimización de Downtime"
+  buttonText: "Solicitar Diagnóstico"
 ---
 
-<h3 class="section-title md">Más que una copia, una reestructuración</h3>
+<h3 class="section-title md">Más que copiar: Reestructuración de Activos</h3>
 
-<p class="prose-p">Las migraciones no son solo mover archivos. Son proyectos de <strong>Ingeniería de Datos</strong>. Normalizamos RUTs, corregimos correos mal escritos y unificamos cuentas de usuarios duplicadas.</p>
+<p class="prose-p">
+    Las migraciones académicas no son mover archivos de una carpeta a otra; son proyectos complejos de <strong>Ingeniería de Datos</strong>. Una nota perdida puede significar un problema legal para la institución.
+</p>
 
-<p class="prose-p">Garantizamos la continuidad operativa: planificamos el corte (switch-over) para fines de semana o noches, minimizando el impacto en tus alumnos.</p>
+<p class="prose-p">
+    Nuestro enfoque se centra en la <strong>Continuidad Operativa</strong>. Planificamos el corte (switch-over) milimétricamente para fines de semana o periodos de vacaciones, asegurando que cuando sus alumnos y docentes vuelvan a conectarse, todo esté exactamente donde debe estar, pero funcionando mejor y más rápido.
+</p>

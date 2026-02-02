@@ -11,7 +11,7 @@ const { slug, title, description, icon, featured = false } = Astro.props;
 ---
 
 <article id={slug} class={`service-card ${featured ? "featured" : ""}`}>
-    {featured && <div class="featured-tag">Más Solicitado</div>}
+    {featured && <div class="featured-tag">Core Business</div>}
 
     <div class="icon-wrapper" transition:name={`service-icon-${slug}`}>
         <i class={`ph-duotone ${icon}`} aria-hidden="true"></i>

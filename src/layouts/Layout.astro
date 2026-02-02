@@ -15,6 +15,7 @@ import Footer from "../components/layout/Footer.astro";
 import WhatsAppButton from "../components/layout/WhatsAppButton.astro";
 import { ClientRouter } from "astro:transitions";
 import Cookies from "../components/layout/Cookies.astro";
+import Toast from "../components/layout/Toast.astro";
 
 interface Props {
     title: string;
@@ -27,25 +28,81 @@ const {
     description = "Isinova - Transformación Digital Educativa. Sistemas de aulas virtuales (LMS) y desarrollo web para instituciones educativas en Chile.",
     noindex = false, // ✅ 2. Extraemos el valor, por defecto es false
 } = Astro.props;
+
+const GTM_ID = import.meta.env.PUBLIC_GTM_ID;
 ---
 
 <!doctype html>
 <html lang="es-CL" class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
-        
+
         <Seo title={title} description={description} noindex={noindex} />
-        
+
+        <!-- Google Tag Manager & Consent Mode v2 -->
+        { GTM_ID && (
+            <script is:inline define:vars={{ gtmId: GTM_ID }}>
+                // 1. Define dataLayer and default consent (DENIED)
+                window.dataLayer = window.dataLayer || [];
+                function gtag() {
+                    dataLayer.push(arguments);
+                }
+                window.gtag = gtag;
+
+                // Default consent: Denied
+                gtag("consent", "default", {
+                    ad_storage: "denied",
+                    ad_user_data: "denied",
+                    ad_personalization: "denied",
+                    analytics_storage: "denied",
+                    wait_for_update: 500,
+                });
+
+                // 2. Load GTM Script
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || [];
+                    w[l].push({
+                        "gtm.start": new Date().getTime(),
+                        event: "gtm.js",
+                    });
+                    var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s),
+                        dl = l != "dataLayer" ? "&l=" + l : "";
+                    j.async = true;
+                    j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+                    f.parentNode.insertBefore(j, f);
+                })(window, document, "script", "dataLayer", gtmId);
+            </script>
+        )}
+        <!-- End Google Tag Manager -->
+
+        <script is:inline>
+            // Declaración global para evitar errores de TS en otros componentes
+            window.showToast = window.showToast || function() { console.warn("Toast system not initialized"); };
+        </script>
+
         <ClientRouter />
     </head>
     <body
         class="bg-background text-dark font-sans antialiased selection:bg-accent/30 selection:text-dark"
     >
+        <!-- Google Tag Manager (noscript) -->
+        { GTM_ID && (
+            <noscript
+                ><iframe
+                    src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+                    height="0"
+                    width="0"
+                    style="display:none;visibility:hidden"></iframe></noscript
+            >
+        )}
+        <!-- End Google Tag Manager (noscript) -->
         <Header />
         <slot />
         <Footer />
         <WhatsAppButton />
         <Cookies />
+        <Toast />
     </body>
 </html>
 
@@ -56,5 +113,18 @@ const {
 
     body {
         font-family: var(--font-exo);
+    }
+
+    /* Reposicionar badge de reCAPTCHA para no chocar con WhatsApp */
+    .grecaptcha-badge {
+        width: 70px !important;
+        overflow: hidden !important;
+        transition: all 0.3s ease !important;
+        left: 0 !important;
+        right: auto !important;
+    }
+
+    .grecaptcha-badge:hover {
+        width: 256px !important;
     }
 </style>

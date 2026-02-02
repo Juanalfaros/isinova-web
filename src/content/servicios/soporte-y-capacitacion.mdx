@@ -1,83 +1,96 @@
 ---
-slug: "soporte-y-capacitacion"
-shortTitle: "Soporte DevOps y Estrategia"
+order: 4
+slug: "soporte-sre-infraestructura"
+shortTitle: "Soporte & DevOps (SRE)"
 icon: "ph-headset"
 heroImage: "images/services/soporte-isinova.webp"
-heroTitle: "Continuidad Operativa y Éxito del Cliente"
-title: "Soporte DevOps, Mantenimiento y Capacitación"
-description: "Más que un helpdesk, somos tu departamento de TI externo. Aseguramos uptime, escalabilidad y formamos a tu equipo para maximizar el uso de la tecnología."
-tags: ["DevOps", "SLA Premium", "Mentoring", "Infraestructura"]
-price: "Desde $350.000 / mes"
-duration: "Planes mensuales o anuales"
+heroTitle: "Resiliencia Digital & Continuidad"
+title: "Operaciones DevOps (SRE), Soporte Crítico y Capacitación"
+description: "Su departamento de TI externo. Garantizamos la disponibilidad (Uptime) de su ecosistema, optimizamos costos de nube (FinOps) y capacitamos a su equipo docente."
+tags: ["Site Reliability Engineering", "DevOps", "FinOps", "Ciberseguridad", "SLA Enterprise"]
+price: "Suscripción Mensual / Anual"
+duration: "Contratos de continuidad"
 calLinkPrefix: "isinova"
-titleSituaciones: "¿Duermes tranquilo la noche antes de un lanzamiento?"
-subtitleSituaciones: "La tecnología falla. Lo importante es tener expertos que lo prevengan."
-titleEnfoque: "Soporte Proactivo (SRE)"
-subtitleEnfoque: "No esperamos a que te llamen los alumnos reclamando. Monitoreamos 24/7."
-titleTips: "Cultura Digital"
-subtitleTips: "Cómo reducir los tickets de soporte educando a tus usuarios."
-titleFaqs: "Preguntas sobre el Servicio"
-subtitleFaqs: "Entiende el valor de tener un equipo de ingeniería respaldándote."
+
+# --- SECCIÓN 1: EL MIEDO (RIESGOS) ---
+titleSituaciones: "¿Cuánto le cuesta una hora sin sistema?"
+subtitleSituaciones: "La tecnología falla. Lo importante es la velocidad y capacidad de respuesta para recuperarla."
+
 situaciones:
-  - icon: "ph-hard-drives"
-    text: "El sitio se cae justo cuando lanzas una campaña de marketing o en exámenes finales."
-  - icon: "ph-users-four"
-    text: "Tu equipo docente subutiliza la plataforma por falta de conocimientos técnicos."
+  - icon: "ph-warning-circle"
+    text: "Caídas Críticas: El LMS colapsa durante un examen final o proceso de matrícula, generando una crisis reputacional y quejas masivas en redes sociales."
+  - icon: "ph-trend-down"
+    text: "Costos de Nube Inflados: Su factura de AWS/Azure crece sin control porque nadie está optimizando los recursos ni apagando servidores ociosos."
   - icon: "ph-shield-warning"
-    text: "Incertidumbre sobre la seguridad de los datos ante ataques o malware."
-  - icon: "ph-chart-bar"
-    text: "Falta de optimización: la base de datos crece y el sistema se vuelve lento."
+    text: "Vulnerabilidad: Su equipo interno no tiene tiempo de aplicar parches de seguridad, dejando la institución expuesta a Ransomware."
+  - icon: "ph-users-three"
+    text: "Brecha Digital: Tiene la mejor plataforma del mundo, pero sus docentes no la usan porque nadie les enseñó a sacarle provecho pedagógico."
+
+# --- SECCIÓN 2: LA SOLUCIÓN (ENFOQUE) ---
+titleEnfoque: "Enfoque Proactivo (SRE)"
+subtitleEnfoque: "No esperamos a que usted nos llame. Monitoreamos su infraestructura para arreglar problemas antes de que los usuarios los noten."
+
 enfoque:
   - numero: "1"
-    titulo: "Monitoreo de Infraestructura"
-    texto: "Implementamos sondas de monitoreo para detectar picos de CPU o memoria antes de que afecten al usuario final."
+    titulo: "Observabilidad 24/7"
+    texto: "Implementamos sondas de monitoreo avanzado. Si un servidor llega al 80% de CPU, nuestros ingenieros reciben una alerta y escalan la capacidad automáticamente."
   - numero: "2"
-    titulo: "SLA Preferente"
-    texto: "Tienes línea directa con nuestros ingenieros. Sin tickets genéricos, resolvemos incidencias críticas con prioridad absoluta."
+    titulo: "Ingeniería de Costos (FinOps)"
+    texto: "Auditamos mensualmente su infraestructura en la nube. Detectamos ineficiencias y optimizamos recursos, logrando a menudo ahorros que pagan el costo de nuestro propio servicio."
   - numero: "3"
-    titulo: "Mentoring Docente"
-    texto: "No solo enseñamos a usar botones. Asesoramos a tus profesores sobre cómo estructurar sus cursos para mejorar el aprendizaje."
+    titulo: "Transferencia de Conocimiento"
+    texto: "No queremos ser una caja negra. Capacitamos constantemente a su equipo técnico y docente para elevar el nivel de madurez digital de la institución."
+
+# --- BOX DESTACADO ---
 highlightBox:
-  h3: "Tu CTO Fraccional"
-  p: "Para muchas instituciones, contratar un Gerente de Tecnología (CTO) es impagable. Con nuestro plan de soporte, obtienes esa visión estratégica y técnica por una fracción del costo."
+  h3: "CTO as a Service"
+  p: "Para muchas instituciones, contratar un Gerente de Tecnología (CTO) de alto nivel es impagable. Con nuestro plan Enterprise, obtiene esa visión estratégica: le ayudamos a planificar su presupuesto TI, evaluar nuevas tecnologías y definir la hoja de ruta digital."
+
+# --- TIPS ---
+titleTips: "Cultura DevOps"
+subtitleTips: "Automatización y prevención."
+
 tips:
-  - icon: "ph-cloud-arrow-up"
-    title: "Escalado Automático"
-    text: "Configuramos tus servidores para que crezcan automáticamente si entran 1.000 alumnos de golpe."
-  - icon: "ph-presentation-chart"
-    title: "Reportes de Salud"
-    text: "Mensualmente te entregamos un informe sobre el rendimiento de tu plataforma y sugerencias de mejora."
+  - icon: "ph-arrows-clockwise"
+    title: "Resiliencia de Datos"
+    text: "Backups Inmutables: Implementamos la regla 3-2-1 para respaldos, protegiendo su data histórica incluso contra secuestro de datos."
+
+# --- FAQS ---
+titleFaqs: "Alcance del Servicio"
+subtitleFaqs: "Claridad total sobre nuestra responsabilidad operativa."
+
 faqs:
-  - question: "¿Qué incluye el mantenimiento?"
-    answer: "Actualización de parches de seguridad, optimización de base de datos, gestión de certificados SSL y renovación de licencias/dominios si corresponde."
-  - question: "¿Capacitan a nuevos profesores?"
-    answer: "Sí. Parte de nuestro servicio incluye sesiones de 'Onboarding' para nuevos docentes, asegurando que mantengan el estándar de calidad de tu institución."
-  # --- NUEVAS AGREGADAS ---
-  - question: "¿Atienden emergencias fuera de horario comercial?"
-    answer: "Sí. Para incidencias críticas (Bloqueantes nivel 1, como caída total del servicio), nuestro sistema de monitoreo alerta a los ingenieros de guardia 24/7 para iniciar la restitución inmediata."
-  - question: "¿El soporte incluye atención a mis alumnos finales?"
-    answer: "Generalmente ofrecemos soporte de Nivel 2 y 3 (a tus administradores y docentes). Si necesitas una mesa de ayuda para atender dudas básicas de acceso de tus miles de alumnos, podemos cotizarlo como un servicio adicional."
-  - question: "¿Me ayudan a controlar los costos de la nube (AWS/Azure)?"
-    answer: "Absolutamente. Parte de nuestro rol DevOps es la ingeniería de costos (FinOps). Auditamos tus servidores para apagar recursos ociosos y reservar instancias, logrando ahorros de hasta un 30% en tu factura de hosting."
-  - question: "¿Qué estrategia de respaldos (Backups) utilizan?"
-    answer: "Implementamos la regla 3-2-1: Tres copias de tus datos, en dos medios diferentes, y una copia fuera del sitio (Off-site) para garantizar recuperación total ante desastres físicos o lógicos (Ransomware)."
-  - question: "¿Las capacitaciones son grabadas o en vivo?"
-    answer: "Priorizamos sesiones en vivo (vía Zoom/Meet) para resolver dudas reales de tu equipo sobre su propia plataforma. Además, grabamos estas sesiones para que construyas tu propia biblioteca de conocimiento interno."
+  - question: "¿Qué incluye el mantenimiento preventivo?"
+    answer: "Actualización de parches de seguridad del servidor, optimización de bases de datos (vacuuming), renovación de certificados SSL y actualizaciones de versión de su LMS/CMS para evitar obsolescencia."
+  - question: "¿Atienden emergencias fuera de horario?"
+    answer: "Sí. Para incidencias de Severidad 1 (Caída total del servicio o imposibilidad de operar), nuestro sistema de guardia alerta a los ingenieros 24/7 para iniciar la restitución inmediata bajo SLA garantizado."
+  - question: "¿El soporte incluye a mis alumnos finales?"
+    answer: "Nuestro foco es el soporte Nivel 2 y 3 (Infraestructura y Administradores). Podemos habilitar soporte a usuario final (Mesa de Ayuda para alumnos) como un servicio adicional ('Add-on') cotizado según su volumen de matrícula."
+  - question: "¿Qué estrategia de respaldos utilizan?"
+    answer: "No confiamos en la suerte. Realizamos copias diarias incrementales y semanales completas, almacenadas en una ubicación geográfica distinta (Off-site) para garantizar recuperación ante desastres físicos."
+  - question: "¿Las capacitaciones son grabadas?"
+    answer: "Priorizamos sesiones en vivo (vía Zoom/Meet) para resolver dudas reales de su equipo sobre su propia plataforma. Además, grabamos estas sesiones para que construya su propia biblioteca de onboarding interno."
+
+# --- CARD FINAL ---
 bookingCard:
   title: "Blindaje Tecnológico"
-  paragraph: "Deja de apagar incendios y empieza a prevenir. Hablemos de tu plan de soporte."
+  paragraph: "Deje de apagar incendios y comience a prevenir. Asegure la continuidad de su operación académica hoy."
   benefits:
     - icon: "ph-infinity"
-      text: "Monitoreo de Uptime 99.9%"
-    - icon: "ph-student"
-      text: "Academia de capacitación docente"
+      text: "Uptime Garantizado"
+    - icon: "ph-chart-line-down"
+      text: "Ahorro en Costos Cloud"
     - icon: "ph-shield-check"
-      text: "Auditorías de seguridad mensuales"
-  buttonText: "Activar Plan de Soporte"
+      text: "Auditoría de Seguridad Continua"
+  buttonText: "Activar Plan Enterprise"
 ---
 
 <h3 class="section-title md">Ingeniería de Fiabilidad (SRE)</h3>
 
-<p class="prose-p">Aplicamos principios de ingeniería de software a las operaciones (DevOps). Esto significa que automatizamos copias de seguridad, gestionamos actualizaciones de seguridad sin tiempo de inactividad (Zero Downtime) y escalamos servidores verticalmente durante tus fechas clave.</p>
+<p class="prose-p">
+    Aplicamos principios de ingeniería de software a las operaciones (lo que Google llama SRE). Esto significa que no solo "arreglamos lo roto", sino que automatizamos procesos para que no se rompan en primer lugar.
+</p>
 
-<p class="prose-p">Además, cerramos la brecha digital de tu equipo humano con capacitaciones constantes sobre las nuevas herramientas que implementamos.</p>
+<p class="prose-p">
+    Gestionamos actualizaciones sin tiempo de inactividad (Zero Downtime Deployment) y configuramos <strong>Auto-Scaling</strong> para que su plataforma soporte miles de alumnos concurrentes en periodo de matrícula, y luego se reduzca automáticamente para ahorrar costos cuando baja la demanda.
+</p>

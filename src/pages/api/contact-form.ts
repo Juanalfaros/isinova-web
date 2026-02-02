@@ -1,20 +1,6 @@
-/**
- * Netlify Function: contact-form
- * Maneja el envío del formulario de contacto a Brevo
- */
+import type { APIRoute, APIContext } from 'astro';
 
-// Load .env for local development
-import 'dotenv/config';
-
-export const handler = async (event, context) => {
-    // Solo permitir POST
-    if (event.httpMethod !== "POST") {
-        return {
-            statusCode: 405,
-            body: JSON.stringify({ error: "Método no permitido" }),
-        };
-    }
-
+export const POST: APIRoute = async ({ request, locals }: APIContext) => {
     // Headers CORS
     const headers = {
         "Access-Control-Allow-Origin": "*",
@@ -22,38 +8,58 @@ export const handler = async (event, context) => {
         "Content-Type": "application/json",
     };
 
-    // Handle preflight
-    if (event.httpMethod === "OPTIONS") {
-        return { statusCode: 200, headers, body: "" };
-    }
-
     try {
-        const { name, email, institution, phone, project, message, listId, source } = JSON.parse(event.body);
+        const body = await request.json();
+        const { name, email, institution, phone, project, message, listId, source } = body;
 
         // Validación básica
         if (!name || !email || !project) {
-            return {
-                statusCode: 400,
-                headers,
-                body: JSON.stringify({ error: "Nombre, email y categoría son requeridos" }),
-            };
+            return new Response(JSON.stringify({ error: "Nombre, email y categoría son requeridos" }), {
+                status: 400,
+                headers
+            });
         }
 
-        const BREVO_API_KEY = process.env.BREVO_API_KEY;
-        const NOTIFICATION_EMAIL = process.env.NOTIFICATION_EMAIL || "contacto@isinova.cl";
-        const BREVO_LIST_ID = process.env.BREVO_LIST_ID;
+        const env = locals.runtime?.env;
+        const BREVO_API_KEY = env?.BREVO_API_KEY;
+        const NOTIFICATION_EMAIL = env?.NOTIFICATION_EMAIL || "contacto@isinova.cl";
+        const BREVO_LIST_ID = env?.BREVO_LIST_ID;
+        const RECAPTCHA_SECRET_KEY = env?.RECAPTCHA_SECRET_KEY;
 
         if (!BREVO_API_KEY) {
-            console.error("BREVO_API_KEY no configurada");
-            return {
-                statusCode: 500,
-                headers,
-                body: JSON.stringify({ error: "Error de configuración del servidor" }),
-            };
+            console.error("BREVO_API_KEY no configurada en Cloudflare Runtime");
+            return new Response(JSON.stringify({ error: "Error de configuración del servidor" }), {
+                status: 500,
+                headers
+            });
+        }
+
+        // Validación de reCAPTCHA (solo si la clave secreta está configurada)
+        if (RECAPTCHA_SECRET_KEY) {
+            const { recaptchaToken } = body;
+            if (!recaptchaToken) {
+                return new Response(JSON.stringify({ error: "Verificación de seguridad fallida (Token faltante)" }), {
+                    status: 400,
+                    headers
+                });
+            }
+
+            const recaptchaVerify = await fetch(`https://www.google.com/recaptcha/api/siteverify?secret=${RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`, {
+                method: "POST"
+            });
+            const recaptchaData = await recaptchaVerify.json();
+
+            if (!recaptchaData.success || recaptchaData.score < 0.5) {
+                console.warn("reCAPTCHA fallido:", recaptchaData);
+                return new Response(JSON.stringify({ error: "No pudimos verificar que eres humano. Intenta nuevamente." }), {
+                    status: 400,
+                    headers
+                });
+            }
         }
 
         // Mapeo de tipos de proyecto
-        const projectTypes = {
+        const projectTypes: Record<string, string> = {
             lms: "Implementación LMS (Moodle/Canvas)",
             web: "Desarrollo Web EdTech",
             data: "Migración de Datos",
@@ -66,7 +72,7 @@ export const handler = async (event, context) => {
         const projectLabel = projectTypes[project] || project;
 
         // 1. Crear/Actualizar contacto en Brevo
-        const contactPayload = {
+        const contactPayload: any = {
             email: email,
             attributes: {
                 FIRSTNAME: name.split(" ")[0],
@@ -84,7 +90,7 @@ export const handler = async (event, context) => {
         // Asignar a lista (prioridad: body.listId > env.BREVO_LIST_ID)
         const targetListId = listId || BREVO_LIST_ID;
         if (targetListId) {
-            contactPayload.listIds = [parseInt(targetListId)];
+            contactPayload.listIds = [parseInt(targetListId as string)];
         }
 
         const contactResponse = await fetch("https://api.brevo.com/v3/contacts", {
@@ -231,28 +237,36 @@ export const handler = async (event, context) => {
         if (!emailResponse.ok) {
             const errorData = await emailResponse.text();
             console.error("Error enviando email:", errorData);
-            return {
-                statusCode: 500,
-                headers,
-                body: JSON.stringify({ error: "Error al enviar la notificación" }),
-            };
+            return new Response(JSON.stringify({ error: "Error al enviar la notificación" }), {
+                status: 500,
+                headers
+            });
         }
 
-        return {
-            statusCode: 200,
-            headers,
-            body: JSON.stringify({
-                success: true,
-                message: "Solicitud enviada correctamente"
-            }),
-        };
+        return new Response(JSON.stringify({
+            success: true,
+            message: "Solicitud enviada correctamente"
+        }), {
+            status: 200,
+            headers
+        });
 
     } catch (error) {
         console.error("Error en contact-form:", error);
-        return {
-            statusCode: 500,
-            headers,
-            body: JSON.stringify({ error: "Error interno del servidor" }),
-        };
+        return new Response(JSON.stringify({ error: "Error interno del servidor" }), {
+            status: 500,
+            headers
+        });
     }
+};
+
+export const OPTIONS: APIRoute = async () => {
+    return new Response(null, {
+        status: 200,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+        }
+    });
 };

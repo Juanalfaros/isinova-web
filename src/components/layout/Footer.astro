@@ -2,19 +2,20 @@
 import LogoWhite from "./LogoWhite.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 const currentYear = new Date().getFullYear();
 const MAX_FOOTER_SERVICES = 5;
 
 // Fetch services from content collection
 const servicesDataRaw = await getCollection("servicios");
-const servicesData = servicesDataRaw.map(
-    (service: CollectionEntry<"servicios">) => ({
+const servicesData = servicesDataRaw
+    .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+    .map((service: CollectionEntry<"servicios">) => ({
         slug: service.slug,
         ...service.data,
-    }),
-);
+    }));
 
-// 2. CORRECCIÓN DE TIPO: Definimos qué es un 'service' para el Footer
+// Definimos qué es un 'service' para el Footer
 interface ServiceItem {
     slug: string;
     title: string;
@@ -23,6 +24,15 @@ interface ServiceItem {
 ---
 
 <footer class="site-footer bg-tech-dark">
+    <!-- reCAPTCHA v3 Script -->
+    {
+        RECAPTCHA_SITE_KEY && (
+            <script
+                is:inline
+                src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+            />
+        )
+    }
     <div class="bg-base"></div>
     <div class="tech-grid-bg"></div>
     <div class="footer-glow glow-1"></div>
@@ -74,9 +84,6 @@ interface ServiceItem {
                 <h4 class="col-title">Soluciones</h4>
                 <ul class="footer-links">
                     {
-                        /* 3. APLICACIÓN DE TIPO: Le decimos a map que 'service' es de tipo ServiceItem */
-                    }
-                    {
                         servicesData
                             .slice(0, MAX_FOOTER_SERVICES)
                             .map((service: ServiceItem) => (
@@ -117,7 +124,11 @@ interface ServiceItem {
                     actualizaciones de la plataforma.
                 </p>
 
-                <form class="newsletter-form" id="footer-newsletter">
+                <form
+                    class="newsletter-form"
+                    id="footer-newsletter"
+                    data-recaptcha-site-key={RECAPTCHA_SITE_KEY}
+                >
                     <div class="input-wrapper">
                         <i class="ph ph-envelope-simple input-icon"></i>
                         <input
@@ -139,19 +150,13 @@ interface ServiceItem {
                             ><i class="ph-bold ph-circle-notch spin"></i></span
                         >
                     </button>
-                    <div
-                        id="newsletter-message"
-                        class="newsletter-message"
-                        style="display: none;"
-                    >
-                    </div>
                 </form>
+            </div>
 
-                <div class="contact-mini">
-                    <a href="mailto:hola@isinova.cl">hola@isinova.cl</a>
-                    <span>•</span>
-                    <span>Santiago, Chile</span>
-                </div>
+            <div class="contact-mini">
+                <a href="mailto:hola@isinova.cl">hola@isinova.cl</a>
+                <span>•</span>
+                <span>Santiago, Chile</span>
             </div>
         </div>
 
@@ -182,9 +187,6 @@ interface ServiceItem {
         ) as HTMLButtonElement;
         const btnIcon = btn?.querySelector(".btn-icon") as HTMLElement;
         const btnLoading = btn?.querySelector(".btn-loading") as HTMLElement;
-        const messageBox = document.getElementById(
-            "newsletter-message",
-        ) as HTMLElement;
 
         if (!form) return;
 
@@ -195,31 +197,48 @@ interface ServiceItem {
             setLoading(true);
 
             try {
-                const response = await fetch(
-                    "/.netlify/functions/contact-form",
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            email,
-                            name: "Suscriptor Newsletter",
-                            project: "newsletter",
-                            listId: 5,
-                            source: "Footer Newsletter",
-                        }),
-                    },
-                );
+                // reCAPTCHA v3 Token
+                let token = "";
+                const SITE_KEY = form.dataset.recaptchaSiteKey;
+
+                if (SITE_KEY && typeof grecaptcha !== "undefined") {
+                    try {
+                        await new Promise((resolve) => {
+                            grecaptcha.ready(() => {
+                                resolve(true);
+                            });
+                        });
+                        token = await grecaptcha.execute(SITE_KEY, {
+                            action: "submit",
+                        });
+                    } catch (e) {
+                        console.error("reCAPTCHA error:", e);
+                    }
+                }
+
+                const response = await fetch("/api/contact-form", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        email,
+                        name: "Suscriptor Newsletter",
+                        project: "newsletter",
+                        listId: 5,
+                        source: "Footer Newsletter",
+                        recaptchaToken: token,
+                    }),
+                });
 
                 const result = await response.json();
 
                 if (response.ok && result.success) {
-                    showMessage("¡Gracias por suscribirte!", "success");
+                    window.showToast("¡Gracias por suscribirte!", "success");
                     form.reset();
                 } else {
-                    showMessage("Error al suscribir. Reintenta.", "error");
+                    window.showToast("Error al suscribir. Reintenta.", "error");
                 }
             } catch (error) {
-                showMessage("Sin conexión. Reintenta.", "error");
+                window.showToast("Sin conexión. Reintenta.", "error");
             } finally {
                 setLoading(false);
             }
@@ -231,30 +250,16 @@ interface ServiceItem {
             if (btnLoading)
                 btnLoading.style.display = isLoading ? "block" : "none";
         }
-
-        function showMessage(msg: string, type: "success" | "error") {
-            if (!messageBox) return;
-            messageBox.textContent = msg;
-            messageBox.className = `newsletter-message ${type}`;
-            messageBox.style.display = "block";
-
-            setTimeout(() => {
-                messageBox.style.display = "none";
-            }, 5000);
-        }
     });
 </script>
 
 <style>
-    /* ... (Tus estilos se mantienen intactos, no es necesario cambiarlos) ... */
-
     .link-more {
         font-size: 0.85rem !important;
         font-style: italic;
         opacity: 0.8;
     }
 
-    /* Copia aquí el resto de estilos del bloque anterior si no los tienes ya */
     .site-footer {
         background-color: #0f172a;
         color: #cbd5e1;
@@ -467,19 +472,22 @@ interface ServiceItem {
     .footer-bottom {
         display: flex;
         flex-direction: column;
-        gap: 1rem;
+        gap: 1.5rem;
         align-items: center;
         text-align: center;
         font-size: 0.85rem;
         color: #64748b;
         position: relative;
         z-index: 2;
+        padding: 2rem 0;
     }
     @media (min-width: 768px) {
         .footer-bottom {
             flex-direction: row;
             justify-content: space-between;
             text-align: left;
+            padding: 2rem 0;
+            gap: 2rem;
         }
     }
     .legal-links {
@@ -508,10 +516,6 @@ interface ServiceItem {
     .newsletter-message.success {
         color: var(--accent, #10b981);
     }
-    .newsletter-message.error {
-        color: #f87171;
-    }
-
     .spin {
         animation: spin 1s linear infinite;
         display: inline-block;

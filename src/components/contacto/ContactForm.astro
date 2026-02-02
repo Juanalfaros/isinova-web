@@ -1,8 +1,18 @@
 ---
-// src/components/contacto/ContactForm.astro
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 <section class="contact-form-section">
+    <!-- reCAPTCHA v3 Script -->
+    {
+        RECAPTCHA_SITE_KEY && (
+            <script
+                is:inline
+                src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+            />
+        )
+    }
+
     <div class="container">
         <div class="form-container">
             <div class="form-header-center">
@@ -13,7 +23,11 @@
                 </p>
             </div>
 
-            <form id="contact-page-form" class="contact-page-form">
+            <form
+                id="contact-page-form"
+                class="contact-page-form"
+                data-recaptcha-site-key={RECAPTCHA_SITE_KEY}
+            >
                 <div class="form-grid">
                     <div class="input-group">
                         <label for="name">Nombre Completo</label>
@@ -114,13 +128,6 @@
                         >.
                     </p>
                 </div>
-
-                <div
-                    id="form-page-message"
-                    class="form-message"
-                    style="display: none;"
-                >
-                </div>
             </form>
         </div>
     </div>
@@ -135,12 +142,9 @@
             "submit-page-btn",
         ) as HTMLButtonElement;
         const btnText = submitBtn?.querySelector(".btn-text") as HTMLElement;
+        const btnIcon = submitBtn?.querySelector(".btn-icon") as HTMLElement;
         const btnLoading = submitBtn?.querySelector(
             ".btn-loading",
-        ) as HTMLElement;
-        const btnIcon = submitBtn?.querySelector(".btn-icon") as HTMLElement;
-        const formMessage = document.getElementById(
-            "form-page-message",
         ) as HTMLElement;
 
         if (!form) return;
@@ -163,33 +167,48 @@
             setLoading(true);
 
             try {
-                // He mantenido la misma función de Netlify que usas en el CTA
-                const response = await fetch(
-                    "/.netlify/functions/contact-form",
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify(data),
-                    },
-                );
+                // Obtener token de reCAPTCHA si la clave existe
+                let token = "";
+                const RECAPTCHA_SITE_KEY = form.dataset.recaptchaSiteKey;
+
+                if (RECAPTCHA_SITE_KEY && typeof grecaptcha !== "undefined") {
+                    try {
+                        await new Promise((resolve) => {
+                            grecaptcha.ready(() => {
+                                resolve(true);
+                            });
+                        });
+                        token = await grecaptcha.execute(RECAPTCHA_SITE_KEY, {
+                            action: "submit",
+                        });
+                    } catch (e) {
+                        console.error("reCAPTCHA error:", e);
+                    }
+                }
+
+                const response = await fetch("/api/contact-form", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ ...data, recaptchaToken: token }),
+                });
 
                 const result = await response.json();
 
                 if (response.ok && result.success) {
-                    showMessage(
+                    window.showToast(
                         "¡Solicitud enviada! Nos pondremos en contacto contigo a la brevedad.",
                         "success",
                     );
                     form.reset();
                 } else {
-                    showMessage(
+                    window.showToast(
                         result.error ||
                             "Hubo un error al enviar. Intenta nuevamente.",
                         "error",
                     );
                 }
             } catch (error) {
-                showMessage(
+                window.showToast(
                     "Error de conexión. Verifica tu internet e intenta nuevamente.",
                     "error",
                 );
@@ -204,17 +223,6 @@
             if (btnIcon) btnIcon.style.display = isLoading ? "none" : "inline";
             if (btnLoading)
                 btnLoading.style.display = isLoading ? "flex" : "none";
-        }
-
-        function showMessage(message: string, type: "success" | "error") {
-            formMessage.textContent = message;
-            formMessage.className = `form-message ${type}`;
-            formMessage.style.display = "block";
-            if (type === "success") {
-                setTimeout(() => {
-                    formMessage.style.display = "none";
-                }, 6000);
-            }
         }
     });
 </script>
@@ -373,34 +381,6 @@
         animation: spin 1s linear infinite;
     }
     @keyframes spin {
-        from {
-            transform: rotate(0);
-        }
-        to {
-            transform: rotate(360deg);
-        }
-    }
-
-    .form-message {
-        padding: 1.25rem;
-        border-radius: 1rem;
-        font-size: 1rem;
-        font-weight: 600;
-        text-align: center;
-        margin-top: 2rem;
-    }
-    .form-message.success {
-        background: #dcfce7;
-        color: #166534;
-        border: 1px solid #86efac;
-    }
-    .form-message.error {
-        background: #fee2e2;
-        color: #991b1b;
-        border: 1px solid #fca5a5;
-    }
-
-    @media (max-width: 991px) {
         .form-container {
             padding: 3rem 2rem;
             margin-top: -3rem;

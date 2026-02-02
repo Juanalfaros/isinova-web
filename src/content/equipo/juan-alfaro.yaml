@@ -1,13 +1,13 @@
 name: "Juan Alfaro"
-role: "Head of Branding & UI/UX"
+role: "Líder de Diseño UI/UX"
 bio: "Diseño de interfaces que eliminan la fricción y aceleran la adopción tecnológica."
 specialties:
-  - "Product Design"
-  - "UI Kit"
+  - "Diseño de Producto"
+  - "Sistemas de Diseño"
   - "Usabilidad"
 isLeader: false
 initials: "JA"
 image: "../../assets/images/team/juan.webp"
 mail: "juan@isinova.cl"
 linkedin: "https://www.linkedin.com/in/juan-javier-alfaro-serrano/"
-order: 2
+order: 3

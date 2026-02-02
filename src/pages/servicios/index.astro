@@ -5,12 +5,12 @@ import { getCollection, type CollectionEntry } from "astro:content";
 import ServiceCard from "../../components/services/ServiceCard.astro";
 
 const servicesCollection = await getCollection("servicios");
-const servicesData = servicesCollection.map(
-    (service: CollectionEntry<"servicios">) => ({
+const servicesData = servicesCollection
+    .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
+    .map((service: CollectionEntry<"servicios">) => ({
         slug: service.slug,
         ...service.data,
-    }),
-);
+    }));
 
 const title = "Servicios de Ingeniería EdTech | Isinova Chile";
 const description =

@@ -1,8 +1,18 @@
 ---
 // SolutionQuiz.astro
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 <section class="quiz-section" id="quiz">
+    <!-- reCAPTCHA v3 Script -->
+    {
+        RECAPTCHA_SITE_KEY && (
+            <script
+                is:inline
+                src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+            />
+        )
+    }
     <div class="glow-bg"></div>
 
     <div class="container">
@@ -247,7 +257,11 @@
                                 </div>
                             </div>
 
-                            <form id="quiz-lead-form" class="quiz-lead-form">
+                            <form
+                                id="quiz-lead-form"
+                                class="quiz-lead-form"
+                                data-recaptcha-site-key={RECAPTCHA_SITE_KEY}
+                            >
                                 <div class="quiz-form-grid">
                                     <div class="input-group">
                                         <i class="ph-duotone ph-user input-icon"
@@ -290,27 +304,20 @@
                                         ></i>
                                     </button>
                                 </div>
-                                <div
-                                    id="quiz-form-message"
-                                    class="quiz-form-message"
-                                    style="display: none;"
-                                >
-                                </div>
-                                <p class="privacy-note">
-                                    <i class="ph-fill ph-lock-key"></i> Tus datos
-                                    están seguros. No enviamos spam.
-                                </p>
                             </form>
                         </div>
-                    </div>
-
-                    <div class="result-actions">
-                        <button class="restart-link" id="restart-quiz">
-                            <i class="ph-bold ph-arrow-counter-clockwise"></i> Reiniciar
-                            Diagnóstico
-                        </button>
+                        <p class="privacy-note">
+                            <i class="ph-fill ph-lock-key"></i> Tus datos están seguros.
+                            No enviamos spam.
+                        </p>
                     </div>
                 </div>
+            </div>
+
+            <div class="result-actions">
+                <button class="restart-link" id="restart-quiz">
+                    <i class="ph-bold ph-arrow-counter-clockwise"></i> Reiniciar Diagnóstico
+                </button>
             </div>
         </div>
     </div>
@@ -336,21 +343,25 @@
         const btnText = submitBtn?.querySelector(".btn-text");
         const btnLoading = submitBtn?.querySelector(".btn-loading");
         const btnIcon = submitBtn?.querySelector(".btn-icon");
-        const formMessage = document.getElementById("quiz-form-message");
 
         let currentStep = 1;
         const totalSteps = 3;
 
-        let answers = { step1: "", step2: "", step3: "" };
+        let answers: Record<string, string> = {
+            step1: "",
+            step2: "",
+            step3: "",
+        };
 
         // --- NAVEGACIÓN ---
-        function goToStep(stepNumber) {
+        function goToStep(stepNumber: number) {
             steps.forEach((el) => {
-                el.classList.remove("active");
-                el.style.display = "none";
+                const element = el as HTMLElement;
+                element.classList.remove("active");
+                element.style.display = "none";
             });
 
-            if (progressBar) {
+            if (progressBar && progressBar instanceof HTMLElement) {
                 const percentage = ((stepNumber - 1) / totalSteps) * 100;
                 progressBar.style.width = `${percentage}%`;
             }
@@ -358,7 +369,7 @@
             if (stepNumber <= totalSteps) {
                 const currentEl = document.querySelector(
                     `.quiz-step[data-step="${stepNumber}"]`,
-                );
+                ) as HTMLElement;
                 if (currentEl) {
                     currentEl.style.display = "block";
                     setTimeout(() => currentEl.classList.add("active"), 10);
@@ -369,9 +380,10 @@
         }
 
         function showLoadingAndResult() {
-            if (progressBar) progressBar.style.width = "100%";
+            if (progressBar && progressBar instanceof HTMLElement)
+                progressBar.style.width = "100%";
 
-            if (loadingStep) {
+            if (loadingStep && loadingStep instanceof HTMLElement) {
                 loadingStep.style.display = "flex";
                 setTimeout(() => loadingStep.classList.add("active"), 10);
             }
@@ -379,11 +391,11 @@
             calculateResult();
 
             setTimeout(() => {
-                if (loadingStep) {
+                if (loadingStep && loadingStep instanceof HTMLElement) {
                     loadingStep.classList.remove("active");
                     loadingStep.style.display = "none";
                 }
-                if (resultStep) {
+                if (resultStep && resultStep instanceof HTMLElement) {
                     resultStep.style.display = "block";
                     setTimeout(() => resultStep.classList.add("active"), 10);
                 }
@@ -426,10 +438,12 @@
                 resultStep.style.display = "none";
             }
             // Reset lead form visual state
-            if (leadForm) leadForm.reset();
-            const formGrid = document.querySelector(".quiz-form-grid");
+            if (leadForm && leadForm instanceof HTMLFormElement)
+                leadForm.reset();
+            const formGrid = document.querySelector(
+                ".quiz-form-grid",
+            ) as HTMLElement;
             if (formGrid) formGrid.style.display = "grid"; // volver a mostrar grid
-            if (formMessage) formMessage.style.display = "none";
 
             goToStep(1);
         });
@@ -468,66 +482,93 @@
         leadForm?.addEventListener("submit", async (e) => {
             e.preventDefault();
 
-            const name = document.getElementById("quiz-name").value;
-            const email = document.getElementById("quiz-email").value;
+            const name = (
+                document.getElementById("quiz-name") as HTMLInputElement
+            )?.value;
+            const email = (
+                document.getElementById("quiz-email") as HTMLInputElement
+            )?.value;
 
             setLoading(true);
 
             try {
+                // reCAPTCHA v3 Token
+                let token = "";
+                const siteKey = (leadForm as HTMLElement).dataset
+                    .recaptchaSiteKey;
+
+                if (siteKey && typeof grecaptcha !== "undefined") {
+                    try {
+                        await new Promise((resolve) => {
+                            grecaptcha.ready(() => {
+                                resolve(true);
+                            });
+                        });
+                        token = await grecaptcha.execute(siteKey, {
+                            action: "submit",
+                        });
+                    } catch (e) {
+                        console.error("reCAPTCHA error:", e);
+                    }
+                }
+
                 // Aquí se envía a tu Endpoint (Netlify Functions, API Route, etc.)
-                const response = await fetch(
-                    "/.netlify/functions/contact-form",
-                    {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({
-                            name,
-                            email,
-                            project: "quiz_report",
-                            message: `Solicitud de Reporte PDF.\nRespuestas Quiz:\n- Etapa: ${answers.step1}\n- Prioridad: ${answers.step2}\n- Volumen: ${answers.step3}\n- Resultado: ${resultTitle.textContent}`,
-                            listId: 6,
-                            source: "Quiz Diagnóstico",
-                        }),
-                    },
-                );
+                const response = await fetch("/api/contact-form", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                        name,
+                        email,
+                        project: "quiz_report",
+                        message: `Solicitud de Reporte PDF.\nRespuestas Quiz:\n- Etapa: ${answers.step1}\n- Prioridad: ${answers.step2}\n- Volumen: ${answers.step3}\n- Resultado: ${resultTitle instanceof HTMLElement ? resultTitle.textContent : ""}`,
+                        listId: 6,
+                        source: "Quiz Diagnóstico",
+                        recaptchaToken: token,
+                    }),
+                });
 
                 const result = await response.json();
 
                 if (response.ok) {
-                    showMessage(
+                    window.showToast(
                         "¡Solicitud enviada! Revisa tu correo en 2 minutos para ver el reporte.",
                         "success",
                     );
                     // Ocultamos el form para que no envíen doble
-                    const formGrid = document.querySelector(".quiz-form-grid");
+                    const formGrid = document.querySelector(
+                        ".quiz-form-grid",
+                    ) as HTMLElement;
                     if (formGrid) formGrid.style.display = "none";
                 } else {
-                    showMessage(
+                    window.showToast(
                         "Hubo un error al procesar. Intenta nuevamente.",
                         "error",
                     );
                 }
             } catch (error) {
                 console.error(error);
-                showMessage("Sin conexión o error del servidor.", "error");
+                window.showToast("Sin conexión o error del servidor.", "error");
             } finally {
                 setLoading(false);
             }
         });
 
-        function setLoading(isLoading) {
-            if (submitBtn) submitBtn.disabled = isLoading;
-            if (btnText) btnText.style.display = isLoading ? "none" : "block";
-            if (btnIcon) btnIcon.style.display = isLoading ? "none" : "block";
-            if (btnLoading)
-                btnLoading.style.display = isLoading ? "block" : "none";
-        }
-
-        function showMessage(msg, type) {
-            if (!formMessage) return;
-            formMessage.textContent = msg;
-            formMessage.className = `quiz-form-message ${type}`;
-            formMessage.style.display = "block";
+        function setLoading(isLoading: boolean) {
+            if (submitBtn)
+                (submitBtn as HTMLButtonElement).disabled = isLoading;
+            const sBtn = submitBtn as HTMLElement;
+            if (btnText && sBtn)
+                (btnText as HTMLElement).style.display = isLoading
+                    ? "none"
+                    : "block";
+            if (btnIcon && sBtn)
+                (btnIcon as HTMLElement).style.display = isLoading
+                    ? "none"
+                    : "block";
+            if (btnLoading && sBtn)
+                (btnLoading as HTMLElement).style.display = isLoading
+                    ? "block"
+                    : "none";
         }
 
         // Iniciar en paso 1

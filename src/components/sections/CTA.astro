@@ -1,8 +1,17 @@
 ---
-
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 ---
 
 <section id="contacto" class="cta-section">
+    <!-- reCAPTCHA v3 Script -->
+    {
+        RECAPTCHA_SITE_KEY && (
+            <script
+                is:inline
+                src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+            />
+        )
+    }
     <div class="container">
         <div class="cta-card">
             <div class="glow glow-top"></div>
@@ -53,7 +62,11 @@
                 </div>
 
                 <div class="form-wrapper">
-                    <form id="contact-form" class="contact-form">
+                    <form
+                        id="contact-form"
+                        class="contact-form"
+                        data-recaptcha-site-key={RECAPTCHA_SITE_KEY}
+                    >
                         <div class="form-header">
                             <h3>Solicitar Auditoría</h3>
                             <p>Respuesta en menos de 24 horas.</p>
@@ -115,13 +128,6 @@
                             <i class="ph-bold ph-paper-plane-right btn-icon"
                             ></i>
                         </button>
-
-                        <div
-                            id="form-message"
-                            class="form-message"
-                            style="display: none;"
-                        >
-                        </div>
                     </form>
                 </div>
             </div>
@@ -140,9 +146,6 @@
             ".btn-loading",
         ) as HTMLElement;
         const btnIcon = submitBtn?.querySelector(".btn-icon") as HTMLElement;
-        const formMessage = document.getElementById(
-            "form-message",
-        ) as HTMLElement;
 
         if (!form) return;
 
@@ -161,35 +164,53 @@
 
             // Validate
             if (!data.name || !data.email || !data.project) {
-                showMessage("Por favor, completa todos los campos.", "error");
+                window.showToast(
+                    "Por favor, completa todos los campos.",
+                    "error",
+                );
                 return;
             }
 
-            // Set loading state
             setLoading(true);
 
             try {
-                const response = await fetch(
-                    "/.netlify/functions/contact-form",
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(data),
+                // reCAPTCHA v3 Token
+                let token = "";
+                const SITE_KEY = form.dataset.recaptchaSiteKey;
+
+                if (SITE_KEY && typeof grecaptcha !== "undefined") {
+                    try {
+                        await new Promise((resolve) => {
+                            grecaptcha.ready(() => {
+                                resolve(true);
+                            });
+                        });
+                        token = await grecaptcha.execute(SITE_KEY, {
+                            action: "submit",
+                        });
+                    } catch (e) {
+                        console.error("reCAPTCHA error:", e);
+                    }
+                }
+
+                const response = await fetch("/api/contact-form", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
                     },
-                );
+                    body: JSON.stringify({ ...data, recaptchaToken: token }),
+                });
 
                 const result = await response.json();
 
                 if (response.ok && result.success) {
-                    showMessage(
+                    window.showToast(
                         "¡Gracias! Tu solicitud ha sido enviada. Te contactaremos pronto.",
                         "success",
                     );
                     form.reset();
                 } else {
-                    showMessage(
+                    window.showToast(
                         result.error ||
                             "Hubo un error al enviar. Intenta nuevamente.",
                         "error",
@@ -197,7 +218,7 @@
                 }
             } catch (error) {
                 console.error("Error:", error);
-                showMessage(
+                window.showToast(
                     "Error de conexión. Verifica tu internet e intenta nuevamente.",
                     "error",
                 );
@@ -217,19 +238,6 @@
                 btnText.style.display = "inline";
                 btnIcon.style.display = "inline";
                 btnLoading.style.display = "none";
-            }
-        }
-
-        function showMessage(message: string, type: "success" | "error") {
-            formMessage.textContent = message;
-            formMessage.className = `form-message ${type}`;
-            formMessage.style.display = "block";
-
-            // Auto-hide after 5 seconds for success
-            if (type === "success") {
-                setTimeout(() => {
-                    formMessage.style.display = "none";
-                }, 5000);
             }
         }
     });
@@ -507,11 +515,6 @@
         gap: 0.5rem;
     }
 
-    /* Spinner animation */
-    .spin {
-        animation: spin 1s linear infinite;
-    }
-
     @keyframes spin {
         from {
             transform: rotate(0deg);
@@ -519,27 +522,5 @@
         to {
             transform: rotate(360deg);
         }
-    }
-
-    /* Form Messages */
-    .form-message {
-        padding: 1rem;
-        border-radius: 0.75rem;
-        font-size: 0.9rem;
-        font-weight: 500;
-        text-align: center;
-        margin-top: 0.5rem;
-    }
-
-    .form-message.success {
-        background: #dcfce7;
-        color: #166534;
-        border: 1px solid #86efac;
-    }
-
-    .form-message.error {
-        background: #fee2e2;
-        color: #991b1b;
-        border: 1px solid #fca5a5;
     }
 </style>

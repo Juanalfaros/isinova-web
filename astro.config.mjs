@@ -12,7 +12,17 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://isinova.cl',
-  output: 'static',
-  adapter: cloudflare(),
+  output: 'server',
+  adapter: cloudflare({
+    platformProxy: {
+      enabled: true,
+    },
+  }),
+  image: {
+    endpoint: {
+      route: '/_image',
+      entrypoint: undefined,
+    }
+  },
   integrations: [mdx(), sitemap(), compress()]
 });

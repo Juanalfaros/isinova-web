@@ -54,23 +54,25 @@ const serviciosCollection = defineCollection({
             })),
             buttonText: z.string(),
         }),
+        order: z.number().optional(),
     }),
 });
+
 
 const equipoCollection = defineCollection({
     type: 'data',
     // Aquí inyectamos el helper 'image'
-    schema: ({ image }) => z.object({
+    schema: ({ image }: { image: any }) => z.object({
         name: z.string(),
         role: z.string(),
         bio: z.string(),
         specialties: z.array(z.string()),
         isLeader: z.boolean(),
         initials: z.string(),
-        
+
         // Imagen normal
         image: image(),
-        
+
         // NUEVA IMAGEN (Sin Fondo) - Opcional para seguridad
         imagesf: image().optional(),
 

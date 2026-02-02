@@ -11,10 +11,10 @@
   "dependencies": {
     "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/mdx": "^4.3.13",
-    "@astrojs/sitemap": "^3.6.0",
+    "@astrojs/sitemap": "^3.7.0",
     "@fontsource/exo-2": "^5.2.8",
     "@phosphor-icons/web": "^2.1.2",
-    "astro": "^5.16.6",
+    "astro": "^5.17.1",
     "astro-compress": "^2.3.8"
   },
   "devDependencies": {

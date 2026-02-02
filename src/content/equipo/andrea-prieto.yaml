@@ -1,0 +1,13 @@
+name: "Andrea Prieto"
+role: "Socia Directora"
+bio: "Contador Auditor y Magíster USACH. Experiencia sólida en auditoría corporativa y gestión pública."
+specialties:
+  - "Auditoría Financiera"
+  - "Gestión Estatal"
+  - "Consultoría Tributaria"
+isLeader: false
+initials: "AP"
+image: "../../assets/images/team/andrea.webp"
+mail: "andrea@isinova.cl"
+linkedin: "https://www.linkedin.com/in/andrea-prieto-6ba26324/" 
+order: 2

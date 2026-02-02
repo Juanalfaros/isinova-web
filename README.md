@@ -1,43 +1,70 @@
-# Astro Starter Kit: Minimal
+# Isinova Web 🚀
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Sitio web corporativo de **Isinova**, expertos en tecnología educativa (EdTech) y soluciones para instituciones de aprendizaje. Construido con **Astro 5** y optimizado para **Cloudflare Pages**.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## �️ Stack Tecnológico
 
-## 🚀 Project Structure
+- **Framework**: [Astro 5](https://astro.build/) (Modo SSR)
+- **Plataforma**: [Cloudflare Pages](https://pages.cloudflare.com/)
+- **Iconografía**: [Phosphor Icons](https://phosphoricons.com/)
+- **Gestión de Leads**: [Brevo](https://www.brevo.com/) (API Integration)
+- **Integraciones**:
+  - `@astrojs/cloudflare`: Adaptador para runtime de Cloudflare Workers.
+  - `@astrojs/mdx`: Soporte para contenido rico.
+  - `@astrojs/sitemap`: Generación automática de mapa del sitio.
+  - `astro-compress`: Optimización de activos en el build.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Estructura del Proyecto
 
 ```text
 /
-├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/       # Imágenes y recursos estáticos
+│   ├── components/   # Componentes Astro reutilizables
+│   ├── content/      # Colecciones de contenido (Servicios, etc.)
+│   ├── layouts/      # Plantillas de página
+│   ├── pages/        # Rutas y API Endpoints
+│   └── styles/       # Estilos CSS globales
+├── public/           # Archivos públicos (favicons, manifest)
+├── astro.config.mjs  # Configuración de Astro y Adaptador
+└── wrangler.toml     # Configuración de Cloudflare Pages
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🚀 Desarrollo Local
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+1. **Instalar dependencias**:
+   ```bash
+   pnpm install
+   ```
 
-Any static assets, like images, can be placed in the `public/` directory.
+2. **Variables de Entorno**:
+   Crea un archivo `.env` basado en `.env.example` con las siguientes claves:
+   - `BREVO_API_KEY`: Tu clave de API de Brevo.
+   - `NOTIFICATION_EMAIL`: Correo donde llegarán las alertas.
+   - `BREVO_LIST_ID`: ID de la lista por defecto en Brevo.
 
-## 🧞 Commands
+3. **Iniciar servidor de desarrollo**:
+   ```bash
+   pnpm dev
+   ```
 
-All commands are run from the root of the project, from a terminal:
+## 🌐 Despliegue en Cloudflare
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Este proyecto está configurado para **Cloudflare Pages** utilizando Renderización en el Servidor (SSR).
 
-## 👀 Want to learn more?
+### Pasos Críticos:
+- **Compatibilidad de Node**: Asegúrate de tener activa la flag `nodejs_compat` en el panel de Cloudflare (configurado automáticamente en `wrangler.toml`).
+- **Variables de Entorno**: Debes configurar manualmente las variables del `.env` en el panel de Cloudflare (Settings > Environment variables > Production).
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## � Funcionalidades de Backend
+
+El proyecto cuenta con una ruta de API en `src/pages/api/contact-form.ts` que maneja:
+- Registro de contactos en listas de Brevo.
+- Envío de notificaciones vía e-mail con diseño optimizado.
+- Validación de datos y logs de auditoría.
+
+---
+
+Desarrollado con ❤️ por **Isinova Tech Team**.
