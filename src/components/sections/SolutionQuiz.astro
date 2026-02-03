@@ -524,6 +524,13 @@ const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
                         listId: 6,
                         source: "Quiz Diagnóstico",
                         recaptchaToken: token,
+                        quizData: {
+                            step1: answers.step1,
+                            step2: answers.step2,
+                            step3: answers.step3,
+                            resultTitle: title,
+                            resultDesc: desc,
+                        },
                     }),
                 });
 

@@ -28,11 +28,15 @@ Isinova es una empresa chilena especializada en **Ingeniería EdTech & Consultor
 - `@astrojs/sitemap`: Generación automática de sitemap
 - `astro-compress`: Optimización de activos en el build
 
-### Gestión de Leads
+### Gestión de Leads y Emails (Brevo Integration)
 
-- **Brevo**: CRM y automatización de marketing
-- **API Endpoints**: Formularios de contacto y gestión de leads
-- **Notificaciones**: Email alerts con diseño optimizado
+- **Estrategia CRM-First**: Toda la gestión de correos es "No-Code", controlada visualmente desde Brevo.
+- **Atributos Clave**:
+    - `EXT_ID`: ID del ticket generado por la API.
+    - `NOMBRE` / `NOMBRE_COMPLETO`: Datos del usuario.
+    - `QUIZ_RESULTADO` / `QUIZ_ETAPA`: Datos de segmentación comercial.
+- **API Endpoint**: `POST /api/contact-form` (Sincronización automática a listas).
+- **Plantillas HTML**: Ubicadas en `/email-templates` (Solo referencia para copiar a Brevo).
 
 ### Seguridad & Analytics
 
@@ -140,11 +144,10 @@ Configura manualmente en Cloudflare Dashboard:
 
 ### API Endpoints
 
-- **`/api/contact-form.ts`**: Gestión de formularios de contacto
-  - Validación de datos de entrada
-  - Registro en listas de Brevo
-  - Envío de notificaciones por email
-  - Logs de auditoría y manejo de errores
+- **`/api/contact-form.ts`**: Sincronización con Brevo CRM
+  - Validación de datos y protección reCAPTCHA v3
+  - **Sincronización Total**: Envío de contactos y atributos (incluyendo Quiz) al CRM.
+  - **Estrategia No-Code**: La API solo entrega los datos; la lógica de correos se gestiona visualmente en Brevo (Marketing Automation).
 
 ### Colecciones de Contenido
 
