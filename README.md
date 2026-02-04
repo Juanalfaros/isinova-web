@@ -140,6 +140,18 @@ Configura manualmente en Cloudflare Dashboard:
 - Settings > Environment variables > Production
 - Añade todas las variables del archivo `.env`
 
+### Configuración de Correos (Notificaciones Internas)
+El sistema utiliza un **enrutamiento por roles** definido en las variables de entorno. Puedes agregar múltiples destinatarios separados por coma.
+
+- `NOTIFICATION_SALES`: Recibe leads de Ventas y Diagnósticos (Quiz).
+- `NOTIFICATION_SUPPORT`: Recibe tickets de Soporte Técnico.
+- `NOTIFICATION_MARKETING`: Recibe alertas de nuevos suscriptores al Newsletter.
+
+Ejemplo:
+```bash
+NOTIFICATION_SALES="juan@isinova.cl, socio@isinova.cl"
+```
+
 ## 🔧 Funcionalidades del Backend
 
 ### API Endpoints

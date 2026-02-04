@@ -448,10 +448,15 @@ const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
             goToStep(1);
         });
 
+        // Declaramos variables de resultado en el scope principal del listener
+        let title = "";
+        let desc = "";
+
         // --- LÓGICA DE RECOMENDACIÓN ---
         function calculateResult() {
-            let title = "";
-            let desc = "";
+            // Reiniciamos valores (ya no declaramos con let)
+            title = "";
+            desc = "";
 
             if (answers.step3 === "large") {
                 title = "Infraestructura de Alta Demanda";
